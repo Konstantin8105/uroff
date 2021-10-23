@@ -32,3 +32,24 @@ c4go transpile -o troff.go\
 	./tmp/*.c\
 	./tmp/*.h
 rm -rf tmp
+
+# NEATREFER
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/neatrefer/* tmp/
+c4go transpile -o refer.go\
+	./tmp/*.c
+rm -rf tmp
+
+
+# NEATEQN
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/neateqn/* tmp/
+sed -i.bak '216,233s/^.*//g' ./tmp/eqn.c
+c4go transpile -o eqn.go\
+ 	-clang-flag="-DTROFFFDIR=\"./\""\
+ 	-clang-flag="-DTROFFMDIR=\"./\""\
+	./tmp/*.c\
+	./tmp/*.h
+rm -rf tmp

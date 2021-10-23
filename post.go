@@ -11,16 +11,13 @@ package main
 // #include </usr/include/stdio.h>
 import "C"
 
-import (
-	"os"
-	"reflect"
-	"runtime"
-	"unicode"
-	"unsafe"
-
-	"github.com/Konstantin8105/c4go/noarch"
-	"golang.org/x/sys/unix"
-)
+import "unicode"
+import "reflect"
+import "runtime"
+import "os"
+import "golang.org/x/sys/unix"
+import "unsafe"
+import "github.com/Konstantin8105/c4go/noarch"
 
 // glyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/post.h:19
 // predefined array limits
