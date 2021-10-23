@@ -14,13 +14,16 @@ package main
 // #include </usr/include/string.h>
 import "C"
 
-import "unicode"
-import "os"
-import "golang.org/x/sys/unix"
-import "reflect"
-import "runtime"
-import "unsafe"
-import "github.com/Konstantin8105/c4go/noarch"
+import (
+	"os"
+	"reflect"
+	"runtime"
+	"unicode"
+	"unsafe"
+
+	"github.com/Konstantin8105/c4go/noarch"
+	"golang.org/x/sys/unix"
+)
 
 // glyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.h:141
 //
