@@ -3655,6 +3655,40 @@ func c4goUnsafeConvert_int32(c4go_name *int32) []int32 {
 // string buffers
 // reading PDF files
 
+// memcpy is function from string.h.
+// c function : void * memcpy( void * , const void * , size_t )
+// dep pkg    : reflect
+// dep func   :
+func memcpy(dst, src interface{}, size uint32) interface{} {
+	switch reflect.TypeOf(src).Kind() {
+	case reflect.Slice:
+		s := reflect.ValueOf(src)
+		d := reflect.ValueOf(dst)
+		if s.Len() == 0 {
+			return dst
+		}
+		if s.Len() > 0 {
+			size /= uint32(int(s.Index(0).Type().Size()))
+		}
+		var val reflect.Value
+		for i := 0; i < int(size); i++ {
+			if i < s.Len() {
+				val = s.Index(i)
+			}
+			d.Index(i).Set(val)
+		}
+	}
+	return dst
+}
+
+// tolower from ctype.h
+// c function : int tolower(int)
+// dep pkg    : unicode
+// dep func   :
+func tolower(_c int32) int32 {
+	return int32(unicode.ToLower(rune(_c)))
+}
+
 // __ctype_b_loc from ctype.h
 // c function : const unsigned short int** __ctype_b_loc()
 // dep pkg    : unicode
@@ -3730,40 +3764,6 @@ func __ctype_b_loc() [][]uint16 {
 		characterTable = append(characterTable, c)
 	}
 	return [][]uint16{characterTable}
-}
-
-// memcpy is function from string.h.
-// c function : void * memcpy( void * , const void * , size_t )
-// dep pkg    : reflect
-// dep func   :
-func memcpy(dst, src interface{}, size uint32) interface{} {
-	switch reflect.TypeOf(src).Kind() {
-	case reflect.Slice:
-		s := reflect.ValueOf(src)
-		d := reflect.ValueOf(dst)
-		if s.Len() == 0 {
-			return dst
-		}
-		if s.Len() > 0 {
-			size /= uint32(int(s.Index(0).Type().Size()))
-		}
-		var val reflect.Value
-		for i := 0; i < int(size); i++ {
-			if i < s.Len() {
-				val = s.Index(i)
-			}
-			d.Index(i).Set(val)
-		}
-	}
-	return dst
-}
-
-// tolower from ctype.h
-// c function : int tolower(int)
-// dep pkg    : unicode
-// dep func   :
-func tolower(_c int32) int32 {
-	return int32(unicode.ToLower(rune(_c)))
 }
 
 // memchr - add c-binding for implemention function

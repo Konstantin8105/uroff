@@ -53,3 +53,53 @@ c4go transpile -o eqn.go\
 	./tmp/*.c\
 	./tmp/*.h
 rm -rf tmp
+
+# NEATMKFN
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/neatmkfn/* tmp/
+sed -i.bak '54,58s/^.*//g' ./tmp/otf.c
+c4go transpile -o mkfn.go\
+ 	-clang-flag="-DTROFFFDIR=\"./\""\
+ 	-clang-flag="-DTROFFMDIR=\"./\""\
+	./tmp/*.c\
+	./tmp/*.h
+rm -rf tmp
+
+# SHAPE
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/shape/* tmp/
+c4go transpile -o shape.go\
+ 	-clang-flag="-DTROFFFDIR=\"./\""\
+ 	-clang-flag="-DTROFFMDIR=\"./\""\
+	./tmp/*.c\
+	./tmp/*.h
+rm -rf tmp
+
+# SOIL
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/soin/* tmp/
+c4go transpile -o soil.go\
+ 	-clang-flag="-DTROFFFDIR=\"./\""\
+ 	-clang-flag="-DTROFFMDIR=\"./\""\
+	./tmp/*.c
+rm -rf tmp
+
+# TBL
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/troff/tbl/* tmp/
+mv ./tmp/t.h ./tmp/t.h.bak
+echo "#ifndef TH"  >> ./tmp/t.h
+echo "#define TH"  >> ./tmp/t.h
+cat  ./tmp/t.h.bak >> ./tmp/t.h
+echo "#endif"      >> ./tmp/t.h
+c4go transpile -o tbl.go\
+ 	-clang-flag="-DTROFFFDIR=\"./\""\
+ 	-clang-flag="-DTROFFMDIR=\"./\""\
+	-clang-flag="-Wall"\
+	./tmp/*.c\
+	./tmp/*.h
+rm -rf tmp
