@@ -11,7 +11,7 @@ import "os"
 import "github.com/Konstantin8105/c4go/noarch"
 import "unsafe"
 
-// shape - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/shape.c:24
+// shape - transpiled function from  shape.c:24
 func shape(s []int32) {
 	//
 	// * FARSI/ARABIC SHAPING PREPROCESSOR FOR NEATROFF
@@ -58,7 +58,7 @@ func shape(s []int32) {
 	}
 }
 
-// shape_ligs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/shape.c:45
+// shape_ligs - transpiled function from  shape.c:45
 func shape_ligs(d []int32, s []int32) {
 	var l int32
 	for s[0] != 0 {
@@ -80,16 +80,16 @@ func shape_ligs(d []int32, s []int32) {
 	d[0] = 0
 }
 
-// raw - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/shape.c:60
+// raw - transpiled function from  shape.c:60
 var raw []byte = make([]byte, 8388608)
 
-// utf8 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/shape.c:61
+// utf8 - transpiled function from  shape.c:61
 var utf8 []int32 = make([]int32, 8388608)
 
-// ligs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/shape.c:62
+// ligs - transpiled function from  shape.c:62
 var ligs []int32 = make([]int32, 8388608)
 
-// main - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/shape.c:64
+// main - transpiled function from  shape.c:64
 func main() {
 	argc := int32(len(os.Args))
 	argv := [][]byte{}
@@ -106,7 +106,7 @@ func main() {
 	return
 }
 
-// achar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:6
+// achar - transpiled function from  uc.c:6
 // sorted list of characters that can be shaped
 type achar struct {
 	c uint32
@@ -116,10 +116,10 @@ type achar struct {
 	f uint32
 }
 
-// achars - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:6
+// achars - transpiled function from  uc.c:6
 var achars []achar = []achar{{1569, 65152, 0, 0, 0}, {1570, 65153, 0, 0, 65154}, {1571, 65155, 0, 0, 65156}, {1572, 65157, 0, 0, 65158}, {1573, 65159, 0, 0, 65160}, {1574, 65161, 65163, 65164, 65162}, {1575, 65165, 0, 0, 65166}, {1576, 65167, 65169, 65170, 65168}, {1577, 65171, 0, 0, 65172}, {1578, 65173, 65175, 65176, 65174}, {1579, 65177, 65179, 65180, 65178}, {1580, 65181, 65183, 65184, 65182}, {1581, 65185, 65187, 65188, 65186}, {1582, 65189, 65191, 65192, 65190}, {1583, 65193, 0, 0, 65194}, {1584, 65195, 0, 0, 65196}, {1585, 65197, 0, 0, 65198}, {1586, 65199, 0, 0, 65200}, {1587, 65201, 65203, 65204, 65202}, {1588, 65205, 65207, 65208, 65206}, {1589, 65209, 65211, 65212, 65210}, {1590, 65213, 65215, 65216, 65214}, {1591, 65217, 65219, 65220, 65218}, {1592, 65221, 65223, 65224, 65222}, {1593, 65225, 65227, 65228, 65226}, {1594, 65229, 65231, 65232, 65230}, {1600, 1600, 1600, 1600, 0}, {1601, 65233, 65235, 65236, 65234}, {1602, 65237, 65239, 65240, 65238}, {1603, 65241, 65243, 65244, 65242}, {1604, 65245, 65247, 65248, 65246}, {1605, 65249, 65251, 65252, 65250}, {1606, 65253, 65255, 65256, 65254}, {1607, 65257, 65259, 65260, 65258}, {1608, 65261, 0, 0, 65262}, {1609, 65263, 0, 0, 65264}, {1610, 65265, 65267, 65268, 65266}, {1662, 64342, 64344, 64345, 64343}, {1670, 64378, 64380, 64381, 64379}, {1688, 64394, 0, 0, 64395}, {1705, 64398, 64400, 64401, 64399}, {1711, 64402, 64404, 64405, 64403}, {1740, 64508, 64510, 64511, 64509}, {8204, 0, 0, 0, 0}, {8205, 0, 8205, 8205, 0}}
 
-// find_achar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:60
+// find_achar - transpiled function from  uc.c:60
 func find_achar(c int32) []achar {
 	// utf-8 code
 	// single form
@@ -191,14 +191,14 @@ func find_achar(c int32) []achar {
 	return nil
 }
 
-// can_join - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:78
+// can_join - transpiled function from  uc.c:78
 func can_join(c1 int32, c2 int32) int32 {
 	var a1 []achar = find_achar(c1)
 	var a2 []achar = find_achar(c2)
 	return noarch.BoolToInt(len(a1) == 0 && len(a2) == 0 && (a1[0].i != 0 || a1[0].m != 0) && (a2[0].f != 0 || a2[0].m != 0))
 }
 
-// uc_shape - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:85
+// uc_shape - transpiled function from  uc.c:85
 func uc_shape(cur int32, prev int32, next int32) int32 {
 	var c int32 = cur
 	var join_prev int32
@@ -229,7 +229,7 @@ func uc_shape(cur int32, prev int32, next int32) int32 {
 	return cur
 }
 
-// uc_comb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:122
+// uc_comb - transpiled function from  uc.c:122
 func uc_comb(c int32) int32 {
 	//
 	// * return nonzero for Arabic combining characters
@@ -252,7 +252,7 @@ func uc_comb(c int32) int32 {
 	return noarch.BoolToInt(c >= 1611 && c <= 1621 || c >= 64606 && c <= 64611 || c == 1648)
 }
 
-// uc_lig2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:129
+// uc_lig2 - transpiled function from  uc.c:129
 func uc_lig2(a1 int32, a2 int32) int32 {
 	if a1 == 65247 && a2 == 65166 {
 		// shadda ligatures
@@ -287,7 +287,7 @@ func uc_lig2(a1 int32, a2 int32) int32 {
 	return 0
 }
 
-// uc_lig3 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:148
+// uc_lig3 - transpiled function from  uc.c:148
 func uc_lig3(a1 int32, a2 int32, a3 int32) int32 {
 	if a1 == 65247 && a3 == 65166 {
 		if a2 == 1619 {
@@ -316,7 +316,7 @@ func uc_lig3(a1 int32, a2 int32, a3 int32) int32 {
 	return 0
 }
 
-// uc_lig - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/uc.c:170
+// uc_lig - transpiled function from  uc.c:170
 func uc_lig(dst []int32, src []int32) int32 {
 	if src[1] != 0 && uc_lig2(src[0], src[1]) != 0 {
 		// return the length of the ligature in src; writes the ligature to dst
@@ -330,7 +330,7 @@ func uc_lig(dst []int32, src []int32) int32 {
 	return 0
 }
 
-// xread - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/util.c:4
+// xread - transpiled function from  util.c:4
 func xread(fd int32, buf interface{}, len_ int32) int32 {
 	var n int32
 	var r int32
@@ -343,7 +343,7 @@ func xread(fd int32, buf interface{}, len_ int32) int32 {
 	return n
 }
 
-// xwrite - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/util.c:13
+// xwrite - transpiled function from  util.c:13
 func xwrite(fd int32, buf interface{}, len_ int32) int32 {
 	var n int32
 	var w int32
@@ -356,7 +356,7 @@ func xwrite(fd int32, buf interface{}, len_ int32) int32 {
 	return n
 }
 
-// readutf8 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/util.c:22
+// readutf8 - transpiled function from  util.c:22
 func readutf8(src [][]byte) int32 {
 	var result int32
 	var l int32 = 1
@@ -387,7 +387,7 @@ func readutf8(src [][]byte) int32 {
 	return result
 }
 
-// utf8_dec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/util.c:36
+// utf8_dec - transpiled function from  util.c:36
 func utf8_dec(dst []int32, src []byte) {
 	var s []byte = src
 	var d []int32 = dst
@@ -416,7 +416,7 @@ func utf8_dec(dst []int32, src []byte) {
 	d[0] = int32('\x00')
 }
 
-// writeutf8 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/util.c:49
+// writeutf8 - transpiled function from  util.c:49
 func writeutf8(dst [][]byte, c int32) {
 	var d []byte = dst[0]
 	var l int32
@@ -461,7 +461,7 @@ func writeutf8(dst [][]byte, c int32) {
 	dst[0] = d
 }
 
-// utf8_enc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/util.c:68
+// utf8_enc - transpiled function from  util.c:68
 func utf8_enc(dst []byte, src []int32) {
 	var s []int32 = src
 	var d []byte = dst

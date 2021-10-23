@@ -11,7 +11,7 @@ import "unicode"
 import "unsafe"
 import "github.com/Konstantin8105/c4go/noarch"
 
-// soin_cmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/soin.c:10
+// soin_cmd - transpiled function from  soin.c:10
 func soin_cmd(s []byte) int32 {
 	// soin: inline troff .so requests
 	var path []byte = make([]byte, 2048)
@@ -57,7 +57,7 @@ func soin_cmd(s []byte) int32 {
 	return soin(path)
 }
 
-// soin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/soin.c:31
+// soin - transpiled function from  soin.c:31
 func soin(path []byte) int32 {
 	var fp *noarch.File = func() *noarch.File {
 		if path != nil {
@@ -99,7 +99,7 @@ func soin(path []byte) int32 {
 	return 0
 }
 
-// main - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/soin.c:55
+// main - transpiled function from  soin.c:55
 func main() {
 	defer noarch.AtexitRun()
 	soin(nil)

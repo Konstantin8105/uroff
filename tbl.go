@@ -14,192 +14,192 @@ import "os"
 import "unsafe"
 import "github.com/Konstantin8105/c4go/noarch"
 
-// uintptr_ - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t.h:8
+// uintptr_ - transpiled function from  t.h:8
 // t..c : external declarations
 type uintptr_ = uint32
 
-// vlong - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t.h:9
+// vlong - transpiled function from  t.h:9
 type vlong = int64
 
-// colstr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t.h:54
+// colstr - transpiled function from  t.h:54
 // Do NOT make MAXCOL bigger with adjusting nregs[] in tr.c
 type colstr struct {
 	col  []byte
 	rcol []byte
 }
 
-// expflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:4
+// expflg - transpiled function from  t0.c:4
 // t0.c: storage allocation
 var expflg int32
 
-// ctrflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:5
+// ctrflg - transpiled function from  t0.c:5
 var ctrflg int32
 
-// boxflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:6
+// boxflg - transpiled function from  t0.c:6
 var boxflg int32
 
-// dboxflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:7
+// dboxflg - transpiled function from  t0.c:7
 var dboxflg int32
 
-// tab - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:8
+// tab - transpiled function from  t0.c:8
 var tab int32 = int32('\t')
 
-// linsize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:9
+// linsize - transpiled function from  t0.c:9
 var linsize int32
 
-// pr1403 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:10
+// pr1403 - transpiled function from  t0.c:10
 var pr1403 int32
 
-// delim1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:11
+// delim1 - transpiled function from  t0.c:11
 var delim1 int32
 
-// delim2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:11
+// delim2 - transpiled function from  t0.c:11
 var delim2 int32
 
-// evenflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:12
+// evenflg - transpiled function from  t0.c:12
 var evenflg int32
 
-// evenup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:13
+// evenup - transpiled function from  t0.c:13
 var evenup []int32
 
-// F1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:14
+// F1 - transpiled function from  t0.c:14
 var F1 int32
 
-// F2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:15
+// F2 - transpiled function from  t0.c:15
 var F2 int32
 
-// allflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:16
+// allflg - transpiled function from  t0.c:16
 var allflg int32
 
-// leftover - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:17
+// leftover - transpiled function from  t0.c:17
 var leftover []byte
 
-// textflg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:18
+// textflg - transpiled function from  t0.c:18
 var textflg int32
 
-// left1flg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:19
+// left1flg - transpiled function from  t0.c:19
 var left1flg int32
 
-// rightl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:20
+// rightl - transpiled function from  t0.c:20
 var rightl int32
 
-// cstore - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:21
+// cstore - transpiled function from  t0.c:21
 var cstore []byte
 
-// cspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:21
+// cspace - transpiled function from  t0.c:21
 var cspace []byte
 
-// last - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:22
+// last - transpiled function from  t0.c:22
 var last []byte
 
-// table - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:23
+// table - transpiled function from  t0.c:23
 var table [][]colstr = make([][]colstr, 250)
 
-// stynum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:24
+// stynum - transpiled function from  t0.c:24
 var stynum []int32 = make([]int32, 251)
 
-// fullbot - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:25
+// fullbot - transpiled function from  t0.c:25
 var fullbot []int32 = make([]int32, 250)
 
-// instead - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:26
+// instead - transpiled function from  t0.c:26
 var instead [][]byte = make([][]byte, 250)
 
-// linestop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:27
+// linestop - transpiled function from  t0.c:27
 var linestop []int32 = make([]int32, 250)
 
-// style - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:28
+// style - transpiled function from  t0.c:28
 var style [][]int32 = make([][]int32, 44)
 
-// font - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:29
+// font - transpiled function from  t0.c:29
 var font [][][]byte = make([][][]byte, 44)
 
-// csize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:30
+// csize - transpiled function from  t0.c:30
 var csize [][][]byte = make([][][]byte, 44)
 
-// vsize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:31
+// vsize - transpiled function from  t0.c:31
 var vsize [][][]byte = make([][][]byte, 44)
 
-// lefline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:32
+// lefline - transpiled function from  t0.c:32
 var lefline [][]int32 = make([][]int32, 44)
 
-// cll - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:33
+// cll - transpiled function from  t0.c:33
 var cll [][]byte = make([][]byte, 10)
 
-// flags - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:34
+// flags - transpiled function from  t0.c:34
 var flags [][]int32 = make([][]int32, 44)
 
-// qcol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:35
+// qcol - transpiled function from  t0.c:35
 var qcol int32
 
-// doubled - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:36
+// doubled - transpiled function from  t0.c:36
 var doubled []int32
 
-// acase - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:36
+// acase - transpiled function from  t0.c:36
 var acase []int32
 
-// topat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:36
+// topat - transpiled function from  t0.c:36
 var topat []int32
 
-// nslin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:37
+// nslin - transpiled function from  t0.c:37
 var nslin int32
 
-// nclin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:37
+// nclin - transpiled function from  t0.c:37
 var nclin int32
 
-// sep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:38
+// sep - transpiled function from  t0.c:38
 var sep []int32
 
-// used - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:39
+// used - transpiled function from  t0.c:39
 var used []int32
 
-// lused - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:39
+// lused - transpiled function from  t0.c:39
 var lused []int32
 
-// rused - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:39
+// rused - transpiled function from  t0.c:39
 var rused []int32
 
-// nlin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:40
+// nlin - transpiled function from  t0.c:40
 var nlin int32
 
-// ncol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:40
+// ncol - transpiled function from  t0.c:40
 var ncol int32
 
-// iline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:41
+// iline - transpiled function from  t0.c:41
 var iline int32 = 1
 
-// ifile - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:42
+// ifile - transpiled function from  t0.c:42
 var ifile []byte = []byte("Input\x00")
 
-// texname - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:43
+// texname - transpiled function from  t0.c:43
 var texname int32 = int32('a')
 
-// texct - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:44
+// texct - transpiled function from  t0.c:44
 var texct int32
 
-// texstr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:45
+// texstr - transpiled function from  t0.c:45
 var texstr []byte = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789\x00")
 
-// linstart - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:46
+// linstart - transpiled function from  t0.c:46
 var linstart int32
 
-// exstore - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:47
+// exstore - transpiled function from  t0.c:47
 var exstore []byte
 
-// exlim - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:47
+// exlim - transpiled function from  t0.c:47
 var exlim []byte
 
-// exspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:47
+// exspace - transpiled function from  t0.c:47
 var exspace []byte
 
-// tabin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:48
+// tabin - transpiled function from  t0.c:48
 //= stdin
 var tabin *noarch.File
 
-// tabout - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t0.c:49
+// tabout - transpiled function from  t0.c:49
 // = stdout
 var tabout *noarch.File
 
-// main - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t1.c:7
+// main - transpiled function from  t1.c:7
 func main() {
 	argc := int32(len(os.Args))
 	argv := [][]byte{}
@@ -223,13 +223,13 @@ func main() {
 	return
 }
 
-// sargc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t1.c:23
+// sargc - transpiled function from  t1.c:23
 var sargc int32
 
-// sargv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t1.c:24
+// sargv - transpiled function from  t1.c:24
 var sargv [][]byte
 
-// setinp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t1.c:26
+// setinp - transpiled function from  t1.c:26
 func setinp(argc int32, argv [][]byte) {
 	sargc = argc
 	sargv = argv
@@ -240,7 +240,7 @@ func setinp(argc int32, argv [][]byte) {
 	}
 }
 
-// swapin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t1.c:38
+// swapin - transpiled function from  t1.c:38
 func swapin() int32 {
 	var name []byte
 	for sargc > 0 && int32((sargv[0])[0]) == int32('-') {
@@ -286,7 +286,7 @@ func swapin() int32 {
 	return 1
 }
 
-// tableput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t2.c:3
+// tableput - transpiled function from  t2.c:3
 func tableput() {
 	// t2.c:  subroutine sequencing for one table
 	saveline()
@@ -308,17 +308,17 @@ func tableput() {
 	restline()
 }
 
-// optstr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t3.c:5
+// optstr - transpiled function from  t3.c:5
 // t3.c: interpret commands affecting whole table
 type optstr struct {
 	optnam []byte
 	optadd []int32
 }
 
-// options - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t3.c:5
+// options - transpiled function from  t3.c:5
 var options []optstr = []optstr{{[]byte("expand\x00"), c4goUnsafeConvert_int32(&expflg)}, {[]byte("EXPAND\x00"), c4goUnsafeConvert_int32(&expflg)}, {[]byte("center\x00"), c4goUnsafeConvert_int32(&ctrflg)}, {[]byte("CENTER\x00"), c4goUnsafeConvert_int32(&ctrflg)}, {[]byte("box\x00"), c4goUnsafeConvert_int32(&boxflg)}, {[]byte("BOX\x00"), c4goUnsafeConvert_int32(&boxflg)}, {[]byte("allbox\x00"), c4goUnsafeConvert_int32(&allflg)}, {[]byte("ALLBOX\x00"), c4goUnsafeConvert_int32(&allflg)}, {[]byte("doublebox\x00"), c4goUnsafeConvert_int32(&dboxflg)}, {[]byte("DOUBLEBOX\x00"), c4goUnsafeConvert_int32(&dboxflg)}, {[]byte("frame\x00"), c4goUnsafeConvert_int32(&boxflg)}, {[]byte("FRAME\x00"), c4goUnsafeConvert_int32(&boxflg)}, {[]byte("doubleframe\x00"), c4goUnsafeConvert_int32(&dboxflg)}, {[]byte("DOUBLEFRAME\x00"), c4goUnsafeConvert_int32(&dboxflg)}, {[]byte("tab\x00"), c4goUnsafeConvert_int32(&tab)}, {[]byte("TAB\x00"), c4goUnsafeConvert_int32(&tab)}, {[]byte("linesize\x00"), c4goUnsafeConvert_int32(&linsize)}, {[]byte("LINESIZE\x00"), c4goUnsafeConvert_int32(&linsize)}, {[]byte("delim\x00"), c4goUnsafeConvert_int32(&delim1)}, {[]byte("DELIM\x00"), c4goUnsafeConvert_int32(&delim1)}, {nil, nil}}
 
-// getcomm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t3.c:32
+// getcomm - transpiled function from  t3.c:32
 func getcomm() {
 	var line []byte = make([]byte, 200)
 	var cp []byte
@@ -438,7 +438,7 @@ func getcomm() {
 	backrest(cp)
 }
 
-// backrest - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t3.c:91
+// backrest - transpiled function from  t3.c:91
 func backrest(cp []byte) {
 	var s []byte
 	for s = cp; s[0] != 0; func() []byte {
@@ -458,11 +458,11 @@ func backrest(cp []byte) {
 	}
 }
 
-// oncol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:4
+// oncol - transpiled function from  t4.c:4
 // t4.c: read table specification
 var oncol int32
 
-// getspec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:6
+// getspec - transpiled function from  t4.c:6
 func getspec() {
 	var icol int32
 	var i int32
@@ -500,7 +500,7 @@ func getspec() {
 	noarch.Fprintf(tabout, []byte("\n\x00"))
 }
 
-// readspec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:39
+// readspec - transpiled function from  t4.c:39
 func readspec() {
 	var icol int32
 	var c int32
@@ -929,7 +929,7 @@ func readspec() {
 	error_([]byte("EOF reading table specification\x00"))
 }
 
-// findcol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:296
+// findcol - transpiled function from  t4.c:296
 func findcol() int32 {
 	// this counts the number of columns and then puts the line back
 	var s []byte
@@ -1022,7 +1022,7 @@ func findcol() int32 {
 	return n
 }
 
-// garray - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:345
+// garray - transpiled function from  t4.c:345
 func garray(qcol int32) {
 	style = (*[1000000][]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*qcol, int32(4))
@@ -1089,7 +1089,7 @@ func garray(qcol int32) {
 	}())))[:]
 }
 
-// getcore - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:367
+// getcore - transpiled function from  t4.c:367
 func getcore(a int32, b int32) []byte {
 	var x []byte
 	x = make([]byte, uint32(a)*uint32(b))
@@ -1099,7 +1099,7 @@ func getcore(a int32, b int32) []byte {
 	return x
 }
 
-// freearr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t4.c:378
+// freearr - transpiled function from  t4.c:378
 func freearr() {
 	_ = style
 	_ = evenup
@@ -1125,7 +1125,7 @@ func freearr() {
 	_ = topat
 }
 
-// gettbl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t5.c:4
+// gettbl - transpiled function from  t5.c:4
 func gettbl() {
 	// t5.c: read data for table
 	var icol int32
@@ -1269,7 +1269,7 @@ func gettbl() {
 	}
 }
 
-// nodata - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t5.c:103
+// nodata - transpiled function from  t5.c:103
 func nodata(il int32) int32 {
 	var c int32
 	for c = 0; c < ncol; c++ {
@@ -1291,7 +1291,7 @@ func nodata(il int32) int32 {
 	return 1
 }
 
-// oneh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t5.c:123
+// oneh - transpiled function from  t5.c:123
 func oneh(lin int32) int32 {
 	var k int32
 	var icol int32
@@ -1304,7 +1304,7 @@ func oneh(lin int32) int32 {
 	return k
 }
 
-// permute - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t5.c:139
+// permute - transpiled function from  t5.c:139
 func permute() {
 	var irow int32
 	var jcol int32
@@ -1338,7 +1338,7 @@ func permute() {
 	}
 }
 
-// vspand - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t5.c:168
+// vspand - transpiled function from  t5.c:168
 func vspand(ir int32, ij int32, ifform int32) int32 {
 	if ir < 0 {
 		return 0
@@ -1361,7 +1361,7 @@ func vspand(ir int32, ij int32, ifform int32) int32 {
 	return vspen(table[ir][ij].col)
 }
 
-// vspen - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t5.c:187
+// vspen - transpiled function from  t5.c:187
 func vspen(s []byte) int32 {
 	if len(s) == 0 {
 		return 0
@@ -1372,7 +1372,7 @@ func vspen(s []byte) int32 {
 	return match(s, []byte("\\^\x00"))
 }
 
-// maktab - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t6.c:9
+// maktab - transpiled function from  t6.c:9
 func maktab() {
 	// t6.c: compute tab stops
 	// define the tab stops of the table
@@ -1602,7 +1602,7 @@ func maktab() {
 	noarch.Fprintf(tabout, []byte(".if t .if (\\n(TW+\\n(.o)>7.65i .tm Table at line %d file %s is too wide - \\n(TW units\n\x00"), iline-1, ifile)
 }
 
-// wide - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t6.c:199
+// wide - transpiled function from  t6.c:199
 func wide(s []byte, fn []byte, size []byte) {
 	if point(s) != 0 {
 		noarch.Fprintf(tabout, []byte("\\w%c\x00"), F1)
@@ -1625,12 +1625,12 @@ func wide(s []byte, fn []byte, size []byte) {
 	}
 }
 
-// filler - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t6.c:219
+// filler - transpiled function from  t6.c:219
 func filler(s []byte) int32 {
 	return noarch.BoolToInt(point(s) != 0 && int32(s[0]) == int32('\\') && int32(s[1]) == int32('R'))
 }
 
-// runout - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t7.c:5
+// runout - transpiled function from  t7.c:5
 func runout() {
 	// t7.c: control to write table entries
 	var i int32
@@ -1658,7 +1658,7 @@ func runout() {
 	}
 }
 
-// runtabs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t7.c:31
+// runtabs - transpiled function from  t7.c:31
 func runtabs(lform int32, ldata int32) {
 	var c int32
 	var ct int32
@@ -1712,7 +1712,7 @@ func runtabs(lform int32, ldata int32) {
 	noarch.Fprintf(tabout, []byte("\n\x00"))
 }
 
-// ifline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t7.c:65
+// ifline - transpiled function from  t7.c:65
 func ifline(s []byte) int32 {
 	if noarch.Not(point(s)) {
 		return 0
@@ -1732,7 +1732,7 @@ func ifline(s []byte) int32 {
 	return 0
 }
 
-// need - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t7.c:82
+// need - transpiled function from  t7.c:82
 func need() {
 	var texlin int32
 	var horlin int32
@@ -1753,7 +1753,7 @@ func need() {
 	noarch.Fprintf(tabout, []byte(".ne %dv+%dp\n\x00"), texlin, 2*horlin)
 }
 
-// deftail - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t7.c:99
+// deftail - transpiled function from  t7.c:99
 func deftail() {
 	var i int32
 	var c int32
@@ -1827,14 +1827,14 @@ func deftail() {
 	noarch.Fprintf(tabout, []byte(".ec\n\x00"))
 }
 
-// watchout - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:4
+// watchout - transpiled function from  t8.c:4
 // t8.c: write out one line of output table
 var watchout int32
 
-// once - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:5
+// once - transpiled function from  t8.c:5
 var once int32
 
-// putline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:7
+// putline - transpiled function from  t8.c:7
 func putline(i int32, nl int32) {
 	// i is line number for deciding format
 	// nl is line number for finding data   usually identical
@@ -2176,7 +2176,7 @@ func putline(i int32, nl int32) {
 	}
 }
 
-// puttext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:271
+// puttext - transpiled function from  t8.c:271
 func puttext(s []byte, fn []byte, size []byte) {
 	if point(s) != 0 {
 		putfont(fn)
@@ -2191,7 +2191,7 @@ func puttext(s []byte, fn []byte, size []byte) {
 	}
 }
 
-// funnies - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:286
+// funnies - transpiled function from  t8.c:286
 func funnies(stl int32, lin int32) {
 	// write out funny diverted things
 	var c int32
@@ -2290,7 +2290,7 @@ func funnies(stl int32, lin int32) {
 	}
 }
 
-// putfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:362
+// putfont - transpiled function from  t8.c:362
 func putfont(fn []byte) {
 	if fn != nil && int32(fn[0]) != 0 {
 		noarch.Fprintf(tabout, func() []byte {
@@ -2302,18 +2302,18 @@ func putfont(fn []byte) {
 	}
 }
 
-// putsize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t8.c:370
+// putsize - transpiled function from  t8.c:370
 func putsize(s []byte) {
 	if s != nil && int32(s[0]) != 0 {
 		noarch.Fprintf(tabout, []byte("\\s%s\x00"), s)
 	}
 }
 
-// useln - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t9.c:3
+// useln - transpiled function from  t9.c:3
 // t9.c: write lines for tables over 200 lines
 var useln int32
 
-// yetmore - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t9.c:5
+// yetmore - transpiled function from  t9.c:5
 func yetmore() {
 	for useln = 0; useln < 250 && len(table[useln]) == 0; useln++ {
 	}
@@ -2336,7 +2336,7 @@ func yetmore() {
 	last = cstore
 }
 
-// domore - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/t9.c:24
+// domore - transpiled function from  t9.c:24
 func domore(dataln []byte) int32 {
 	var icol int32
 	var ch int32
@@ -2412,7 +2412,7 @@ func domore(dataln []byte) int32 {
 	return 1
 }
 
-// checkuse - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:5
+// checkuse - transpiled function from  tb.c:5
 func checkuse() {
 	// tb.c: check which entries exist, also storage allocation
 	var i int32
@@ -2445,7 +2445,7 @@ func checkuse() {
 	}
 }
 
-// real_ - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:31
+// real_ - transpiled function from  tb.c:31
 func real_(s []byte) int32 {
 	if len(s) == 0 {
 		return 0
@@ -2459,13 +2459,13 @@ func real_(s []byte) int32 {
 	return 1
 }
 
-// spcount - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:44
+// spcount - transpiled function from  tb.c:44
 var spcount int32
 
-// spvecs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:46
+// spvecs - transpiled function from  tb.c:46
 var spvecs [][]byte = make([][]byte, 20)
 
-// chspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:48
+// chspace - transpiled function from  tb.c:48
 func chspace() []byte {
 	var pp []byte
 	if spvecs[spcount] != nil {
@@ -2495,16 +2495,16 @@ func chspace() []byte {
 	return pp
 }
 
-// thisvec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:65
+// thisvec - transpiled function from  tb.c:65
 var thisvec []byte
 
-// tpcount - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:66
+// tpcount - transpiled function from  tb.c:66
 var tpcount int32 = -1
 
-// tpvecs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:67
+// tpvecs - transpiled function from  tb.c:67
 var tpvecs [][]byte = make([][]byte, 50)
 
-// alocv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:69
+// alocv - transpiled function from  tb.c:69
 func alocv(n int32) []int32 {
 	var tp []int32
 	var q []int32
@@ -2532,7 +2532,7 @@ func alocv(n int32) []int32 {
 	return tp
 }
 
-// release - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tb.c:91
+// release - transpiled function from  tb.c:91
 func release() {
 	// give back unwanted space in some vectors
 	// this should call free; it does not because
@@ -2542,7 +2542,7 @@ func release() {
 	exstore = nil
 }
 
-// choochar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tc.c:7
+// choochar - transpiled function from  tc.c:7
 func choochar() {
 	// tc.c: find character not in table to delimit fields
 	// choose funny characters to delimit fields
@@ -2631,13 +2631,13 @@ func choochar() {
 	}
 }
 
-// point - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tc.c:55
+// point - transpiled function from  tc.c:55
 func point(ss []byte) int32 {
 	var s vlong = vlong((int64(uint32((uintptr_(ss))))))
 	return noarch.BoolToInt(s >= vlong((128)) || s < vlong((0)))
 }
 
-// error_ - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/te.c:6
+// error_ - transpiled function from  te.c:6
 func error_(s []byte) {
 	// te.c: error message control, input line count
 	noarch.Fprintf(noarch.Stderr, []byte("\n%s:%d: %s\n\x00"), ifile, iline, s)
@@ -2645,7 +2645,7 @@ func error_(s []byte) {
 	noarch.Exit(1)
 }
 
-// gets1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/te.c:13
+// gets1 - transpiled function from  te.c:13
 func gets1(s []byte, size int32) []byte {
 	var ns []byte
 	var nbl int32
@@ -2676,13 +2676,13 @@ func gets1(s []byte, size int32) []byte {
 	return s
 }
 
-// backup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/te.c:37
+// backup - transpiled function from  te.c:37
 var backup []byte = make([]byte, 500)
 
-// backp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/te.c:38
+// backp - transpiled function from  te.c:38
 var backp []byte = backup
 
-// un1getc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/te.c:40
+// un1getc - transpiled function from  te.c:40
 func un1getc(c int32) {
 	if c == int32('\n') {
 		iline--
@@ -2698,7 +2698,7 @@ func un1getc(c int32) {
 	}
 }
 
-// get1char - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/te.c:50
+// get1char - transpiled function from  te.c:50
 func get1char() int32 {
 	var c int32
 	if (int64(uintptr(unsafe.Pointer(&backp[0])))/int64(1) - int64(uintptr(unsafe.Pointer(&backup[0])))/int64(1)) > 0 {
@@ -2721,7 +2721,7 @@ func get1char() int32 {
 	return c
 }
 
-// savefill - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:4
+// savefill - transpiled function from  tf.c:4
 func savefill() {
 	// tf.c: save and restore fill mode around table
 	// remembers various things: fill mode, vs, ps in mac 35 (SF)
@@ -2739,12 +2739,12 @@ func savefill() {
 	noarch.Fprintf(tabout, []byte(".if \\n(.T .if n .nr #~ 0.6n\n\x00"))
 }
 
-// rstofill - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:23
+// rstofill - transpiled function from  tf.c:23
 func rstofill() {
 	noarch.Fprintf(tabout, []byte(".%d\n\x00"), 35)
 }
 
-// endoff - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:30
+// endoff - transpiled function from  tf.c:30
 func endoff() {
 	var i int32
 	for i = 0; i < 44; i++ {
@@ -2758,30 +2758,30 @@ func endoff() {
 	noarch.Fprintf(tabout, []byte("%s\n\x00"), last)
 }
 
-// ifdivert - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:44
+// ifdivert - transpiled function from  tf.c:44
 func ifdivert() {
 	noarch.Fprintf(tabout, []byte(".ds #d .d\n\x00"))
 	noarch.Fprintf(tabout, []byte(".if \\(ts\\n(.z\\(ts\\(ts .ds #d nl\n\x00"))
 }
 
-// saveline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:52
+// saveline - transpiled function from  tf.c:52
 func saveline() {
 	noarch.Fprintf(tabout, []byte(".if \\n+(b.=1 .nr d. \\n(.c-\\n(c.-1\n\x00"))
 	linstart = iline
 }
 
-// restline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:60
+// restline - transpiled function from  tf.c:60
 func restline() {
 	noarch.Fprintf(tabout, []byte(".if \\n-(b.=0 .nr c. \\n(.c-\\n(d.-%d\n\x00"), iline-linstart)
 	linstart = 0
 }
 
-// cleanfc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tf.c:68
+// cleanfc - transpiled function from  tf.c:68
 func cleanfc() {
 	noarch.Fprintf(tabout, []byte(".fc\n\x00"))
 }
 
-// gettext_tbl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tg.c:4
+// gettext_tbl - transpiled function from  tg.c:4
 func gettext_tbl(sp []byte, ilin int32, icol int32, fn []byte, sz []byte) int32 {
 	// tg.c: process included text blocks
 	// get a section of text
@@ -2869,14 +2869,14 @@ func gettext_tbl(sp []byte, ilin int32, icol int32, fn []byte, sz []byte) int32 
 	return oname
 }
 
-// untext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tg.c:78
+// untext - transpiled function from  tg.c:78
 func untext() {
 	rstofill()
 	noarch.Fprintf(tabout, []byte(".nf\n\x00"))
 	noarch.Fprintf(tabout, []byte(".ll \\n(%du\n\x00"), 34)
 }
 
-// interv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ti.c:5
+// interv - transpiled function from  ti.c:5
 func interv(i int32, c int32) int32 {
 	// ti.c: classify line intersections
 	// determine local environment for intersections
@@ -2923,7 +2923,7 @@ func interv(i int32, c int32) int32 {
 	return 0
 }
 
-// interh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ti.c:36
+// interh - transpiled function from  ti.c:36
 func interh(i int32, c int32) int32 {
 	var kl int32
 	var kr int32
@@ -2971,7 +2971,7 @@ func interh(i int32, c int32) int32 {
 	return 0
 }
 
-// up1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ti.c:66
+// up1 - transpiled function from  ti.c:66
 func up1(i int32) int32 {
 	i--
 	for instead[i] != nil && i > 0 {
@@ -2980,7 +2980,7 @@ func up1(i int32) int32 {
 	return i
 }
 
-// maknew - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tm.c:4
+// maknew - transpiled function from  tm.c:4
 func maknew(str []byte) []byte {
 	// tm.c: split numerical fields
 	// make two numerical fields
@@ -3071,7 +3071,7 @@ func maknew(str []byte) []byte {
 	return q
 }
 
-// ineqn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tm.c:47
+// ineqn - transpiled function from  tm.c:47
 func ineqn(s []byte, p []byte) int32 {
 	// true if s is in a eqn within p
 	var ineq int32
@@ -3093,11 +3093,11 @@ func ineqn(s []byte, p []byte) int32 {
 	return 0
 }
 
-// nregs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:3
+// nregs - transpiled function from  tr.c:3
 // tr.c: number register allocation
 var nregs [][]byte = [][]byte{[]byte("40\x00"), []byte("41\x00"), []byte("42\x00"), []byte("43\x00"), []byte("44\x00"), []byte("45\x00"), []byte("46\x00"), []byte("47\x00"), []byte("48\x00"), []byte("49\x00"), []byte("50\x00"), []byte("51\x00"), []byte("52\x00"), []byte("53\x00"), []byte("54\x00"), []byte("55\x00"), []byte("56\x00"), []byte("57\x00"), []byte("58\x00"), []byte("59\x00"), []byte("60\x00"), []byte("61\x00"), []byte("62\x00"), []byte("63\x00"), []byte("64\x00"), []byte("65\x00"), []byte("66\x00"), []byte("67\x00"), []byte("68\x00"), []byte("69\x00"), []byte("70\x00"), []byte("71\x00"), []byte("72\x00"), []byte("73\x00"), []byte("74\x00"), []byte("75\x00"), []byte("76\x00"), []byte("77\x00"), []byte("78\x00"), []byte("79\x00"), []byte("80\x00"), []byte("81\x00"), []byte("82\x00"), []byte("83\x00"), []byte("84\x00"), []byte("85\x00"), []byte("86\x00"), []byte("87\x00"), []byte("88\x00"), []byte("89\x00"), []byte("90\x00"), []byte("91\x00"), []byte("92\x00"), []byte("93\x00"), []byte("94\x00"), []byte("95\x00"), []byte("96\x00"), []byte("97\x00"), []byte("4q\x00"), []byte("4r\x00"), []byte("4s\x00"), []byte("4t\x00"), []byte("4u\x00"), []byte("4v\x00"), []byte("4w\x00"), []byte("4x\x00"), []byte("4y\x00"), []byte("4z\x00"), []byte("4;\x00"), []byte("4.\x00"), []byte("4a\x00"), []byte("4b\x00"), []byte("4c\x00"), []byte("4d\x00"), []byte("4e\x00"), []byte("4f\x00"), []byte("4g\x00"), []byte("4h\x00"), []byte("4i\x00"), []byte("4j\x00"), []byte("4k\x00"), []byte("4l\x00"), []byte("4m\x00"), []byte("4n\x00"), []byte("4o\x00"), []byte("4p\x00"), []byte("5a\x00"), []byte("5b\x00"), []byte("5c\x00"), []byte("5d\x00"), []byte("5e\x00"), []byte("5f\x00"), []byte("5g\x00"), []byte("5h\x00"), []byte("5i\x00"), []byte("5j\x00"), []byte("5k\x00"), []byte("5l\x00"), []byte("5m\x00"), []byte("5n\x00"), []byte("5o\x00"), []byte("5p\x00"), []byte("5q\x00"), []byte("5r\x00"), []byte("5s\x00"), []byte("5t\x00"), []byte("5u\x00"), []byte("5v\x00"), []byte("5w\x00"), []byte("5x\x00"), nil}
 
-// reg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:20
+// reg - transpiled function from  tr.c:20
 func reg(col int32, place int32) []byte {
 	if 888 < uint32(2*3*qcol) {
 		// this array must have at least 3*qcol entries
@@ -3107,7 +3107,7 @@ func reg(col int32, place int32) []byte {
 	return nregs[qcol*place+col]
 }
 
-// match - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:4
+// match - transpiled function from  ts.c:4
 func match(s1 []byte, s2 []byte) int32 {
 	for int32(s1[0]) == int32(s2[0]) {
 		if int32((func() []byte {
@@ -3125,7 +3125,7 @@ func match(s1 []byte, s2 []byte) int32 {
 	return 0
 }
 
-// prefix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:16
+// prefix - transpiled function from  ts.c:16
 func prefix(small []byte, big []byte) int32 {
 	var c int32
 	for (func() int32 {
@@ -3149,7 +3149,7 @@ func prefix(small []byte, big []byte) int32 {
 	return noarch.BoolToInt(c == 0)
 }
 
-// letter - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:28
+// letter - transpiled function from  ts.c:28
 func letter(ch int32) int32 {
 	if ch >= int32('a') && ch <= int32('z') {
 		return 1
@@ -3160,7 +3160,7 @@ func letter(ch int32) int32 {
 	return 0
 }
 
-// numb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:39
+// numb - transpiled function from  ts.c:39
 func numb(str []byte) int32 {
 	// convert to integer
 	var k int32
@@ -3176,12 +3176,12 @@ func numb(str []byte) int32 {
 	return k
 }
 
-// digit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:50
+// digit - transpiled function from  ts.c:50
 func digit(x int32) int32 {
 	return noarch.BoolToInt(x >= int32('0') && x <= int32('9'))
 }
 
-// max - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:57
+// max - transpiled function from  ts.c:57
 func max(a int32, b int32) int32 {
 	if a > b {
 		return a
@@ -3189,7 +3189,7 @@ func max(a int32, b int32) int32 {
 	return b
 }
 
-// tcopy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ts.c:64
+// tcopy - transpiled function from  ts.c:64
 func tcopy(s []byte, t []byte) {
 	for (func() byte {
 		(func() []byte {
@@ -3213,7 +3213,7 @@ func tcopy(s []byte, t []byte) {
 	}
 }
 
-// ctype - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:4
+// ctype - transpiled function from  tt.c:4
 func ctype(il int32, ic int32) int32 {
 	if instead[il] != nil {
 		// tt.c: subroutines for drawing horizontal lines
@@ -3226,7 +3226,7 @@ func ctype(il int32, ic int32) int32 {
 	return style[ic][il]
 }
 
-// min - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:16
+// min - transpiled function from  tt.c:16
 func min(a int32, b int32) int32 {
 	if a < b {
 		return a
@@ -3234,13 +3234,13 @@ func min(a int32, b int32) int32 {
 	return b
 }
 
-// fspan - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:23
+// fspan - transpiled function from  tt.c:23
 func fspan(i int32, c int32) int32 {
 	c++
 	return noarch.BoolToInt(c < ncol && ctype(i, c) == int32('s'))
 }
 
-// lspan - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:31
+// lspan - transpiled function from  tt.c:31
 func lspan(i int32, c int32) int32 {
 	var k int32
 	if ctype(i, c) != int32('s') {
@@ -3258,7 +3258,7 @@ func lspan(i int32, c int32) int32 {
 	return k
 }
 
-// ctspan - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:47
+// ctspan - transpiled function from  tt.c:47
 func ctspan(i int32, c int32) int32 {
 	var k int32
 	c++
@@ -3268,7 +3268,7 @@ func ctspan(i int32, c int32) int32 {
 	return k
 }
 
-// tohcol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:58
+// tohcol - transpiled function from  tt.c:58
 func tohcol(ic int32) {
 	if ic == 0 {
 		noarch.Fprintf(tabout, []byte("\\h'|0'\x00"))
@@ -3277,7 +3277,7 @@ func tohcol(ic int32) {
 	}
 }
 
-// allh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:69
+// allh - transpiled function from  tt.c:69
 func allh(i int32) int32 {
 	// return true if every element in line i is horizontal
 	// also at least one must be horizontl
@@ -3306,7 +3306,7 @@ func allh(i int32) int32 {
 	return one
 }
 
-// thish - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tt.c:92
+// thish - transpiled function from  tt.c:92
 func thish(i int32, c int32) int32 {
 	var t int32
 	var s []byte
@@ -3357,7 +3357,7 @@ func thish(i int32, c int32) int32 {
 	return 0
 }
 
-// makeline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:5
+// makeline - transpiled function from  tu.c:5
 func makeline(i int32, c int32, lintype int32) {
 	// tu.c: draws horizontal lines
 	var cr int32
@@ -3381,7 +3381,7 @@ func makeline(i int32, c int32, lintype int32) {
 	drawline(i, c, cr-1, lintype, 0, shortl)
 }
 
-// fullwide - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:26
+// fullwide - transpiled function from  tu.c:26
 func fullwide(i int32, lintype int32) {
 	var cr int32
 	var cl int32
@@ -3414,7 +3414,7 @@ func fullwide(i int32, lintype int32) {
 	}
 }
 
-// drawline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:50
+// drawline - transpiled function from  tu.c:50
 func drawline(i int32, cl int32, cr int32, lintype int32, noheight int32, shortl int32) {
 	var exhr []byte
 	var exhl []byte
@@ -3564,7 +3564,7 @@ func drawline(i int32, cl int32, cr int32, lintype int32, noheight int32, shortl
 	}
 }
 
-// getstop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:160
+// getstop - transpiled function from  tu.c:160
 func getstop() {
 	var i int32
 	var c int32
@@ -3591,7 +3591,7 @@ func getstop() {
 	}
 }
 
-// left - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:179
+// left - transpiled function from  tu.c:179
 func left(i int32, c int32, lwidp []int32) int32 {
 	var kind int32
 	var li int32
@@ -3637,7 +3637,7 @@ func left(i int32, c int32, lwidp []int32) int32 {
 	return li
 }
 
-// lefdata - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:211
+// lefdata - transpiled function from  tu.c:211
 func lefdata(i int32, c int32) int32 {
 	var ck int32
 	if i >= nlin {
@@ -3667,7 +3667,7 @@ func lefdata(i int32, c int32) int32 {
 	return 0
 }
 
-// next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:238
+// next - transpiled function from  tu.c:238
 func next(i int32) int32 {
 	for i+1 < nlin {
 		i++
@@ -3678,7 +3678,7 @@ func next(i int32) int32 {
 	return i
 }
 
-// prev - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tu.c:250
+// prev - transpiled function from  tu.c:250
 func prev(i int32) int32 {
 	for func() int32 {
 		i--
@@ -3688,7 +3688,7 @@ func prev(i int32) int32 {
 	return i
 }
 
-// drawvert - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tv.c:4
+// drawvert - transpiled function from  tv.c:4
 func drawvert(start int32, end int32, c int32, lwid int32) {
 	// tv.c: draw vertical lines
 	var exb []byte
@@ -3878,7 +3878,7 @@ func drawvert(start int32, end int32, c int32, lwid int32) {
 	}
 }
 
-// midbar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tv.c:140
+// midbar - transpiled function from  tv.c:140
 func midbar(i int32, c int32) int32 {
 	var k int32
 	k = midbcol(i, c)
@@ -3888,7 +3888,7 @@ func midbar(i int32, c int32) int32 {
 	return k
 }
 
-// midbcol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tv.c:152
+// midbcol - transpiled function from  tv.c:152
 func midbcol(i int32, c int32) int32 {
 	var ct int32
 	for (func() int32 {
@@ -3909,7 +3909,7 @@ func midbcol(i int32, c int32) int32 {
 	return 0
 }
 
-// barent - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tv.c:167
+// barent - transpiled function from  tv.c:167
 func barent(s []byte) int32 {
 	if len(s) == 0 {
 		return 1

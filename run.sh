@@ -103,3 +103,14 @@ c4go transpile -o tbl.go\
 	./tmp/*.c\
 	./tmp/*.h
 rm -rf tmp
+
+
+# SHOW AMOUNT LINES
+for entry in `ls *.go`
+do
+  wc -l "$entry"
+done
+
+# CLEAN folder names
+sed -i.bak 's/GOPATH\/src\/github.com\/Konstantin8105\/uroff\/tmp\///g' *.go
+rm *.bak

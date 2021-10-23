@@ -18,7 +18,7 @@ import "fmt"
 import "github.com/Konstantin8105/c4go/noarch"
 import "unsafe"
 
-// sbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.h:102
+// sbuf - transpiled function from  eqn.h:102
 //
 // * NEATEQN MAIN HEADER
 // *
@@ -42,7 +42,7 @@ type sbuf struct {
 	n  int32
 }
 
-// box - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.h:141
+// box - transpiled function from  eqn.h:141
 // allocated buffer
 // buffer size
 // length of the string stored in s
@@ -60,7 +60,7 @@ type box struct {
 	tomark []byte
 }
 
-// box_alloc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:8
+// box_alloc - transpiled function from  box.c:8
 func box_alloc(szreg int32, pre int32, style int32) []box {
 	// equation boxes
 	var box_c4go_postfix []box = (*[1000000]box)(unsafe.Pointer(uintptr(func() int64 {
@@ -78,7 +78,7 @@ func box_alloc(szreg int32, pre int32, style int32) []box {
 	return box_c4go_postfix
 }
 
-// box_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:21
+// box_free - transpiled function from  box.c:21
 func box_free(box_c4go_postfix []box) {
 	if box_c4go_postfix[0].reg != 0 {
 		sregrm(box_c4go_postfix[0].reg)
@@ -90,7 +90,7 @@ func box_free(box_c4go_postfix []box) {
 	_ = box_c4go_postfix
 }
 
-// box_put - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:31
+// box_put - transpiled function from  box.c:31
 func box_put(box_c4go_postfix []box, s []byte) {
 	sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:], s)
 	if box_c4go_postfix[0].reg != 0 {
@@ -98,7 +98,7 @@ func box_put(box_c4go_postfix []box, s []byte) {
 	}
 }
 
-// box_putf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:38
+// box_putf - transpiled function from  box.c:38
 func box_putf(box_c4go_postfix []box, s []byte, c4goArgs ...interface{}) {
 	var buf []byte = make([]byte, 1000)
 	var ap *va_list
@@ -108,12 +108,12 @@ func box_putf(box_c4go_postfix []box, s []byte, c4goArgs ...interface{}) {
 	box_put(box_c4go_postfix, buf)
 }
 
-// box_buf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:48
+// box_buf - transpiled function from  box.c:48
 func box_buf(box_c4go_postfix []box) []byte {
 	return sbuf_buf((*[1000000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
 }
 
-// box_size - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:54
+// box_size - transpiled function from  box.c:54
 func box_size(box_c4go_postfix []box, val []byte) int32 {
 	// change box's point size; return the number register storing it
 	var szreg int32 = box_c4go_postfix[0].szreg
@@ -132,7 +132,7 @@ func box_size(box_c4go_postfix []box, val []byte) int32 {
 	return box_c4go_postfix[0].szreg
 }
 
-// box_move - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:70
+// box_move - transpiled function from  box.c:70
 func box_move(box_c4go_postfix []box, dy int32, dx int32) {
 	if dy != 0 {
 		box_putf(box_c4go_postfix, []byte("\\v'%du*%sp/100u'\x00"), dy, nreg(box_c4go_postfix[0].szreg))
@@ -142,11 +142,11 @@ func box_move(box_c4go_postfix []box, dy int32, dx int32) {
 	}
 }
 
-// spacing - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:79
+// spacing - transpiled function from  box.c:79
 // T_ORD, T_BIGOP, T_BINOP, T_RELOP, T_LEFT, T_RIGHT, T_PUNC, T_INNER
 var spacing [][]int32 = [][]int32{{0, 1, 2, 3, 0, 0, 0, 1}, {1, 1, 0, 3, 0, 0, 0, 1}, {2, 2, 0, 0, 2, 0, 0, 2}, {3, 3, 0, 0, 3, 0, 0, 3}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 2, 3, 0, 0, 0, 1}, {1, 1, 0, 1, 1, 1, 1, 1}, {1, 1, 2, 3, 1, 0, 1, 1}}
 
-// eqn_gaps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:91
+// eqn_gaps - transpiled function from  box.c:91
 func eqn_gaps(box_c4go_postfix []box, cur int32) int32 {
 	// return the amount of automatic spacing before adding the given token
 	var s int32
@@ -169,7 +169,7 @@ func eqn_gaps(box_c4go_postfix []box, cur int32) int32 {
 	return 0
 }
 
-// box_italiccorrection - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:106
+// box_italiccorrection - transpiled function from  box.c:106
 func box_italiccorrection(box_c4go_postfix []box) {
 	if box_c4go_postfix[0].atoms != 0 && box_c4go_postfix[0].tcur&256 != 0 {
 		// call just before inserting a non-italic character
@@ -178,7 +178,7 @@ func box_italiccorrection(box_c4go_postfix []box) {
 	box_c4go_postfix[0].tcur &= ^256
 }
 
-// box_fixatom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:113
+// box_fixatom - transpiled function from  box.c:113
 func box_fixatom(cur int32, pre int32) int32 {
 	if cur == 48 && (noarch.Not(pre) || pre == 64 || pre == 32 || pre == 80 || pre == 112) {
 		return 16
@@ -189,7 +189,7 @@ func box_fixatom(cur int32, pre int32) int32 {
 	return cur
 }
 
-// box_beforeput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:124
+// box_beforeput - transpiled function from  box.c:124
 func box_beforeput(box_c4go_postfix []box, type_ int32, breakable int32) {
 	// call before inserting a token with box_put() and box_putf()
 	// automatically inserted space before this token
@@ -215,7 +215,7 @@ func box_beforeput(box_c4go_postfix []box, type_ int32, breakable int32) {
 	}
 }
 
-// box_afterput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:150
+// box_afterput - transpiled function from  box.c:150
 func box_afterput(box_c4go_postfix []box, type_ int32) {
 	// call after inserting a token with box_put() and box_putf()
 	box_c4go_postfix[0].atoms++
@@ -225,7 +225,7 @@ func box_afterput(box_c4go_postfix []box, type_ int32) {
 	}
 }
 
-// box_puttext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:159
+// box_puttext - transpiled function from  box.c:159
 func box_puttext(box_c4go_postfix []box, type_ int32, s []byte, c4goArgs ...interface{}) {
 	// insert s with the given type
 	var buf []byte = make([]byte, 1000)
@@ -241,7 +241,7 @@ func box_puttext(box_c4go_postfix []box, type_ int32, s []byte, c4goArgs ...inte
 	box_afterput(box_c4go_postfix, type_)
 }
 
-// box_merge - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:174
+// box_merge - transpiled function from  box.c:174
 func box_merge(box_c4go_postfix []box, sub []box, breakable int32) {
 	if box_empty(sub) != 0 {
 		// append sub to box
@@ -262,14 +262,14 @@ func box_merge(box_c4go_postfix []box, sub []box, breakable int32) {
 	}
 }
 
-// roff_max - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:193
+// roff_max - transpiled function from  box.c:193
 func roff_max(dst int32, a int32, b int32) {
 	// put the maximum of number registers a and b into register dst
 	noarch.Printf([]byte(".ie %s>=%s .nr %s 0+%s\n\x00"), nreg(a), nreg(b), nregname(dst), nreg(a))
 	noarch.Printf([]byte(".el .nr %s 0+%s\n\x00"), nregname(dst), nreg(b))
 }
 
-// tok_dim - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:201
+// tok_dim - transpiled function from  box.c:201
 func tok_dim(s []byte, wd int32, ht int32, dp int32) {
 	// return the width, height and depth of a string
 	noarch.Printf([]byte(".nr %s 0\\w'%s'\n\x00"), nregname(wd), s)
@@ -281,7 +281,7 @@ func tok_dim(s []byte, wd int32, ht int32, dp int32) {
 	}
 }
 
-// box_suprise - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:210
+// box_suprise - transpiled function from  box.c:210
 func box_suprise(box_c4go_postfix []box) int32 {
 	if box_c4go_postfix[0].style&1 != 0 {
 		return e_sup3
@@ -292,7 +292,7 @@ func box_suprise(box_c4go_postfix []box) int32 {
 	return e_sup2
 }
 
-// box_sub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:217
+// box_sub - transpiled function from  box.c:217
 func box_sub(box_c4go_postfix []box, sub []box, sup []box) {
 	var box_wd int32 = nregmk()
 	var box_wdnoic int32 = nregmk()
@@ -385,7 +385,7 @@ func box_sub(box_c4go_postfix []box, sub []box, sup []box) {
 	nregrm(sub_cor)
 }
 
-// box_from - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:332
+// box_from - transpiled function from  box.c:332
 func box_from(box_c4go_postfix []box, lim []box, llim []box, ulim []box) {
 	// box's width
 	var lim_wd int32 = nregmk()
@@ -459,7 +459,7 @@ func box_from(box_c4go_postfix []box, lim []box, llim []box, ulim []box) {
 	nregrm(all_wd)
 }
 
-// tok_len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:404
+// tok_len - transpiled function from  box.c:404
 func tok_len(s []byte, wd int32, len_ int32, ht int32, dp int32) {
 	// return the width of s; len is the height plus depth
 	noarch.Printf([]byte(".nr %s 0\\w'%s'\n\x00"), nregname(wd), s)
@@ -474,7 +474,7 @@ func tok_len(s []byte, wd int32, len_ int32, ht int32, dp int32) {
 	}
 }
 
-// blen_mk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:416
+// blen_mk - transpiled function from  box.c:416
 func blen_mk(s []byte, len_ []int32) {
 	// len[0]: width, len[1]: vertical length, len[2]: height, len[3]: depth
 	var i int32
@@ -484,7 +484,7 @@ func blen_mk(s []byte, len_ []int32) {
 	tok_len(s, len_[0], len_[1], len_[2], len_[3])
 }
 
-// blen_rm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:425
+// blen_rm - transpiled function from  box.c:425
 func blen_rm(len_ []int32) {
 	// free the registers allocated with blen_mk()
 	var i int32
@@ -493,7 +493,7 @@ func blen_rm(len_ []int32) {
 	}
 }
 
-// box_over - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:433
+// box_over - transpiled function from  box.c:433
 func box_over(box_c4go_postfix []box, num []box, den []box) {
 	// build a fraction; the correct font should be set up beforehand
 	var num_wd int32 = nregmk()
@@ -573,7 +573,7 @@ func box_over(box_c4go_postfix []box, num []box, den []box) {
 	nregrm(tmp_15d)
 }
 
-// box_bracketsel - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:515
+// box_bracketsel - transpiled function from  box.c:515
 func box_bracketsel(dst int32, ht int32, dp int32, br [][]byte, any int32, both int32) {
 	// choose the smallest bracket among br[], large enough for \n(ht+\n(dp
 	var i int32
@@ -601,7 +601,7 @@ func box_bracketsel(dst int32, ht int32, dp int32, br [][]byte, any int32, both 
 	}
 }
 
-// box_bracketmk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:538
+// box_bracketmk - transpiled function from  box.c:538
 func box_bracketmk(dst int32, len_ int32, top []byte, mid []byte, bot []byte, cen []byte) {
 	// build a bracket using the provided pieces
 	var toplen []int32 = make([]int32, 4)
@@ -670,7 +670,7 @@ func box_bracketmk(dst int32, len_ int32, top []byte, mid []byte, bot []byte, ce
 	sregrm(buildmacro)
 }
 
-// box_bracket - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:607
+// box_bracket - transpiled function from  box.c:607
 func box_bracket(box_c4go_postfix []box, brac []byte, ht int32, dp int32) {
 	var sizes [][]byte = [][]byte{nil, nil, nil, nil, nil, nil, nil, nil}
 	var top []byte
@@ -704,7 +704,7 @@ func box_bracket(box_c4go_postfix []box, brac []byte, ht int32, dp int32) {
 	nregrm(fall)
 }
 
-// bracsign - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:640
+// bracsign - transpiled function from  box.c:640
 func bracsign(brac []byte, left int32) []byte {
 	if int32(brac[0]) == int32('c') && noarch.Not(strncmp([]byte("ceiling\x00"), brac, uint32(noarch.Strlen(brac)))) {
 		if left != 0 {
@@ -727,7 +727,7 @@ func bracsign(brac []byte, left int32) []byte {
 	return brac
 }
 
-// box_wrap - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:654
+// box_wrap - transpiled function from  box.c:654
 func box_wrap(box_c4go_postfix []box, sub []box, left []byte, right []byte) {
 	// build large brackets; the correct font should be set up beforehand
 	var sublen []int32 = make([]int32, 4)
@@ -747,7 +747,7 @@ func box_wrap(box_c4go_postfix []box, sub []box, left []byte, right []byte) {
 	blen_rm(sublen)
 }
 
-// sqrt_rad - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:674
+// sqrt_rad - transpiled function from  box.c:674
 func sqrt_rad(dst int32, len_ int32, wd int32) {
 	// construct a radical with height at least len and width wd in dst register
 	var sizes [][]byte = [][]byte{nil, nil, nil, nil, nil, nil, nil, nil}
@@ -806,7 +806,7 @@ func sqrt_rad(dst int32, len_ int32, wd int32) {
 	sregrm(rad)
 }
 
-// box_sqrt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:738
+// box_sqrt - transpiled function from  box.c:738
 func box_sqrt(box_c4go_postfix []box, sub []box) {
 	var sublen []int32 = make([]int32, 4)
 	var radlen []int32 = make([]int32, 4)
@@ -845,7 +845,7 @@ func box_sqrt(box_c4go_postfix []box, sub []box) {
 	nregrm(min_ht)
 }
 
-// box_bar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:778
+// box_bar - transpiled function from  box.c:778
 func box_bar(box_c4go_postfix []box) {
 	var box_wd int32 = nregmk()
 	var box_ht int32 = nregmk()
@@ -866,7 +866,7 @@ func box_bar(box_c4go_postfix []box) {
 	nregrm(bar_rise)
 }
 
-// box_accent - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:804
+// box_accent - transpiled function from  box.c:804
 func box_accent(box_c4go_postfix []box, c []byte) {
 	var box_wd int32 = nregmk()
 	var box_ht int32 = nregmk()
@@ -887,7 +887,7 @@ func box_accent(box_c4go_postfix []box, c []byte) {
 	nregrm(ac_dp)
 }
 
-// box_under - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:831
+// box_under - transpiled function from  box.c:831
 func box_under(box_c4go_postfix []box) {
 	var box_wd int32 = nregmk()
 	var box_dp int32 = nregmk()
@@ -908,7 +908,7 @@ func box_under(box_c4go_postfix []box) {
 	nregrm(bar_fall)
 }
 
-// box_toreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:856
+// box_toreg - transpiled function from  box.c:856
 func box_toreg(box_c4go_postfix []box) []byte {
 	if noarch.Not(box_c4go_postfix[0].reg) {
 		box_c4go_postfix[0].reg = sregmk()
@@ -917,12 +917,12 @@ func box_toreg(box_c4go_postfix []box) []byte {
 	return sreg(box_c4go_postfix[0].reg)
 }
 
-// box_empty - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:865
+// box_empty - transpiled function from  box.c:865
 func box_empty(box_c4go_postfix []box) int32 {
 	return noarch.BoolToInt(noarch.Not(noarch.Strlen(box_buf(box_c4go_postfix))))
 }
 
-// box_vcenter - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:870
+// box_vcenter - transpiled function from  box.c:870
 func box_vcenter(box_c4go_postfix []box, sub []box) {
 	var wd int32 = nregmk()
 	var ht int32 = nregmk()
@@ -940,7 +940,7 @@ func box_vcenter(box_c4go_postfix []box, sub []box) {
 	nregrm(fall)
 }
 
-// box_vertspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:891
+// box_vertspace - transpiled function from  box.c:891
 func box_vertspace(box_c4go_postfix []box) {
 	// include line-space requests
 	var box_wd int32 = nregmk()
@@ -959,13 +959,13 @@ func box_vertspace(box_c4go_postfix []box) {
 	nregrm(dproom)
 }
 
-// box_markpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:916
+// box_markpos - transpiled function from  box.c:916
 func box_markpos(box_c4go_postfix []box, reg []byte) {
 	// put the current width to the given number register
 	box_c4go_postfix[0].tomark = reg
 }
 
-// box_colinit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:922
+// box_colinit - transpiled function from  box.c:922
 func box_colinit(pile [][]box, n int32, plen [][]int32, wd int32, ht int32) {
 	// initialize the length of a pile or column of a matrix
 	var i int32
@@ -1000,7 +1000,7 @@ func box_colinit(pile [][]box, n int32, plen [][]int32, wd int32, ht int32) {
 	noarch.Printf([]byte(".if %s>%s .nr %s 0+%s\n\x00"), nreg(plen[n-1][3]), nreg(ht), nregname(ht), nreg(plen[n-1][3]))
 }
 
-// box_colput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:952
+// box_colput - transpiled function from  box.c:952
 func box_colput(pile [][]box, n int32, box_c4go_postfix []box, adj int32, plen [][]int32, wd int32, ht int32) {
 	// append the give pile to box
 	var i int32
@@ -1039,7 +1039,7 @@ func box_colput(pile [][]box, n int32, box_c4go_postfix []box, adj int32, plen [
 	box_putf(box_c4go_postfix, []byte("\\v'-%du*%su/2u'\\h'%su'\x00"), n-1, nreg(ht), nreg(wd))
 }
 
-// box_coldone - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:979
+// box_coldone - transpiled function from  box.c:979
 func box_coldone(pile [][]box, n int32, plen [][]int32) {
 	// free the registers allocated for this pile
 	var i int32
@@ -1048,7 +1048,7 @@ func box_coldone(pile [][]box, n int32, plen [][]int32) {
 	}
 }
 
-// box_colnrows - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:987
+// box_colnrows - transpiled function from  box.c:987
 func box_colnrows(cols [][]box) int32 {
 	// calculate the number of entries in the given pile
 	var n int32
@@ -1058,7 +1058,7 @@ func box_colnrows(cols [][]box) int32 {
 	return n
 }
 
-// box_pile - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:995
+// box_pile - transpiled function from  box.c:995
 func box_pile(box_c4go_postfix []box, pile [][]box, adj int32, rowspace int32) {
 	var plen [][]int32 = make([][]int32, 32)
 	var max_wd int32 = nregmk()
@@ -1080,7 +1080,7 @@ func box_pile(box_c4go_postfix []box, pile [][]box, adj int32, rowspace int32) {
 	nregrm(max_ht)
 }
 
-// box_matrix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/box.c:1019
+// box_matrix - transpiled function from  box.c:1019
 func box_matrix(box_c4go_postfix []box, ncols int32, cols [][][]box, adj []int32, colspace int32, rowspace int32) {
 	var plen [][][]int32 = make([][][]int32, 32)
 	var wd []int32 = make([]int32, 32)
@@ -1146,48 +1146,48 @@ func box_matrix(box_c4go_postfix []box, ncols int32, cols [][][]box, adj []int32
 	nregrm(max_ht)
 }
 
-// def_macros - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:6
+// def_macros - transpiled function from  def.c:6
 // null-terminated list of default macros
 var def_macros [][][]byte = [][][]byte{{[]byte("<-\x00"), []byte("\\(<-\x00")}, {[]byte("<=\x00"), []byte("\\(<=\x00")}, {[]byte(">=\x00"), []byte("\\(>=\x00")}, {[]byte("==\x00"), []byte("\\(==\x00")}, {[]byte("->\x00"), []byte("\\(->\x00")}, {[]byte("!=\x00"), []byte("\\(!=\x00")}, {[]byte("+-\x00"), []byte("\\(+-\x00")}, {[]byte("...\x00"), []byte("vcenter roman \"\\ .\\ .\\ .\\ \"\x00")}, {[]byte(",...,\x00"), []byte("roman \",\\ .\\ .\\ .\\ ,\\|\"\x00")}, {[]byte("ALPHA\x00"), []byte("\\(*A\x00")}, {[]byte("BETA\x00"), []byte("\\(*B\x00")}, {[]byte("CHI\x00"), []byte("\\(*X\x00")}, {[]byte("DELTA\x00"), []byte("\\(*D\x00")}, {[]byte("EPSILON\x00"), []byte("\\(*E\x00")}, {[]byte("ETA\x00"), []byte("\\(*Y\x00")}, {[]byte("GAMMA\x00"), []byte("\\(*G\x00")}, {[]byte("IOTA\x00"), []byte("\\(*I\x00")}, {[]byte("KAPPA\x00"), []byte("\\(*K\x00")}, {[]byte("LAMBDA\x00"), []byte("\\(*L\x00")}, {[]byte("MU\x00"), []byte("\\(*M\x00")}, {[]byte("NU\x00"), []byte("\\(*N\x00")}, {[]byte("OMEGA\x00"), []byte("\\(*W\x00")}, {[]byte("OMICRON\x00"), []byte("\\(*O\x00")}, {[]byte("PHI\x00"), []byte("\\(*F\x00")}, {[]byte("PI\x00"), []byte("\\(*P\x00")}, {[]byte("PSI\x00"), []byte("\\(*Q\x00")}, {[]byte("RHO\x00"), []byte("\\(*R\x00")}, {[]byte("SIGMA\x00"), []byte("\\(*S\x00")}, {[]byte("TAU\x00"), []byte("\\(*T\x00")}, {[]byte("THETA\x00"), []byte("\\(*H\x00")}, {[]byte("UPSILON\x00"), []byte("\\(*U\x00")}, {[]byte("XI\x00"), []byte("\\(*C\x00")}, {[]byte("ZETA\x00"), []byte("\\(*Z\x00")}, {[]byte("alpha\x00"), []byte("\\(*a\x00")}, {[]byte("beta\x00"), []byte("\\(*b\x00")}, {[]byte("chi\x00"), []byte("\\(*x\x00")}, {[]byte("delta\x00"), []byte("\\(*d\x00")}, {[]byte("epsilon\x00"), []byte("\\(*e\x00")}, {[]byte("eta\x00"), []byte("\\(*y\x00")}, {[]byte("gamma\x00"), []byte("\\(*g\x00")}, {[]byte("iota\x00"), []byte("\\(*i\x00")}, {[]byte("kappa\x00"), []byte("\\(*k\x00")}, {[]byte("lambda\x00"), []byte("\\(*l\x00")}, {[]byte("mu\x00"), []byte("\\(*m\x00")}, {[]byte("nu\x00"), []byte("\\(*n\x00")}, {[]byte("omega\x00"), []byte("\\(*w\x00")}, {[]byte("omicron\x00"), []byte("\\(*o\x00")}, {[]byte("phi\x00"), []byte("\\(*f\x00")}, {[]byte("pi\x00"), []byte("\\(*p\x00")}, {[]byte("psi\x00"), []byte("\\(*q\x00")}, {[]byte("rho\x00"), []byte("\\(*r\x00")}, {[]byte("sigma\x00"), []byte("\\(*s\x00")}, {[]byte("tau\x00"), []byte("\\(*t\x00")}, {[]byte("theta\x00"), []byte("\\(*h\x00")}, {[]byte("upsilon\x00"), []byte("\\(*u\x00")}, {[]byte("xi\x00"), []byte("\\(*c\x00")}, {[]byte("zeta\x00"), []byte("\\(*z\x00")}, {[]byte("Im\x00"), []byte("roman \"Im\"\x00")}, {[]byte("Re\x00"), []byte("roman \"Re\"\x00")}, {[]byte("and\x00"), []byte("roman \"and\"\x00")}, {[]byte("approx\x00"), []byte("\"\\v'-.2m'\\z\\(ap\\v'.25m'\\(ap\\v'-.05m'\"\x00")}, {[]byte("arc\x00"), []byte("roman \"arc\"\x00")}, {[]byte("cdot\x00"), []byte("\\(c.\x00")}, {[]byte("cos\x00"), []byte("roman \"cos\"\x00")}, {[]byte("cosh\x00"), []byte("roman \"cosh\"\x00")}, {[]byte("coth\x00"), []byte("roman \"coth\"\x00")}, {[]byte("del\x00"), []byte("\\(gr\x00")}, {[]byte("det\x00"), []byte("roman \"det\"\x00")}, {[]byte("dollar\x00"), []byte("roman $\x00")}, {[]byte("exp\x00"), []byte("roman \"exp\"\x00")}, {[]byte("for\x00"), []byte("roman \"for\"\x00")}, {[]byte("grad\x00"), []byte("\\(gr\x00")}, {[]byte("half\x00"), []byte("roman \\(12\x00")}, {[]byte("if\x00"), []byte("roman \"if\"\x00")}, {[]byte("inf\x00"), []byte("\\(if\x00")}, {[]byte("infinity\x00"), []byte("\\(if\x00")}, {[]byte("int\x00"), []byte("{vcenter roman size +2 \\(is}\x00")}, {[]byte("inter\x00"), []byte("roman size +2 \\(ca\x00")}, {[]byte("lim\x00"), []byte("roman \"lim\"\x00")}, {[]byte("ln\x00"), []byte("roman \"ln\"\x00")}, {[]byte("log\x00"), []byte("roman \"log\"\x00")}, {[]byte("max\x00"), []byte("roman \"max\"\x00")}, {[]byte("min\x00"), []byte("roman \"min\"\x00")}, {[]byte("nothing\x00"), []byte("\x00")}, {[]byte("partial\x00"), []byte("\\(pd\x00")}, {[]byte("prime\x00"), []byte("roman \\(fm\x00")}, {[]byte("prod\x00"), []byte("{vcenter roman size +2 \\(pr}\x00")}, {[]byte("sin\x00"), []byte("roman \"sin\"\x00")}, {[]byte("sinh\x00"), []byte("roman \"sinh\"\x00")}, {[]byte("sum\x00"), []byte("{vcenter roman size +2 \\(su}\x00")}, {[]byte("tan\x00"), []byte("roman \"tan\"\x00")}, {[]byte("tanh\x00"), []byte("roman \"tanh\"\x00")}, {[]byte("times\x00"), []byte("\\(mu\x00")}, {[]byte("union\x00"), []byte("roman size +2 \\(cu\x00")}, {nil, nil}}
 
-// binops - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:105
+// binops - transpiled function from  def.c:105
 // list of binary operations
 var binops [][]byte = [][]byte{[]byte("+\x00"), []byte("\\(pl\x00"), []byte("−\x00"), []byte("-\x00"), []byte("\\(mi\x00"), []byte("÷\x00"), []byte("\\(-:\x00"), []byte("\\(di\x00"), []byte("×\x00"), []byte("xx\x00"), []byte("\\(mu\x00"), []byte("±\x00"), []byte("\\(+-\x00"), []byte("⊗\x00"), []byte("\\(Ox\x00"), []byte("⊕\x00"), []byte("\\(O+\x00"), []byte("∧\x00"), []byte("\\(l&\x00"), []byte("∨\x00"), []byte("\\(l|\x00"), []byte("∩\x00"), []byte("\\(ca\x00"), []byte("∪\x00"), []byte("\\(cu\x00"), []byte("⋅\x00"), []byte("\\(c.\x00")}
 
-// relops - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:121
+// relops - transpiled function from  def.c:121
 // list of relations
 var relops [][]byte = [][]byte{[]byte("<\x00"), []byte(">\x00"), []byte(":=\x00"), []byte("=\x00"), []byte("\\(eq\x00"), []byte("≅\x00"), []byte("\\(cg\x00"), []byte("≤\x00"), []byte("\\(<=\x00"), []byte("≥\x00"), []byte("\\(>=\x00"), []byte("≠\x00"), []byte("\\(!=\x00"), []byte("≡\x00"), []byte("\\(==\x00"), []byte("≈\x00"), []byte("\\(~~\x00"), []byte("⊃\x00"), []byte("\\(sp\x00"), []byte("⊇\x00"), []byte("\\(ip\x00"), []byte("⊄\x00"), []byte("\\(!b\x00"), []byte("⊂\x00"), []byte("\\(sb\x00"), []byte("⊆\x00"), []byte("\\(ib\x00"), []byte("∈\x00"), []byte("\\(mo\x00"), []byte("∉\x00"), []byte("\\(!m\x00"), []byte("↔\x00"), []byte("\\(ab\x00"), []byte("←\x00"), []byte("\\(<-\x00"), []byte("↑\x00"), []byte("\\(ua\x00"), []byte("→\x00"), []byte("\\(->\x00"), []byte("↓\x00"), []byte("\\(da\x00")}
 
-// puncs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:145
+// puncs - transpiled function from  def.c:145
 // list of punctuations
 var puncs [][]byte = [][]byte{[]byte(".\x00"), []byte(",\x00"), []byte(";\x00"), []byte(":\x00"), []byte("!\x00")}
 
-// bracketleft - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:148
+// bracketleft - transpiled function from  def.c:148
 // left and right brackets
 var bracketleft [][]byte = [][]byte{[]byte("(\x00"), []byte("[\x00"), []byte("{\x00"), []byte("\\(lc\x00"), []byte("\\(lf\x00"), []byte("\\(la\x00")}
 
-// bracketright - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:149
+// bracketright - transpiled function from  def.c:149
 var bracketright [][]byte = [][]byte{[]byte(")\x00"), []byte("]\x00"), []byte("}\x00"), []byte("\\(rc\x00"), []byte("\\(rf\x00"), []byte("\\(ra\x00")}
 
-// bracketsizes - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:152
+// bracketsizes - transpiled function from  def.c:152
 // glyphs for different bracket sizes
 var bracketsizes [][][]byte = [][][]byte{{[]byte("(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenleftbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenleftBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenleftbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenleftBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}}, {[]byte(")\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte(")\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenrightbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenrightBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenrightbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'parenrightBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}}, {[]byte("[\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("[\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketleftbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketleftBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketleftbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketleftBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}}, {[]byte("]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketrightbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketrightBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketrightbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracketrightBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}}, {[]byte("{\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("{\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'braceleftbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'braceleftBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'braceleftbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'braceleftBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}}, {[]byte("}\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("}\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracerightbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracerightBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracerightbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'bracerightBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}}, {[]byte("\\(lc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingleft'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingleftbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingleftBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingleftbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingleftBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {[]byte("\\(rc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingright'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingrightbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingrightBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingrightbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'ceilingrightBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {[]byte("\\(lf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorleft'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorleftbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorleftBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorleftbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorleftBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {[]byte("\\(rf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorright'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorrightbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorrightBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorrightbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'floorrightBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {[]byte("\\(la\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(la\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketleft'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketleftbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketleftBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketleftbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketleftBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {[]byte("\\(ra\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(ra\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketright'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketrightbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketrightBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketrightbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'angbracketrightBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {[]byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}}, {[]byte("\\(sr\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(sr\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radical'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicalbig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicalBig'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicalbigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicalBigg'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
 
-// bracketpieces - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:183
+// bracketpieces - transpiled function from  def.c:183
 // large glyph pieces: name, top, mid, bot, centre
 var bracketpieces [][][]byte = [][][]byte{{[]byte("(\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(LT\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(LX\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(LB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte(")\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(RT\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(RX\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(RB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("[\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("{\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lt\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(bv\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lb\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lk\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}}, {[]byte("}\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rt\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(bv\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rb\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rk\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}}, {[]byte("\\(lc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("\\(rc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("\\(lf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(lf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("\\(rf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rx\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\(rf\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {[]byte("\\(sr\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicaltp'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicalvertex'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\N'radicalbt'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
 
-// gtype - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:199
+// gtype - transpiled function from  def.c:199
 // custom glyph types
 type gtype struct {
 	g     [32]byte
 	type_ int32
 }
 
-// gtypes - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:199
+// gtypes - transpiled function from  def.c:199
 var gtypes []gtype = make([]gtype, 128)
 
-// def_typeput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:204
+// def_typeput - transpiled function from  def.c:204
 func def_typeput(s []byte, type_ int32) {
 	var i int32
 	for i = 0; uint32(i) < 6144/48 && int32(gtypes[i].g[:][0]) != 0; i++ {
@@ -1201,7 +1201,7 @@ func def_typeput(s []byte, type_ int32) {
 	}
 }
 
-// alookup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:217
+// alookup - transpiled function from  def.c:217
 func alookup(a [][]byte, len_ int32, s []byte) []byte {
 	// find an entry in an array
 	var i int32
@@ -1213,7 +1213,7 @@ func alookup(a [][]byte, len_ int32, s []byte) []byte {
 	return nil
 }
 
-// def_type - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:226
+// def_type - transpiled function from  def.c:226
 func def_type(s []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 6144/48 && int32(gtypes[i].g[:][0]) != 0; i++ {
@@ -1239,7 +1239,7 @@ func def_type(s []byte) int32 {
 	return -1
 }
 
-// pieces_find - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:245
+// pieces_find - transpiled function from  def.c:245
 func pieces_find(sign []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 16384/512; i++ {
@@ -1250,7 +1250,7 @@ func pieces_find(sign []byte) int32 {
 	return -1
 }
 
-// def_pieces - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:255
+// def_pieces - transpiled function from  def.c:255
 func def_pieces(sign []byte, top [][]byte, mid [][]byte, bot [][]byte, cen [][]byte) {
 	// find the pieces for creating the given bracket
 	var i int32 = pieces_find(sign)
@@ -1278,7 +1278,7 @@ func def_pieces(sign []byte, top [][]byte, mid [][]byte, bot [][]byte, cen [][]b
 	}
 }
 
-// def_piecesput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:266
+// def_piecesput - transpiled function from  def.c:266
 func def_piecesput(sign []byte, top []byte, mid []byte, bot []byte, cen []byte) {
 	var i int32 = pieces_find(sign)
 	if i < 0 && (func() int32 {
@@ -1294,7 +1294,7 @@ func def_piecesput(sign []byte, top []byte, mid []byte, bot []byte, cen []byte) 
 	noarch.Snprintf(bracketpieces[i][4], int32(64), []byte("%s\x00"), cen)
 }
 
-// sizes_find - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:278
+// sizes_find - transpiled function from  def.c:278
 func sizes_find(sign []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 16384/512; i++ {
@@ -1305,7 +1305,7 @@ func sizes_find(sign []byte) int32 {
 	return -1
 }
 
-// def_sizes - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:288
+// def_sizes - transpiled function from  def.c:288
 func def_sizes(sign []byte, sizes [][]byte) {
 	// return different sizes of the given bracket
 	var idx int32 = sizes_find(sign)
@@ -1320,7 +1320,7 @@ func def_sizes(sign []byte, sizes [][]byte) {
 	}
 }
 
-// def_sizesput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:297
+// def_sizesput - transpiled function from  def.c:297
 func def_sizesput(sign []byte, sizes [][]byte) {
 	var idx int32 = sizes_find(sign)
 	var i int32
@@ -1341,111 +1341,111 @@ func def_sizesput(sign []byte, sizes [][]byte) {
 	}
 }
 
-// e_axisheight - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:310
+// e_axisheight - transpiled function from  def.c:310
 // global variables
 // axis height
 var e_axisheight int32 = 23
 
-// e_minimumsize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:311
+// e_minimumsize - transpiled function from  def.c:311
 // minimum size
 var e_minimumsize int32 = 5
 
-// e_overhang - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:312
+// e_overhang - transpiled function from  def.c:312
 var e_overhang int32 = 7
 
-// e_nulldelim - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:313
+// e_nulldelim - transpiled function from  def.c:313
 var e_nulldelim int32 = 12
 
-// e_scriptspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:314
+// e_scriptspace - transpiled function from  def.c:314
 var e_scriptspace int32 = 12
 
-// e_thinspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:315
+// e_thinspace - transpiled function from  def.c:315
 var e_thinspace int32 = 17
 
-// e_mediumspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:316
+// e_mediumspace - transpiled function from  def.c:316
 var e_mediumspace int32 = 22
 
-// e_thickspace - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:317
+// e_thickspace - transpiled function from  def.c:317
 var e_thickspace int32 = 28
 
-// e_num1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:318
+// e_num1 - transpiled function from  def.c:318
 // minimum numerator rise
 var e_num1 int32 = 70
 
-// e_num2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:319
+// e_num2 - transpiled function from  def.c:319
 var e_num2 int32 = 40
 
-// e_denom1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:320
+// e_denom1 - transpiled function from  def.c:320
 // minimum denominator fall
 var e_denom1 int32 = 70
 
-// e_denom2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:321
+// e_denom2 - transpiled function from  def.c:321
 var e_denom2 int32 = 36
 
-// e_sup1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:322
+// e_sup1 - transpiled function from  def.c:322
 var e_sup1 int32 = 42
 
-// e_sup2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:323
+// e_sup2 - transpiled function from  def.c:323
 var e_sup2 int32 = 37
 
-// e_sup3 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:324
+// e_sup3 - transpiled function from  def.c:324
 var e_sup3 int32 = 28
 
-// e_sub1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:325
+// e_sub1 - transpiled function from  def.c:325
 var e_sub1 int32 = 20
 
-// e_sub2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:326
+// e_sub2 - transpiled function from  def.c:326
 var e_sub2 int32 = 23
 
-// e_supdrop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:327
+// e_supdrop - transpiled function from  def.c:327
 var e_supdrop int32 = 38
 
-// e_subdrop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:328
+// e_subdrop - transpiled function from  def.c:328
 var e_subdrop int32 = 5
 
-// e_xheight - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:329
+// e_xheight - transpiled function from  def.c:329
 var e_xheight int32 = 45
 
-// e_rulethickness - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:330
+// e_rulethickness - transpiled function from  def.c:330
 var e_rulethickness int32 = 4
 
-// e_bigopspacing1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:331
+// e_bigopspacing1 - transpiled function from  def.c:331
 var e_bigopspacing1 int32 = 11
 
-// e_bigopspacing2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:332
+// e_bigopspacing2 - transpiled function from  def.c:332
 var e_bigopspacing2 int32 = 17
 
-// e_bigopspacing3 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:333
+// e_bigopspacing3 - transpiled function from  def.c:333
 var e_bigopspacing3 int32 = 20
 
-// e_bigopspacing4 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:334
+// e_bigopspacing4 - transpiled function from  def.c:334
 var e_bigopspacing4 int32 = 60
 
-// e_bigopspacing5 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:335
+// e_bigopspacing5 - transpiled function from  def.c:335
 var e_bigopspacing5 int32 = 10
 
-// e_columnsep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:336
+// e_columnsep - transpiled function from  def.c:336
 var e_columnsep int32 = 100
 
-// e_baselinesep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:337
+// e_baselinesep - transpiled function from  def.c:337
 var e_baselinesep int32 = 140
 
-// e_bodyheight - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:338
+// e_bodyheight - transpiled function from  def.c:338
 var e_bodyheight int32 = 70
 
-// e_bodydepth - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:339
+// e_bodydepth - transpiled function from  def.c:339
 var e_bodydepth int32 = 25
 
-// gvar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:341
+// gvar - transpiled function from  def.c:341
 type gvar struct {
 	name []byte
 	ref  []int32
 }
 
-// gvars - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:341
+// gvars - transpiled function from  def.c:341
 var gvars []gvar = []gvar{{[]byte("axis_height\x00"), c4goUnsafeConvert_int32(&e_axisheight)}, {[]byte("minimum_size\x00"), c4goUnsafeConvert_int32(&e_minimumsize)}, {[]byte("over_hang\x00"), c4goUnsafeConvert_int32(&e_overhang)}, {[]byte("null_delimiter_space\x00"), c4goUnsafeConvert_int32(&e_nulldelim)}, {[]byte("script_space\x00"), c4goUnsafeConvert_int32(&e_scriptspace)}, {[]byte("thin_space\x00"), c4goUnsafeConvert_int32(&e_thinspace)}, {[]byte("medium_space\x00"), c4goUnsafeConvert_int32(&e_mediumspace)}, {[]byte("thick_space\x00"), c4goUnsafeConvert_int32(&e_thickspace)}, {[]byte("num1\x00"), c4goUnsafeConvert_int32(&e_num1)}, {[]byte("num2\x00"), c4goUnsafeConvert_int32(&e_num2)}, {[]byte("denom1\x00"), c4goUnsafeConvert_int32(&e_denom1)}, {[]byte("denom2\x00"), c4goUnsafeConvert_int32(&e_denom2)}, {[]byte("sup1\x00"), c4goUnsafeConvert_int32(&e_sup1)}, {[]byte("sup2\x00"), c4goUnsafeConvert_int32(&e_sup2)}, {[]byte("sup3\x00"), c4goUnsafeConvert_int32(&e_sup3)}, {[]byte("sub1\x00"), c4goUnsafeConvert_int32(&e_sub1)}, {[]byte("sub2\x00"), c4goUnsafeConvert_int32(&e_sub2)}, {[]byte("sup_drop\x00"), c4goUnsafeConvert_int32(&e_supdrop)}, {[]byte("sub_drop\x00"), c4goUnsafeConvert_int32(&e_subdrop)}, {[]byte("x_height\x00"), c4goUnsafeConvert_int32(&e_xheight)}, {[]byte("default_rule_thickness\x00"), c4goUnsafeConvert_int32(&e_rulethickness)}, {[]byte("big_op_spacing1\x00"), c4goUnsafeConvert_int32(&e_bigopspacing1)}, {[]byte("big_op_spacing2\x00"), c4goUnsafeConvert_int32(&e_bigopspacing2)}, {[]byte("big_op_spacing3\x00"), c4goUnsafeConvert_int32(&e_bigopspacing3)}, {[]byte("big_op_spacing4\x00"), c4goUnsafeConvert_int32(&e_bigopspacing4)}, {[]byte("big_op_spacing5\x00"), c4goUnsafeConvert_int32(&e_bigopspacing5)}, {[]byte("column_sep\x00"), c4goUnsafeConvert_int32(&e_columnsep)}, {[]byte("baseline_sep\x00"), c4goUnsafeConvert_int32(&e_baselinesep)}, {[]byte("body_height\x00"), c4goUnsafeConvert_int32(&e_bodyheight)}, {[]byte("body_depth\x00"), c4goUnsafeConvert_int32(&e_bodydepth)}}
 
-// def_set - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:377
+// def_set - transpiled function from  def.c:377
 func def_set(name []byte, val int32) {
 	var i int32
 	for i = 0; uint32(i) < 960/32; i++ {
@@ -1455,7 +1455,7 @@ func def_set(name []byte, val int32) {
 	}
 }
 
-// ts_sup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:386
+// ts_sup - transpiled function from  def.c:386
 func ts_sup(style int32) int32 {
 	// superscript style
 	var sz int32 = func() int32 {
@@ -1467,7 +1467,7 @@ func ts_sup(style int32) int32 {
 	return sz<<uint64(4) | style&1
 }
 
-// ts_sub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:393
+// ts_sub - transpiled function from  def.c:393
 func ts_sub(style int32) int32 {
 	// subscript style
 	var sz int32 = func() int32 {
@@ -1479,7 +1479,7 @@ func ts_sub(style int32) int32 {
 	return sz<<uint64(4) | 1
 }
 
-// ts_num - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:400
+// ts_num - transpiled function from  def.c:400
 func ts_num(style int32) int32 {
 	// numerator style
 	var sz int32
@@ -1497,7 +1497,7 @@ func ts_num(style int32) int32 {
 	return sz<<uint64(4) | style&1
 }
 
-// ts_denom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:410
+// ts_denom - transpiled function from  def.c:410
 func ts_denom(style int32) int32 {
 	// denominator style
 	var sz int32
@@ -1512,17 +1512,17 @@ func ts_denom(style int32) int32 {
 	return sz<<uint64(4) | 1
 }
 
-// brcost_type - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:420
+// brcost_type - transpiled function from  def.c:420
 // extra line-break cost
 var brcost_type []int32 = make([]int32, 32)
 
-// brcost_cost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:421
+// brcost_cost - transpiled function from  def.c:421
 var brcost_cost []int32 = make([]int32, 32)
 
-// brcost_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:422
+// brcost_n - transpiled function from  def.c:422
 var brcost_n int32
 
-// def_brcost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:424
+// def_brcost - transpiled function from  def.c:424
 func def_brcost(type_ int32) int32 {
 	var i int32
 	for i = 0; i < brcost_n; i++ {
@@ -1533,7 +1533,7 @@ func def_brcost(type_ int32) int32 {
 	return 100000
 }
 
-// def_brcostput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:433
+// def_brcostput - transpiled function from  def.c:433
 func def_brcostput(type_ int32, cost int32) {
 	var i int32
 	if type_ == 0 {
@@ -1554,21 +1554,21 @@ func def_brcostput(type_ int32, cost int32) {
 	}
 }
 
-// chopped - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:450
+// chopped - transpiled function from  def.c:450
 // at which characters equations are chopped
 var chopped []byte = []byte("^~\"\t\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
 
-// def_chopped - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:452
+// def_chopped - transpiled function from  def.c:452
 func def_chopped(c int32) int32 {
 	return noarch.BoolToInt(len(noarch.Strchr([]byte("\n {}\x00"), c)) != 0 || len(noarch.Strchr(chopped, c)) != 0)
 }
 
-// def_choppedset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/def.c:457
+// def_choppedset - transpiled function from  def.c:457
 func def_choppedset(c []byte) {
 	noarch.Strcpy(chopped, c)
 }
 
-// gfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:29
+// gfont - transpiled function from  eqn.c:29
 //
 // * NEATEQN NEATROFF PREPROCESSOR
 // *
@@ -1589,28 +1589,28 @@ func def_choppedset(c []byte) {
 // flags passed to eqn_box()
 var gfont []byte = []byte("2\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
 
-// grfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:30
+// grfont - transpiled function from  eqn.c:30
 var grfont []byte = []byte("1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
 
-// gbfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:31
+// gbfont - transpiled function from  eqn.c:31
 var gbfont []byte = []byte("3\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
 
-// gsize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:32
+// gsize - transpiled function from  eqn.c:32
 var gsize []byte = []byte("\\n[.eqnsz]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
 
-// eqn_lineup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:33
+// eqn_lineup - transpiled function from  eqn.c:33
 // the lineup horizontal request
 var eqn_lineup []byte = make([]byte, 128)
 
-// eqn_lineupreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:34
+// eqn_lineupreg - transpiled function from  eqn.c:34
 // the number register holding lineup width
 var eqn_lineupreg int32
 
-// eqn_mk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:35
+// eqn_mk - transpiled function from  eqn.c:35
 // the value of MK
 var eqn_mk int32
 
-// eqn_boxuntil - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:40
+// eqn_boxuntil - transpiled function from  eqn.c:40
 func eqn_boxuntil(box_c4go_postfix []box, sz0 int32, fn0 []byte, delim []byte) int32 {
 	// read equations until delim is read
 	var sub []box
@@ -1630,7 +1630,7 @@ func eqn_boxuntil(box_c4go_postfix []box, sz0 int32, fn0 []byte, delim []byte) i
 	return 0
 }
 
-// sizesub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:54
+// sizesub - transpiled function from  eqn.c:54
 func sizesub(dst int32, src int32, style int32, src_style int32) {
 	if style>>uint64(4) > src_style>>uint64(4) {
 		// subscript size
@@ -1641,7 +1641,7 @@ func sizesub(dst int32, src int32, style int32, src_style int32) {
 	}
 }
 
-// tok_quotes - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:66
+// tok_quotes - transpiled function from  eqn.c:66
 func tok_quotes(s []byte) []byte {
 	if s != nil && int32(s[0]) == int32('"') {
 		s[noarch.Strlen(s)-int32(1)] = '\x00'
@@ -1653,7 +1653,7 @@ func tok_quotes(s []byte) []byte {
 	return []byte("\x00")
 }
 
-// tok_improve - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:75
+// tok_improve - transpiled function from  eqn.c:75
 func tok_improve(s []byte) []byte {
 	if s != nil && int32(s[0]) == int32('-') && int32(s[1]) == int32('\x00') {
 		return []byte("\\(mi\x00")
@@ -1667,7 +1667,7 @@ func tok_improve(s []byte) []byte {
 	return tok_quotes(s)
 }
 
-// eqn_bracketsizes - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:86
+// eqn_bracketsizes - transpiled function from  eqn.c:86
 func eqn_bracketsizes() {
 	var sign []byte = make([]byte, 64)
 	var bufs [][]byte = make([][]byte, 8)
@@ -1686,7 +1686,7 @@ func eqn_bracketsizes() {
 	def_sizesput(sign, sizes)
 }
 
-// eqn_bracketpieces - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:104
+// eqn_bracketpieces - transpiled function from  eqn.c:104
 func eqn_bracketpieces() {
 	var sign []byte = make([]byte, 64)
 	var top []byte = make([]byte, 64)
@@ -1701,7 +1701,7 @@ func eqn_bracketpieces() {
 	def_piecesput(sign, top, mid, bot, cen)
 }
 
-// typenum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:115
+// typenum - transpiled function from  eqn.c:115
 func typenum(s []byte) int32 {
 	if noarch.Not(noarch.Strcmp([]byte("ord\x00"), s)) || noarch.Not(noarch.Strcmp([]byte("ordinary\x00"), s)) {
 		return 16
@@ -1730,7 +1730,7 @@ func typenum(s []byte) int32 {
 	return 16
 }
 
-// eqn_chartype - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:137
+// eqn_chartype - transpiled function from  eqn.c:137
 func eqn_chartype() {
 	// read chartype command arguments and perform it
 	var gl []byte = make([]byte, 32)
@@ -1742,7 +1742,7 @@ func eqn_chartype() {
 	}
 }
 
-// eqn_breakcost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:147
+// eqn_breakcost - transpiled function from  eqn.c:147
 func eqn_breakcost() {
 	// read breakcost command arguments and perform it
 	var tok []byte = make([]byte, 32)
@@ -1760,7 +1760,7 @@ func eqn_breakcost() {
 	}
 }
 
-// eqn_commands - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:159
+// eqn_commands - transpiled function from  eqn.c:159
 func eqn_commands() int32 {
 	// read general eqn commands
 	var var_ []byte = make([]byte, 1000)
@@ -1818,7 +1818,7 @@ func eqn_commands() int32 {
 	return 1
 }
 
-// tok_font - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:236
+// tok_font - transpiled function from  eqn.c:236
 func tok_font(tok int32, fn []byte) []byte {
 	if fn != nil && int32(fn[0]) != 0 {
 		// read user-specified spaces
@@ -1831,7 +1831,7 @@ func tok_font(tok int32, fn []byte) []byte {
 	return grfont
 }
 
-// tok_expect - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:246
+// tok_expect - transpiled function from  eqn.c:246
 func tok_expect(s []byte) {
 	if tok_jmp(s) != 0 {
 		// check the next token
@@ -1840,7 +1840,7 @@ func tok_expect(s []byte) {
 	}
 }
 
-// eqn_pile - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:256
+// eqn_pile - transpiled function from  eqn.c:256
 func eqn_pile(box_c4go_postfix []box, sz0 int32, fn0 []byte, adj int32) {
 	// read pile command
 	var pile [][]box = [][]box{nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
@@ -1869,7 +1869,7 @@ func eqn_pile(box_c4go_postfix []box, sz0 int32, fn0 []byte, adj int32) {
 	}
 }
 
-// eqn_matrix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:276
+// eqn_matrix - transpiled function from  eqn.c:276
 func eqn_matrix(box_c4go_postfix []box, sz0 int32, fn0 []byte) {
 	// read matrix command
 	var cols [][][]box = [][][]box{{nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
@@ -1927,7 +1927,7 @@ func eqn_matrix(box_c4go_postfix []box, sz0 int32, fn0 []byte) {
 	}
 }
 
-// italic - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:321
+// italic - transpiled function from  eqn.c:321
 func italic(fn []byte) int32 {
 	// return nonzero if fn is italic
 	if noarch.Not(noarch.Strcmp([]byte("I\x00"), fn)) || noarch.Not(noarch.Strcmp([]byte("2\x00"), fn)) || (int64(uintptr(unsafe.Pointer(&gfont[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&fn[0])))/int64(1)) == 0 || noarch.Not(noarch.Strcmp(gfont, fn)) {
@@ -1936,7 +1936,7 @@ func italic(fn []byte) int32 {
 	return 0
 }
 
-// eqn_left - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:328
+// eqn_left - transpiled function from  eqn.c:328
 func eqn_left(flg int32, pre []box, sz0 int32, fn0 []byte) []box {
 	// read a box without fractions
 	var box_c4go_postfix []box
@@ -2126,7 +2126,7 @@ func eqn_left(flg int32, pre []box, sz0 int32, fn0 []byte) []box {
 	return box_c4go_postfix
 }
 
-// eqn_box - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:486
+// eqn_box - transpiled function from  eqn.c:486
 func eqn_box(flg int32, pre []box, sz0 int32, fn0 []byte) []box {
 	// read a box
 	var box_c4go_postfix []box
@@ -2151,7 +2151,7 @@ func eqn_box(flg int32, pre []box, sz0 int32, fn0 []byte) []box {
 	return box_c4go_postfix
 }
 
-// eqn_read - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:505
+// eqn_read - transpiled function from  eqn.c:505
 func eqn_read(style int32) []box {
 	// read an equation, either inline or block
 	var box_c4go_postfix []box
@@ -2184,13 +2184,13 @@ func eqn_read(style int32) []box {
 	return box_c4go_postfix
 }
 
-// errdie - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:533
+// errdie - transpiled function from  eqn.c:533
 func errdie(msg []byte) {
 	noarch.Fprintf(noarch.Stderr, msg)
 	noarch.Exit(1)
 }
 
-// main - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eqn.c:539
+// main - transpiled function from  eqn.c:539
 func main() {
 	argc := int32(len(os.Args))
 	argv := [][]byte{}
@@ -2254,40 +2254,40 @@ func main() {
 	return
 }
 
-// sreg_max - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:9
+// sreg_max - transpiled function from  reg.c:9
 // maximum allocated string register
 var sreg_max int32
 
-// sreg_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:10
+// sreg_free - transpiled function from  reg.c:10
 // free string registers
 var sreg_free []int32 = make([]int32, 2048)
 
-// sreg_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:11
+// sreg_n - transpiled function from  reg.c:11
 // number of items in sreg_free[]
 var sreg_n int32
 
-// sreg_name - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:12
+// sreg_name - transpiled function from  reg.c:12
 var sreg_name [][]byte = make([][]byte, 2048)
 
-// sreg_read - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:13
+// sreg_read - transpiled function from  reg.c:13
 var sreg_read [][]byte = make([][]byte, 2048)
 
-// nreg_max - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:15
+// nreg_max - transpiled function from  reg.c:15
 var nreg_max int32
 
-// nreg_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:16
+// nreg_free - transpiled function from  reg.c:16
 var nreg_free []int32 = make([]int32, 2048)
 
-// nreg_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:17
+// nreg_n - transpiled function from  reg.c:17
 var nreg_n int32
 
-// nreg_name - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:18
+// nreg_name - transpiled function from  reg.c:18
 var nreg_name [][]byte = make([][]byte, 2048)
 
-// nreg_read - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:19
+// nreg_read - transpiled function from  reg.c:19
 var nreg_read [][]byte = make([][]byte, 2048)
 
-// sregmk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:22
+// sregmk - transpiled function from  reg.c:22
 func sregmk() int32 {
 	// allocate a troff string register
 	var id int32 = func() int32 {
@@ -2305,7 +2305,7 @@ func sregmk() int32 {
 	return id
 }
 
-// sregrm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:31
+// sregrm - transpiled function from  reg.c:31
 func sregrm(id int32) {
 	// free a troff string register
 	sreg_free[func() int32 {
@@ -2316,17 +2316,17 @@ func sregrm(id int32) {
 	}()] = id
 }
 
-// sregname - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:36
+// sregname - transpiled function from  reg.c:36
 func sregname(id int32) []byte {
 	return sreg_name[id]
 }
 
-// sreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:41
+// sreg - transpiled function from  reg.c:41
 func sreg(id int32) []byte {
 	return sreg_read[id]
 }
 
-// nregmk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:47
+// nregmk - transpiled function from  reg.c:47
 func nregmk() int32 {
 	// allocate a troff number register
 	var id int32 = func() int32 {
@@ -2344,7 +2344,7 @@ func nregmk() int32 {
 	return id
 }
 
-// nregrm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:56
+// nregrm - transpiled function from  reg.c:56
 func nregrm(id int32) {
 	// free a troff number register
 	nreg_free[func() int32 {
@@ -2355,17 +2355,17 @@ func nregrm(id int32) {
 	}()] = id
 }
 
-// nregname - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:61
+// nregname - transpiled function from  reg.c:61
 func nregname(id int32) []byte {
 	return nreg_name[id]
 }
 
-// nreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:66
+// nreg - transpiled function from  reg.c:66
 func nreg(id int32) []byte {
 	return nreg_read[id]
 }
 
-// reg_reset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:72
+// reg_reset - transpiled function from  reg.c:72
 func reg_reset() {
 	// free all allocated registers
 	nreg_max = 0
@@ -2374,7 +2374,7 @@ func reg_reset() {
 	sreg_n = 0
 }
 
-// escarg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:81
+// escarg - transpiled function from  reg.c:81
 func escarg(arg []byte) []byte {
 	// format the argument of a troff escape like \s or \f
 	var buf []byte = make([]byte, 256)
@@ -2388,7 +2388,7 @@ func escarg(arg []byte) []byte {
 	return buf
 }
 
-// sbuf_extend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:9
+// sbuf_extend - transpiled function from  sbuf.c:9
 func sbuf_extend(sbuf_c4go_postfix []sbuf, amount int32) {
 	var s []byte = sbuf_c4go_postfix[0].s
 	sbuf_c4go_postfix[0].sz = (func() int32 {
@@ -2404,13 +2404,13 @@ func sbuf_extend(sbuf_c4go_postfix []sbuf, amount int32) {
 	_ = s
 }
 
-// sbuf_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:19
+// sbuf_init - transpiled function from  sbuf.c:19
 func sbuf_init(sbuf_c4go_postfix []sbuf) {
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	sbuf_extend(sbuf_c4go_postfix, 512)
 }
 
-// sbuf_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:25
+// sbuf_add - transpiled function from  sbuf.c:25
 func sbuf_add(sbuf_c4go_postfix []sbuf, c int32) {
 	if sbuf_c4go_postfix[0].n+2 >= sbuf_c4go_postfix[0].sz {
 		sbuf_extend(sbuf_c4go_postfix, sbuf_c4go_postfix[0].sz*2)
@@ -2424,7 +2424,7 @@ func sbuf_add(sbuf_c4go_postfix []sbuf, c int32) {
 	}()] = byte(c)
 }
 
-// sbuf_append - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:32
+// sbuf_append - transpiled function from  sbuf.c:32
 func sbuf_append(sbuf_c4go_postfix []sbuf, s []byte) {
 	var len_ int32 = noarch.Strlen(s)
 	if sbuf_c4go_postfix[0].n+len_+1 >= sbuf_c4go_postfix[0].sz {
@@ -2434,7 +2434,7 @@ func sbuf_append(sbuf_c4go_postfix []sbuf, s []byte) {
 	sbuf_c4go_postfix[0].n += len_
 }
 
-// sbuf_printf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:41
+// sbuf_printf - transpiled function from  sbuf.c:41
 func sbuf_printf(sbuf_c4go_postfix []sbuf, s []byte, c4goArgs ...interface{}) {
 	var buf []byte = make([]byte, 1000)
 	var ap *va_list
@@ -2444,23 +2444,23 @@ func sbuf_printf(sbuf_c4go_postfix []sbuf, s []byte, c4goArgs ...interface{}) {
 	sbuf_append(sbuf_c4go_postfix, buf)
 }
 
-// sbuf_empty - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:51
+// sbuf_empty - transpiled function from  sbuf.c:51
 func sbuf_empty(sbuf_c4go_postfix []sbuf) int32 {
 	return noarch.BoolToInt(noarch.Not(sbuf_c4go_postfix[0].n))
 }
 
-// sbuf_buf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:56
+// sbuf_buf - transpiled function from  sbuf.c:56
 func sbuf_buf(sbuf_c4go_postfix []sbuf) []byte {
 	sbuf_c4go_postfix[0].s[sbuf_c4go_postfix[0].n] = '\x00'
 	return sbuf_c4go_postfix[0].s
 }
 
-// sbuf_len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:62
+// sbuf_len - transpiled function from  sbuf.c:62
 func sbuf_len(sbuf_c4go_postfix []sbuf) int32 {
 	return sbuf_c4go_postfix[0].n
 }
 
-// sbuf_cut - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:68
+// sbuf_cut - transpiled function from  sbuf.c:68
 func sbuf_cut(sbuf_c4go_postfix []sbuf, n int32) {
 	if sbuf_c4go_postfix[0].n > n {
 		// shorten the sbuf
@@ -2468,12 +2468,12 @@ func sbuf_cut(sbuf_c4go_postfix []sbuf, n int32) {
 	}
 }
 
-// sbuf_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:74
+// sbuf_done - transpiled function from  sbuf.c:74
 func sbuf_done(sbuf_c4go_postfix []sbuf) {
 	_ = sbuf_c4go_postfix[0].s
 }
 
-// esrc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:12
+// esrc - transpiled function from  src.c:12
 // reading input
 // eqn input stream
 type esrc struct {
@@ -2486,7 +2486,7 @@ type esrc struct {
 	call  int32
 }
 
-// esrc_stdin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:22
+// esrc_stdin - transpiled function from  src.c:22
 // previous buffer
 // input buffer; NULL for stdin
 // current position in buf
@@ -2496,25 +2496,25 @@ type esrc struct {
 // the default input stream
 var esrc_stdin esrc
 
-// esrc_c4go_postfix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:23
+// esrc_c4go_postfix - transpiled function from  src.c:23
 var esrc_c4go_postfix []esrc = c4goUnsafeConvert_esrc(&esrc_stdin)
 
-// lineno - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:24
+// lineno - transpiled function from  src.c:24
 // current line number
 var lineno int32 = 1
 
-// esrc_depth - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:25
+// esrc_depth - transpiled function from  src.c:25
 // the length of esrc chain
 var esrc_depth int32
 
-// src_strdup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:27
+// src_strdup - transpiled function from  src.c:27
 func src_strdup(s []byte) []byte {
 	var d []byte = make([]byte, noarch.Strlen(s)+int32(1))
 	noarch.Strcpy(d, s)
 	return d
 }
 
-// src_push - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:35
+// src_push - transpiled function from  src.c:35
 func src_push(buf []byte, args [][]byte) {
 	// push buf in the input stream; this is a macro call if args is not NULL
 	var next []esrc
@@ -2543,7 +2543,7 @@ func src_push(buf []byte, args [][]byte) {
 	esrc_depth++
 }
 
-// src_pop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:54
+// src_pop - transpiled function from  src.c:54
 func src_pop() {
 	// back to the previous esrc buffer
 	var prev []esrc = esrc_c4go_postfix[0].prev
@@ -2559,7 +2559,7 @@ func src_pop() {
 	}
 }
 
-// src_stdin - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:68
+// src_stdin - transpiled function from  src.c:68
 func src_stdin() int32 {
 	var c int32 = noarch.Fgetc(noarch.Stdin)
 	if c == int32('\n') {
@@ -2568,7 +2568,7 @@ func src_stdin() int32 {
 	return c
 }
 
-// src_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:77
+// src_next - transpiled function from  src.c:77
 func src_next() int32 {
 	for 1 != 0 {
 		if esrc_c4go_postfix[0].uncnt != 0 {
@@ -2596,7 +2596,7 @@ func src_next() int32 {
 	return 0
 }
 
-// src_back - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:92
+// src_back - transpiled function from  src.c:92
 func src_back(c int32) {
 	if c > 0 {
 		// push back c
@@ -2610,30 +2610,30 @@ func src_back(c int32) {
 	}
 }
 
-// src_lineget - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:98
+// src_lineget - transpiled function from  src.c:98
 func src_lineget() int32 {
 	return lineno
 }
 
-// src_lineset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:103
+// src_lineset - transpiled function from  src.c:103
 func src_lineset(n int32) {
 	lineno = n
 }
 
-// macro - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:109
+// macro - transpiled function from  src.c:109
 // eqn macros
 type macro struct {
 	name [32]byte
 	def  []byte
 }
 
-// macros - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:113
+// macros - transpiled function from  src.c:113
 var macros []macro = make([]macro, 512)
 
-// nmacros - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:114
+// nmacros - transpiled function from  src.c:114
 var nmacros int32
 
-// src_findmacro - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:116
+// src_findmacro - transpiled function from  src.c:116
 func src_findmacro(name []byte) int32 {
 	var i int32
 	for i = 0; i < nmacros; i++ {
@@ -2644,13 +2644,13 @@ func src_findmacro(name []byte) int32 {
 	return -1
 }
 
-// src_macro - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:126
+// src_macro - transpiled function from  src.c:126
 func src_macro(name []byte) int32 {
 	// return nonzero if name is a macro
 	return noarch.BoolToInt(src_findmacro(name) >= 0)
 }
 
-// src_define - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:132
+// src_define - transpiled function from  src.c:132
 func src_define(name []byte, def []byte) {
 	// define a macro
 	var idx int32 = src_findmacro(name)
@@ -2669,7 +2669,7 @@ func src_define(name []byte, def []byte) {
 	}
 }
 
-// src_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:144
+// src_done - transpiled function from  src.c:144
 func src_done() {
 	var i int32
 	for i = 0; i < nmacros; i++ {
@@ -2677,7 +2677,7 @@ func src_done() {
 	}
 }
 
-// src_expand - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:152
+// src_expand - transpiled function from  src.c:152
 func src_expand(name []byte, args [][]byte) int32 {
 	// expand macro
 	var i int32 = src_findmacro(name)
@@ -2687,7 +2687,7 @@ func src_expand(name []byte, args [][]byte) int32 {
 	return noarch.BoolToInt(i < 0)
 }
 
-// src_arg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:161
+// src_arg - transpiled function from  src.c:161
 func src_arg(i int32) int32 {
 	// expand argument
 	var call int32 = esrc_c4go_postfix[0].call
@@ -2700,56 +2700,56 @@ func src_arg(i int32) int32 {
 	return 1
 }
 
-// src_top - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/src.c:170
+// src_top - transpiled function from  src.c:170
 func src_top() int32 {
 	// return one if not reading macros and their arguments
 	return noarch.BoolToInt(esrc_c4go_postfix[0].prev == nil)
 }
 
-// kwds - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:13
+// kwds - transpiled function from  tok.c:13
 // the preprocessor and tokenizer
 var kwds [][]byte = [][]byte{[]byte("fwd\x00"), []byte("down\x00"), []byte("back\x00"), []byte("up\x00"), []byte("bold\x00"), []byte("italic\x00"), []byte("roman\x00"), []byte("font\x00"), []byte("fat\x00"), []byte("size\x00"), []byte("bar\x00"), []byte("dot\x00"), []byte("dotdot\x00"), []byte("dyad\x00"), []byte("hat\x00"), []byte("under\x00"), []byte("vec\x00"), []byte("tilde\x00"), []byte("sub\x00"), []byte("sup\x00"), []byte("from\x00"), []byte("to\x00"), []byte("vcenter\x00"), []byte("left\x00"), []byte("right\x00"), []byte("over\x00"), []byte("sqrt\x00"), []byte("pile\x00"), []byte("lpile\x00"), []byte("cpile\x00"), []byte("rpile\x00"), []byte("above\x00"), []byte("matrix\x00"), []byte("col\x00"), []byte("ccol\x00"), []byte("lcol\x00"), []byte("rcol\x00"), []byte("delim\x00"), []byte("define\x00"), []byte("gfont\x00"), []byte("grfont\x00"), []byte("gbfont\x00"), []byte("gsize\x00"), []byte("set\x00"), []byte("chartype\x00"), []byte("mark\x00"), []byte("lineup\x00"), []byte("bracketsizes\x00"), []byte("bracketpieces\x00"), []byte("breakcost\x00")}
 
-// tok_eqen - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:26
+// tok_eqen - transpiled function from  tok.c:26
 // non-zero if inside .EQ/.EN
 var tok_eqen int32
 
-// tok_line - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:27
+// tok_line - transpiled function from  tok.c:27
 // inside inline eqn block
 var tok_line int32
 
-// tok_part - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:28
+// tok_part - transpiled function from  tok.c:28
 // partial line with inline eqn blocks
 var tok_part int32
 
-// tok - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:29
+// tok - transpiled function from  tok.c:29
 // current token
 var tok []byte = make([]byte, 1000)
 
-// tok_prev - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:30
+// tok_prev - transpiled function from  tok.c:30
 // previous token
 var tok_prev []byte = make([]byte, 1000)
 
-// tok_curtype - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:31
+// tok_curtype - transpiled function from  tok.c:31
 // type of current token
 var tok_curtype int32
 
-// tok_cursep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:32
+// tok_cursep - transpiled function from  tok.c:32
 // current character is a separator
 var tok_cursep int32
 
-// tok_prevsep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:33
+// tok_prevsep - transpiled function from  tok.c:33
 // previous character was a separator
 var tok_prevsep int32
 
-// eqn_beg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:34
+// eqn_beg - transpiled function from  tok.c:34
 // inline eqn delimiters
 var eqn_beg int32
 
-// eqn_end - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:34
+// eqn_end - transpiled function from  tok.c:34
 var eqn_end int32
 
-// tok_req - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:37
+// tok_req - transpiled function from  tok.c:37
 func tok_req(a int32, b int32) int32 {
 	// return zero if troff request .ab is read
 	var eqln []int32 = make([]int32, 1000)
@@ -2802,13 +2802,13 @@ failed:
 	return ret
 }
 
-// tok_en - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:61
+// tok_en - transpiled function from  tok.c:61
 func tok_en() int32 {
 	// read .EN
 	return tok_req(int32('E'), int32('N'))
 }
 
-// tok_eq - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:67
+// tok_eq - transpiled function from  tok.c:67
 func tok_eq(s []byte) int32 {
 	if int32((func() []byte {
 		defer func() {
@@ -2825,7 +2825,7 @@ func tok_eq(s []byte) int32 {
 	return noarch.BoolToInt(int32(s[0]) == int32('E') && int32(s[1]) == int32('Q'))
 }
 
-// tok_lf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:77
+// tok_lf - transpiled function from  tok.c:77
 func tok_lf(s []byte) int32 {
 	if int32((func() []byte {
 		defer func() {
@@ -2861,7 +2861,7 @@ func tok_lf(s []byte) int32 {
 	return 1
 }
 
-// tok_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:93
+// tok_next - transpiled function from  tok.c:93
 func tok_next() int32 {
 	// read the next input character
 	var c int32
@@ -2879,7 +2879,7 @@ func tok_next() int32 {
 	return c
 }
 
-// tok_back - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:109
+// tok_back - transpiled function from  tok.c:109
 func tok_back(c int32) {
 	if tok_eqen != 0 || tok_line != 0 {
 		// push back the last character read
@@ -2887,7 +2887,7 @@ func tok_back(c int32) {
 	}
 }
 
-// tok_preview - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:116
+// tok_preview - transpiled function from  tok.c:116
 func tok_preview(s []byte) {
 	// read the next word
 	var c int32 = src_next()
@@ -2915,7 +2915,7 @@ func tok_preview(s []byte) {
 	src_back(c)
 }
 
-// tok_unpreview - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:134
+// tok_unpreview - transpiled function from  tok.c:134
 func tok_unpreview(s []byte) {
 	// push back the given word
 	var n int32 = noarch.Strlen(s)
@@ -2927,7 +2927,7 @@ func tok_unpreview(s []byte) {
 	}
 }
 
-// tok_keyword - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:142
+// tok_keyword - transpiled function from  tok.c:142
 func tok_keyword() int32 {
 	// read a keyword; return zero on success
 	var i int32
@@ -2941,7 +2941,7 @@ func tok_keyword() int32 {
 	return 1
 }
 
-// tok_readarg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:154
+// tok_readarg - transpiled function from  tok.c:154
 func tok_readarg(sbuf_c4go_postfix []sbuf) int32 {
 	// read the next argument of a macro call; return zero if read a ','
 	var c int32 = src_next()
@@ -3002,7 +3002,7 @@ func tok_readarg(sbuf_c4go_postfix []sbuf) int32 {
 	return 1
 }
 
-// tok_expand - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:185
+// tok_expand - transpiled function from  tok.c:185
 func tok_expand() int32 {
 	// expand a macro; return zero on success
 	var args [][]byte = [][]byte{nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
@@ -3041,7 +3041,7 @@ func tok_expand() int32 {
 	return 1
 }
 
-// tok_eqn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:214
+// tok_eqn - transpiled function from  tok.c:214
 func tok_eqn() int32 {
 	// read until .EQ or eqn_beg
 	var ln sbuf
@@ -3089,7 +3089,7 @@ func tok_eqn() int32 {
 	return 1
 }
 
-// tok_eqnout - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:254
+// tok_eqnout - transpiled function from  tok.c:254
 func tok_eqnout(s []byte) {
 	if noarch.Not(tok_part) {
 		// collect the output of this eqn block
@@ -3101,7 +3101,7 @@ func tok_eqnout(s []byte) {
 	}
 }
 
-// utf8len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:266
+// utf8len - transpiled function from  tok.c:266
 func utf8len(c int32) int32 {
 	if ^c&128 != 0 {
 		// return the length of a utf-8 character based on its first byte
@@ -3122,7 +3122,7 @@ func utf8len(c int32) int32 {
 	return 1
 }
 
-// char_type - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:282
+// char_type - transpiled function from  tok.c:282
 func char_type(s []byte) int32 {
 	// return the type of a token
 	var c int32 = int32(uint8(s[0]))
@@ -3148,7 +3148,7 @@ func char_type(s []byte) int32 {
 	return 17
 }
 
-// tok_read - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:300
+// tok_read - transpiled function from  tok.c:300
 func tok_read() int32 {
 	// read the next token
 	var s []byte = tok
@@ -3347,7 +3347,7 @@ func tok_read() int32 {
 	return 0
 }
 
-// tok_get - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:415
+// tok_get - transpiled function from  tok.c:415
 func tok_get() []byte {
 	// current token
 	if int32(tok[0]) != 0 {
@@ -3356,7 +3356,7 @@ func tok_get() []byte {
 	return nil
 }
 
-// tok_type - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:421
+// tok_type - transpiled function from  tok.c:421
 func tok_type() int32 {
 	// current token type
 	if int32(tok[0]) != 0 {
@@ -3365,7 +3365,7 @@ func tok_type() int32 {
 	return 0
 }
 
-// tok_chops - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:427
+// tok_chops - transpiled function from  tok.c:427
 func tok_chops(soft int32) int32 {
 	if tok_get() == nil || tok_curtype == 3 {
 		// return nonzero if current token chops the equation
@@ -3377,7 +3377,7 @@ func tok_chops(soft int32) int32 {
 	return def_chopped(int32(uint8(tok_get()[0])))
 }
 
-// tok_pop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:437
+// tok_pop - transpiled function from  tok.c:437
 func tok_pop() []byte {
 	// read the next token, return the previous
 	noarch.Strcpy(tok_prev, tok)
@@ -3388,7 +3388,7 @@ func tok_pop() []byte {
 	return nil
 }
 
-// tok_poptext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:445
+// tok_poptext - transpiled function from  tok.c:445
 func tok_poptext(sep int32) []byte {
 	for tok_type() == 1 {
 		// like tok_pop() but ignore T_SPACE tokens; if sep, read until chopped
@@ -3408,7 +3408,7 @@ func tok_poptext(sep int32) []byte {
 	return nil
 }
 
-// tok_blanks - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:458
+// tok_blanks - transpiled function from  tok.c:458
 func tok_blanks() {
 	for tok_type() == 1 {
 		// skip spaces
@@ -3416,7 +3416,7 @@ func tok_blanks() {
 	}
 }
 
-// tok_jmp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:465
+// tok_jmp - transpiled function from  tok.c:465
 func tok_jmp(s []byte) int32 {
 	// if the next token is s, return zero and skip it
 	tok_blanks()
@@ -3431,7 +3431,7 @@ func tok_jmp(s []byte) int32 {
 	return 0
 }
 
-// tok_delim - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:479
+// tok_delim - transpiled function from  tok.c:479
 func tok_delim() {
 	// read delim command
 	var delim []byte = make([]byte, 32)
@@ -3445,7 +3445,7 @@ func tok_delim() {
 	}
 }
 
-// tok_macrodef - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:493
+// tok_macrodef - transpiled function from  tok.c:493
 func tok_macrodef(def []sbuf) {
 	// read macro definition
 	var c int32
@@ -3462,7 +3462,7 @@ func tok_macrodef(def []sbuf) {
 	}
 }
 
-// tok_macro - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:509
+// tok_macro - transpiled function from  tok.c:509
 func tok_macro() {
 	// read the next macro command
 	var name []byte = make([]byte, 32)
@@ -3474,7 +3474,7 @@ func tok_macro() {
 	sbuf_done(c4goUnsafeConvert_sbuf(&def))
 }
 
-// tok_inline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tok.c:521
+// tok_inline - transpiled function from  tok.c:521
 func tok_inline() int32 {
 	// return 1 if inside inline equations
 	return tok_line

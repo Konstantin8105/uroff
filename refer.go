@@ -15,7 +15,7 @@ import "sort"
 import "unsafe"
 import "github.com/Konstantin8105/c4go/noarch"
 
-// ref - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:28
+// ref - transpiled function from  refer.c:28
 //
 // * NEATREFER - A REFER CLONE FOR NEATROFF
 // *
@@ -40,67 +40,67 @@ type ref struct {
 	nauth int32
 }
 
-// refs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:35
+// refs - transpiled function from  refer.c:35
 // reference keys
 // authors
 // allocated reference id
 // all references in refer database
 var refs []ref = make([]ref, 16384)
 
-// refs_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:36
+// refs_n - transpiled function from  refer.c:36
 var refs_n int32
 
-// cites - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:37
+// cites - transpiled function from  refer.c:37
 // cited references
 var cites [][]ref = make([][]ref, 16384)
 
-// cites_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:38
+// cites_n - transpiled function from  refer.c:38
 var cites_n int32
 
-// inserted - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:39
+// inserted - transpiled function from  refer.c:39
 // number of inserted references
 var inserted int32
 
-// multiref - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:40
+// multiref - transpiled function from  refer.c:40
 // allow specifying multiple references
 var multiref int32
 
-// accumulate - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:41
+// accumulate - transpiled function from  refer.c:41
 // accumulate all references
 var accumulate int32
 
-// initials - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:42
+// initials - transpiled function from  refer.c:42
 // initials for authors' first name
 var initials int32
 
-// refauth - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:43
+// refauth - transpiled function from  refer.c:43
 // use author-year citations
 var refauth int32
 
-// sortall - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:44
+// sortall - transpiled function from  refer.c:44
 // sort references
 var sortall int32
 
-// refmac - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:45
+// refmac - transpiled function from  refer.c:45
 // citation macro name
 var refmac []byte
 
-// refmac_auth - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:46
+// refmac_auth - transpiled function from  refer.c:46
 // author-year citation macro name
 var refmac_auth []byte
 
-// refdb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:47
+// refdb - transpiled function from  refer.c:47
 // the database file
 var refdb *noarch.File
 
-// lnget - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:52
+// lnget - transpiled function from  refer.c:52
 func lnget() []byte {
 	// the next input line
 	var buf []byte = make([]byte, 1024)
 	return noarch.Fgets(buf, int32(1024), noarch.Stdin)
 }
 
-// lnput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:59
+// lnput - transpiled function from  refer.c:59
 func lnput(s []byte, n int32) {
 	// write an output line
 	noarch.Write(1, s, func() uint32 {
@@ -111,7 +111,7 @@ func lnput(s []byte, n int32) {
 	}())
 }
 
-// dbget - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:65
+// dbget - transpiled function from  refer.c:65
 func dbget() []byte {
 	// the next refer database input line
 	var buf []byte = make([]byte, 1024)
@@ -121,7 +121,7 @@ func dbget() []byte {
 	return nil
 }
 
-// sdup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:71
+// sdup - transpiled function from  refer.c:71
 func sdup(s []byte) []byte {
 	var e []byte = func() []byte {
 		if noarch.Strchr(s, int32('\n')) != nil {
@@ -137,7 +137,7 @@ func sdup(s []byte) []byte {
 	return r
 }
 
-// ref_author - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:83
+// ref_author - transpiled function from  refer.c:83
 func ref_author(ref []byte) []byte {
 	// format author names as J. Smith
 	var res []byte
@@ -228,7 +228,7 @@ func ref_author(ref []byte) []byte {
 	return res
 }
 
-// rstrip - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:121
+// rstrip - transpiled function from  refer.c:121
 func rstrip(s []byte) {
 	// strip excess whitespace
 	var i int32
@@ -241,7 +241,7 @@ func rstrip(s []byte) {
 	s[last+1] = '\x00'
 }
 
-// db_ref - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:132
+// db_ref - transpiled function from  refer.c:132
 func db_ref(ref_c4go_postfix []ref, ln []byte) {
 	for {
 		if int32(ln[0]) == int32('%') && int32(ln[1]) >= int32('A') && int32(ln[1]) <= int32('Z') {
@@ -273,7 +273,7 @@ func db_ref(ref_c4go_postfix []ref, ln []byte) {
 	}
 }
 
-// db_parse - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:150
+// db_parse - transpiled function from  refer.c:150
 func db_parse() int32 {
 	// parse a refer-style bib file and fill refs[]
 	var ln []byte
@@ -293,16 +293,16 @@ func db_parse() int32 {
 	return 0
 }
 
-// fields - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:159
+// fields - transpiled function from  refer.c:159
 var fields []byte = []byte("LTABERJDVNPITOH\x00")
 
-// fields_flag - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:160
+// fields_flag - transpiled function from  refer.c:160
 var fields_flag []byte = []byte("OP\x00")
 
-// kinds - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:161
+// kinds - transpiled function from  refer.c:161
 var kinds [][]byte = [][]byte{[]byte("Other\x00"), []byte("Article\x00"), []byte("Book\x00"), []byte("In book\x00"), []byte("Report\x00")}
 
-// ref_kind - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:163
+// ref_kind - transpiled function from  refer.c:163
 func ref_kind(r []ref) int32 {
 	if r[0].keys[:]['J'] != nil {
 		return 1
@@ -319,7 +319,7 @@ func ref_kind(r []ref) int32 {
 	return 0
 }
 
-// ref_ins - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:177
+// ref_ins - transpiled function from  refer.c:177
 func ref_ins(ref_c4go_postfix []ref, id int32) {
 	// print the given reference
 	var buf []byte = make([]byte, 4096)
@@ -359,7 +359,7 @@ func ref_ins(ref_c4go_postfix []ref, id int32) {
 	lnput(buf, int32((int64(uintptr(unsafe.Pointer(&s[0])))/int64(1) - int64(uintptr(unsafe.Pointer(&buf[0])))/int64(1))))
 }
 
-// lastname - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:203
+// lastname - transpiled function from  refer.c:203
 func lastname(name []byte) []byte {
 	var last []byte = name
 	for name[0] != 0 {
@@ -383,7 +383,7 @@ func lastname(name []byte) []byte {
 	return last
 }
 
-// refcmp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:218
+// refcmp - transpiled function from  refer.c:218
 func refcmp(r1 []ref, r2 []ref) int32 {
 	if noarch.Not(r2[0].nauth) || r1[0].keys[:]['H'] != nil && r2[0].keys[:]['H'] == nil {
 		return -1
@@ -394,7 +394,7 @@ func refcmp(r1 []ref, r2 []ref) int32 {
 	return noarch.Strcmp(lastname(r1[0].auth[:][0]), lastname(r2[0].auth[:][0]))
 }
 
-// ref_all - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:228
+// ref_all - transpiled function from  refer.c:228
 func ref_all() {
 	// print all references
 	var i int32
@@ -421,12 +421,12 @@ func ref_all() {
 	_ = sorted
 }
 
-// intcmp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:248
+// intcmp - transpiled function from  refer.c:248
 func intcmp(v1 interface{}, v2 interface{}) int32 {
 	return (v1.([]int32))[0] - (v2.([]int32))[0]
 }
 
-// refer_seen - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:254
+// refer_seen - transpiled function from  refer.c:254
 func refer_seen(label []byte) int32 {
 	// the given label was referenced; add it to cites[]
 	var i int32
@@ -450,7 +450,7 @@ func refer_seen(label []byte) int32 {
 	return refs[i].id
 }
 
-// refer_quote - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:269
+// refer_quote - transpiled function from  refer.c:269
 func refer_quote(d []byte, s []byte) {
 	if noarch.Strchr(s, int32(' ')) == nil && int32(s[0]) != int32('"') {
 		noarch.Strcpy(d, s)
@@ -492,7 +492,7 @@ func refer_quote(d []byte, s []byte) {
 	}
 }
 
-// refer_cite - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:286
+// refer_cite - transpiled function from  refer.c:286
 func refer_cite(id []int32, s []byte, auth int32) int32 {
 	// replace .[ .] macros with reference numbers or author-year
 	var msg []byte = make([]byte, 256)
@@ -582,7 +582,7 @@ func refer_cite(id []int32, s []byte, auth int32) int32 {
 	return nid
 }
 
-// slen - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:340
+// slen - transpiled function from  refer.c:340
 func slen(s []byte, delim int32) int32 {
 	var r []byte = noarch.Strchr(s, delim)
 	if r != nil {
@@ -594,7 +594,7 @@ func slen(s []byte, delim int32) int32 {
 	}() - int64(uintptr(unsafe.Pointer(&s[0])))/int64(1)))
 }
 
-// refer_reqname - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:346
+// refer_reqname - transpiled function from  refer.c:346
 func refer_reqname(mac []byte, maclen int32, s []byte) int32 {
 	var i int32
 	if int32((func() []byte {
@@ -617,7 +617,7 @@ func refer_reqname(mac []byte, maclen int32, s []byte) int32 {
 	return noarch.BoolToInt(int32(s[0]) != int32(' '))
 }
 
-// refer_macname - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:357
+// refer_macname - transpiled function from  refer.c:357
 func refer_macname(mac []byte, maclen int32, s []byte) int32 {
 	var i int32
 	if int32((func() []byte {
@@ -656,7 +656,7 @@ func refer_macname(mac []byte, maclen int32, s []byte) int32 {
 	return noarch.BoolToInt(int32(s[0]) != int32(' '))
 }
 
-// refer_refmac - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:373
+// refer_refmac - transpiled function from  refer.c:373
 func refer_refmac(pat []byte, mac []byte) int32 {
 	// return 1 if mac is a citation macro
 	var s []byte = func() []byte {
@@ -671,7 +671,7 @@ func refer_refmac(pat []byte, mac []byte) int32 {
 	return noarch.BoolToInt(((int64(uintptr(unsafe.Pointer(&s[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&pat[0])))/int64(1)) == 0 || int32(c4goPointerArithByteSlice(s, int(-1))[0]) == int32(',')) && (noarch.Not(s[noarch.Strlen(mac)]) || int32(s[noarch.Strlen(mac)]) == int32(',')))
 }
 
-// refer_insert - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:382
+// refer_insert - transpiled function from  refer.c:382
 func refer_insert(id []int32, id_n int32) {
 	var i int32
 	for i = 0; i < id_n; i++ {
@@ -682,7 +682,7 @@ func refer_insert(id []int32, id_n int32) {
 	}
 }
 
-// refer - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:389
+// refer - transpiled function from  refer.c:389
 func refer() {
 	var mac []byte = make([]byte, 256)
 	var id []int32 = make([]int32, 256)
@@ -766,10 +766,10 @@ func refer() {
 	}
 }
 
-// usage - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:451
+// usage - transpiled function from  refer.c:451
 var usage []byte = []byte("Usage neatrefer [options] <input >output\nOptions:\n\t-p bib    \tspecify the database file\n\t-e        \taccumulate references\n\t-m        \tmerge multiple references in a single .[/.] block\n\t-i        \tinitials for authors' first and middle names\n\t-o xy     \tcitation macro (\\*[xy label])\n\t-a xy     \tauthor-year citation macro (\\*[xy label])\n\t-sa       \tsort by author last names\n\x00")
 
-// main - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/refer.c:462
+// main - transpiled function from  refer.c:462
 func main() {
 	argc := int32(len(os.Args))
 	argv := [][]byte{}

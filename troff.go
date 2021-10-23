@@ -5,8 +5,8 @@
 //	https://github.com/Konstantin8105/c4go/
 //
 
-// Warning (*ast.BinaryOperator):  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:210 :cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
-// Warning (*ast.IfStmt):  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:210 :cannot transpileToStmt : cannot transpileIfStmt. cannot transpile for condition. cannot transpileToExpr. err = cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
+// Warning (*ast.BinaryOperator):  dev.c:210 :cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
+// Warning (*ast.IfStmt):  dev.c:210 :cannot transpileToStmt : cannot transpileIfStmt. cannot transpile for condition. cannot transpileToExpr. err = cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
 
 package main
 
@@ -21,7 +21,7 @@ import "runtime"
 import "unsafe"
 import "github.com/Konstantin8105/c4go/noarch"
 
-// glyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.h:141
+// glyph - transpiled function from  roff.h:141
 //
 // * Most functions and variables in neatroff are prefixed with tokens
 // * that indicate their purpose, such as:
@@ -72,7 +72,7 @@ type glyph struct {
 	type_ int16
 }
 
-// sbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.h:211
+// sbuf - transpiled function from  roff.h:211
 // device-dependent glyph identifier
 // the first character mapped to this glyph
 // glyph font
@@ -109,7 +109,7 @@ type sbuf struct {
 	n  int32
 }
 
-// wb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.h:229
+// wb - transpiled function from  roff.h:229
 // allocated buffer
 // buffer size
 // length of the string stored in s
@@ -143,7 +143,7 @@ type wb struct {
 	sub_collect int32
 }
 
-// utf8len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:9
+// utf8len - transpiled function from  char.c:9
 func utf8len(c int32) int32 {
 	if ^c&192 != 0 {
 		// reading characters and escapes
@@ -163,13 +163,13 @@ func utf8len(c int32) int32 {
 	return 1
 }
 
-// utf8one - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:23
+// utf8one - transpiled function from  char.c:23
 func utf8one(s []byte) int32 {
 	// return nonzero if s is a single utf-8 character
 	return noarch.BoolToInt(noarch.Not(s[utf8len(int32(uint8(s[0])))]))
 }
 
-// utf8read - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:29
+// utf8read - transpiled function from  char.c:29
 func utf8read(s [][]byte, d []byte) int32 {
 	// read a utf-8 character from s and copy it to d
 	var l int32 = utf8len(int32(uint8((s[0])[0])))
@@ -182,7 +182,7 @@ func utf8read(s [][]byte, d []byte) int32 {
 	return l
 }
 
-// utf8next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:41
+// utf8next - transpiled function from  char.c:41
 func utf8next(s []byte, next func() int32) int32 {
 	// read a utf-8 character with next() and copy it to s
 	var c int32 = next()
@@ -199,7 +199,7 @@ func utf8next(s []byte, next func() int32) int32 {
 	return l
 }
 
-// quotednext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:56
+// quotednext - transpiled function from  char.c:56
 func quotednext(next func() int32, back func(int32)) []byte {
 	// read quoted arguments of escape sequences (ESC_Q)
 	var delim []byte = make([]byte, 32)
@@ -215,7 +215,7 @@ func quotednext(next func() int32, back func(int32)) []byte {
 	return sbuf_out(c4goUnsafeConvert_sbuf(&sb))
 }
 
-// unquotednext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:71
+// unquotednext - transpiled function from  char.c:71
 func unquotednext(cmd int32, next func() int32, back func(int32)) []byte {
 	// read unquoted arguments of escape sequences (ESC_P)
 	var c int32 = next()
@@ -249,7 +249,7 @@ func unquotednext(cmd int32, next func() int32, back func(int32)) []byte {
 	return sbuf_out(c4goUnsafeConvert_sbuf(&sb))
 }
 
-// charnext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:114
+// charnext - transpiled function from  char.c:114
 func charnext(c []byte, next func() int32, back func(int32)) int32 {
 	//
 	// * read the next character or escape sequence (x, \x, \(xy, \[xyz], \C'xyz')
@@ -302,7 +302,7 @@ func charnext(c []byte, next func() int32, back func(int32)) int32 {
 	return int32('\x00')
 }
 
-// charnext_delim - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:150
+// charnext_delim - transpiled function from  char.c:150
 func charnext_delim(c []byte, next func() int32, back func(int32), delim []byte) int32 {
 	// like nextchar(), but return -1 if delim was read
 	var t int32 = charnext(c, next, back)
@@ -312,7 +312,7 @@ func charnext_delim(c []byte, next func() int32, back func(int32), delim []byte)
 	return -1
 }
 
-// charnext_str - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:157
+// charnext_str - transpiled function from  char.c:157
 func charnext_str(d []byte, c []byte) {
 	// convert back the character read from nextchar() (e.g. xy -> \\(xy)
 	var c0 int32 = int32(uint8(c[0]))
@@ -327,7 +327,7 @@ func charnext_str(d []byte, c []byte) {
 	}
 }
 
-// charread - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:171
+// charread - transpiled function from  char.c:171
 func charread(s [][]byte, c []byte) int32 {
 	// like charnext() for string buffers
 	var ret int32
@@ -337,7 +337,7 @@ func charread(s [][]byte, c []byte) int32 {
 	return ret
 }
 
-// charread_delim - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:181
+// charread_delim - transpiled function from  char.c:181
 func charread_delim(s [][]byte, c []byte, delim []byte) int32 {
 	// like charnext_delim() for string buffers
 	var ret int32
@@ -347,7 +347,7 @@ func charread_delim(s [][]byte, c []byte, delim []byte) int32 {
 	return ret
 }
 
-// quotedread - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:191
+// quotedread - transpiled function from  char.c:191
 func quotedread(sp [][]byte, d []byte) {
 	// read quoted arguments; this is called only for internal neatroff strings
 	var s []byte = sp[0]
@@ -377,7 +377,7 @@ func quotedread(sp [][]byte, d []byte) {
 	sp[0] = s
 }
 
-// unquotedread - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:204
+// unquotedread - transpiled function from  char.c:204
 func unquotedread(sp [][]byte, d []byte) {
 	// read unquoted arguments; this is called only for internal neatroff strings
 	var s []byte = sp[0]
@@ -440,7 +440,7 @@ func unquotedread(sp [][]byte, d []byte) {
 	sp[0] = s
 }
 
-// escread - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:234
+// escread - transpiled function from  char.c:234
 func escread(s [][]byte, d [][]byte) int32 {
 	//
 	// * read a glyph or an escape sequence
@@ -504,7 +504,7 @@ func escread(s [][]byte, d [][]byte) int32 {
 	return 0
 }
 
-// sstr_bufs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:282
+// sstr_bufs - transpiled function from  char.c:282
 //
 // * string streams: provide next()/back() interface for string buffers
 // *
@@ -521,15 +521,15 @@ func escread(s [][]byte, d [][]byte) int32 {
 // buffer stack
 var sstr_bufs [][]byte = make([][]byte, 32)
 
-// sstr_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:283
+// sstr_n - transpiled function from  char.c:283
 // numbers of items in sstr_bufs[]
 var sstr_n int32
 
-// sstr_s - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:284
+// sstr_s - transpiled function from  char.c:284
 // current buffer
 var sstr_s []byte
 
-// sstr_push - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:286
+// sstr_push - transpiled function from  char.c:286
 func sstr_push(s []byte) {
 	sstr_bufs[func() int32 {
 		defer func() {
@@ -540,7 +540,7 @@ func sstr_push(s []byte) {
 	sstr_s = s
 }
 
-// sstr_pop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:292
+// sstr_pop - transpiled function from  char.c:292
 func sstr_pop() []byte {
 	var ret []byte = sstr_s
 	sstr_s = sstr_bufs[func() int32 {
@@ -550,7 +550,7 @@ func sstr_pop() []byte {
 	return ret
 }
 
-// sstr_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:299
+// sstr_next - transpiled function from  char.c:299
 func sstr_next() int32 {
 	if int32(sstr_s[0]) != 0 {
 		return int32(uint8((func() []byte {
@@ -563,22 +563,22 @@ func sstr_next() int32 {
 	return -1
 }
 
-// sstr_back - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/char.c:304
+// sstr_back - transpiled function from  char.c:304
 func sstr_back(c int32) {
 	sstr_s = c4goPointerArithByteSlice(sstr_s, int(-1))
 }
 
-// color - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/clr.c:8
+// color - transpiled function from  clr.c:8
 // color management
 type color struct {
 	name  []byte
 	value int32
 }
 
-// colors - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/clr.c:8
+// colors - transpiled function from  clr.c:8
 var colors []color = []color{{[]byte("black\x00"), (0<<uint64(16) | 0<<uint64(8) | 0)}, {[]byte("red\x00"), (255<<uint64(16) | 0<<uint64(8) | 0)}, {[]byte("green\x00"), (0<<uint64(16) | 255<<uint64(8) | 0)}, {[]byte("yellow\x00"), (255<<uint64(16) | 255<<uint64(8) | 0)}, {[]byte("blue\x00"), (0<<uint64(16) | 0<<uint64(8) | 255)}, {[]byte("magenta\x00"), (255<<uint64(16) | 0<<uint64(8) | 255)}, {[]byte("cyan\x00"), (0<<uint64(16) | 255<<uint64(8) | 255)}, {[]byte("white\x00"), (255<<uint64(16) | 255<<uint64(8) | 255)}}
 
-// clr_str - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/clr.c:23
+// clr_str - transpiled function from  clr.c:23
 func clr_str(c int32) []byte {
 	// returns a static buffer
 	var clr_buf []byte = make([]byte, 32)
@@ -589,7 +589,7 @@ func clr_str(c int32) []byte {
 	return clr_buf
 }
 
-// ccom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/clr.c:33
+// ccom - transpiled function from  clr.c:33
 func ccom(s []byte, len_ int32) int32 {
 	// read color component
 	var digs []byte = []byte("0123456789abcdef\x00")
@@ -609,7 +609,7 @@ func ccom(s []byte, len_ int32) int32 {
 	return n
 }
 
-// clr_get - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/clr.c:44
+// clr_get - transpiled function from  clr.c:44
 func clr_get(s []byte) int32 {
 	var c int32 = int32(uint8(s[0]))
 	var i int32
@@ -636,20 +636,20 @@ func clr_get(s []byte) int32 {
 	return 0
 }
 
-// cp_blkdep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:7
+// cp_blkdep - transpiled function from  cp.c:7
 // copy-mode character interpretation
 // input block depth (text in \{ and \})
 var cp_blkdep int32
 
-// cp_cpmode - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:8
+// cp_cpmode - transpiled function from  cp.c:8
 // disable the interpretation of \w and \E
 var cp_cpmode int32
 
-// cp_reqdep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:9
+// cp_reqdep - transpiled function from  cp.c:9
 // the block depth of current request line
 var cp_reqdep int32
 
-// cp_noninext - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:12
+// cp_noninext - transpiled function from  cp.c:12
 func cp_noninext() int32 {
 	// just like cp_next(), but remove c_ni characters
 	var c int32 = cp_next()
@@ -659,7 +659,7 @@ func cp_noninext() int32 {
 	return c
 }
 
-// cparg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:21
+// cparg - transpiled function from  cp.c:21
 func cparg(d []byte, len_ int32) int32 {
 	// return 1 if \*[] includes a space
 	var c int32 = cp_noninext()
@@ -689,14 +689,14 @@ func cparg(d []byte, len_ int32) int32 {
 	return 0
 }
 
-// regid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:44
+// regid - transpiled function from  cp.c:44
 func regid() int32 {
 	var regname []byte = make([]byte, 128)
 	cparg(regname, int32(128))
 	return map_(regname)
 }
 
-// cp_num - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:52
+// cp_num - transpiled function from  cp.c:52
 func cp_num() {
 	// interpolate \n(xy
 	var id int32
@@ -713,7 +713,7 @@ func cp_num() {
 	}
 }
 
-// cp_str - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:66
+// cp_str - transpiled function from  cp.c:66
 func cp_str() {
 	// interpolate \*(xy
 	var reg []byte = make([]byte, 128)
@@ -736,13 +736,13 @@ func cp_str() {
 	_ = buf
 }
 
-// cp_numfmt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:83
+// cp_numfmt - transpiled function from  cp.c:83
 func cp_numfmt() {
 	// interpolate \g(xy
 	in_push(num_getfmt(regid()), nil)
 }
 
-// cp_args - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:89
+// cp_args - transpiled function from  cp.c:89
 func cp_args(quote int32, escape int32) {
 	// interpolate \$*, \$@, and \$^
 	var sb sbuf
@@ -788,7 +788,7 @@ func cp_args(quote int32, escape int32) {
 	sbuf_done(c4goUnsafeConvert_sbuf(&sb))
 }
 
-// cp_arg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:110
+// cp_arg - transpiled function from  cp.c:110
 func cp_arg() {
 	// interpolate \$1
 	var argname []byte = make([]byte, 128)
@@ -816,7 +816,7 @@ func cp_arg() {
 	}
 }
 
-// cp_width - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:136
+// cp_width - transpiled function from  cp.c:136
 func cp_width() {
 	// interpolate \w'xyz'
 	var wid []byte = make([]byte, 16)
@@ -824,7 +824,7 @@ func cp_width() {
 	in_push(wid, nil)
 }
 
-// cp_numdef - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:144
+// cp_numdef - transpiled function from  cp.c:144
 func cp_numdef() {
 	// define a register as \R'xyz expr'
 	var arg []byte = quotednext(cp_noninext, in_back)
@@ -846,7 +846,7 @@ func cp_numdef() {
 	_ = arg
 }
 
-// cp_cond - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:160
+// cp_cond - transpiled function from  cp.c:160
 func cp_cond() {
 	// conditional interpolation as \?'cond@expr1@expr2@'
 	var delim []byte = make([]byte, 32)
@@ -888,7 +888,7 @@ func cp_cond() {
 	_ = arg
 }
 
-// cp_raw - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:191
+// cp_raw - transpiled function from  cp.c:191
 func cp_raw() int32 {
 	var c int32
 	if in_top() >= 0 {
@@ -940,7 +940,7 @@ func cp_raw() int32 {
 	return c
 }
 
-// cp_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:234
+// cp_next - transpiled function from  cp.c:234
 func cp_next() int32 {
 	var c int32
 	if in_top() >= 0 {
@@ -985,7 +985,7 @@ func cp_next() int32 {
 	return c
 }
 
-// cp_blk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:276
+// cp_blk - transpiled function from  cp.c:276
 func cp_blk(skip int32) {
 	if skip != 0 {
 		var c int32 = cp_raw()
@@ -1004,69 +1004,69 @@ func cp_blk(skip int32) {
 	}
 }
 
-// cp_copymode - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:292
+// cp_copymode - transpiled function from  cp.c:292
 func cp_copymode(mode int32) {
 	cp_cpmode = mode
 }
 
-// cp_reqbeg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/cp.c:298
+// cp_reqbeg - transpiled function from  cp.c:298
 func cp_reqbeg() {
 	// beginning of a request; save current cp_blkdep
 	cp_reqdep = cp_blkdep
 }
 
-// dev_dir - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:8
+// dev_dir - transpiled function from  dev.c:8
 // output device
 // device directory
 var dev_dir []byte = make([]byte, 1024)
 
-// dev_dev - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:9
+// dev_dev - transpiled function from  dev.c:9
 // output device name
 var dev_dev []byte = make([]byte, 1024)
 
-// dev_res - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:10
+// dev_res - transpiled function from  dev.c:10
 // device resolution
 var dev_res int32
 
-// dev_uwid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:11
+// dev_uwid - transpiled function from  dev.c:11
 // device unitwidth
 var dev_uwid int32
 
-// dev_hor - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:12
+// dev_hor - transpiled function from  dev.c:12
 // minimum horizontal movement
 var dev_hor int32
 
-// dev_ver - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:13
+// dev_ver - transpiled function from  dev.c:13
 // minimum vertical movement
 var dev_ver int32
 
-// fn_name - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:16
+// fn_name - transpiled function from  dev.c:16
 // mounted fonts
 // font names
 var fn_name [][]byte = make([][]byte, 32)
 
-// fn_font - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:17
+// fn_font - transpiled function from  dev.c:17
 // font structs
 var fn_font [][]font = make([][]font, 32)
 
-// fn_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:18
+// fn_n - transpiled function from  dev.c:18
 // number of device fonts
 var fn_n int32
 
-// fspecial_fn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:21
+// fspecial_fn - transpiled function from  dev.c:21
 // .fspecial request
 // .fspecial first arguments
 var fspecial_fn [][]byte = make([][]byte, 32)
 
-// fspecial_sp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:22
+// fspecial_sp - transpiled function from  dev.c:22
 // .fspecial special fonts
 var fspecial_sp [][]byte = make([][]byte, 32)
 
-// fspecial_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:23
+// fspecial_n - transpiled function from  dev.c:23
 // number of fonts in fspecial_sp[]
 var fspecial_n int32
 
-// skipline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:25
+// skipline - transpiled function from  dev.c:25
 func skipline(filp *noarch.File) {
 	var c int32
 	for {
@@ -1077,14 +1077,14 @@ func skipline(filp *noarch.File) {
 	}
 }
 
-// dev_prologue - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:33
+// dev_prologue - transpiled function from  dev.c:33
 func dev_prologue() {
 	out([]byte("x T %s\n\x00"), dev_dev)
 	out([]byte("x res %d %d %d\n\x00"), dev_res, dev_hor, dev_ver)
 	out([]byte("x init\n\x00"))
 }
 
-// dev_position - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:41
+// dev_position - transpiled function from  dev.c:41
 func dev_position(id []byte) int32 {
 	// find a position for the given font
 	var i int32
@@ -1108,7 +1108,7 @@ func dev_position(id []byte) int32 {
 	return 0
 }
 
-// dev_mnt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:53
+// dev_mnt - transpiled function from  dev.c:53
 func dev_mnt(pos int32, id []byte, name []byte) int32 {
 	var path []byte = make([]byte, 1024)
 	var fn []font
@@ -1139,7 +1139,7 @@ func dev_mnt(pos int32, id []byte, name []byte) int32 {
 	return pos
 }
 
-// dev_open - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:77
+// dev_open - transpiled function from  dev.c:77
 func dev_open(dir []byte, dev []byte) int32 {
 	var path []byte = make([]byte, 1024)
 	var tok []byte = make([]byte, 128)
@@ -1204,13 +1204,13 @@ func dev_open(dir []byte, dev []byte) int32 {
 	return 0
 }
 
-// dev_epilogue - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:135
+// dev_epilogue - transpiled function from  dev.c:135
 func dev_epilogue() {
 	out([]byte("x trailer\n\x00"))
 	out([]byte("x stop\n\x00"))
 }
 
-// dev_close - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:141
+// dev_close - transpiled function from  dev.c:141
 func dev_close() {
 	var i int32
 	dev_epilogue()
@@ -1222,7 +1222,7 @@ func dev_close() {
 	}
 }
 
-// dev_find - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:154
+// dev_find - transpiled function from  dev.c:154
 func dev_find(c []byte, fn int32, byid int32) []glyph {
 	// glyph handling functions
 	var find func([]font, []byte) []glyph
@@ -1262,7 +1262,7 @@ func dev_find(c []byte, fn int32, byid int32) []glyph {
 	return nil
 }
 
-// dev_glyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:173
+// dev_glyph - transpiled function from  dev.c:173
 func dev_glyph(c []byte, fn int32) []glyph {
 	if (int32(c[0]) == c_ec || int32(c[0]) == 4) && int32(c[1]) == c_ec {
 		c = c[0+1:]
@@ -1277,7 +1277,7 @@ func dev_glyph(c []byte, fn int32) []glyph {
 	return dev_find(c, fn, 0)
 }
 
-// dev_pos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:186
+// dev_pos - transpiled function from  dev.c:186
 func dev_pos(id []byte) int32 {
 	// return the mounted position of a font
 	var i int32
@@ -1300,18 +1300,18 @@ func dev_pos(id []byte) int32 {
 	return dev_mnt(0, id, id)
 }
 
-// dev_fontpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:206
+// dev_fontpos - transpiled function from  dev.c:206
 func dev_fontpos(fn []font) int32 {
 	// return the mounted position of a font struct
 	var i int32
-	// Warning (*ast.IfStmt):  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:210 :cannot transpileToStmt : cannot transpileIfStmt. cannot transpile for condition. cannot transpileToExpr. err = cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
+	// Warning (*ast.IfStmt):  dev.c:210 :cannot transpileToStmt : cannot transpileIfStmt. cannot transpile for condition. cannot transpileToExpr. err = cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
 	for i = 0; i < 32; i++ {
-		// Warning (*ast.BinaryOperator):  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:210 :cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
+		// Warning (*ast.BinaryOperator):  dev.c:210 :cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
 	}
 	return 0
 }
 
-// dev_font - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:216
+// dev_font - transpiled function from  dev.c:216
 func dev_font(pos int32) []font {
 	// return the font struct at pos
 	if pos >= 0 && pos < 32 {
@@ -1320,7 +1320,7 @@ func dev_font(pos int32) []font {
 	return nil
 }
 
-// tr_fspecial - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dev.c:221
+// tr_fspecial - transpiled function from  dev.c:221
 func tr_fspecial(args [][]byte) {
 	var fn []byte = args[1]
 	var i int32
@@ -1337,7 +1337,7 @@ func tr_fspecial(args [][]byte) {
 	}
 }
 
-// dict - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:8
+// dict - transpiled function from  dict.c:8
 type dict struct {
 	map_     []iset
 	key      [][]byte
@@ -1349,7 +1349,7 @@ type dict struct {
 	dupkeys  int32
 }
 
-// dict_extend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:19
+// dict_extend - transpiled function from  dict.c:19
 func dict_extend(d []dict, size int32) {
 	// the value returned for missing keys
 	// the number of characters used for hashing
@@ -1359,7 +1359,7 @@ func dict_extend(d []dict, size int32) {
 	d[0].size = size
 }
 
-// dict_make - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:33
+// dict_make - transpiled function from  dict.c:33
 func dict_make(notfound int32, dupkeys int32, hashlen int32) []dict {
 	//
 	// * initialise a dictionary
@@ -1383,7 +1383,7 @@ func dict_make(notfound int32, dupkeys int32, hashlen int32) []dict {
 	return d
 }
 
-// dict_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:46
+// dict_free - transpiled function from  dict.c:46
 func dict_free(d []dict) {
 	var i int32
 	if d[0].dupkeys != 0 {
@@ -1397,7 +1397,7 @@ func dict_free(d []dict) {
 	_ = d
 }
 
-// dict_hash - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:58
+// dict_hash - transpiled function from  dict.c:58
 func dict_hash(d []dict, key []byte) int32 {
 	var hash uint32 = uint32(uint8((func() []byte {
 		defer func() {
@@ -1420,7 +1420,7 @@ func dict_hash(d []dict, key []byte) int32 {
 	return int32(hash & 1023)
 }
 
-// dict_put - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:67
+// dict_put - transpiled function from  dict.c:67
 func dict_put(d []dict, key []byte, val int32) {
 	var idx int32
 	if d[0].n >= d[0].size {
@@ -1444,7 +1444,7 @@ func dict_put(d []dict, key []byte, val int32) {
 	iset_put(d[0].map_, dict_hash(d, key), idx)
 }
 
-// dict_idx - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:85
+// dict_idx - transpiled function from  dict.c:85
 func dict_idx(d []dict, key []byte) int32 {
 	// return the index of key in d
 	var h int32 = dict_hash(d, key)
@@ -1464,17 +1464,17 @@ func dict_idx(d []dict, key []byte) int32 {
 	return -1
 }
 
-// dict_key - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:96
+// dict_key - transpiled function from  dict.c:96
 func dict_key(d []dict, idx int32) []byte {
 	return d[0].key[idx]
 }
 
-// dict_val - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:101
+// dict_val - transpiled function from  dict.c:101
 func dict_val(d []dict, idx int32) int32 {
 	return d[0].val[idx]
 }
 
-// dict_get - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:106
+// dict_get - transpiled function from  dict.c:106
 func dict_get(d []dict, key []byte) int32 {
 	var idx int32 = dict_idx(d, key)
 	if idx >= 0 {
@@ -1483,7 +1483,7 @@ func dict_get(d []dict, key []byte) int32 {
 	return d[0].notfound
 }
 
-// dict_prefix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dict.c:113
+// dict_prefix - transpiled function from  dict.c:113
 func dict_prefix(d []dict, key []byte, pos []int32) int32 {
 	// match a prefix of key; in the first call, *pos should be -1
 	var r []int32 = iset_get(d[0].map_, dict_hash(d, key))
@@ -1501,38 +1501,38 @@ func dict_prefix(d []dict, key []byte, pos []int32) int32 {
 	return d[0].notfound
 }
 
-// dir_do - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:7
+// dir_do - transpiled function from  dir.c:7
 // output text direction
 // enable text direction processing
 var dir_do int32
 
-// dbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:9
+// dbuf - transpiled function from  dir.c:9
 // text in n_td direction
 var dbuf []byte
 
-// dbuf_sz - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:10
+// dbuf_sz - transpiled function from  dir.c:10
 // dbuf[] size and length
 var dbuf_sz int32
 
-// dbuf_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:10
+// dbuf_n - transpiled function from  dir.c:10
 var dbuf_n int32
 
-// rbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:11
+// rbuf - transpiled function from  dir.c:11
 // text in (1 - n_td) direction
 var rbuf []byte
 
-// rbuf_sz - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:12
+// rbuf_sz - transpiled function from  dir.c:12
 // rbuf[] size and length
 var rbuf_sz int32
 
-// rbuf_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:12
+// rbuf_n - transpiled function from  dir.c:12
 var rbuf_n int32
 
-// dir_cd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:13
+// dir_cd - transpiled function from  dir.c:13
 // current direction
 var dir_cd int32
 
-// dir_copy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:16
+// dir_copy - transpiled function from  dir.c:16
 func dir_copy(d [][]byte, d_n []int32, d_sz []int32, s []byte, s_n int32, dir int32) {
 	for d_n[0]+s_n+1 > d_sz[0] {
 		// append s to the start (dir == 0) or end (dir == 1) of d
@@ -1563,7 +1563,7 @@ func dir_copy(d [][]byte, d_n []int32, d_sz []int32, s []byte, s_n int32, dir in
 	d_n[0] += s_n
 }
 
-// dir_flush - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:35
+// dir_flush - transpiled function from  dir.c:35
 func dir_flush() {
 	// copy rbuf (the text in reverse direction) to dbuf
 	var s []byte = c4goPointerArithByteSlice(rbuf, int(func() int32 {
@@ -1576,7 +1576,7 @@ func dir_flush() {
 	rbuf_n = 0
 }
 
-// dir_append - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:43
+// dir_append - transpiled function from  dir.c:43
 func dir_append(s []byte) {
 	// append s to dbuf or rbuf based on the current text direction
 	var dir int32 = noarch.BoolToInt(dir_cd > 0)
@@ -1590,7 +1590,7 @@ func dir_append(s []byte) {
 	}
 }
 
-// setfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:54
+// setfont - transpiled function from  dir.c:54
 func setfont(f int32) {
 	var cmd []byte = make([]byte, 32)
 	noarch.Sprintf(cmd, []byte("%cf(%02d\x00"), c_ec, f)
@@ -1599,7 +1599,7 @@ func setfont(f int32) {
 	}
 }
 
-// setsize - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:62
+// setsize - transpiled function from  dir.c:62
 func setsize(s int32) {
 	var cmd []byte = make([]byte, 32)
 	noarch.Sprintf(cmd, func() []byte {
@@ -1613,7 +1613,7 @@ func setsize(s int32) {
 	}
 }
 
-// setcolor - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:70
+// setcolor - transpiled function from  dir.c:70
 func setcolor(m int32) {
 	var cmd []byte = make([]byte, 32)
 	noarch.Sprintf(cmd, []byte("%cm[%s]\x00"), c_ec, clr_str(m))
@@ -1622,7 +1622,7 @@ func setcolor(m int32) {
 	}
 }
 
-// dir_fix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:78
+// dir_fix - transpiled function from  dir.c:78
 func dir_fix(sbuf_c4go_postfix []sbuf, src []byte) {
 	var cmd []byte = make([]byte, 1024)
 	var prev_s []byte = src
@@ -1710,13 +1710,13 @@ func dir_fix(sbuf_c4go_postfix []sbuf, src []byte) {
 	sbuf_append(sbuf_c4go_postfix, r)
 }
 
-// dir_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/dir.c:157
+// dir_done - transpiled function from  dir.c:157
 func dir_done() {
 	_ = rbuf
 	_ = dbuf
 }
 
-// cwid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:7
+// cwid - transpiled function from  draw.c:7
 func cwid(c []byte) int32 {
 	// helper for drawing commands in ren.c
 	var wb_c4go_postfix wb
@@ -1728,7 +1728,7 @@ func cwid(c []byte) int32 {
 	return w
 }
 
-// hchar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:18
+// hchar - transpiled function from  draw.c:18
 func hchar(c []byte) int32 {
 	if int32(c[0]) == c_ec {
 		return noarch.BoolToInt(int32(c[1]) == int32('_') || int32(c[1]) == int32('-'))
@@ -1739,7 +1739,7 @@ func hchar(c []byte) int32 {
 	return noarch.BoolToInt(int32(c[0]) == int32('r') && int32(c[1]) == int32('u') || int32(c[0]) == int32('u') && int32(c[1]) == int32('l') || int32(c[0]) == int32('r') && int32(c[1]) == int32('n'))
 }
 
-// vchar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:28
+// vchar - transpiled function from  draw.c:28
 func vchar(c []byte) int32 {
 	if noarch.Not(c[1]) {
 		return noarch.BoolToInt(int32(c[0]) == int32('_'))
@@ -1747,7 +1747,7 @@ func vchar(c []byte) int32 {
 	return noarch.BoolToInt(int32(c[0]) == int32('b') && int32(c[1]) == int32('v') || int32(c[0]) == int32('b') && int32(c[1]) == int32('r'))
 }
 
-// ren_hline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:35
+// ren_hline - transpiled function from  draw.c:35
 func ren_hline(wb_c4go_postfix []wb, l int32, c []byte) {
 	var w int32
 	var n int32
@@ -1793,7 +1793,7 @@ func ren_hline(wb_c4go_postfix []wb, l int32, c []byte) {
 	}
 }
 
-// ren_vline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:68
+// ren_vline - transpiled function from  draw.c:68
 func ren_vline(wb_c4go_postfix []wb, l int32, c []byte) {
 	var w int32
 	var n int32
@@ -1853,7 +1853,7 @@ func ren_vline(wb_c4go_postfix []wb, l int32, c []byte) {
 	wb_hmov(wb_c4go_postfix, hw)
 }
 
-// ren_hlcmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:111
+// ren_hlcmd - transpiled function from  draw.c:111
 func ren_hlcmd(wb_c4go_postfix []wb, arg []byte) {
 	var lc []byte = make([]byte, 32)
 	var l int32 = eval_up((*[1000000][]byte)(unsafe.Pointer(&arg))[:], int32('m'))
@@ -1869,7 +1869,7 @@ func ren_hlcmd(wb_c4go_postfix []wb, arg []byte) {
 	}
 }
 
-// ren_vlcmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:123
+// ren_vlcmd - transpiled function from  draw.c:123
 func ren_vlcmd(wb_c4go_postfix []wb, arg []byte) {
 	var lc []byte = make([]byte, 32)
 	var l int32 = eval_up((*[1000000][]byte)(unsafe.Pointer(&arg))[:], int32('v'))
@@ -1885,7 +1885,7 @@ func ren_vlcmd(wb_c4go_postfix []wb, arg []byte) {
 	}
 }
 
-// tok_num - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:135
+// tok_num - transpiled function from  draw.c:135
 func tok_num(s [][]byte, scale int32) int32 {
 	for int32((s[0])[0]) == int32(' ') || int32((s[0])[0]) == int32('\t') {
 		s[0] = (s[0])[0+1:]
@@ -1893,7 +1893,7 @@ func tok_num(s [][]byte, scale int32) int32 {
 	return eval_up(s, scale)
 }
 
-// tok_numpt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:142
+// tok_numpt - transpiled function from  draw.c:142
 func tok_numpt(s [][]byte, scale int32, i []int32) int32 {
 	var o []byte
 	for int32((s[0])[0]) == int32(' ') || int32((s[0])[0]) == int32('\t') {
@@ -1907,7 +1907,7 @@ func tok_numpt(s [][]byte, scale int32, i []int32) int32 {
 	return 0
 }
 
-// ren_dcmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:152
+// ren_dcmd - transpiled function from  draw.c:152
 func ren_dcmd(wb_c4go_postfix []wb, s []byte) {
 	var h1 int32
 	var h2 int32
@@ -1969,7 +1969,7 @@ func ren_dcmd(wb_c4go_postfix []wb, s []byte) {
 	}
 }
 
-// ren_bcmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:198
+// ren_bcmd - transpiled function from  draw.c:198
 func ren_bcmd(wb_c4go_postfix []wb, arg []byte) {
 	var wb2 wb
 	var n int32
@@ -2000,7 +2000,7 @@ func ren_bcmd(wb_c4go_postfix []wb, arg []byte) {
 	wb_hmov(wb_c4go_postfix, w)
 }
 
-// ren_ocmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:225
+// ren_ocmd - transpiled function from  draw.c:225
 func ren_ocmd(wb_c4go_postfix []wb, arg []byte) {
 	var wb2 wb
 	var wb3 wb
@@ -2032,7 +2032,7 @@ func ren_ocmd(wb_c4go_postfix []wb, arg []byte) {
 	wb_done(c4goUnsafeConvert_wb(&wb2))
 }
 
-// ren_zcmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/draw.c:253
+// ren_zcmd - transpiled function from  draw.c:253
 func ren_zcmd(wb_c4go_postfix []wb, arg []byte) {
 	var h int32
 	var v int32
@@ -2052,16 +2052,16 @@ func ren_zcmd(wb_c4go_postfix []wb, arg []byte) {
 	wb_vmov(wb_c4go_postfix, v-wb_vpos(wb_c4go_postfix))
 }
 
-// defunit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:9
+// defunit - transpiled function from  eval.c:9
 // evaluation of integer expressions
 // default scale indicator
 var defunit int32
 
-// abspos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:10
+// abspos - transpiled function from  eval.c:10
 // absolute position like |1i
 var abspos int32
 
-// readunit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:12
+// readunit - transpiled function from  eval.c:12
 func readunit(c int32, n int32) int32 {
 	switch c {
 	case 'i':
@@ -2084,7 +2084,7 @@ func readunit(c int32, n int32) int32 {
 	return n
 }
 
-// evalnum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:35
+// evalnum - transpiled function from  eval.c:35
 func evalnum(_s [][]byte) int32 {
 	var s []byte = _s[0]
 	// the result
@@ -2129,7 +2129,7 @@ func evalnum(_s [][]byte) int32 {
 	}()
 }
 
-// evaljmp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:58
+// evaljmp - transpiled function from  eval.c:58
 func evaljmp(s [][]byte, c int32) int32 {
 	if int32((s[0])[0]) == c {
 		s[0] = (s[0])[0+1:]
@@ -2138,12 +2138,12 @@ func evaljmp(s [][]byte, c int32) int32 {
 	return 1
 }
 
-// evalisnum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:67
+// evalisnum - transpiled function from  eval.c:67
 func evalisnum(s [][]byte) int32 {
 	return noarch.BoolToInt(int32((s[0])[0]) == int32('.') || int32(((__ctype_b_loc())[0])[int32(uint8((s[0])[0]))])&int32(uint16(noarch.ISdigit)) != 0)
 }
 
-// evalatom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:75
+// evalatom - transpiled function from  eval.c:75
 func evalatom(s [][]byte) int32 {
 	var ret int32
 	if evalisnum(s) != 0 {
@@ -2166,7 +2166,7 @@ func evalatom(s [][]byte) int32 {
 	return 0
 }
 
-// nonzero - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:94
+// nonzero - transpiled function from  eval.c:94
 func nonzero(n int32) int32 {
 	if noarch.Not(n) {
 		errdie([]byte("neatroff: divide by zero\n\x00"))
@@ -2174,7 +2174,7 @@ func nonzero(n int32) int32 {
 	return n
 }
 
-// evalexpr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:101
+// evalexpr - transpiled function from  eval.c:101
 func evalexpr(s [][]byte) int32 {
 	var ret int32 = evalatom(s)
 	for (s[0])[0] != 0 {
@@ -2213,7 +2213,7 @@ func evalexpr(s [][]byte) int32 {
 	return ret
 }
 
-// eval_up - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:132
+// eval_up - transpiled function from  eval.c:132
 func eval_up(s [][]byte, unit int32) int32 {
 	// evaluate *s and update s to point to the last character read
 	defunit = unit
@@ -2226,7 +2226,7 @@ func eval_up(s [][]byte, unit int32) int32 {
 	return evalexpr(s)
 }
 
-// eval_re - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:143
+// eval_re - transpiled function from  eval.c:143
 func eval_re(s []byte, orig int32, unit int32) int32 {
 	// evaluate s relative to its previous value
 	var n int32
@@ -2250,13 +2250,13 @@ func eval_re(s []byte, orig int32, unit int32) int32 {
 	return n
 }
 
-// eval - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/eval.c:158
+// eval - transpiled function from  eval.c:158
 func eval(s []byte, unit int32) int32 {
 	// evaluate s
 	return eval_up((*[1000000][]byte)(unsafe.Pointer(&s))[:], unit)
 }
 
-// word - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:25
+// word - transpiled function from  fmt.c:25
 //
 // * line formatting buffer for line adjustment and hyphenation
 // *
@@ -2282,7 +2282,7 @@ type word struct {
 	swid int32
 }
 
-// line - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:36
+// line - transpiled function from  fmt.c:36
 // word's width
 // els_neg and els_pos
 // the space before this word
@@ -2300,7 +2300,7 @@ type line struct {
 	elsp int32
 }
 
-// fmt_ - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:42
+// fmt_ - transpiled function from  fmt.c:42
 type fmt_ struct {
 	words      []word
 	words_n    int32
@@ -2323,7 +2323,7 @@ type fmt_ struct {
 	fillreq    int32
 }
 
-// fmt_confupdate - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:64
+// fmt_confupdate - transpiled function from  fmt.c:64
 func fmt_confupdate(f []fmt_) {
 	// queued words
 	// queued lines
@@ -2352,7 +2352,7 @@ func fmt_confupdate(f []fmt_) {
 	(nreg(map_([]byte(".tI\x00"))))[0] = -1
 }
 
-// fmt_confchanged - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:73
+// fmt_confchanged - transpiled function from  fmt.c:73
 func fmt_confchanged(f []fmt_) int32 {
 	return noarch.BoolToInt(f[0].ll != (nreg(int32('l')))[0] || f[0].li != func() int32 {
 		if (nreg(map_([]byte(".ti\x00"))))[0] >= 0 {
@@ -2367,13 +2367,13 @@ func fmt_confchanged(f []fmt_) int32 {
 	}())
 }
 
-// fmt_movewords - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:80
+// fmt_movewords - transpiled function from  fmt.c:80
 func fmt_movewords(a []fmt_, dst int32, src int32, len_ int32) {
 	// move words inside an fmt struct
 	noarch.Memmove((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&a[0].words[0+dst]))) / int64(1))))[:], (*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&a[0].words[0+src]))) / int64(1))))[:], uint32(len_)*48)
 }
 
-// fmt_wordscopy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:86
+// fmt_wordscopy - transpiled function from  fmt.c:86
 func fmt_wordscopy(f []fmt_, beg int32, end int32, s []sbuf, els_neg []int32, els_pos []int32) int32 {
 	// move words from the buffer to s
 	var wcur []word
@@ -2404,12 +2404,12 @@ func fmt_wordscopy(f []fmt_, beg int32, end int32, s []sbuf, els_neg []int32, el
 	return w
 }
 
-// fmt_nlines - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:114
+// fmt_nlines - transpiled function from  fmt.c:114
 func fmt_nlines(f []fmt_) int32 {
 	return f[0].lines_head - f[0].lines_tail
 }
 
-// fmt_wordslen - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:120
+// fmt_wordslen - transpiled function from  fmt.c:120
 func fmt_wordslen(f []fmt_, beg int32, end int32) int32 {
 	// the total width of the specified words in f->words[]
 	var i int32
@@ -2423,7 +2423,7 @@ func fmt_wordslen(f []fmt_, beg int32, end int32) int32 {
 	return 0
 }
 
-// fmt_spaces - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:129
+// fmt_spaces - transpiled function from  fmt.c:129
 func fmt_spaces(f []fmt_, beg int32, end int32) int32 {
 	// the number of stretchable spaces in f
 	var i int32
@@ -2436,7 +2436,7 @@ func fmt_spaces(f []fmt_, beg int32, end int32) int32 {
 	return n
 }
 
-// fmt_spacessum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:139
+// fmt_spacessum - transpiled function from  fmt.c:139
 func fmt_spacessum(f []fmt_, beg int32, end int32) int32 {
 	// the amount of stretchable spaces in f
 	var i int32
@@ -2449,7 +2449,7 @@ func fmt_spacessum(f []fmt_, beg int32, end int32) int32 {
 	return n
 }
 
-// fmt_nextline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:149
+// fmt_nextline - transpiled function from  fmt.c:149
 func fmt_nextline(f []fmt_, w []int32, li []int32, lI []int32, ll []int32, els_neg []int32, els_pos []int32) []byte {
 	// return the next line in the buffer
 	var l []line
@@ -2472,7 +2472,7 @@ func fmt_nextline(f []fmt_, w []int32, li []int32, lI []int32, ll []int32, els_n
 	return sbuf_out((*[1000000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
 }
 
-// fmt_mkline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:165
+// fmt_mkline - transpiled function from  fmt.c:165
 func fmt_mkline(f []fmt_) []line {
 	var l []line
 	if f[0].lines_head == f[0].lines_tail {
@@ -2497,7 +2497,7 @@ func fmt_mkline(f []fmt_) []line {
 	return l
 }
 
-// fmt_extractline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:188
+// fmt_extractline - transpiled function from  fmt.c:188
 func fmt_extractline(f []fmt_, beg int32, end int32, str int32) int32 {
 	// extract words from beg to end; shrink or stretch spaces if needed
 	var fmt_div int32
@@ -2546,7 +2546,7 @@ func fmt_extractline(f []fmt_, beg int32, end int32, str int32) int32 {
 	return 0
 }
 
-// fmt_sp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:217
+// fmt_sp - transpiled function from  fmt.c:217
 func fmt_sp(f []fmt_) int32 {
 	if fmt_fillwords(f, 1) != 0 {
 		return 1
@@ -2562,7 +2562,7 @@ func fmt_sp(f []fmt_) int32 {
 	return 0
 }
 
-// fmt_fill - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:232
+// fmt_fill - transpiled function from  fmt.c:232
 func fmt_fill(f []fmt_, br int32) int32 {
 	if fmt_fillwords(f, br) != 0 {
 		// fill as many lines as possible; if br, put the remaining words in a line
@@ -2579,12 +2579,12 @@ func fmt_fill(f []fmt_, br int32) int32 {
 	return 0
 }
 
-// fmt_space - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:245
+// fmt_space - transpiled function from  fmt.c:245
 func fmt_space(fmt__c4go_postfix []fmt_) {
 	fmt__c4go_postfix[0].gap += font_swid(dev_font((nreg(int32('f')))[0]), (nreg(int32('s')))[0], (nreg(map_([]byte(".ss\x00"))))[0])
 }
 
-// fmt_newline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:250
+// fmt_newline - transpiled function from  fmt.c:250
 func fmt_newline(f []fmt_) int32 {
 	f[0].gap = 0
 	if !(noarch.Not((nreg(map_([]byte(".ce\x00"))))[0]) && (nreg(int32('u')))[0] != 0) {
@@ -2604,7 +2604,7 @@ func fmt_newline(f []fmt_) int32 {
 	return 0
 }
 
-// fmt_fillreq - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:268
+// fmt_fillreq - transpiled function from  fmt.c:268
 func fmt_fillreq(f []fmt_) int32 {
 	if f[0].fillreq > 0 {
 		if fmt_fillwords(f, 0) != 0 {
@@ -2616,7 +2616,7 @@ func fmt_fillreq(f []fmt_) int32 {
 	return 0
 }
 
-// fmt_wb2word - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:277
+// fmt_wb2word - transpiled function from  fmt.c:277
 func fmt_wb2word(f []fmt_, word_c4go_postfix []word, wb_c4go_postfix []wb, hy int32, str int32, gap int32, cost int32) {
 	var len_ int32 = noarch.Strlen(wb_buf(wb_c4go_postfix))
 	word_c4go_postfix[0].s = xmalloc(len_ + 1).([]byte)
@@ -2635,7 +2635,7 @@ func fmt_wb2word(f []fmt_, word_c4go_postfix []word, wb_c4go_postfix []wb, hy in
 	word_c4go_postfix[0].swid = wb_swid(wb_c4go_postfix)
 }
 
-// fmt_hyphmarks - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:294
+// fmt_hyphmarks - transpiled function from  fmt.c:294
 func fmt_hyphmarks(word []byte, hyidx []int32, hyins []int32, hygap []int32) int32 {
 	// find explicit break positions: dashes, \:, \%, and \~
 	var s []byte = word
@@ -2693,7 +2693,7 @@ func fmt_hyphmarks(word []byte, hyidx []int32, hyins []int32, hygap []int32) int
 	return n
 }
 
-// fmt_mkword - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:327
+// fmt_mkword - transpiled function from  fmt.c:327
 func fmt_mkword(f []fmt_) []word {
 	if f[0].words_n == f[0].words_sz {
 		f[0].words_sz += 256
@@ -2708,7 +2708,7 @@ func fmt_mkword(f []fmt_) []word {
 	}():]
 }
 
-// fmt_insertword - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:337
+// fmt_insertword - transpiled function from  fmt.c:337
 func fmt_insertword(f []fmt_, wb_c4go_postfix []wb, gap int32) {
 	// sub-word boundaries
 	var hyidx []int32 = make([]int32, 32)
@@ -2784,7 +2784,7 @@ func fmt_insertword(f []fmt_, wb_c4go_postfix []wb, gap int32) {
 	wb_done(c4goUnsafeConvert_wb(&wbc))
 }
 
-// fmt_wordgap - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:379
+// fmt_wordgap - transpiled function from  fmt.c:379
 func fmt_wordgap(f []fmt_) int32 {
 	// the amount of space necessary before the next word
 	var nls int32 = noarch.BoolToInt(f[0].nls != 0 || f[0].nls_sup != 0)
@@ -2800,7 +2800,7 @@ func fmt_wordgap(f []fmt_) int32 {
 	return f[0].gap
 }
 
-// fmt_word - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:390
+// fmt_word - transpiled function from  fmt.c:390
 func fmt_word(f []fmt_, wb_c4go_postfix []wb) int32 {
 	if wb_empty(wb_c4go_postfix) != 0 {
 		// insert wb into fmt
@@ -2835,7 +2835,7 @@ func fmt_word(f []fmt_, wb_c4go_postfix []wb) int32 {
 	return 0
 }
 
-// fmt_keshideh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:413
+// fmt_keshideh - transpiled function from  fmt.c:413
 func fmt_keshideh(f []fmt_, beg int32, end int32, wid int32) {
 	// insert keshideh characters
 	var wb_c4go_postfix wb
@@ -2868,7 +2868,7 @@ func fmt_keshideh(f []fmt_, beg int32, end int32, wid int32) {
 	}
 }
 
-// scaledown - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:441
+// scaledown - transpiled function from  fmt.c:441
 func scaledown(cost int32) int32 {
 	// approximate 8 * sqrt(cost)
 	var ret int32
@@ -2882,7 +2882,7 @@ func scaledown(cost int32) int32 {
 	return 1 << uint64(13)
 }
 
-// FMT_COST - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:451
+// FMT_COST - transpiled function from  fmt.c:451
 func FMT_COST(llen int32, lwid int32, swid int32, nspc int32) int32 {
 	// the cost of putting lwid words in a line of length llen
 	// the ratio that the stretchable spaces of the line should be spread
@@ -2905,7 +2905,7 @@ func FMT_COST(llen int32, lwid int32, swid int32, nspc int32) int32 {
 	}()
 }
 
-// fmt_hydepth - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:463
+// fmt_hydepth - transpiled function from  fmt.c:463
 func fmt_hydepth(f []fmt_, pos int32) int32 {
 	// the number of hyphenations in consecutive lines ending at pos
 	var n int32
@@ -2918,7 +2918,7 @@ func fmt_hydepth(f []fmt_, pos int32) int32 {
 	return n
 }
 
-// hycost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:471
+// hycost - transpiled function from  fmt.c:471
 func hycost(depth int32) int32 {
 	if (nreg(map_([]byte(".hlm\x00"))))[0] > 0 && depth > (nreg(map_([]byte(".hlm\x00"))))[0] {
 		return 10000000
@@ -2935,7 +2935,7 @@ func hycost(depth int32) int32 {
 	return 0
 }
 
-// fmt_findcost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:483
+// fmt_findcost - transpiled function from  fmt.c:483
 func fmt_findcost(f []fmt_, pos int32) int32 {
 	// the cost of putting a line break before word pos
 	var i int32
@@ -3004,7 +3004,7 @@ func fmt_findcost(f []fmt_, pos int32) int32 {
 	return f[0].best[pos] + f[0].words[pos-1].cost
 }
 
-// fmt_bestpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:525
+// fmt_bestpos - transpiled function from  fmt.c:525
 func fmt_bestpos(f []fmt_, pos int32) int32 {
 	fmt_findcost(f, pos)
 	if 0 < f[0].best_pos[pos] {
@@ -3013,7 +3013,7 @@ func fmt_bestpos(f []fmt_, pos int32) int32 {
 	return 0
 }
 
-// fmt_bestdep - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:531
+// fmt_bestdep - transpiled function from  fmt.c:531
 func fmt_bestdep(f []fmt_, pos int32) int32 {
 	fmt_findcost(f, pos)
 	if 0 < f[0].best_dep[pos] {
@@ -3022,7 +3022,7 @@ func fmt_bestdep(f []fmt_, pos int32) int32 {
 	return 0
 }
 
-// fmt_breakparagraph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:538
+// fmt_breakparagraph - transpiled function from  fmt.c:538
 func fmt_breakparagraph(f []fmt_, pos int32, br int32) int32 {
 	// return the last filled word
 	var i int32
@@ -3082,7 +3082,7 @@ func fmt_breakparagraph(f []fmt_, pos int32, br int32) int32 {
 	return best
 }
 
-// fmt_head - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:585
+// fmt_head - transpiled function from  fmt.c:585
 func fmt_head(f []fmt_, nreq int32, pos int32, nohy int32) int32 {
 	// extract the first nreq formatted lines before the word at pos
 	// best line break for nreq-th line
@@ -3125,7 +3125,7 @@ func fmt_head(f []fmt_, nreq int32, pos int32, nohy int32) int32 {
 	return best
 }
 
-// fmt_break - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:616
+// fmt_break - transpiled function from  fmt.c:616
 func fmt_break(f []fmt_, end int32) int32 {
 	// break f->words[0..end] into lines according to fmt_bestpos()
 	var beg int32
@@ -3144,7 +3144,7 @@ func fmt_break(f []fmt_, end int32) int32 {
 	return ret + (end - beg)
 }
 
-// fmt_safelines - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:631
+// fmt_safelines - transpiled function from  fmt.c:631
 func fmt_safelines() int32 {
 	// estimated number of lines until traps or the end of a page
 	var lnht int32 = func() int32 {
@@ -3159,7 +3159,7 @@ func fmt_safelines() int32 {
 	return 1000
 }
 
-// fmt_fillwords - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:638
+// fmt_fillwords - transpiled function from  fmt.c:638
 func fmt_fillwords(f []fmt_, br int32) int32 {
 	// fill the words collected in the buffer
 	// the number of lines until a trap
@@ -3252,36 +3252,36 @@ func fmt_fillwords(f []fmt_, br int32) int32 {
 	return noarch.BoolToInt(head != 0 || n != end)
 }
 
-// fmt_alloc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:697
+// fmt_alloc - transpiled function from  fmt.c:697
 func fmt_alloc() []fmt_ {
 	var fmt__c4go_postfix []fmt_ = xmalloc(int32(136)).([]fmt_)
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fmt__c4go_postfix[0]))) / int64(1))))[:], byte(0), 136)
 	return fmt__c4go_postfix
 }
 
-// fmt_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:704
+// fmt_free - transpiled function from  fmt.c:704
 func fmt_free(fmt__c4go_postfix []fmt_) {
 	_ = fmt__c4go_postfix[0].lines
 	_ = fmt__c4go_postfix[0].words
 	_ = fmt__c4go_postfix
 }
 
-// fmt_wid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:711
+// fmt_wid - transpiled function from  fmt.c:711
 func fmt_wid(fmt__c4go_postfix []fmt_) int32 {
 	return fmt_wordslen(fmt__c4go_postfix, 0, fmt__c4go_postfix[0].words_n) + fmt_wordgap(fmt__c4go_postfix)
 }
 
-// fmt_morewords - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:716
+// fmt_morewords - transpiled function from  fmt.c:716
 func fmt_morewords(fmt__c4go_postfix []fmt_) int32 {
 	return noarch.BoolToInt(fmt_morelines(fmt__c4go_postfix) != 0 || fmt__c4go_postfix[0].words_n != 0)
 }
 
-// fmt_morelines - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:721
+// fmt_morelines - transpiled function from  fmt.c:721
 func fmt_morelines(fmt__c4go_postfix []fmt_) int32 {
 	return noarch.BoolToInt(fmt__c4go_postfix[0].lines_head != fmt__c4go_postfix[0].lines_tail)
 }
 
-// fmt_suppressnl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/fmt.c:727
+// fmt_suppressnl - transpiled function from  fmt.c:727
 func fmt_suppressnl(fmt__c4go_postfix []fmt_) {
 	if fmt__c4go_postfix[0].nls != 0 {
 		// suppress the last newline
@@ -3290,8 +3290,8 @@ func fmt_suppressnl(fmt__c4go_postfix []fmt_) {
 	}
 }
 
-// gpat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:17
-// gpat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:18
+// gpat - transpiled function from  font.c:17
+// gpat - transpiled function from  font.c:18
 // font handling
 // convert wid in device unitwidth size to size sz
 // flags for gpat->flg
@@ -3314,7 +3314,7 @@ type grule struct {
 	lang int16
 }
 
-// font - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:28
+// font - transpiled function from  font.c:28
 // glyph index
 // pattern flags; GF_*
 // gpos data
@@ -3359,7 +3359,7 @@ type font struct {
 	ggrp      []iset
 }
 
-// font_find - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:59
+// font_find - transpiled function from  font.c:59
 func font_find(fn []font, name []byte) []glyph {
 	// for .cs, .bd, .fzoom requests
 	// for .tkf request
@@ -3394,7 +3394,7 @@ func font_find(fn []font, name []byte) []glyph {
 	return nil
 }
 
-// font_glyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:68
+// font_glyph - transpiled function from  font.c:68
 func font_glyph(fn []font, id []byte) []glyph {
 	// find a glyph by its device-dependent identifier
 	var i int32 = dict_get(fn[0].gl_dict, id)
@@ -3404,7 +3404,7 @@ func font_glyph(fn []font, id []byte) []glyph {
 	return nil
 }
 
-// font_glyphput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:74
+// font_glyphput - transpiled function from  font.c:74
 func font_glyphput(fn []font, id []byte, name []byte, type_ int32) int32 {
 	var g []glyph
 	if fn[0].gl_n == fn[0].gl_sz {
@@ -3424,7 +3424,7 @@ func font_glyphput(fn []font, id []byte, name []byte, type_ int32) int32 {
 	return *tempVar1
 }
 
-// font_map - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:91
+// font_map - transpiled function from  font.c:91
 func font_map(fn []font, name []byte, id []byte) int32 {
 	// map character name to the given glyph; remove the mapping if id is NULL
 	var gidx int32 = -1
@@ -3442,13 +3442,13 @@ func font_map(fn []font, name []byte, id []byte) int32 {
 	return 0
 }
 
-// font_mapped - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:101
+// font_mapped - transpiled function from  font.c:101
 func font_mapped(fn []font, name []byte) int32 {
 	// return nonzero if character name has been mapped with font_map()
 	return noarch.BoolToInt(dict_get(fn[0].ch_map, name) != -1)
 }
 
-// font_featlg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:109
+// font_featlg - transpiled function from  font.c:109
 func font_featlg(fn []font, val int32) int32 {
 	// enable/disable ligatures; first bit for liga and the second bit for rlig
 	var ret int32
@@ -3457,13 +3457,13 @@ func font_featlg(fn []font, val int32) int32 {
 	return ret
 }
 
-// font_featkn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:118
+// font_featkn - transpiled function from  font.c:118
 func font_featkn(fn []font, val int32) int32 {
 	// enable/disable pairwise kerning
 	return font_feat(fn, []byte("kern\x00"), val)
 }
 
-// font_idx - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:124
+// font_idx - transpiled function from  font.c:124
 func font_idx(fn []font, g []glyph) int32 {
 	// glyph index in fn->glyphs[]
 	if g != nil {
@@ -3472,7 +3472,7 @@ func font_idx(fn []font, g []glyph) int32 {
 	return -1
 }
 
-// font_gpatmatch - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:129
+// font_gpatmatch - transpiled function from  font.c:129
 func font_gpatmatch(fn []font, p []gpat, g int32) int32 {
 	var r []int32
 	if noarch.Not(int32(p[0].flg) & 8) {
@@ -3492,7 +3492,7 @@ func font_gpatmatch(fn []font, p []gpat, g int32) int32 {
 	return 0
 }
 
-// font_rulematch - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:141
+// font_rulematch - transpiled function from  font.c:141
 func font_rulematch(fn []font, rule []grule, src []int32, slen int32, dst []int32, dlen int32) int32 {
 	// the index of matched glyphs in src
 	var sidx int32
@@ -3541,7 +3541,7 @@ func font_rulematch(fn []font, rule []grule, src []int32, slen int32, dst []int3
 	return 1
 }
 
-// font_findrule - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:177
+// font_findrule - transpiled function from  font.c:177
 func font_findrule(fn []font, gsub int32, pos int32, fwd []int32, fwdlen int32, ctx []int32, ctxlen int32, idx []int32) int32 {
 	// find a matching gsub/gpos rule; *idx should be -1 initially
 	var rules []grule = func() []grule {
@@ -3568,7 +3568,7 @@ func font_findrule(fn []font, gsub int32, pos int32, fwd []int32, fwdlen int32, 
 	return -1
 }
 
-// font_performgpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:191
+// font_performgpos - transpiled function from  font.c:191
 func font_performgpos(fn []font, src []int32, slen int32, x []int32, y []int32, xadv []int32, yadv []int32) {
 	// perform all possible gpos rules on src
 	var gpos []grule = fn[0].gpos
@@ -3626,7 +3626,7 @@ func font_performgpos(fn []font, src []int32, slen int32, x []int32, y []int32, 
 	}
 }
 
-// font_firstgsub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:238
+// font_firstgsub - transpiled function from  font.c:238
 func font_firstgsub(fn []font, pos int32, src []int32, slen int32) int32 {
 	// find the first gsub rule after pos that matches any glyph in src
 	var best int32 = -1
@@ -3641,7 +3641,7 @@ func font_firstgsub(fn []font, pos int32, src []int32, slen int32) int32 {
 	return best
 }
 
-// font_gsubapply - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:253
+// font_gsubapply - transpiled function from  font.c:253
 func font_gsubapply(fn []font, rule []grule, src []int32, slen int32, smap []int32) int32 {
 	// apply the given gsub rule to all matches in src
 	var dst []int32 = make([]int32, 256)
@@ -3681,7 +3681,7 @@ func font_gsubapply(fn []font, rule []grule, src []int32, slen int32, smap []int
 	return dlen
 }
 
-// font_performgsub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:282
+// font_performgsub - transpiled function from  font.c:282
 func font_performgsub(fn []font, src []int32, slen int32, smap []int32) int32 {
 	// perform all possible gsub rules on src
 	var i int32 = -1
@@ -3700,7 +3700,7 @@ func font_performgsub(fn []font, src []int32, slen int32, smap []int32) int32 {
 	return slen
 }
 
-// font_layout - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:293
+// font_layout - transpiled function from  font.c:293
 func font_layout(fn []font, gsrc [][]glyph, nsrc int32, sz int32, gdst [][]glyph, dmap []int32, x []int32, y []int32, xadv []int32, yadv []int32, lg int32, kn int32) int32 {
 	var dst []int32 = make([]int32, 256)
 	var ndst int32 = nsrc
@@ -3742,7 +3742,7 @@ func font_layout(fn []font, gsrc [][]glyph, nsrc int32, sz int32, gdst [][]glyph
 	return ndst
 }
 
-// font_readchar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:327
+// font_readchar - transpiled function from  font.c:327
 func font_readchar(fn []font, fin *noarch.File, n []int32, gid []int32) int32 {
 	var g []glyph
 	var tok []byte = make([]byte, 128)
@@ -3770,7 +3770,7 @@ func font_readchar(fn []font, fin *noarch.File, n []int32, gid []int32) int32 {
 	return 0
 }
 
-// font_findfeat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:353
+// font_findfeat - transpiled function from  font.c:353
 func font_findfeat(fn []font, feat []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 1024/8 && int32(fn[0].feat_name[:][i][0]) != 0; i++ {
@@ -3785,7 +3785,7 @@ func font_findfeat(fn []font, feat []byte) int32 {
 	return -1
 }
 
-// font_findscrp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:366
+// font_findscrp - transpiled function from  font.c:366
 func font_findscrp(fn []font, scrp []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 512/8 && int32(fn[0].scrp_name[:][i][0]) != 0; i++ {
@@ -3800,7 +3800,7 @@ func font_findscrp(fn []font, scrp []byte) int32 {
 	return i
 }
 
-// font_findlang - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:378
+// font_findlang - transpiled function from  font.c:378
 func font_findlang(fn []font, lang []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 512/8 && int32(fn[0].lang_name[:][i][0]) != 0; i++ {
@@ -3815,14 +3815,14 @@ func font_findlang(fn []font, lang []byte) int32 {
 	return i
 }
 
-// font_gpat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:390
+// font_gpat - transpiled function from  font.c:390
 func font_gpat(fn []font, len_ int32) []gpat {
 	var pats []gpat = xmalloc(int32(uint32(len_) * 16)).([]gpat)
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&pats[0]))) / int64(1))))[:], byte(0), uint32(len_)*16)
 	return pats
 }
 
-// font_gsub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:397
+// font_gsub - transpiled function from  font.c:397
 func font_gsub(fn []font, len_ int32, feat int32, scrp int32, lang int32) []grule {
 	var rule []grule
 	var pats []gpat = font_gpat(fn, len_)
@@ -3845,7 +3845,7 @@ func font_gsub(fn []font, len_ int32, feat int32, scrp int32, lang int32) []grul
 	return rule
 }
 
-// font_gpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:415
+// font_gpos - transpiled function from  font.c:415
 func font_gpos(fn []font, len_ int32, feat int32, scrp int32, lang int32) []grule {
 	var rule []grule
 	var pats []gpat = font_gpat(fn, len_)
@@ -3868,7 +3868,7 @@ func font_gpos(fn []font, len_ int32, feat int32, scrp int32, lang int32) []grul
 	return rule
 }
 
-// font_readgpat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:433
+// font_readgpat - transpiled function from  font.c:433
 func font_readgpat(fn []font, p []gpat, s []byte) int32 {
 	if int32(s[0]) == int32('@') {
 		p[0].g = noarch.Atoi(s[0+1:])
@@ -3883,7 +3883,7 @@ func font_readgpat(fn []font, p []gpat, s []byte) int32 {
 	return noarch.BoolToInt(p[0].g < 0)
 }
 
-// font_readfeat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:447
+// font_readfeat - transpiled function from  font.c:447
 func font_readfeat(fn []font, tok []byte, feat []int32, scrp []int32, lang []int32) {
 	var ftag []byte = tok
 	var stag []byte
@@ -3907,7 +3907,7 @@ func font_readfeat(fn []font, tok []byte, feat []int32, scrp []int32, lang []int
 	feat[0] = font_findfeat(fn, tok)
 }
 
-// font_readgsub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:469
+// font_readgsub - transpiled function from  font.c:469
 func font_readgsub(fn []font, fin *noarch.File) int32 {
 	var tok []byte = make([]byte, 128)
 	var rule []grule
@@ -3942,7 +3942,7 @@ func font_readgsub(fn []font, fin *noarch.File) int32 {
 	return 0
 }
 
-// font_readgpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:495
+// font_readgpos - transpiled function from  font.c:495
 func font_readgpos(fn []font, fin *noarch.File) int32 {
 	var tok []byte = make([]byte, 128)
 	var col []byte
@@ -3977,7 +3977,7 @@ func font_readgpos(fn []font, fin *noarch.File) int32 {
 	return 0
 }
 
-// font_readggrp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:524
+// font_readggrp - transpiled function from  font.c:524
 func font_readggrp(fn []font, fin *noarch.File) int32 {
 	var tok []byte = make([]byte, 32)
 	var id int32
@@ -3999,7 +3999,7 @@ func font_readggrp(fn []font, fin *noarch.File) int32 {
 	return 0
 }
 
-// font_readkern - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:540
+// font_readkern - transpiled function from  font.c:540
 func font_readkern(fn []font, fin *noarch.File) int32 {
 	var c1 []byte = make([]byte, 32)
 	var c2 []byte = make([]byte, 32)
@@ -4017,7 +4017,7 @@ func font_readkern(fn []font, fin *noarch.File) int32 {
 	return 0
 }
 
-// font_lig - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:556
+// font_lig - transpiled function from  font.c:556
 func font_lig(fn []font, lig []byte) {
 	var c []byte = make([]byte, 32)
 	var g []int32 = make([]int32, 256)
@@ -4042,7 +4042,7 @@ func font_lig(fn []font, lig []byte) {
 	rule[0].pats[n].flg = 2
 }
 
-// font_rulefirstpat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:582
+// font_rulefirstpat - transpiled function from  font.c:582
 func font_rulefirstpat(fn []font, rule []grule) []gpat {
 	var i int32
 	for i = 0; i < int32(rule[0].len_); i++ {
@@ -4053,7 +4053,7 @@ func font_rulefirstpat(fn []font, rule []grule) []gpat {
 	return nil
 }
 
-// font_isetinsert - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:591
+// font_isetinsert - transpiled function from  font.c:591
 func font_isetinsert(fn []font, iset_c4go_postfix []iset, rule int32, p []gpat) {
 	if int32(p[0].flg)&8 != 0 {
 		var r []int32 = iset_get(fn[0].ggrp, p[0].g)
@@ -4072,7 +4072,7 @@ func font_isetinsert(fn []font, iset_c4go_postfix []iset, rule int32, p []gpat) 
 	}
 }
 
-// font_open - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:603
+// font_open - transpiled function from  font.c:603
 func font_open(path []byte) []font {
 	var fn []font
 	// last glyph in the charset
@@ -4155,7 +4155,7 @@ func font_open(path []byte) []font {
 	return fn
 }
 
-// font_close - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:679
+// font_close - transpiled function from  font.c:679
 func font_close(fn []font) {
 	var i int32
 	for i = 0; i < fn[0].gsub_n; i++ {
@@ -4176,12 +4176,12 @@ func font_close(fn []font) {
 	_ = fn
 }
 
-// font_special - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:698
+// font_special - transpiled function from  font.c:698
 func font_special(fn []font) int32 {
 	return fn[0].special
 }
 
-// font_wid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:704
+// font_wid - transpiled function from  font.c:704
 func font_wid(fn []font, sz int32, w int32) int32 {
 	// return width w for the given font and size
 	sz = font_zoom(fn, sz)
@@ -4191,7 +4191,7 @@ func font_wid(fn []font, sz int32, w int32) int32 {
 	return -((-w*sz + dev_uwid/2) / dev_uwid)
 }
 
-// font_twid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:711
+// font_twid - transpiled function from  font.c:711
 func font_twid(fn []font, sz int32) int32 {
 	if fn[0].s1 >= 0 && sz <= fn[0].s1 {
 		// return track kerning width for the given size
@@ -4206,7 +4206,7 @@ func font_twid(fn []font, sz int32) int32 {
 	return 0
 }
 
-// font_gwid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:724
+// font_gwid - transpiled function from  font.c:724
 func font_gwid(fn []font, cfn []font, sz int32, w int32) int32 {
 	// glyph width, where cfn is the current font and fn is glyph's font
 	var xfn []font = func() []font {
@@ -4236,34 +4236,34 @@ func font_gwid(fn []font, cfn []font, sz int32, w int32) int32 {
 	}()
 }
 
-// font_swid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:735
+// font_swid - transpiled function from  font.c:735
 func font_swid(fn []font, sz int32, ss int32) int32 {
 	// space width for the give word space or sentence space
 	return font_gwid(fn, nil, sz, (fn[0].spacewid*ss+6)/12)
 }
 
-// font_getcs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:740
+// font_getcs - transpiled function from  font.c:740
 func font_getcs(fn []font) int32 {
 	return fn[0].cs
 }
 
-// font_setcs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:745
+// font_setcs - transpiled function from  font.c:745
 func font_setcs(fn []font, cs int32, ps int32) {
 	fn[0].cs = cs
 	fn[0].cs_ps = ps
 }
 
-// font_getbd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:751
+// font_getbd - transpiled function from  font.c:751
 func font_getbd(fn []font) int32 {
 	return fn[0].bd
 }
 
-// font_setbd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:756
+// font_setbd - transpiled function from  font.c:756
 func font_setbd(fn []font, bd int32) {
 	fn[0].bd = bd
 }
 
-// font_track - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:761
+// font_track - transpiled function from  font.c:761
 func font_track(fn []font, s1 int32, n1 int32, s2 int32, n2 int32) {
 	fn[0].s1 = s1
 	fn[0].n1 = n1
@@ -4271,7 +4271,7 @@ func font_track(fn []font, s1 int32, n1 int32, s2 int32, n2 int32) {
 	fn[0].n2 = n2
 }
 
-// font_zoom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:769
+// font_zoom - transpiled function from  font.c:769
 func font_zoom(fn []font, sz int32) int32 {
 	if fn[0].zoom != 0 {
 		return (sz*fn[0].zoom + 500) / 1000
@@ -4279,12 +4279,12 @@ func font_zoom(fn []font, sz int32) int32 {
 	return sz
 }
 
-// font_setzoom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:774
+// font_setzoom - transpiled function from  font.c:774
 func font_setzoom(fn []font, zoom int32) {
 	fn[0].zoom = zoom
 }
 
-// font_feat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:780
+// font_feat - transpiled function from  font.c:780
 func font_feat(fn []font, name []byte, val int32) int32 {
 	// enable/disable font features; returns the previous value
 	var idx int32 = font_findfeat(fn, name)
@@ -4300,7 +4300,7 @@ func font_feat(fn []font, name []byte, val int32) int32 {
 	return old
 }
 
-// font_scrp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:790
+// font_scrp - transpiled function from  font.c:790
 func font_scrp(fn []font, name []byte) {
 	// set font script
 	if name != nil {
@@ -4310,7 +4310,7 @@ func font_scrp(fn []font, name []byte) {
 	}
 }
 
-// font_lang - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/font.c:796
+// font_lang - transpiled function from  font.c:796
 func font_lang(fn []font, name []byte) {
 	// set font language
 	if name != nil {
@@ -4320,40 +4320,40 @@ func font_lang(fn []font, name []byte) {
 	}
 }
 
-// en_patterns - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyen.h:3
+// en_patterns - transpiled function from  hyen.h:3
 // english hyphenation patterns and exceptions
 var en_patterns []byte = []byte(".ach4 .ad4der .af1t .al3t .am5at .an5c .ang4 .ani5m .ant4 .an3te .anti5s .ar5s .ar4tie .ar4ty .as3c .as1p .as1s .aster5 .atom5 .au1d .av4i .awn4 .ba4g .ba5na .bas4e .ber4 .be5ra .be3sm .be5sto .bri2 .but4ti .cam4pe .can5c .capa5b .car5ol .ca4t .ce4la .ch4 .chill5i .ci2 .cit5r .co3e .co4r .cor5ner .de4moi .de3o .de3ra .de3ri .des4c .dictio5 .do4t .du4c .dumb5 .earth5 .eas3i .eb4 .eer4 .eg2 .el5d .el3em .enam3 .en3g .en3s .eq5ui5t .er4ri .es3 .eu3 .eye5 .fes3 .for5mer .ga2 .ge2 .gen3t4 .ge5og .gi5a .gi4b .go4r .hand5i .han5k .he2 .hero5i .hes3 .het3 .hi3b .hi3er .hon5ey .hon3o .hov5 .id4l .idol3 .im3m .im5pin .in1 .in3ci .ine2 .in2k .in3s .ir5r .is4i .ju3r .la4cy .la4m .lat5er .lath5 .le2 .leg5e .len4 .lep5 .lev1 .li4g .lig5a .li2n .li3o .li4t .mag5a5 .mal5o .man5a .mar5ti .me2 .mer3c .me5ter .mis1 .mist5i .mon3e .mo3ro .mu5ta .muta5b .ni4c .od2 .odd5 .of5te .or5ato .or3c .or1d .or3t .os3 .os4tl .oth3 .out3 .ped5al .pe5te .pe5tit .pi4e .pio5n .pi2t .pre3m .ra4c .ran4t .ratio5na .ree2 .re5mit .res2 .re5stat .ri4g .rit5u .ro4q .ros5t .row5d .ru4d .sci3e .self5 .sell5 .se2n .se5rie .sh2 .si2 .sing4 .st4 .sta5bl .sy2 .ta4 .te4 .ten5an .th2 .ti2 .til4 .tim5o5 .ting4 .tin5k .ton4a .to4p .top5i .tou5s .trib5ut .un1a .un3ce .under5 .un1e .un5k .un5o .un3u .up3 .ure3 .us5a .ven4de .ve5ra .wil5i .ye4 4ab. a5bal a5ban abe2 ab5erd abi5a ab5it5ab ab5lat ab5o5liz 4abr ab5rog ab3ul a4car ac5ard ac5aro a5ceou ac1er a5chet 4a2ci a3cie ac1in a3cio ac5rob act5if ac3ul ac4um a2d ad4din ad5er. 2adi a3dia ad3ica adi4er a3dio a3dit a5diu ad4le ad3ow ad5ran ad4su 4adu a3duc ad5um ae4r aeri4e a2f aff4 a4gab aga4n ag5ell age4o 4ageu ag1i 4ag4l ag1n a2go 3agog ag3oni a5guer ag5ul a4gy a3ha a3he ah4l a3ho ai2 a5ia a3ic. ai5ly a4i4n ain5in ain5o ait5en a1j ak1en al5ab al3ad a4lar 4aldi 2ale al3end a4lenti a5le5o al1i al4ia. ali4e al5lev 4allic 4alm a5log. a4ly. 4alys 5a5lyst 5alyt 3alyz 4ama am5ab am3ag ama5ra am5asc a4matis a4m5ato am5era am3ic am5if am5ily am1in ami4no a2mo a5mon amor5i amp5en a2n an3age 3analy a3nar an3arc anar4i a3nati 4and ande4s an3dis an1dl an4dow a5nee a3nen an5est. a3neu 2ang ang5ie an1gl a4n1ic a3nies an3i3f an4ime a5nimi a5nine an3io a3nip an3ish an3it a3niu an4kli 5anniz ano4 an5ot anoth5 an2sa an4sco an4sn an2sp ans3po an4st an4sur antal4 an4tie 4anto an2tr an4tw an3ua an3ul a5nur 4ao apar4 ap5at ap5ero a3pher 4aphi a4pilla ap5illar ap3in ap3ita a3pitu a2pl apoc5 ap5ola apor5i apos3t aps5es a3pu aque5 2a2r ar3act a5rade ar5adis ar3al a5ramete aran4g ara3p ar4at a5ratio ar5ativ a5rau ar5av4 araw4 arbal4 ar4chan ar5dine ar4dr ar5eas a3ree ar3ent a5ress ar4fi ar4fl ar1i ar5ial ar3ian a3riet ar4im ar5inat ar3io ar2iz ar2mi ar5o5d a5roni a3roo ar2p ar3q arre4 ar4sa ar2sh 4as. as4ab as3ant ashi4 a5sia. a3sib a3sic 5a5si4t ask3i as4l a4soc as5ph as4sh as3ten as1tr asur5a a2ta at3abl at5ac at3alo at5ap ate5c at5ech at3ego at3en. at3era ater5n a5terna at3est at5ev 4ath ath5em a5then at4ho ath5om 4ati. a5tia at5i5b at1ic at3if ation5ar at3itu a4tog a2tom at5omiz a4top a4tos a1tr at5rop at4sk at4tag at5te at4th a2tu at5ua at5ue at3ul at3ura a2ty au4b augh3 au3gu au4l2 aun5d au3r au5sib aut5en au1th a2va av3ag a5van ave4no av3era av5ern av5ery av1i avi4er av3ig av5oc a1vor 3away aw3i aw4ly aws4 ax4ic ax4id ay5al aye4 ays4 azi4er azz5i 5ba. bad5ger ba4ge bal1a ban5dag ban4e ban3i barbi5 bari4a bas4si 1bat ba4z 2b1b b2be b3ber bbi4na 4b1d 4be. beak4 beat3 4be2d be3da be3de be3di be3gi be5gu 1bel be1li be3lo 4be5m be5nig be5nu 4bes4 be3sp be5str 3bet bet5iz be5tr be3tw be3w be5yo 2bf 4b3h bi2b bi4d 3bie bi5en bi4er 2b3if 1bil bi3liz bina5r4 bin4d bi5net bi3ogr bi5ou bi2t 3bi3tio bi3tr 3bit5ua b5itz b1j bk4 b2l2 blath5 b4le. blen4 5blesp b3lis b4lo blun4t 4b1m 4b3n bne5g 3bod bod3i bo4e bol3ic bom4bi bon4a bon5at 3boo 5bor. 4b1ora bor5d 5bore 5bori 5bos4 b5ota both5 bo4to bound3 4bp 4brit broth3 2b5s2 bsor4 2bt bt4l b4to b3tr buf4fer bu4ga bu3li bumi4 bu4n bunt4i bu3re bus5ie buss4e 5bust 4buta 3butio b5uto b1v 4b5w 5by. bys4 1ca cab3in ca1bl cach4 ca5den 4cag4 2c5ah ca3lat cal4la call5in 4calo can5d can4e can4ic can5is can3iz can4ty cany4 ca5per car5om cast5er cas5tig 4casy ca4th 4cativ cav5al c3c ccha5 cci4a ccompa5 ccon4 ccou3t 2ce. 4ced. 4ceden 3cei 5cel. 3cell 1cen 3cenc 2cen4e 4ceni 3cent 3cep ce5ram 4cesa 3cessi ces5si5b ces5t cet4 c5e4ta cew4 2ch 4ch. 4ch3ab 5chanic ch5a5nis che2 cheap3 4ched che5lo 3chemi ch5ene ch3er. ch3ers 4ch1in 5chine. ch5iness 5chini 5chio 3chit chi2z 3cho2 ch4ti 1ci 3cia ci2a5b cia5r ci5c 4cier 5cific. 4cii ci4la 3cili 2cim 2cin c4ina 3cinat cin3em c1ing c5ing. 5cino cion4 4cipe ci3ph 4cipic 4cista 4cisti 2c1it cit3iz 5ciz ck1 ck3i 1c4l4 4clar c5laratio 5clare cle4m 4clic clim4 cly4 c5n 1co co5ag coe2 2cog co4gr coi4 co3inc col5i 5colo col3or com5er con4a c4one con3g con5t co3pa cop3ic co4pl 4corb coro3n cos4e cov1 cove4 cow5a coz5e co5zi c1q cras5t 5crat. 5cratic cre3at 5cred 4c3reta cre4v cri2 cri5f c4rin cris4 5criti cro4pl crop5o cros4e cru4d 4c3s2 2c1t cta4b ct5ang c5tant c2te c3ter c4ticu ctim3i ctu4r c4tw cud5 c4uf c4ui cu5ity 5culi cul4tis 3cultu cu2ma c3ume cu4mi 3cun cu3pi cu5py cur5a4b cu5ria 1cus cuss4i 3c4ut cu4tie 4c5utiv 4cutr 1cy cze4 1d2a 5da. 2d3a4b dach4 4daf 2dag da2m2 dan3g dard5 dark5 4dary 3dat 4dativ 4dato 5dav4 dav5e 5day d1b d5c d1d4 2de. deaf5 deb5it de4bon decan4 de4cil de5com 2d1ed 4dee. de5if deli4e del5i5q de5lo d4em 5dem. 3demic dem5ic. de5mil de4mons demor5 1den de4nar de3no denti5f de3nu de1p de3pa depi4 de2pu d3eq d4erh 5derm dern5iz der5s des2 d2es. de1sc de2s5o des3ti de3str de4su de1t de2to de1v dev3il 4dey 4d1f d4ga d3ge4t dg1i d2gy d1h2 5di. 1d4i3a dia5b di4cam d4ice 3dict 3did 5di3en d1if di3ge di4lato d1in 1dina 3dine. 5dini di5niz 1dio dio5g di4pl dir2 di1re dirt5i dis1 5disi d4is3t d2iti 1di1v d1j d5k2 4d5la 3dle. 3dled 3dles. 4dless 2d3lo 4d5lu 2dly d1m 4d1n4 1do 3do. do5de 5doe 2d5of d4og do4la doli4 do5lor dom5iz do3nat doni4 doo3d dop4p d4or 3dos 4d5out do4v 3dox d1p 1dr drag5on 4drai dre4 drea5r 5dren dri4b dril4 dro4p 4drow 5drupli 4dry 2d1s2 ds4p d4sw d4sy d2th 1du d1u1a du2c d1uca duc5er 4duct. 4ducts du5el du4g d3ule dum4be du4n 4dup du4pe d1v d1w d2y 5dyn dy4se dys5p e1a4b e3act ead1 ead5ie ea4ge ea5ger ea4l eal5er eal3ou eam3er e5and ear3a ear4c ear5es ear4ic ear4il ear5k ear2t eart3e ea5sp e3ass east3 ea2t eat5en eath3i e5atif e4a3tu ea2v eav3en eav5i eav5o 2e1b e4bel. e4bels e4ben e4bit e3br e4cad ecan5c ecca5 e1ce ec5essa ec2i e4cib ec5ificat ec5ifie ec5ify ec3im eci4t e5cite e4clam e4clus e2col e4comm e4compe e4conc e2cor ec3ora eco5ro e1cr e4crem ec4tan ec4te e1cu e4cul ec3ula 2e2da 4ed3d e4d1er ede4s 4edi e3dia ed3ib ed3ica ed3im ed1it edi5z 4edo e4dol edon2 e4dri e4dul ed5ulo ee2c eed3i ee2f eel3i ee4ly ee2m ee4na ee4p1 ee2s4 eest4 ee4ty e5ex e1f e4f3ere 1eff e4fic 5efici efil4 e3fine ef5i5nite 3efit efor5es e4fuse. 4egal eger4 eg5ib eg4ic eg5ing e5git5 eg5n e4go. e4gos eg1ul e5gur 5egy e1h4 eher4 ei2 e5ic ei5d eig2 ei5gl e3imb e3inf e1ing e5inst eir4d eit3e ei3th e5ity e1j e4jud ej5udi eki4n ek4la e1la e4la. e4lac elan4d el5ativ e4law elaxa4 e3lea el5ebra 5elec e4led el3ega e5len e4l1er e1les el2f el2i e3libe e4l5ic. el3ica e3lier el5igib e5lim e4l3ing e3lio e2lis el5ish e3liv3 4ella el4lab ello4 e5loc el5og el3op. el2sh el4ta e5lud el5ug e4mac e4mag e5man em5ana em5b e1me e2mel e4met em3ica emi4e em5igra em1in2 em5ine em3i3ni e4mis em5ish e5miss em3iz 5emniz emo4g emoni5o em3pi e4mul em5ula emu3n e3my en5amo e4nant ench4er en3dic e5nea e5nee en3em en5ero en5esi en5est en3etr e3new en5ics e5nie e5nil e3nio en3ish en3it e5niu 5eniz 4enn 4eno eno4g e4nos en3ov en4sw ent5age 4enthes en3ua en5uf e3ny. 4en3z e5of eo2g e4oi4 e3ol eop3ar e1or eo3re eo5rol eos4 e4ot eo4to e5out e5ow e2pa e3pai ep5anc e5pel e3pent ep5etitio ephe4 e4pli e1po e4prec ep5reca e4pred ep3reh e3pro e4prob ep4sh ep5ti5b e4put ep5uta e1q equi3l e4q3ui3s er1a era4b 4erand er3ar 4erati. 2erb er4bl er3ch er4che 2ere. e3real ere5co ere3in er5el. er3emo er5ena er5ence 4erene er3ent ere4q er5ess er3est eret4 er1h er1i e1ria4 5erick e3rien eri4er er3ine e1rio 4erit er4iu eri4v e4riva er3m4 er4nis 4ernit 5erniz er3no 2ero er5ob e5roc ero4r er1ou er1s er3set ert3er 4ertl er3tw 4eru eru4t 5erwau e1s4a e4sage. e4sages es2c e2sca es5can e3scr es5cu e1s2e e2sec es5ecr es5enc e4sert. e4serts e4serva 4esh e3sha esh5en e1si e2sic e2sid es5iden es5igna e2s5im es4i4n esis4te esi4u e5skin es4mi e2sol es3olu e2son es5ona e1sp es3per es5pira es4pre 2ess es4si4b estan4 es3tig es5tim 4es2to e3ston 2estr e5stro estruc5 e2sur es5urr es4w eta4b eten4d e3teo ethod3 et1ic e5tide etin4 eti4no e5tir e5titio et5itiv 4etn et5ona e3tra e3tre et3ric et5rif et3rog et5ros et3ua et5ym et5z 4eu e5un e3up eu3ro eus4 eute4 euti5l eu5tr eva2p5 e2vas ev5ast e5vea ev3ell evel3o e5veng even4i ev1er e5verb e1vi ev3id evi4l e4vin evi4v e5voc e5vu e1wa e4wag e5wee e3wh ewil5 ew3ing e3wit 1exp 5eyc 5eye. eys4 1fa fa3bl fab3r fa4ce 4fag fain4 fall5e 4fa4ma fam5is 5far far5th fa3ta fa3the 4fato fault5 4f5b 4fd 4fe. feas4 feath3 fe4b 4feca 5fect 2fed fe3li fe4mo fen2d fend5e fer1 5ferr fev4 4f1f f4fes f4fie f5fin. f2f5is f4fly f2fy 4fh 1fi fi3a 2f3ic. 4f3ical f3ican 4ficate f3icen fi3cer fic4i 5ficia 5ficie 4fics fi3cu fi5del fight5 fil5i fill5in 4fily 2fin 5fina fin2d5 fi2ne f1in3g fin4n fis4ti f4l2 f5less flin4 flo3re f2ly5 4fm 4fn 1fo 5fon fon4de fon4t fo2r fo5rat for5ay fore5t for4i fort5a fos5 4f5p fra4t f5rea fres5c fri2 fril4 frol5 2f3s 2ft f4to f2ty 3fu fu5el 4fug fu4min fu5ne fu3ri fusi4 fus4s 4futa 1fy 1ga gaf4 5gal. 3gali ga3lo 2gam ga5met g5amo gan5is ga3niz gani5za 4gano gar5n4 gass4 gath3 4gativ 4gaz g3b gd4 2ge. 2ged geez4 gel4in ge5lis ge5liz 4gely 1gen ge4nat ge5niz 4geno 4geny 1geo ge3om g4ery 5gesi geth5 4geto ge4ty ge4v 4g1g2 g2ge g3ger gglu5 ggo4 gh3in gh5out gh4to 5gi. 1gi4a gia5r g1ic 5gicia g4ico gien5 5gies. gil4 g3imen 3g4in. gin5ge 5g4ins 5gio 3gir gir4l g3isl gi4u 5giv 3giz gl2 gla4 glad5i 5glas 1gle gli4b g3lig 3glo glo3r g1m g4my gn4a g4na. gnet4t g1ni g2nin g4nio g1no g4non 1go 3go. gob5 5goe 3g4o4g go3is gon2 4g3o3na gondo5 go3ni 5goo go5riz gor5ou 5gos. gov1 g3p 1gr 4grada g4rai gran2 5graph. g5rapher 5graphic 4graphy 4gray gre4n 4gress. 4grit g4ro gruf4 gs2 g5ste gth3 gu4a 3guard 2gue 5gui5t 3gun 3gus 4gu4t g3w 1gy 2g5y3n gy5ra h3ab4l hach4 hae4m hae4t h5agu ha3la hala3m ha4m han4ci han4cy 5hand. han4g hang5er hang5o h5a5niz han4k han4te hap3l hap5t ha3ran ha5ras har2d hard3e har4le harp5en har5ter has5s haun4 5haz haz3a h1b 1head 3hear he4can h5ecat h4ed he5do5 he3l4i hel4lis hel4ly h5elo hem4p he2n hena4 hen5at heo5r hep5 h4era hera3p her4ba here5a h3ern h5erou h3ery h1es he2s5p he4t het4ed heu4 h1f h1h hi5an hi4co high5 h4il2 himer4 h4ina hion4e hi4p hir4l hi3ro hir4p hir4r his3el his4s hith5er hi2v 4hk 4h1l4 hlan4 h2lo hlo3ri 4h1m hmet4 2h1n h5odiz h5ods ho4g hoge4 hol5ar 3hol4e ho4ma home3 hon4a ho5ny 3hood hoon4 hor5at ho5ris hort3e ho5ru hos4e ho5sen hos1p 1hous house3 hov5el 4h5p 4hr4 hree5 hro5niz hro3po 4h1s2 h4sh h4tar ht1en ht5es h4ty hu4g hu4min hun5ke hun4t hus3t4 hu4t h1w h4wart hy3pe hy3ph hy2s 2i1a i2al iam4 iam5ete i2an 4ianc ian3i 4ian4t ia5pe iass4 i4ativ ia4tric i4atu ibe4 ib3era ib5ert ib5ia ib3in ib5it. ib5ite i1bl ib3li i5bo i1br i2b5ri i5bun 4icam 5icap 4icar i4car. i4cara icas5 i4cay iccu4 4iceo 4ich 2ici i5cid ic5ina i2cip ic3ipa i4cly i2c5oc 4i1cr 5icra i4cry ic4te ictu2 ic4t3ua ic3ula ic4um ic5uo i3cur 2id i4dai id5anc id5d ide3al ide4s i2di id5ian idi4ar i5die id3io idi5ou id1it id5iu i3dle i4dom id3ow i4dr i2du id5uo 2ie4 ied4e 5ie5ga ield3 ien5a4 ien4e i5enn i3enti i1er. i3esc i1est i3et 4if. if5ero iff5en if4fr 4ific. i3fie i3fl 4ift 2ig iga5b ig3era ight3i 4igi i3gib ig3il ig3in ig3it i4g4l i2go ig3or ig5ot i5gre igu5i ig1ur i3h 4i5i4 i3j 4ik i1la il3a4b i4lade i2l5am ila5ra i3leg il1er ilev4 il5f il1i il3ia il2ib il3io il4ist 2ilit il2iz ill5ab 4iln il3oq il4ty il5ur il3v i4mag im3age ima5ry imenta5r 4imet im1i im5ida imi5le i5mini 4imit im4ni i3mon i2mu im3ula 2in. i4n3au 4inav incel4 in3cer 4ind in5dling 2ine i3nee iner4ar i5ness 4inga 4inge in5gen 4ingi in5gling 4ingo 4ingu 2ini i5ni. i4nia in3io in1is i5nite. 5initio in3ity 4ink 4inl 2inn 2i1no i4no4c ino4s i4not 2ins in3se insur5a 2int. 2in4th in1u i5nus 4iny 2io 4io. ioge4 io2gr i1ol io4m ion3at ion4ery ion3i io5ph ior3i i4os io5th i5oti io4to i4our 2ip ipe4 iphras4 ip3i ip4ic ip4re4 ip3ul i3qua iq5uef iq3uid iq3ui3t 4ir i1ra ira4b i4rac ird5e ire4de i4ref i4rel4 i4res ir5gi ir1i iri5de ir4is iri3tu 5i5r2iz ir4min iro4g 5iron. ir5ul 2is. is5ag is3ar isas5 2is1c is3ch 4ise is3er 3isf is5han is3hon ish5op is3ib isi4d i5sis is5itiv 4is4k islan4 4isms i2so iso5mer is1p is2pi is4py 4is1s is4sal issen4 is4ses is4ta. is1te is1ti ist4ly 4istral i2su is5us 4ita. ita4bi i4tag 4ita5m i3tan i3tat 2ite it3era i5teri it4es 2ith i1ti 4itia 4i2tic it3ica 5i5tick it3ig it5ill i2tim 2itio 4itis i4tism i2t5o5m 4iton i4tram it5ry 4itt it3uat i5tud it3ul 4itz. i1u 2iv iv3ell iv3en. i4v3er. i4vers. iv5il. iv5io iv1it i5vore iv3o3ro i4v3ot 4i5w ix4o 4iy 4izar izi4 5izont 5ja jac4q ja4p 1je jer5s 4jestie 4jesty jew3 jo4p 5judg 3ka. k3ab k5ag kais4 kal4 k1b k2ed 1kee ke4g ke5li k3en4d k1er kes4 k3est. ke4ty k3f kh4 k1i 5ki. 5k2ic k4ill kilo5 k4im k4in. kin4de k5iness kin4g ki4p kis4 k5ish kk4 k1l 4kley 4kly k1m k5nes 1k2no ko5r kosh4 k3ou kro5n 4k1s2 k4sc ks4l k4sy k5t k1w lab3ic l4abo laci4 l4ade la3dy lag4n lam3o 3land lan4dl lan5et lan4te lar4g lar3i las4e la5tan 4lateli 4lativ 4lav la4v4a 2l1b lbin4 4l1c2 lce4 l3ci 2ld l2de ld4ere ld4eri ldi4 ld5is l3dr l4dri le2a le4bi left5 5leg. 5legg le4mat lem5atic 4len. 3lenc 5lene. 1lent le3ph le4pr lera5b ler4e 3lerg 3l4eri l4ero les2 le5sco 5lesq 3less 5less. l3eva lev4er. lev4era lev4ers 3ley 4leye 2lf l5fr 4l1g4 l5ga lgar3 l4ges lgo3 2l3h li4ag li2am liar5iz li4as li4ato li5bi 5licio li4cor 4lics 4lict. l4icu l3icy l3ida lid5er 3lidi lif3er l4iff li4fl 5ligate 3ligh li4gra 3lik 4l4i4l lim4bl lim3i li4mo l4im4p l4ina 1l4ine lin3ea lin3i link5er li5og 4l4iq lis4p l1it l2it. 5litica l5i5tics liv3er l1iz 4lj lka3 l3kal lka4t l1l l4law l2le l5lea l3lec l3leg l3lel l3le4n l3le4t ll2i l2lin4 l5lina ll4o lloqui5 ll5out l5low 2lm l5met lm3ing l4mod lmon4 2l1n2 3lo. lob5al lo4ci 4lof 3logic l5ogo 3logu lom3er 5long lon4i l3o3niz lood5 5lope. lop3i l3opm lora4 lo4rato lo5rie lor5ou 5los. los5et 5losophiz 5losophy los4t lo4ta loun5d 2lout 4lov 2lp lpa5b l3pha l5phi lp5ing l3pit l4pl l5pr 4l1r 2l1s2 l4sc l2se l4sie 4lt lt5ag ltane5 l1te lten4 ltera4 lth3i l5ties. ltis4 l1tr ltu2 ltur3a lu5a lu3br luch4 lu3ci lu3en luf4 lu5id lu4ma 5lumi l5umn. 5lumnia lu3o luo3r 4lup luss4 lus3te 1lut l5ven l5vet4 2l1w 1ly 4lya 4lyb ly5me ly3no 2lys4 l5yse 1ma 2mab ma2ca ma5chine ma4cl mag5in 5magn 2mah maid5 4mald ma3lig ma5lin mal4li mal4ty 5mania man5is man3iz 4map ma5rine. ma5riz mar4ly mar3v ma5sce mas4e mas1t 5mate math3 ma3tis 4matiza 4m1b mba4t5 m5bil m4b3ing mbi4v 4m5c 4me. 2med 4med. 5media me3die m5e5dy me2g mel5on mel4t me2m mem1o3 1men men4a men5ac men4de 4mene men4i mens4 mensu5 3ment men4te me5on m5ersa 2mes 3mesti me4ta met3al me1te me5thi m4etr 5metric me5trie me3try me4v 4m1f 2mh 5mi. mi3a mid4a mid4g mig4 3milia m5i5lie m4ill min4a 3mind m5inee m4ingl min5gli m5ingly min4t m4inu miot4 m2is mis4er. mis5l mis4ti m5istry 4mith m2iz 4mk 4m1l m1m mma5ry 4m1n mn4a m4nin mn4o 1mo 4mocr 5mocratiz mo2d1 mo4go mois2 moi5se 4mok mo5lest mo3me mon5et mon5ge moni3a mon4ism mon4ist mo3niz monol4 mo3ny. mo2r 4mora. mos2 mo5sey mo3sp moth3 m5ouf 3mous mo2v 4m1p mpara5 mpa5rab mpar5i m3pet mphas4 m2pi mpi4a mp5ies m4p1in m5pir mp5is mpo3ri mpos5ite m4pous mpov5 mp4tr m2py 4m3r 4m1s2 m4sh m5si 4mt 1mu mula5r4 5mult multi3 3mum mun2 4mup mu4u 4mw 1na 2n1a2b n4abu 4nac. na4ca n5act nag5er. nak4 na4li na5lia 4nalt na5mit n2an nanci4 nan4it nank4 nar3c 4nare nar3i nar4l n5arm n4as nas4c nas5ti n2at na3tal nato5miz n2au nau3se 3naut nav4e 4n1b4 ncar5 n4ces. n3cha n5cheo n5chil n3chis nc1in nc4it ncour5a n1cr n1cu n4dai n5dan n1de nd5est. ndi4b n5d2if n1dit n3diz n5duc ndu4r nd2we 2ne. n3ear ne2b neb3u ne2c 5neck 2ned ne4gat neg5ativ 5nege ne4la nel5iz ne5mi ne4mo 1nen 4nene 3neo ne4po ne2q n1er nera5b n4erar n2ere n4er5i ner4r 1nes 2nes. 4nesp 2nest 4nesw 3netic ne4v n5eve ne4w n3f n4gab n3gel nge4n4e n5gere n3geri ng5ha n3gib ng1in n5git n4gla ngov4 ng5sh n1gu n4gum n2gy 4n1h4 nha4 nhab3 nhe4 3n4ia ni3an ni4ap ni3ba ni4bl ni4d ni5di ni4er ni2fi ni5ficat n5igr nik4 n1im ni3miz n1in 5nine. nin4g ni4o 5nis. nis4ta n2it n4ith 3nitio n3itor ni3tr n1j 4nk2 n5kero n3ket nk3in n1kl 4n1l n5m nme4 nmet4 4n1n2 nne4 nni3al nni4v nob4l no3ble n5ocl 4n3o2d 3noe 4nog noge4 nois5i no5l4i 5nologis 3nomic n5o5miz no4mo no3my no4n non4ag non5i n5oniz 4nop 5nop5o5li nor5ab no4rary 4nosc nos4e nos5t no5ta 1nou 3noun nov3el3 nowl3 n1p4 npi4 npre4c n1q n1r nru4 2n1s2 ns5ab nsati4 ns4c n2se n4s3es nsid1 nsig4 n2sl ns3m n4soc ns4pe n5spi nsta5bl n1t nta4b nter3s nt2i n5tib nti4er nti2f n3tine n4t3ing nti4p ntrol5li nt4s ntu3me nu1a nu4d nu5en nuf4fe n3uin 3nu3it n4um nu1me n5umi 3nu4n n3uo nu3tr n1v2 n1w4 nym4 nyp4 4nz n3za 4oa oad3 o5a5les oard3 oas4e oast5e oat5i ob3a3b o5bar obe4l o1bi o2bin ob5ing o3br ob3ul o1ce och4 o3chet ocif3 o4cil o4clam o4cod oc3rac oc5ratiz ocre3 5ocrit octor5a oc3ula o5cure od5ded od3ic odi3o o2do4 odor3 od5uct. od5ucts o4el o5eng o3er oe4ta o3ev o2fi of5ite ofit4t o2g5a5r og5ativ o4gato o1ge o5gene o5geo o4ger o3gie 1o1gis og3it o4gl o5g2ly 3ogniz o4gro ogu5i 1ogy 2ogyn o1h2 ohab5 oi2 oic3es oi3der oiff4 oig4 oi5let o3ing oint5er o5ism oi5son oist5en oi3ter o5j 2ok o3ken ok5ie o1la o4lan olass4 ol2d old1e ol3er o3lesc o3let ol4fi ol2i o3lia o3lice ol5id. o3li4f o5lil ol3ing o5lio o5lis. ol3ish o5lite o5litio o5liv olli4e ol5ogiz olo4r ol5pl ol2t ol3ub ol3ume ol3un o5lus ol2v o2ly om5ah oma5l om5atiz om2be om4bl o2me om3ena om5erse o4met om5etry o3mia om3ic. om3ica o5mid om1in o5mini 5ommend omo4ge o4mon om3pi ompro5 o2n on1a on4ac o3nan on1c 3oncil 2ond on5do o3nen on5est on4gu on1ic o3nio on1is o5niu on3key on4odi on3omy on3s onspi4 onspir5a onsu4 onten4 on3t4i ontif5 on5um onva5 oo2 ood5e ood5i oo4k oop3i o3ord oost5 o2pa ope5d op1er 3opera 4operag 2oph o5phan o5pher op3ing o3pit o5pon o4posi o1pr op1u opy5 o1q o1ra o5ra. o4r3ag or5aliz or5ange ore5a o5real or3ei ore5sh or5est. orew4 or4gu 4o5ria or3ica o5ril or1in o1rio or3ity o3riu or2mi orn2e o5rof or3oug or5pe 3orrh or4se ors5en orst4 or3thi or3thy or4ty o5rum o1ry os3al os2c os4ce o3scop 4oscopi o5scr os4i4e os5itiv os3ito os3ity osi4u os4l o2so os4pa os4po os2ta o5stati os5til os5tit o4tan otele4g ot3er. ot5ers o4tes 4oth oth5esi oth3i4 ot3ic. ot5ica o3tice o3tif o3tis oto5s ou2 ou3bl ouch5i ou5et ou4l ounc5er oun2d ou5v ov4en over4ne over3s ov4ert o3vis oviti4 o5v4ol ow3der ow3el ow5est ow1i own5i o4wo oy1a 1pa pa4ca pa4ce pac4t p4ad 5pagan p3agat p4ai pain4 p4al pan4a pan3el pan4ty pa3ny pa1p pa4pu para5bl par5age par5di 3pare par5el p4a4ri par4is pa2te pa5ter 5pathic pa5thy pa4tric pav4 3pay 4p1b pd4 4pe. 3pe4a pear4l pe2c 2p2ed 3pede 3pedi pedia4 ped4ic p4ee pee4d pek4 pe4la peli4e pe4nan p4enc pen4th pe5on p4era. pera5bl p4erag p4eri peri5st per4mal perme5 p4ern per3o per3ti pe5ru per1v pe2t pe5ten pe5tiz 4pf 4pg 4ph. phar5i phe3no ph4er ph4es. ph1ic 5phie ph5ing 5phisti 3phiz ph2l 3phob 3phone 5phoni pho4r 4phs ph3t 5phu 1phy pi3a pian4 pi4cie pi4cy p4id p5ida pi3de 5pidi 3piec pi3en pi4grap pi3lo pi2n p4in. pind4 p4ino 3pi1o pion4 p3ith pi5tha pi2tu 2p3k2 1p2l2 3plan plas5t pli3a pli5er 4plig pli4n ploi4 plu4m plum4b 4p1m 2p3n po4c 5pod. po5em po3et5 5po4g poin2 5point poly5t po4ni po4p 1p4or po4ry 1pos pos1s p4ot po4ta 5poun 4p1p ppa5ra p2pe p4ped p5pel p3pen p3per p3pet ppo5site pr2 pray4e 5preci pre5co pre3em pref5ac pre4la pre3r p3rese 3press pre5ten pre3v 5pri4e prin4t3 pri4s pris3o p3roca prof5it pro3l pros3e pro1t 2p1s2 p2se ps4h p4sib 2p1t pt5a4b p2te p2th pti3m ptu4r p4tw pub3 pue4 puf4 pul3c pu4m pu2n pur4r 5pus pu2t 5pute put3er pu3tr put4ted put4tin p3w qu2 qua5v 2que. 3quer 3quet 2rab ra3bi rach4e r5acl raf5fi raf4t r2ai ra4lo ram3et r2ami rane5o ran4ge r4ani ra5no rap3er 3raphy rar5c rare4 rar5ef 4raril r2as ration4 rau4t ra5vai rav3el ra5zie r1b r4bab r4bag rbi2 rbi4f r2bin r5bine rb5ing. rb4o r1c r2ce rcen4 r3cha rch4er r4ci4b rc4it rcum3 r4dal rd2i rdi4a rdi4er rdin4 rd3ing 2re. re1al re3an re5arr 5reav re4aw r5ebrat rec5oll rec5ompe re4cre 2r2ed re1de re3dis red5it re4fac re2fe re5fer. re3fi re4fy reg3is re5it re1li re5lu r4en4ta ren4te re1o re5pin re4posi re1pu r1er4 r4eri rero4 re5ru r4es. re4spi ress5ib res2t re5stal re3str re4ter re4ti4z re3tri reu2 re5uti rev2 re4val rev3el r5ev5er. re5vers re5vert re5vil rev5olu re4wh r1f rfu4 r4fy rg2 rg3er r3get r3gic rgi4n rg3ing r5gis r5git r1gl rgo4n r3gu rh4 4rh. 4rhal ri3a ria4b ri4ag r4ib rib3a ric5as r4ice 4rici 5ricid ri4cie r4ico rid5er ri3enc ri3ent ri1er ri5et rig5an 5rigi ril3iz 5riman rim5i 3rimo rim4pe r2ina 5rina. rin4d rin4e rin4g ri1o 5riph riph5e ri2pl rip5lic r4iq r2is r4is. ris4c r3ish ris4p ri3ta3b r5ited. rit5er. rit5ers rit3ic ri2tu rit5ur riv5el riv3et riv3i r3j r3ket rk4le rk4lin r1l rle4 r2led r4lig r4lis rl5ish r3lo4 r1m rma5c r2me r3men rm5ers rm3ing r4ming. r4mio r3mit r4my r4nar r3nel r4ner r5net r3ney r5nic r1nis4 r3nit r3niv rno4 r4nou r3nu rob3l r2oc ro3cr ro4e ro1fe ro5fil rok2 ro5ker 5role. rom5ete rom4i rom4p ron4al ron4e ro5n4is ron4ta 1room 5root ro3pel rop3ic ror3i ro5ro ros5per ros4s ro4the ro4ty ro4va rov5el rox5 r1p r4pea r5pent rp5er. r3pet rp4h4 rp3ing r3po r1r4 rre4c rre4f r4reo rre4st rri4o rri4v rron4 rros4 rrys4 4rs2 r1sa rsa5ti rs4c r2se r3sec rse4cr rs5er. rs3es rse5v2 r1sh r5sha r1si r4si4b rson3 r1sp r5sw rtach4 r4tag r3teb rten4d rte5o r1ti rt5ib rti4d r4tier r3tig rtil3i rtil4l r4tily r4tist r4tiv r3tri rtroph4 rt4sh ru3a ru3e4l ru3en ru4gl ru3in rum3pl ru2n runk5 run4ty r5usc ruti5n rv4e rvel4i r3ven rv5er. r5vest r3vey r3vic rvi4v r3vo r1w ry4c 5rynge ry3t sa2 2s1ab 5sack sac3ri s3act 5sai salar4 sal4m sa5lo sal4t 3sanc san4de s1ap sa5ta 5sa3tio sat3u sau4 sa5vor 5saw 4s5b scan4t5 sca4p scav5 s4ced 4scei s4ces sch2 s4cho 3s4cie 5scin4d scle5 s4cli scof4 4scopy scour5a s1cu 4s5d 4se. se4a seas4 sea5w se2c3o 3sect 4s4ed se4d4e s5edl se2g seg3r 5sei se1le 5self 5selv 4seme se4mol sen5at 4senc sen4d s5ened sen5g s5enin 4sentd 4sentl sep3a3 4s1er. s4erl ser4o 4servo s1e4s se5sh ses5t 5se5um 5sev sev3en sew4i 5sex 4s3f 2s3g s2h 2sh. sh1er 5shev sh1in sh3io 3ship shiv5 sho4 sh5old shon3 shor4 short5 4shw si1b s5icc 3side. 5sides 5sidi si5diz 4signa sil4e 4sily 2s1in s2ina 5sine. s3ing 1sio 5sion sion5a si2r sir5a 1sis 3sitio 5siu 1siv 5siz sk2 4ske s3ket sk5ine sk5ing s1l2 s3lat s2le slith5 2s1m s3ma small3 sman3 smel4 s5men 5smith smol5d4 s1n4 1so so4ce soft3 so4lab sol3d2 so3lic 5solv 3som 3s4on. sona4 son4g s4op 5sophic s5ophiz s5ophy sor5c sor5d 4sov so5vi 2spa 5spai spa4n spen4d 2s5peo 2sper s2phe 3spher spho5 spil4 sp5ing 4spio s4ply s4pon spor4 4spot squal4l s1r 2ss s1sa ssas3 s2s5c s3sel s5seng s4ses. s5set s1si s4sie ssi4er ss5ily s4sl ss4li s4sn sspend4 ss2t ssur5a ss5w 2st. s2tag s2tal stam4i 5stand s4ta4p 5stat. s4ted stern5i s5tero ste2w stew5a s3the st2i s4ti. s5tia s1tic 5stick s4tie s3tif st3ing 5stir s1tle 5stock stom3a 5stone s4top 3store st4r s4trad 5stratu s4tray s4trid 4stry 4st3w s2ty 1su su1al su4b3 su2g3 su5is suit3 s4ul su2m sum3i su2n su2r 4sv sw2 4swo s4y 4syc 3syl syn5o sy5rin 1ta 3ta. 2tab ta5bles 5taboliz 4taci ta5do 4taf4 tai5lo ta2l ta5la tal5en tal3i 4talk tal4lis ta5log ta5mo tan4de tanta3 ta5per ta5pl tar4a 4tarc 4tare ta3riz tas4e ta5sy 4tatic ta4tur taun4 tav4 2taw tax4is 2t1b 4tc t4ch tch5et 4t1d 4te. tead4i 4teat tece4 5tect 2t1ed te5di 1tee teg4 te5ger te5gi 3tel. teli4 5tels te2ma2 tem3at 3tenan 3tenc 3tend 4tenes 1tent ten4tag 1teo te4p te5pe ter3c 5ter3d 1teri ter5ies ter3is teri5za 5ternit ter5v 4tes. 4tess t3ess. teth5e 3teu 3tex 4tey 2t1f 4t1g 2th. than4 th2e 4thea th3eas the5at the3is 3thet th5ic. th5ica 4thil 5think 4thl th5ode 5thodic 4thoo thor5it tho5riz 2ths 1tia ti4ab ti4ato 2ti2b 4tick t4ico t4ic1u 5tidi 3tien tif2 ti5fy 2tig 5tigu till5in 1tim 4timp tim5ul 2t1in t2ina 3tine. 3tini 1tio ti5oc tion5ee 5tiq ti3sa 3tise tis4m ti5so tis4p 5tistica ti3tl ti4u 1tiv tiv4a 1tiz ti3za ti3zen 2tl t5la tlan4 3tle. 3tled 3tles. t5let. t5lo 4t1m tme4 2t1n2 1to to3b to5crat 4todo 2tof to2gr to5ic to2ma tom4b to3my ton4ali to3nat 4tono 4tony to2ra to3rie tor5iz tos2 5tour 4tout to3war 4t1p 1tra tra3b tra5ch traci4 trac4it trac4te tras4 tra5ven trav5es5 tre5f tre4m trem5i 5tria tri5ces 5tricia 4trics 2trim tri4v tro5mi tron5i 4trony tro5phe tro3sp tro3v tru5i trus4 4t1s2 t4sc tsh4 t4sw 4t3t2 t4tes t5to ttu4 1tu tu1a tu3ar tu4bi tud2 4tue 4tuf4 5tu3i 3tum tu4nis 2t3up. 3ture 5turi tur3is tur5o tu5ry 3tus 4tv tw4 4t1wa twis4 4two 1ty 4tya 2tyl type3 ty5ph 4tz tz4e 4uab uac4 ua5na uan4i uar5ant uar2d uar3i uar3t u1at uav4 ub4e u4bel u3ber u4bero u1b4i u4b5ing u3ble. u3ca uci4b uc4it ucle3 u3cr u3cu u4cy ud5d ud3er ud5est udev4 u1dic ud3ied ud3ies ud5is u5dit u4don ud4si u4du u4ene uens4 uen4te uer4il 3ufa u3fl ugh3en ug5in 2ui2 uil5iz ui4n u1ing uir4m uita4 uiv3 uiv4er. u5j 4uk u1la ula5b u5lati ulch4 5ulche ul3der ul4e u1len ul4gi ul2i u5lia ul3ing ul5ish ul4lar ul4li4b ul4lis 4ul3m u1l4o 4uls uls5es ul1ti ultra3 4ultu u3lu ul5ul ul5v um5ab um4bi um4bly u1mi u4m3ing umor5o um2p unat4 u2ne un4er u1ni un4im u2nin un5ish uni3v un3s4 un4sw unt3ab un4ter. un4tes unu4 un5y un5z u4ors u5os u1ou u1pe uper5s u5pia up3ing u3pl up3p upport5 upt5ib uptu4 u1ra 4ura. u4rag u4ras ur4be urc4 ur1d ure5at ur4fer ur4fr u3rif uri4fic ur1in u3rio u1rit ur3iz ur2l url5ing. ur4no uros4 ur4pe ur4pi urs5er ur5tes ur3the urti4 ur4tie u3ru 2us u5sad u5san us4ap usc2 us3ci use5a u5sia u3sic us4lin us1p us5sl us5tere us1tr u2su usur4 uta4b u3tat 4ute. 4utel 4uten uten4i 4u1t2i uti5liz u3tine ut3ing ution5a u4tis 5u5tiz u4t1l ut5of uto5g uto5matic u5ton u4tou uts4 u3u uu4m u1v2 uxu3 uz4e 1va 5va. 2v1a4b vac5il vac3u vag4 va4ge va5lie val5o val1u va5mo va5niz va5pi var5ied 3vat 4ve. 4ved veg3 v3el. vel3li ve4lo v4ely ven3om v5enue v4erd 5vere. v4erel v3eren ver5enc v4eres ver3ie vermi4n 3verse ver3th v4e2s 4ves. ves4te ve4te vet3er ve4ty vi5ali 5vian 5vide. 5vided 4v3iden 5vides 5vidi v3if vi5gn vik4 2vil 5vilit v3i3liz v1in 4vi4na v2inc vin5d 4ving vio3l v3io4r vi1ou vi4p vi5ro vis3it vi3so vi3su 4viti vit3r 4vity 3viv 5vo. voi4 3vok vo4la v5ole 5volt 3volv vom5i vor5ab vori4 vo4ry vo4ta 4votee 4vv4 v4y w5abl 2wac wa5ger wag5o wait5 w5al. wam4 war4t was4t wa1te wa5ver w1b wea5rie weath3 wed4n weet3 wee5v wel4l w1er west3 w3ev whi4 wi2 wil2 will5in win4de win4g wir4 3wise with3 wiz5 w4k wl4es wl3in w4no 1wo2 wom1 wo5ven w5p wra4 wri4 writa4 w3sh ws4l ws4pe w5s4t 4wt wy4 x1a xac5e x4ago xam3 x4ap xas5 x3c2 x1e xe4cuto x2ed xer4i xe5ro x1h xhi2 xhil5 xhu4 x3i xi5a xi5c xi5di x4ime xi5miz x3o x4ob x3p xpan4d xpecto5 xpe3d x1t2 x3ti x1u xu3a xx4 y5ac 3yar4 y5at y1b y1c y2ce yc5er y3ch ych4e ycom4 ycot4 y1d y5ee y1er y4erf yes4 ye4t y5gi 4y3h y1i y3la ylla5bl y3lo y5lu ymbol5 yme4 ympa3 yn3chr yn5d yn5g yn5ic 5ynx y1o4 yo5d y4o5g yom4 yo5net y4ons y4os y4ped yper5 yp3i y3po y4poc yp2ta y5pu yra5m yr5ia y3ro yr4r ys4c y3s2e ys3ica ys3io 3ysis y4so yss4 ys1t ys3ta ysur4 y3thin yt3ic y1w za1 z5a2b zar2 4zb 2ze ze4n ze4p z1er ze3ro zet4 2z1i z4il z4is 5zl 4zm 1zo zo4m zo5ol zte4 4z1z2 z4zy \x00")
 
-// en_exceptions - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyen.h:406
+// en_exceptions - transpiled function from  hyen.h:406
 var en_exceptions []byte = []byte("as-so-ciate as-so-ciates dec-li-na-tion oblig-a-tory phil-an-thropic present presents project projects reci-procity re-cog-ni-zance ref-or-ma-tion ret-ri-bu-tion ta-ble \x00")
 
-// hwword - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:15
+// hwword - transpiled function from  hyph.c:15
 // hyphenation
 // the hyphenation dictionary (.hw)
 // buffer for .hw words
 var hwword []byte = make([]byte, 262144)
 
-// hwhyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:16
+// hwhyph - transpiled function from  hyph.c:16
 // buffer for .hw hyphenations
 var hwhyph []byte = make([]byte, 262144)
 
-// hwword_len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:17
+// hwword_len - transpiled function from  hyph.c:17
 // used hwword[] length
 var hwword_len int32
 
-// hwdict - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:18
+// hwdict - transpiled function from  hyph.c:18
 // map words to their index in hwoff[]
 var hwdict []dict
 
-// hwoff - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:19
+// hwoff - transpiled function from  hyph.c:19
 // the offset of words in hwword[]
 var hwoff []int32 = make([]int32, 16384)
 
-// hw_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:20
+// hw_n - transpiled function from  hyph.c:20
 // the number of dictionary words
 var hw_n int32
 
-// hy_cget - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:23
+// hy_cget - transpiled function from  hyph.c:23
 func hy_cget(d []byte, s []byte) int32 {
 	// read a single character from s into d; return the number of characters read
 	var i int32
@@ -4423,7 +4423,7 @@ func hy_cget(d []byte, s []byte) int32 {
 	return 1 + utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], d)
 }
 
-// hy_cput - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:54
+// hy_cput - transpiled function from  hyph.c:54
 func hy_cput(d []byte, s []byte) int32 {
 	if noarch.Not(s[0]) || noarch.Not(s[1]) || utf8one(s) != 0 {
 		// append character s to d; return the number of characters written
@@ -4436,7 +4436,7 @@ func hy_cput(d []byte, s []byte) int32 {
 	return noarch.Strlen(d)
 }
 
-// hw_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:66
+// hw_add - transpiled function from  hyph.c:66
 func hw_add(s []byte) {
 	// insert word s into hwword[] and hwhyph[]
 	var p []byte = hwword[0+hwword_len:]
@@ -4475,7 +4475,7 @@ func hw_add(s []byte) {
 	hw_n++
 }
 
-// hw_lookup - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:88
+// hw_lookup - transpiled function from  hyph.c:88
 func hw_lookup(word []byte, hyph []byte) int32 {
 	var word2 []byte = []byte{byte(0), '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00', '\x00'}
 	var hyph2 []byte
@@ -4502,7 +4502,7 @@ func hw_lookup(word []byte, hyph []byte) int32 {
 	return 0
 }
 
-// tr_hw - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:108
+// tr_hw - transpiled function from  hyph.c:108
 func tr_hw(args [][]byte) {
 	var word []byte = make([]byte, 256)
 	var c []byte
@@ -4520,36 +4520,36 @@ func tr_hw(args [][]byte) {
 	}
 }
 
-// hyinit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:127
+// hyinit - transpiled function from  hyph.c:127
 // the tex hyphenation algorithm
 // hyphenation data initialized
 var hyinit int32
 
-// hypats - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:128
+// hypats - transpiled function from  hyph.c:128
 // hyphenation patterns
 var hypats []byte = make([]byte, 262144)
 
-// hynums - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:129
+// hynums - transpiled function from  hyph.c:129
 // hyphenation pattern numbers
 var hynums []byte = make([]byte, 262144)
 
-// hypats_len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:130
+// hypats_len - transpiled function from  hyph.c:130
 // used hypats[] and hynums[] length
 var hypats_len int32
 
-// hydict - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:131
+// hydict - transpiled function from  hyph.c:131
 // map patterns to their index in hyoff[]
 var hydict []dict
 
-// hyoff - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:132
+// hyoff - transpiled function from  hyph.c:132
 // the offset of this pattern in hypats[]
 var hyoff []int32 = make([]int32, 16384)
 
-// hy_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:133
+// hy_n - transpiled function from  hyph.c:133
 // the number of patterns
 var hy_n int32
 
-// hy_find - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:136
+// hy_find - transpiled function from  hyph.c:136
 func hy_find(s []byte, n []byte) {
 	// find the patterns matching s and update hyphenation values in n
 	var plen int32
@@ -4573,7 +4573,7 @@ func hy_find(s []byte, n []byte) {
 	}
 }
 
-// hy_dohyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:153
+// hy_dohyph - transpiled function from  hyph.c:153
 func hy_dohyph(hyph []byte, word []byte, flg int32) {
 	// mark the hyphenation points of word in hyph
 	// cleaned-up word[]; "Abc" -> ".abc."
@@ -4609,7 +4609,7 @@ func hy_dohyph(hyph []byte, word []byte, flg int32) {
 	}
 }
 
-// hy_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:178
+// hy_add - transpiled function from  hyph.c:178
 func hy_add(s []byte) {
 	// insert pattern s into hypats[] and hynums[]
 	var p []byte = hypats[0+hypats_len:]
@@ -4648,20 +4648,20 @@ func hy_add(s []byte) {
 	hy_n++
 }
 
-// hcodedict - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:201
+// hcodedict - transpiled function from  hyph.c:201
 // .hcode request
 var hcodedict []dict
 
-// hcodesrc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:202
+// hcodesrc - transpiled function from  hyph.c:202
 var hcodesrc [][]byte = make([][]byte, 512)
 
-// hcodedst - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:203
+// hcodedst - transpiled function from  hyph.c:203
 var hcodedst [][]byte = make([][]byte, 512)
 
-// hcode_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:204
+// hcode_n - transpiled function from  hyph.c:204
 var hcode_n int32
 
-// hcode_mapchar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:207
+// hcode_mapchar - transpiled function from  hyph.c:207
 func hcode_mapchar(s []byte) int32 {
 	// replace the character in s after .hcode mapping; returns s's new length
 	var i int32 = dict_get(hcodedict, s)
@@ -4678,7 +4678,7 @@ func hcode_mapchar(s []byte) int32 {
 	return noarch.Strlen(s)
 }
 
-// hcode_strcpy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:218
+// hcode_strcpy - transpiled function from  hyph.c:218
 func hcode_strcpy(d []byte, s []byte, map_ []int32, dots int32) {
 	// copy s to d after .hcode mappings; s[map[j]] corresponds to d[j]
 	var c []byte = make([]byte, 32)
@@ -4709,7 +4709,7 @@ func hcode_strcpy(d []byte, s []byte, map_ []int32, dots int32) {
 	d[di] = '\x00'
 }
 
-// hcode_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:235
+// hcode_add - transpiled function from  hyph.c:235
 func hcode_add(c1 []byte, c2 []byte) {
 	var i int32 = dict_get(hcodedict, c1)
 	if i >= 0 {
@@ -4722,7 +4722,7 @@ func hcode_add(c1 []byte, c2 []byte) {
 	}
 }
 
-// tr_hcode - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:248
+// tr_hcode - transpiled function from  hyph.c:248
 func tr_hcode(args [][]byte) {
 	var c1 []byte = make([]byte, 32)
 	var c2 []byte = make([]byte, 32)
@@ -4732,7 +4732,7 @@ func tr_hcode(args [][]byte) {
 	}
 }
 
-// hyph_readpatterns - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:256
+// hyph_readpatterns - transpiled function from  hyph.c:256
 func hyph_readpatterns(s []byte) {
 	var word []byte = make([]byte, 256)
 	var d []byte
@@ -4759,7 +4759,7 @@ func hyph_readpatterns(s []byte) {
 	}
 }
 
-// hyph_readexceptions - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:271
+// hyph_readexceptions - transpiled function from  hyph.c:271
 func hyph_readexceptions(s []byte) {
 	var word []byte = make([]byte, 256)
 	var d []byte
@@ -4786,7 +4786,7 @@ func hyph_readexceptions(s []byte) {
 	}
 }
 
-// hyphenate - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:286
+// hyphenate - transpiled function from  hyph.c:286
 func hyphenate(hyph []byte, word []byte, flg int32) {
 	if noarch.Not(hyinit) {
 		hyinit = 1
@@ -4798,11 +4798,11 @@ func hyphenate(hyph []byte, word []byte, flg int32) {
 	}
 }
 
-// hycase - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:298
+// hycase - transpiled function from  hyph.c:298
 // lowercase-uppercase character mapping
 var hycase [][][]byte = [][][]byte{{[]byte("a\x00"), []byte("A\x00")}, {[]byte("á\x00"), []byte("Á\x00")}, {[]byte("à\x00"), []byte("À\x00")}, {[]byte("ă\x00"), []byte("Ă\x00")}, {[]byte("â\x00"), []byte("Â\x00")}, {[]byte("ǎ\x00"), []byte("Ǎ\x00")}, {[]byte("å\x00"), []byte("Å\x00")}, {[]byte("ä\x00"), []byte("Ä\x00")}, {[]byte("ã\x00"), []byte("Ã\x00")}, {[]byte("ą\x00"), []byte("Ą\x00")}, {[]byte("ā\x00"), []byte("Ā\x00")}, {[]byte("æ\x00"), []byte("Æ\x00")}, {[]byte("ǽ\x00"), []byte("Ǽ\x00")}, {[]byte("b\x00"), []byte("B\x00")}, {[]byte("c\x00"), []byte("C\x00")}, {[]byte("ć\x00"), []byte("Ć\x00")}, {[]byte("ĉ\x00"), []byte("Ĉ\x00")}, {[]byte("č\x00"), []byte("Č\x00")}, {[]byte("ç\x00"), []byte("Ç\x00")}, {[]byte("d\x00"), []byte("D\x00")}, {[]byte("ď\x00"), []byte("Ď\x00")}, {[]byte("đ\x00"), []byte("Đ\x00")}, {[]byte("ḍ\x00"), []byte("Ḍ\x00")}, {[]byte("ð\x00"), []byte("Ð\x00")}, {[]byte("e\x00"), []byte("E\x00")}, {[]byte("é\x00"), []byte("É\x00")}, {[]byte("è\x00"), []byte("È\x00")}, {[]byte("ê\x00"), []byte("Ê\x00")}, {[]byte("ě\x00"), []byte("Ě\x00")}, {[]byte("ë\x00"), []byte("Ë\x00")}, {[]byte("ė\x00"), []byte("Ė\x00")}, {[]byte("ę\x00"), []byte("Ę\x00")}, {[]byte("ē\x00"), []byte("Ē\x00")}, {[]byte("f\x00"), []byte("F\x00")}, {[]byte("g\x00"), []byte("G\x00")}, {[]byte("ğ\x00"), []byte("Ğ\x00")}, {[]byte("ĝ\x00"), []byte("Ĝ\x00")}, {[]byte("ģ\x00"), []byte("Ģ\x00")}, {[]byte("h\x00"), []byte("H\x00")}, {[]byte("ĥ\x00"), []byte("Ĥ\x00")}, {[]byte("ḥ\x00"), []byte("Ḥ\x00")}, {[]byte("ḫ\x00"), []byte("Ḫ\x00")}, {[]byte("i\x00"), []byte("I\x00")}, {[]byte("ı\x00"), []byte("I\x00")}, {[]byte("í\x00"), []byte("Í\x00")}, {[]byte("ì\x00"), []byte("Ì\x00")}, {[]byte("î\x00"), []byte("Î\x00")}, {[]byte("ǐ\x00"), []byte("Ǐ\x00")}, {[]byte("ï\x00"), []byte("Ï\x00")}, {[]byte("į\x00"), []byte("Į\x00")}, {[]byte("ī\x00"), []byte("Ī\x00")}, {[]byte("j\x00"), []byte("J\x00")}, {[]byte("ĵ\x00"), []byte("Ĵ\x00")}, {[]byte("k\x00"), []byte("K\x00")}, {[]byte("ķ\x00"), []byte("Ķ\x00")}, {[]byte("l\x00"), []byte("L\x00")}, {[]byte("ľ\x00"), []byte("Ľ\x00")}, {[]byte("ł\x00"), []byte("Ł\x00")}, {[]byte("ļ\x00"), []byte("Ļ\x00")}, {[]byte("ḷ\x00"), []byte("Ḷ\x00")}, {[]byte("m\x00"), []byte("M\x00")}, {[]byte("ṁ\x00"), []byte("Ṁ\x00")}, {[]byte("ṃ\x00"), []byte("Ṃ\x00")}, {[]byte("n\x00"), []byte("N\x00")}, {[]byte("ń\x00"), []byte("Ń\x00")}, {[]byte("ň\x00"), []byte("Ň\x00")}, {[]byte("ñ\x00"), []byte("Ñ\x00")}, {[]byte("ṅ\x00"), []byte("Ṅ\x00")}, {[]byte("ņ\x00"), []byte("Ņ\x00")}, {[]byte("ṇ\x00"), []byte("Ṇ\x00")}, {[]byte("œ\x00"), []byte("Œ\x00")}, {[]byte("o\x00"), []byte("O\x00")}, {[]byte("ó\x00"), []byte("Ó\x00")}, {[]byte("ò\x00"), []byte("Ò\x00")}, {[]byte("ô\x00"), []byte("Ô\x00")}, {[]byte("ǒ\x00"), []byte("Ǒ\x00")}, {[]byte("ö\x00"), []byte("Ö\x00")}, {[]byte("ő\x00"), []byte("Ő\x00")}, {[]byte("õ\x00"), []byte("Õ\x00")}, {[]byte("ø\x00"), []byte("Ø\x00")}, {[]byte("ō\x00"), []byte("Ō\x00")}, {[]byte("p\x00"), []byte("P\x00")}, {[]byte("q\x00"), []byte("Q\x00")}, {[]byte("r\x00"), []byte("R\x00")}, {[]byte("ŕ\x00"), []byte("Ŕ\x00")}, {[]byte("ř\x00"), []byte("Ř\x00")}, {[]byte("s\x00"), []byte("S\x00")}, {[]byte("ś\x00"), []byte("Ś\x00")}, {[]byte("ŝ\x00"), []byte("Ŝ\x00")}, {[]byte("š\x00"), []byte("Š\x00")}, {[]byte("ş\x00"), []byte("Ş\x00")}, {[]byte("ṣ\x00"), []byte("Ṣ\x00")}, {[]byte("t\x00"), []byte("T\x00")}, {[]byte("ť\x00"), []byte("Ť\x00")}, {[]byte("ț\x00"), []byte("Ț\x00")}, {[]byte("ṭ\x00"), []byte("Ṭ\x00")}, {[]byte("u\x00"), []byte("U\x00")}, {[]byte("ú\x00"), []byte("Ú\x00")}, {[]byte("ù\x00"), []byte("Ù\x00")}, {[]byte("ŭ\x00"), []byte("Ŭ\x00")}, {[]byte("û\x00"), []byte("Û\x00")}, {[]byte("ǔ\x00"), []byte("Ǔ\x00")}, {[]byte("ů\x00"), []byte("Ů\x00")}, {[]byte("ü\x00"), []byte("Ü\x00")}, {[]byte("ǘ\x00"), []byte("Ǘ\x00")}, {[]byte("ǜ\x00"), []byte("Ǜ\x00")}, {[]byte("ǚ\x00"), []byte("Ǚ\x00")}, {[]byte("ǖ\x00"), []byte("Ǖ\x00")}, {[]byte("ű\x00"), []byte("Ű\x00")}, {[]byte("ų\x00"), []byte("Ų\x00")}, {[]byte("ū\x00"), []byte("Ū\x00")}, {[]byte("v\x00"), []byte("V\x00")}, {[]byte("w\x00"), []byte("W\x00")}, {[]byte("x\x00"), []byte("X\x00")}, {[]byte("y\x00"), []byte("Y\x00")}, {[]byte("ý\x00"), []byte("Ý\x00")}, {[]byte("z\x00"), []byte("Z\x00")}, {[]byte("ź\x00"), []byte("Ź\x00")}, {[]byte("ž\x00"), []byte("Ž\x00")}, {[]byte("ż\x00"), []byte("Ż\x00")}, {[]byte("þ\x00"), []byte("Þ\x00")}, {[]byte("α\x00"), []byte("Α\x00")}, {[]byte("ά\x00"), []byte("Ά\x00")}, {[]byte("β\x00"), []byte("Β\x00")}, {[]byte("ϐ\x00"), []byte("Β\x00")}, {[]byte("γ\x00"), []byte("Γ\x00")}, {[]byte("δ\x00"), []byte("Δ\x00")}, {[]byte("ϫ\x00"), []byte("Ϫ\x00")}, {[]byte("ε\x00"), []byte("Ε\x00")}, {[]byte("έ\x00"), []byte("Έ\x00")}, {[]byte("ζ\x00"), []byte("Ζ\x00")}, {[]byte("ϩ\x00"), []byte("Ϩ\x00")}, {[]byte("η\x00"), []byte("Η\x00")}, {[]byte("ή\x00"), []byte("Ή\x00")}, {[]byte("θ\x00"), []byte("Θ\x00")}, {[]byte("ι\x00"), []byte("Ι\x00")}, {[]byte("ί\x00"), []byte("Ί\x00")}, {[]byte("ϊ\x00"), []byte("Ϊ\x00")}, {[]byte("κ\x00"), []byte("Κ\x00")}, {[]byte("ϧ\x00"), []byte("Ϧ\x00")}, {[]byte("λ\x00"), []byte("Λ\x00")}, {[]byte("μ\x00"), []byte("Μ\x00")}, {[]byte("ν\x00"), []byte("Ν\x00")}, {[]byte("ξ\x00"), []byte("Ξ\x00")}, {[]byte("ο\x00"), []byte("Ο\x00")}, {[]byte("ό\x00"), []byte("Ό\x00")}, {[]byte("π\x00"), []byte("Π\x00")}, {[]byte("ρ\x00"), []byte("Ρ\x00")}, {[]byte("ϲ\x00"), []byte("Ϲ\x00")}, {[]byte("σ\x00"), []byte("Σ\x00")}, {[]byte("ς\x00"), []byte("Σ\x00")}, {[]byte("ϭ\x00"), []byte("Ϭ\x00")}, {[]byte("τ\x00"), []byte("Τ\x00")}, {[]byte("ϯ\x00"), []byte("Ϯ\x00")}, {[]byte("υ\x00"), []byte("Υ\x00")}, {[]byte("ύ\x00"), []byte("Ύ\x00")}, {[]byte("ϋ\x00"), []byte("Ϋ\x00")}, {[]byte("φ\x00"), []byte("Φ\x00")}, {[]byte("ϥ\x00"), []byte("Ϥ\x00")}, {[]byte("χ\x00"), []byte("Χ\x00")}, {[]byte("ψ\x00"), []byte("Ψ\x00")}, {[]byte("ϣ\x00"), []byte("Ϣ\x00")}, {[]byte("ω\x00"), []byte("Ω\x00")}, {[]byte("ώ\x00"), []byte("Ώ\x00")}, {[]byte("а\x00"), []byte("А\x00")}, {[]byte("ӓ\x00"), []byte("Ӓ\x00")}, {[]byte("б\x00"), []byte("Б\x00")}, {[]byte("в\x00"), []byte("В\x00")}, {[]byte("г\x00"), []byte("Г\x00")}, {[]byte("ґ\x00"), []byte("Ґ\x00")}, {[]byte("д\x00"), []byte("Д\x00")}, {[]byte("ђ\x00"), []byte("Ђ\x00")}, {[]byte("е\x00"), []byte("Е\x00")}, {[]byte("ѐ\x00"), []byte("Ѐ\x00")}, {[]byte("є\x00"), []byte("Є\x00")}, {[]byte("ё\x00"), []byte("Ё\x00")}, {[]byte("ж\x00"), []byte("Ж\x00")}, {[]byte("з\x00"), []byte("З\x00")}, {[]byte("ѕ\x00"), []byte("Ѕ\x00")}, {[]byte("и\x00"), []byte("И\x00")}, {[]byte("ѝ\x00"), []byte("Ѝ\x00")}, {[]byte("ӥ\x00"), []byte("Ӥ\x00")}, {[]byte("і\x00"), []byte("І\x00")}, {[]byte("ї\x00"), []byte("Ї\x00")}, {[]byte("й\x00"), []byte("Й\x00")}, {[]byte("ј\x00"), []byte("Ј\x00")}, {[]byte("к\x00"), []byte("К\x00")}, {[]byte("л\x00"), []byte("Л\x00")}, {[]byte("љ\x00"), []byte("Љ\x00")}, {[]byte("м\x00"), []byte("М\x00")}, {[]byte("н\x00"), []byte("Н\x00")}, {[]byte("њ\x00"), []byte("Њ\x00")}, {[]byte("ᲂ\x00"), []byte("О\x00")}, {[]byte("о\x00"), []byte("О\x00")}, {[]byte("ӧ\x00"), []byte("Ӧ\x00")}, {[]byte("ө\x00"), []byte("Ө\x00")}, {[]byte("п\x00"), []byte("П\x00")}, {[]byte("р\x00"), []byte("Р\x00")}, {[]byte("с\x00"), []byte("С\x00")}, {[]byte("т\x00"), []byte("Т\x00")}, {[]byte("ћ\x00"), []byte("Ћ\x00")}, {[]byte("у\x00"), []byte("У\x00")}, {[]byte("ӱ\x00"), []byte("Ӱ\x00")}, {[]byte("ү\x00"), []byte("Ү\x00")}, {[]byte("ў\x00"), []byte("Ў\x00")}, {[]byte("ф\x00"), []byte("Ф\x00")}, {[]byte("х\x00"), []byte("Х\x00")}, {[]byte("ц\x00"), []byte("Ц\x00")}, {[]byte("ч\x00"), []byte("Ч\x00")}, {[]byte("џ\x00"), []byte("Џ\x00")}, {[]byte("ш\x00"), []byte("Ш\x00")}, {[]byte("щ\x00"), []byte("Щ\x00")}, {[]byte("ᲆ\x00"), []byte("Ъ\x00")}, {[]byte("ъ\x00"), []byte("Ъ\x00")}, {[]byte("ы\x00"), []byte("Ы\x00")}, {[]byte("ӹ\x00"), []byte("Ӹ\x00")}, {[]byte("ь\x00"), []byte("Ь\x00")}, {[]byte("э\x00"), []byte("Э\x00")}, {[]byte("ӭ\x00"), []byte("Ӭ\x00")}, {[]byte("ю\x00"), []byte("Ю\x00")}, {[]byte("я\x00"), []byte("Я\x00")}, {[]byte("ա\x00"), []byte("Ա\x00")}, {[]byte("բ\x00"), []byte("Բ\x00")}, {[]byte("գ\x00"), []byte("Գ\x00")}, {[]byte("դ\x00"), []byte("Դ\x00")}, {[]byte("ե\x00"), []byte("Ե\x00")}, {[]byte("զ\x00"), []byte("Զ\x00")}, {[]byte("է\x00"), []byte("Է\x00")}, {[]byte("ը\x00"), []byte("Ը\x00")}, {[]byte("թ\x00"), []byte("Թ\x00")}, {[]byte("ժ\x00"), []byte("Ժ\x00")}, {[]byte("ի\x00"), []byte("Ի\x00")}, {[]byte("լ\x00"), []byte("Լ\x00")}, {[]byte("խ\x00"), []byte("Խ\x00")}, {[]byte("ծ\x00"), []byte("Ծ\x00")}, {[]byte("կ\x00"), []byte("Կ\x00")}, {[]byte("հ\x00"), []byte("Հ\x00")}, {[]byte("ձ\x00"), []byte("Ձ\x00")}, {[]byte("ղ\x00"), []byte("Ղ\x00")}, {[]byte("ճ\x00"), []byte("Ճ\x00")}, {[]byte("մ\x00"), []byte("Մ\x00")}, {[]byte("յ\x00"), []byte("Յ\x00")}, {[]byte("ն\x00"), []byte("Ն\x00")}, {[]byte("շ\x00"), []byte("Շ\x00")}, {[]byte("ո\x00"), []byte("Ո\x00")}, {[]byte("չ\x00"), []byte("Չ\x00")}, {[]byte("պ\x00"), []byte("Պ\x00")}, {[]byte("ջ\x00"), []byte("Ջ\x00")}, {[]byte("ռ\x00"), []byte("Ռ\x00")}, {[]byte("ս\x00"), []byte("Ս\x00")}, {[]byte("վ\x00"), []byte("Վ\x00")}, {[]byte("տ\x00"), []byte("Տ\x00")}, {[]byte("ր\x00"), []byte("Ր\x00")}, {[]byte("ց\x00"), []byte("Ց\x00")}, {[]byte("փ\x00"), []byte("Փ\x00")}, {[]byte("ք\x00"), []byte("Ք\x00")}, {[]byte("օ\x00"), []byte("Օ\x00")}}
 
-// tr_hpfa - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:353
+// tr_hpfa - transpiled function from  hyph.c:353
 func tr_hpfa(args [][]byte) {
 	var tok []byte = make([]byte, 128)
 	var c1 []byte = make([]byte, 32)
@@ -4861,14 +4861,14 @@ func tr_hpfa(args [][]byte) {
 	}
 }
 
-// hyph_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:394
+// hyph_init - transpiled function from  hyph.c:394
 func hyph_init() {
 	hwdict = dict_make(-1, 0, 2)
 	hydict = dict_make(-1, 0, 2)
 	hcodedict = dict_make(-1, 0, 1)
 }
 
-// hyph_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:401
+// hyph_done - transpiled function from  hyph.c:401
 func hyph_done() {
 	if hwdict != nil {
 		dict_free(hwdict)
@@ -4881,7 +4881,7 @@ func hyph_done() {
 	}
 }
 
-// tr_hpf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/hyph.c:411
+// tr_hpf - transpiled function from  hyph.c:411
 func tr_hpf(args [][]byte) {
 	// reseting the patterns
 	hypats_len = 0
@@ -4899,7 +4899,7 @@ func tr_hpf(args [][]byte) {
 	tr_hpfa(args)
 }
 
-// inbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:7
+// inbuf - transpiled function from  in.c:7
 // input stream management
 type inbuf struct {
 	path  [1024]byte
@@ -4914,7 +4914,7 @@ type inbuf struct {
 	prev  []inbuf
 }
 
-// buf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:20
+// buf - transpiled function from  in.c:20
 // for file buffers
 // for string buffers
 // unread characters
@@ -4922,16 +4922,16 @@ type inbuf struct {
 // file line number
 var buf []inbuf
 
-// files - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:21
+// files - transpiled function from  in.c:21
 var files [][]byte = make([][]byte, 16)
 
-// nfiles - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:22
+// nfiles - transpiled function from  in.c:22
 var nfiles int32
 
-// cfile - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:23
+// cfile - transpiled function from  in.c:23
 var cfile int32
 
-// in_new - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:28
+// in_new - transpiled function from  in.c:28
 func in_new() {
 	var next []inbuf = xmalloc(int32(1248)).([]inbuf)
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&next[0]))) / int64(1))))[:], byte(0), 1248)
@@ -4939,7 +4939,7 @@ func in_new() {
 	buf = next
 }
 
-// in_push - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:36
+// in_push - transpiled function from  in.c:36
 func in_push(s []byte, args [][]byte) {
 	var len_ int32 = noarch.Strlen(s)
 	in_new()
@@ -4953,7 +4953,7 @@ func in_push(s []byte, args [][]byte) {
 	}
 }
 
-// in_so - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:46
+// in_so - transpiled function from  in.c:46
 func in_so(path []byte) {
 	var fin *noarch.File = func() *noarch.File {
 		if path != nil && int32(path[0]) != 0 {
@@ -4973,7 +4973,7 @@ func in_so(path []byte) {
 	}
 }
 
-// in_lf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:60
+// in_lf - transpiled function from  in.c:60
 func in_lf(path []byte, lnum int32) {
 	var cur []inbuf = buf
 	for cur != nil && cur[0].fin == nil {
@@ -4985,7 +4985,7 @@ func in_lf(path []byte, lnum int32) {
 	cur[0].lnum = lnum
 }
 
-// in_queue - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:70
+// in_queue - transpiled function from  in.c:70
 func in_queue(path []byte) {
 	if nfiles < 16 {
 		noarch.Snprintf(files[func() int32 {
@@ -5002,7 +5002,7 @@ func in_queue(path []byte) {
 	}
 }
 
-// in_pop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:76
+// in_pop - transpiled function from  in.c:76
 func in_pop() {
 	var old []inbuf = buf
 	buf = buf[0].prev
@@ -5016,7 +5016,7 @@ func in_pop() {
 	_ = old
 }
 
-// in_nx - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:88
+// in_nx - transpiled function from  in.c:88
 func in_nx(path []byte) {
 	for buf != nil {
 		in_pop()
@@ -5026,7 +5026,7 @@ func in_nx(path []byte) {
 	}
 }
 
-// in_ex - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:96
+// in_ex - transpiled function from  in.c:96
 func in_ex() {
 	for buf != nil {
 		in_pop()
@@ -5034,7 +5034,7 @@ func in_ex() {
 	cfile = nfiles
 }
 
-// in_nextfile - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:103
+// in_nextfile - transpiled function from  in.c:103
 func in_nextfile() int32 {
 	for buf == nil && cfile < nfiles {
 		in_so(files[func() int32 {
@@ -5047,7 +5047,7 @@ func in_nextfile() int32 {
 	return noarch.BoolToInt(buf == nil)
 }
 
-// in_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:110
+// in_next - transpiled function from  in.c:110
 func in_next() int32 {
 	var c int32
 	for buf != nil || noarch.Not(in_nextfile()) {
@@ -5084,7 +5084,7 @@ func in_next() int32 {
 	return -1
 }
 
-// in_back - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:128
+// in_back - transpiled function from  in.c:128
 func in_back(c int32) {
 	if c < 0 {
 		return
@@ -5100,7 +5100,7 @@ func in_back(c int32) {
 	}
 }
 
-// in_top - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:136
+// in_top - transpiled function from  in.c:136
 func in_top() int32 {
 	if buf != nil && buf[0].un != 0 {
 		return buf[0].unbuf[:][buf[0].un-1]
@@ -5108,7 +5108,7 @@ func in_top() int32 {
 	return -1
 }
 
-// in_arg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:141
+// in_arg - transpiled function from  in.c:141
 func in_arg(i int32) []byte {
 	var cur []inbuf = buf
 	for cur != nil && cur[0].args == nil {
@@ -5120,7 +5120,7 @@ func in_arg(i int32) []byte {
 	return []byte("\x00")
 }
 
-// in_nargs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:150
+// in_nargs - transpiled function from  in.c:150
 func in_nargs() int32 {
 	var cur []inbuf = buf
 	var n int32
@@ -5133,7 +5133,7 @@ func in_nargs() int32 {
 	return n
 }
 
-// in_shift - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:161
+// in_shift - transpiled function from  in.c:161
 func in_shift() {
 	var cur []inbuf = buf
 	for cur != nil && cur[0].args == nil {
@@ -5146,7 +5146,7 @@ func in_shift() {
 	}
 }
 
-// in_filename - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:174
+// in_filename - transpiled function from  in.c:174
 func in_filename() []byte {
 	var cur []inbuf = buf
 	for cur != nil && cur[0].fin == nil {
@@ -5158,7 +5158,7 @@ func in_filename() []byte {
 	return []byte("-\x00")
 }
 
-// in_lnum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:182
+// in_lnum - transpiled function from  in.c:182
 func in_lnum() int32 {
 	var cur []inbuf = buf
 	for cur != nil && cur[0].fin == nil {
@@ -5170,7 +5170,7 @@ func in_lnum() int32 {
 	return 0
 }
 
-// args_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:190
+// args_init - transpiled function from  in.c:190
 func args_init(args [][]byte) [][]byte {
 	var out [][]byte = xmalloc(int32(32 * 8)).([][]byte)
 	var i int32
@@ -5185,7 +5185,7 @@ func args_init(args [][]byte) [][]byte {
 	return out
 }
 
-// args_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/in.c:205
+// args_free - transpiled function from  in.c:205
 func args_free(args [][]byte) {
 	var i int32
 	for i = 0; i < 32; i++ {
@@ -5196,7 +5196,7 @@ func args_free(args [][]byte) {
 	_ = args
 }
 
-// iset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:10
+// iset - transpiled function from  iset.c:10
 // iset structure to map integers to sets
 type iset struct {
 	set  [][]int32
@@ -5205,7 +5205,7 @@ type iset struct {
 	cnt  int32
 }
 
-// iset_extend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:17
+// iset_extend - transpiled function from  iset.c:17
 func iset_extend(iset_c4go_postfix []iset, cnt int32) {
 	iset_c4go_postfix[0].set = mextend(iset_c4go_postfix[0].set, iset_c4go_postfix[0].cnt, cnt, int32(8)).([][]int32)
 	iset_c4go_postfix[0].sz = mextend(iset_c4go_postfix[0].sz, iset_c4go_postfix[0].cnt, cnt, int32(4)).([]int32)
@@ -5213,7 +5213,7 @@ func iset_extend(iset_c4go_postfix []iset, cnt int32) {
 	iset_c4go_postfix[0].cnt = cnt
 }
 
-// iset_make - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:25
+// iset_make - transpiled function from  iset.c:25
 func iset_make() []iset {
 	var iset_c4go_postfix []iset = xmalloc(int32(56)).([]iset)
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&iset_c4go_postfix[0]))) / int64(1))))[:], byte(0), 56)
@@ -5221,7 +5221,7 @@ func iset_make() []iset {
 	return iset_c4go_postfix
 }
 
-// iset_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:33
+// iset_free - transpiled function from  iset.c:33
 func iset_free(iset_c4go_postfix []iset) {
 	var i int32
 	for i = 0; i < iset_c4go_postfix[0].cnt; i++ {
@@ -5233,7 +5233,7 @@ func iset_free(iset_c4go_postfix []iset) {
 	_ = iset_c4go_postfix
 }
 
-// iset_get - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:44
+// iset_get - transpiled function from  iset.c:44
 func iset_get(iset_c4go_postfix []iset, key int32) []int32 {
 	if key >= 0 && key < iset_c4go_postfix[0].cnt {
 		return iset_c4go_postfix[0].set[key]
@@ -5241,7 +5241,7 @@ func iset_get(iset_c4go_postfix []iset, key int32) []int32 {
 	return nil
 }
 
-// iset_len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:49
+// iset_len - transpiled function from  iset.c:49
 func iset_len(iset_c4go_postfix []iset, key int32) int32 {
 	if key >= 0 && key < iset_c4go_postfix[0].cnt {
 		return iset_c4go_postfix[0].len_[key]
@@ -5249,7 +5249,7 @@ func iset_len(iset_c4go_postfix []iset, key int32) int32 {
 	return 0
 }
 
-// iset_put - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/iset.c:54
+// iset_put - transpiled function from  iset.c:54
 func iset_put(iset_c4go_postfix []iset, key int32, ent int32) {
 	if key < 0 || key >= 1<<uint64(20) {
 		return
@@ -5278,12 +5278,12 @@ func iset_put(iset_c4go_postfix []iset, key int32, ent int32) {
 	iset_c4go_postfix[0].set[key][iset_c4go_postfix[0].len_[key]] = -1
 }
 
-// mapdict - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/map.c:9
+// mapdict - transpiled function from  map.c:9
 // mapping register/macro names to indices
 // register, macro, or environments names
 var mapdict []dict
 
-// map_ - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/map.c:12
+// map_ - transpiled function from  map.c:12
 func map_(s []byte) int32 {
 	// map register names to [0..NREGS]
 	var i int32
@@ -5305,7 +5305,7 @@ func map_(s []byte) int32 {
 	return 256 + i
 }
 
-// map_name - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/map.c:30
+// map_name - transpiled function from  map.c:30
 func map_name(id int32) []byte {
 	// return the name mapped to id; returns a static buffer
 	var map_buf []byte = make([]byte, 128)
@@ -5318,25 +5318,25 @@ func map_name(id int32) []byte {
 	return map_buf
 }
 
-// map_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/map.c:41
+// map_done - transpiled function from  map.c:41
 func map_done() {
 	if mapdict != nil {
 		dict_free(mapdict)
 	}
 }
 
-// out_nl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:9
+// out_nl - transpiled function from  out.c:9
 // generating troff output
 var out_nl int32 = 1
 
-// out_out - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:12
+// out_out - transpiled function from  out.c:12
 func out_out(s []byte, ap *va_list) {
 	// output troff code; newlines may appear only at the end of s
 	out_nl = noarch.BoolToInt(len(noarch.Strchr(s, int32('\n'))) != 0)
 	noarch.Vfprintf(noarch.Stdout, s, ap)
 }
 
-// outnn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:19
+// outnn - transpiled function from  out.c:19
 func outnn(s []byte, c4goArgs ...interface{}) {
 	// output troff code; no preceding newline is necessary
 	var ap *va_list
@@ -5345,7 +5345,7 @@ func outnn(s []byte, c4goArgs ...interface{}) {
 	va_end(ap)
 }
 
-// out - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:28
+// out - transpiled function from  out.c:28
 func out(s []byte, c4goArgs ...interface{}) {
 	// output troff cmd; should appear after a newline
 	var ap *va_list
@@ -5357,16 +5357,16 @@ func out(s []byte, c4goArgs ...interface{}) {
 	va_end(ap)
 }
 
-// o_s - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:38
+// o_s - transpiled function from  out.c:38
 var o_s int32 = 10
 
-// o_f - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:39
+// o_f - transpiled function from  out.c:39
 var o_f int32 = 1
 
-// o_m - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:40
+// o_m - transpiled function from  out.c:40
 var o_m int32
 
-// out_ps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:42
+// out_ps - transpiled function from  out.c:42
 func out_ps(n int32) {
 	if o_s != n {
 		o_s = n
@@ -5374,7 +5374,7 @@ func out_ps(n int32) {
 	}
 }
 
-// out_ft - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:50
+// out_ft - transpiled function from  out.c:50
 func out_ft(n int32) {
 	if n >= 0 && o_f != n {
 		o_f = n
@@ -5382,7 +5382,7 @@ func out_ft(n int32) {
 	}
 }
 
-// out_clr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:58
+// out_clr - transpiled function from  out.c:58
 func out_clr(n int32) {
 	if n >= 0 && o_m != n {
 		o_m = n
@@ -5390,7 +5390,7 @@ func out_clr(n int32) {
 	}
 }
 
-// out_draw - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:83
+// out_draw - transpiled function from  out.c:83
 func out_draw(s []byte) {
 	var c int32 = int32((func() []byte {
 		defer func() {
@@ -5441,7 +5441,7 @@ func out_draw(s []byte) {
 	outnn([]byte("\n\x00"))
 }
 
-// outg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:124
+// outg - transpiled function from  out.c:124
 func outg(c []byte, fn int32, sz int32) {
 	var ofn int32 = o_f
 	var osz int32 = o_s
@@ -5466,7 +5466,7 @@ func outg(c []byte, fn int32, sz int32) {
 	out_ps(osz)
 }
 
-// outc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:138
+// outc - transpiled function from  out.c:138
 func outc(c []byte) {
 	var g []glyph = dev_glyph(c, o_f)
 	var fn []font = dev_font(o_f)
@@ -5495,12 +5495,12 @@ func outc(c []byte) {
 	outnn([]byte("h%d\x00"), cwid)
 }
 
-// out_x - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:162
+// out_x - transpiled function from  out.c:162
 func out_x(s []byte) {
 	out([]byte("x X %s\n\x00"), s)
 }
 
-// out_line - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/out.c:167
+// out_line - transpiled function from  out.c:167
 func out_line(s []byte) {
 	var c []byte
 	var t int32
@@ -5541,7 +5541,7 @@ func out_line(s []byte) {
 	}
 }
 
-// env - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:13
+// env - transpiled function from  reg.c:13
 // registers and environments
 type env struct {
 	eregs     [64]int32
@@ -5555,7 +5555,7 @@ type env struct {
 	mc        [32]byte
 }
 
-// nregs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:25
+// nregs - transpiled function from  reg.c:25
 // environment-specific number registers
 // tab stops
 // type of tabs: L, C, R
@@ -5568,43 +5568,43 @@ type env struct {
 // global number registers
 var nregs []int32 = make([]int32, 8192)
 
-// nregs_inc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:26
+// nregs_inc - transpiled function from  reg.c:26
 // number register auto-increment size
 var nregs_inc []int32 = make([]int32, 8192)
 
-// nregs_fmt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:27
+// nregs_fmt - transpiled function from  reg.c:27
 // number register format
 var nregs_fmt []int32 = make([]int32, 8192)
 
-// sregs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:28
+// sregs - transpiled function from  reg.c:28
 // global string registers
 var sregs [][]byte = make([][]byte, 8192)
 
-// sregs_dat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:29
+// sregs_dat - transpiled function from  reg.c:29
 // builtin function data
 var sregs_dat []interface{} = make([]interface{}, 8192)
 
-// envs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:30
+// envs - transpiled function from  reg.c:30
 // environments
 var envs [][]env = make([][]env, 8192)
 
-// env_c4go_postfix - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:31
+// env_c4go_postfix - transpiled function from  reg.c:31
 // current enviroment
 var env_c4go_postfix []env
 
-// env_id - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:32
+// env_id - transpiled function from  reg.c:32
 // current environment id
 var env_id int32
 
-// eregs_idx - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:33
+// eregs_idx - transpiled function from  reg.c:33
 // register environment index in eregs[]
 var eregs_idx []int32 = make([]int32, 8192)
 
-// eregs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:35
+// eregs - transpiled function from  reg.c:35
 // environment-specific number registers
 var eregs [][]byte = [][]byte{[]byte("ln\x00"), []byte(".f\x00"), []byte(".i\x00"), []byte(".j\x00"), []byte(".l\x00"), []byte(".L\x00"), []byte(".nI\x00"), []byte(".nm\x00"), []byte(".nM\x00"), []byte(".nn\x00"), []byte(".nS\x00"), []byte(".m\x00"), []byte(".s\x00"), []byte(".u\x00"), []byte(".v\x00"), []byte(".it\x00"), []byte(".itn\x00"), []byte(".mc\x00"), []byte(".mcn\x00"), []byte(".ce\x00"), []byte(".f0\x00"), []byte(".i0\x00"), []byte(".l0\x00"), []byte(".hy\x00"), []byte(".hycost\x00"), []byte(".hycost2\x00"), []byte(".hycost3\x00"), []byte(".hlm\x00"), []byte(".L0\x00"), []byte(".m0\x00"), []byte(".n0\x00"), []byte(".s0\x00"), []byte(".ss\x00"), []byte(".ssh\x00"), []byte(".sss\x00"), []byte(".pmll\x00"), []byte(".pmllcost\x00"), []byte(".ti\x00"), []byte(".lt\x00"), []byte(".lt0\x00"), []byte(".v0\x00"), []byte(".I\x00"), []byte(".I0\x00"), []byte(".tI\x00"), []byte(".td\x00"), []byte(".cd\x00")}
 
-// nreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:48
+// nreg - transpiled function from  reg.c:48
 func nreg(id int32) []int32 {
 	if eregs_idx[id] != 0 {
 		// return the address of a number register
@@ -5613,7 +5613,7 @@ func nreg(id int32) []int32 {
 	return nregs[id:]
 }
 
-// directory - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:55
+// directory - transpiled function from  reg.c:55
 func directory(path []byte) []byte {
 	var dst []byte = make([]byte, 1024)
 	var s []byte = noarch.Strrchr(path, int32('/'))
@@ -5628,7 +5628,7 @@ func directory(path []byte) []byte {
 	return dst
 }
 
-// num_tabs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:68
+// num_tabs - transpiled function from  reg.c:68
 func num_tabs() []byte {
 	var tabs []byte = make([]byte, 512)
 	var i int32
@@ -5639,7 +5639,7 @@ func num_tabs() []byte {
 	return tabs
 }
 
-// num_str - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:81
+// num_str - transpiled function from  reg.c:81
 func num_str(id int32) []byte {
 	// the contents of a number register (returns a static buffer)
 	var numbuf []byte = make([]byte, 128)
@@ -5704,7 +5704,7 @@ func num_str(id int32) []byte {
 	return numbuf
 }
 
-// num_set - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:140
+// num_set - transpiled function from  reg.c:140
 func num_set(id int32, val int32) {
 	if noarch.Not(nregs_fmt[id]) {
 		nregs_fmt[id] = int32('0')
@@ -5712,12 +5712,12 @@ func num_set(id int32, val int32) {
 	(nreg(id))[0] = val
 }
 
-// num_setinc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:147
+// num_setinc - transpiled function from  reg.c:147
 func num_setinc(id int32, val int32) {
 	nregs_inc[id] = val
 }
 
-// num_inc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:152
+// num_inc - transpiled function from  reg.c:152
 func num_inc(id int32, pos int32) {
 	(nreg(id))[0] += func() int32 {
 		if pos > 0 {
@@ -5727,14 +5727,14 @@ func num_inc(id int32, pos int32) {
 	}()
 }
 
-// num_del - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:157
+// num_del - transpiled function from  reg.c:157
 func num_del(id int32) {
 	(nreg(id))[0] = 0
 	nregs_inc[id] = 0
 	nregs_fmt[id] = 0
 }
 
-// str_set - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:164
+// str_set - transpiled function from  reg.c:164
 func str_set(id int32, s []byte) {
 	var len_ int32 = noarch.Strlen(s) + int32(1)
 	if sregs[id] != nil {
@@ -5745,22 +5745,22 @@ func str_set(id int32, s []byte) {
 	sregs_dat[id] = nil
 }
 
-// str_get - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:174
+// str_get - transpiled function from  reg.c:174
 func str_get(id int32) []byte {
 	return sregs[id]
 }
 
-// str_dget - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:179
+// str_dget - transpiled function from  reg.c:179
 func str_dget(id int32) interface{} {
 	return sregs_dat[id]
 }
 
-// str_dset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:184
+// str_dset - transpiled function from  reg.c:184
 func str_dset(id int32, d interface{}) {
 	sregs_dat[id] = d
 }
 
-// str_rm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:189
+// str_rm - transpiled function from  reg.c:189
 func str_rm(id int32) {
 	if sregs[id] != nil {
 		_ = sregs[id]
@@ -5769,7 +5769,7 @@ func str_rm(id int32) {
 	sregs_dat[id] = nil
 }
 
-// str_rn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:197
+// str_rn - transpiled function from  reg.c:197
 func str_rn(src int32, dst int32) {
 	if sregs[src] == nil && sregs_dat[src] == nil {
 		return
@@ -5781,7 +5781,7 @@ func str_rn(src int32, dst int32) {
 	sregs_dat[src] = nil
 }
 
-// env_alloc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:208
+// env_alloc - transpiled function from  reg.c:208
 func env_alloc() []env {
 	var env_c4go_postfix []env = xmalloc(int32(8936)).([]env)
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&env_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8936)
@@ -5790,14 +5790,14 @@ func env_alloc() []env {
 	return env_c4go_postfix
 }
 
-// env_free - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:217
+// env_free - transpiled function from  reg.c:217
 func env_free(env_c4go_postfix []env) {
 	fmt_free(env_c4go_postfix[0].fmt_)
 	wb_done((*[1000000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:])
 	_ = env_c4go_postfix
 }
 
-// env_set - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:224
+// env_set - transpiled function from  reg.c:224
 func env_set(id int32) {
 	var i int32
 	env_c4go_postfix = envs[id]
@@ -5832,7 +5832,7 @@ func env_set(id int32) {
 	}
 }
 
-// init_time - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:259
+// init_time - transpiled function from  reg.c:259
 func init_time() {
 	var t noarch.TimeT = noarch.Time(nil)
 	var tm_c4go_postfix []noarch.Tm = noarch.LocalTime((*[1000000]noarch.TimeT)(unsafe.Pointer(&t))[:])
@@ -5843,7 +5843,7 @@ func init_time() {
 	num_set(map_([]byte(".yr\x00")), 1900+tm_c4go_postfix[0].TmYear)
 }
 
-// init_globals - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:270
+// init_globals - transpiled function from  reg.c:270
 func init_globals() {
 	(nreg(int32('o')))[0] = dev_res
 	(nreg(int32('p')))[0] = dev_res * 11
@@ -5853,7 +5853,7 @@ func init_globals() {
 	num_set(map_([]byte(".V\x00")), 1)
 }
 
-// env_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:280
+// env_init - transpiled function from  reg.c:280
 func env_init() {
 	var i int32
 	init_time()
@@ -5864,7 +5864,7 @@ func env_init() {
 	env_set(map_([]byte("0\x00")))
 }
 
-// env_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:290
+// env_done - transpiled function from  reg.c:290
 func env_done() {
 	var i int32
 	for i = 0; uint32(i) < 65536/8; i++ {
@@ -5877,14 +5877,14 @@ func env_done() {
 	}
 }
 
-// oenv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:300
+// oenv - transpiled function from  reg.c:300
 // environment stack
 var oenv []int32 = make([]int32, 16)
 
-// nenv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:301
+// nenv - transpiled function from  reg.c:301
 var nenv int32
 
-// tr_ev - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:303
+// tr_ev - transpiled function from  reg.c:303
 func tr_ev(args [][]byte) {
 	var id int32 = -1
 	if args[1] != nil {
@@ -5913,37 +5913,37 @@ func tr_ev(args [][]byte) {
 	env_set(id)
 }
 
-// env_fmt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:317
+// env_fmt - transpiled function from  reg.c:317
 func env_fmt() []fmt_ {
 	return env_c4go_postfix[0].fmt_
 }
 
-// env_wb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:322
+// env_wb - transpiled function from  reg.c:322
 func env_wb() []wb {
 	return (*[1000000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:]
 }
 
-// env_hc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:327
+// env_hc - transpiled function from  reg.c:327
 func env_hc() []byte {
 	return env_c4go_postfix[0].hc[:]
 }
 
-// env_mc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:332
+// env_mc - transpiled function from  reg.c:332
 func env_mc() []byte {
 	return env_c4go_postfix[0].mc[:]
 }
 
-// env_tc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:337
+// env_tc - transpiled function from  reg.c:337
 func env_tc() []byte {
 	return env_c4go_postfix[0].tc[:]
 }
 
-// env_lc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:342
+// env_lc - transpiled function from  reg.c:342
 func env_lc() []byte {
 	return env_c4go_postfix[0].lc[:]
 }
 
-// odiv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:348
+// odiv - transpiled function from  reg.c:348
 // saving and restoring registers around diverted lines
 type odiv struct {
 	f  int32
@@ -5955,14 +5955,14 @@ type odiv struct {
 	cd int32
 }
 
-// odivs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:352
+// odivs - transpiled function from  reg.c:352
 // state before diverted text
 var odivs []odiv = make([]odiv, 16)
 
-// nodivs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:353
+// nodivs - transpiled function from  reg.c:353
 var nodivs int32
 
-// odiv_beg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:356
+// odiv_beg - transpiled function from  reg.c:356
 func odiv_beg() {
 	// begin outputting diverted line
 	var o []odiv = odivs[func() int32 {
@@ -5980,7 +5980,7 @@ func odiv_beg() {
 	o[0].cd = (nreg(map_([]byte(".cd\x00"))))[0]
 }
 
-// odiv_end - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:369
+// odiv_end - transpiled function from  reg.c:369
 func odiv_end() {
 	// end outputting diverted line
 	var o []odiv = odivs[func() int32 {
@@ -5996,7 +5996,7 @@ func odiv_end() {
 	(nreg(map_([]byte(".cd\x00"))))[0] = o[0].cd
 }
 
-// tr_ta - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:381
+// tr_ta - transpiled function from  reg.c:381
 func tr_ta(args [][]byte) {
 	var i int32
 	var c int32
@@ -6027,7 +6027,7 @@ func tr_ta(args [][]byte) {
 	}
 }
 
-// tab_idx - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:398
+// tab_idx - transpiled function from  reg.c:398
 func tab_idx(pos int32) int32 {
 	var i int32
 	for i = 0; uint32(i) < 128/4; i++ {
@@ -6038,7 +6038,7 @@ func tab_idx(pos int32) int32 {
 	return -1
 }
 
-// tab_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:407
+// tab_next - transpiled function from  reg.c:407
 func tab_next(pos int32) int32 {
 	var i int32 = tab_idx(pos)
 	if i >= 0 {
@@ -6047,7 +6047,7 @@ func tab_next(pos int32) int32 {
 	return pos
 }
 
-// tab_type - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:413
+// tab_type - transpiled function from  reg.c:413
 func tab_type(pos int32) int32 {
 	var i int32 = tab_idx(pos)
 	if i >= 0 && int32(env_c4go_postfix[0].tabs_type[:][i]) != 0 {
@@ -6056,7 +6056,7 @@ func tab_type(pos int32) int32 {
 	return int32('L')
 }
 
-// num_getfmt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:424
+// num_getfmt - transpiled function from  reg.c:424
 func num_getfmt(id int32) []byte {
 	// number register format (.af)
 	// the format of a number register (returns a static buffer)
@@ -6097,7 +6097,7 @@ func num_getfmt(id int32) []byte {
 	return fmtbuf
 }
 
-// num_setfmt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:442
+// num_setfmt - transpiled function from  reg.c:442
 func num_setfmt(id int32, s []byte) {
 	var i int32
 	if noarch.Strchr([]byte("iIaA\x00"), int32(s[0])) != nil {
@@ -6114,7 +6114,7 @@ func num_setfmt(id int32, s []byte) {
 	}
 }
 
-// nf_reverse - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:457
+// nf_reverse - transpiled function from  reg.c:457
 func nf_reverse(s []byte) {
 	var r []byte = make([]byte, 128)
 	var i int32
@@ -6126,7 +6126,7 @@ func nf_reverse(s []byte) {
 	}
 }
 
-// nf_roman - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:467
+// nf_roman - transpiled function from  reg.c:467
 func nf_roman(s []byte, n int32, I []byte, V []byte) {
 	var i int32
 	if noarch.Not(n) {
@@ -6172,7 +6172,7 @@ func nf_roman(s []byte, n int32, I []byte, V []byte) {
 	nf_roman(s, n/10, I[0+1:], V[0+1:])
 }
 
-// nf_alpha - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:485
+// nf_alpha - transpiled function from  reg.c:485
 func nf_alpha(s []byte, n int32, a int32) {
 	for n != 0 {
 		(func() []byte {
@@ -6186,7 +6186,7 @@ func nf_alpha(s []byte, n int32, a int32) {
 	s[0] = '\x00'
 }
 
-// num_fmt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/reg.c:495
+// num_fmt - transpiled function from  reg.c:495
 func num_fmt(s []byte, n int32, fmt_ int32) int32 {
 	// returns nonzero on failure
 	var type_ int32 = fmt_ & 255
@@ -6227,7 +6227,7 @@ func num_fmt(s []byte, n int32, fmt_ int32) int32 {
 	return 1
 }
 
-// div - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:13
+// div - transpiled function from  ren.c:13
 // rendering lines and managing traps
 // diversions
 type div struct {
@@ -6242,7 +6242,7 @@ type div struct {
 	prev_ns int32
 }
 
-// divs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:24
+// divs - transpiled function from  ren.c:24
 // diversion output
 // diversion register
 // diversion trap position
@@ -6255,70 +6255,70 @@ type div struct {
 // diversion stack
 var divs []div = make([]div, 16)
 
-// cdiv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:25
+// cdiv - transpiled function from  ren.c:25
 // current diversion
 var cdiv []div
 
-// ren_div - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:26
+// ren_div - transpiled function from  ren.c:26
 // rendering a diversion
 var ren_div int32
 
-// ren_divvs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:27
+// ren_divvs - transpiled function from  ren.c:27
 // the amount of .v in diversions
 var ren_divvs int32
 
-// trap_em - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:28
+// trap_em - transpiled function from  ren.c:28
 // end macro
 var trap_em int32 = -1
 
-// ren_nl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:30
+// ren_nl - transpiled function from  ren.c:30
 // just after a newline
 var ren_nl int32
 
-// ren_partial - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:31
+// ren_partial - transpiled function from  ren.c:31
 // reading an input line in render_rec()
 var ren_partial int32
 
-// ren_unbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:32
+// ren_unbuf - transpiled function from  ren.c:32
 // ren_back() buffer
 var ren_unbuf []int32 = make([]int32, 8)
 
-// ren_un - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:33
+// ren_un - transpiled function from  ren.c:33
 var ren_un int32
 
-// ren_aborted - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:34
+// ren_aborted - transpiled function from  ren.c:34
 // .ab executed
 var ren_aborted int32
 
-// bp_first - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:36
+// bp_first - transpiled function from  ren.c:36
 // prior to the first page
 var bp_first int32 = 1
 
-// bp_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:37
+// bp_next - transpiled function from  ren.c:37
 // next page number
 var bp_next int32 = 1073741824
 
-// bp_ejected - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:38
+// bp_ejected - transpiled function from  ren.c:38
 // current ejected page
 var bp_ejected int32
 
-// bp_final - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:39
+// bp_final - transpiled function from  ren.c:39
 // 1: executing em, 2: the final page, 3: the 2nd final page
 var bp_final int32
 
-// ren_level - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:40
+// ren_level - transpiled function from  ren.c:40
 // the depth of render_rec() calls
 var ren_level int32
 
-// c_fa - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:42
+// c_fa - transpiled function from  ren.c:42
 // field delimiter
 var c_fa []byte = make([]byte, 32)
 
-// c_fb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:43
+// c_fb - transpiled function from  ren.c:43
 // field padding
 var c_fb []byte = make([]byte, 32)
 
-// ren_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:45
+// ren_next - transpiled function from  ren.c:45
 func ren_next() int32 {
 	if ren_un > 0 {
 		return ren_unbuf[func() int32 {
@@ -6329,7 +6329,7 @@ func ren_next() int32 {
 	return tr_next()
 }
 
-// ren_back - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:50
+// ren_back - transpiled function from  ren.c:50
 func ren_back(c int32) {
 	ren_unbuf[func() int32 {
 		defer func() {
@@ -6339,7 +6339,7 @@ func ren_back(c int32) {
 	}()] = c
 }
 
-// tr_di - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:55
+// tr_di - transpiled function from  ren.c:55
 func tr_di(args [][]byte) {
 	if args[1] != nil {
 		if cdiv != nil {
@@ -6382,7 +6382,7 @@ func tr_di(args [][]byte) {
 	}
 }
 
-// f_divreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:88
+// f_divreg - transpiled function from  ren.c:88
 func f_divreg() int32 {
 	if cdiv != nil {
 		return cdiv[0].reg
@@ -6390,18 +6390,18 @@ func f_divreg() int32 {
 	return -1
 }
 
-// f_hpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:93
+// f_hpos - transpiled function from  ren.c:93
 func f_hpos() int32 {
 	return fmt_wid(env_fmt()) + wb_wid(env_wb())
 }
 
-// tr_divbeg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:98
+// tr_divbeg - transpiled function from  ren.c:98
 func tr_divbeg(args [][]byte) {
 	odiv_beg()
 	ren_div++
 }
 
-// tr_divend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:104
+// tr_divend - transpiled function from  ren.c:104
 func tr_divend(args [][]byte) {
 	if ren_div <= 0 {
 		errdie([]byte("neatroff: diversion stack empty\n\x00"))
@@ -6410,12 +6410,12 @@ func tr_divend(args [][]byte) {
 	ren_div--
 }
 
-// tr_divvs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:112
+// tr_divvs - transpiled function from  ren.c:112
 func tr_divvs(args [][]byte) {
 	ren_divvs = eval(args[1], int32('u'))
 }
 
-// tr_transparent - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:117
+// tr_transparent - transpiled function from  ren.c:117
 func tr_transparent(args [][]byte) {
 	if cdiv != nil {
 		sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%s\n\x00"), args[1])
@@ -6424,7 +6424,7 @@ func tr_transparent(args [][]byte) {
 	}
 }
 
-// ren_page - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:129
+// ren_page - transpiled function from  ren.c:129
 func ren_page(force int32) {
 	if noarch.Not(force) && bp_final >= 2 {
 		return
@@ -6446,7 +6446,7 @@ func ren_page(force int32) {
 	}
 }
 
-// ren_first - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:145
+// ren_first - transpiled function from  ren.c:145
 func ren_first() int32 {
 	if bp_first != 0 && cdiv == nil {
 		bp_first = 0
@@ -6456,7 +6456,7 @@ func ren_first() int32 {
 	return 1
 }
 
-// ren_sp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:156
+// ren_sp - transpiled function from  ren.c:156
 func ren_sp(n int32, nodiv int32) {
 	// when nodiv, do not append .sp to diversions
 	// the vertical spacing before a line
@@ -6494,7 +6494,7 @@ func ren_sp(n int32, nodiv int32) {
 	}
 }
 
-// trap_exec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:179
+// trap_exec - transpiled function from  ren.c:179
 func trap_exec(reg int32) {
 	var cmd []byte = make([]byte, 16)
 	var partial int32 = noarch.BoolToInt(ren_partial != 0 && (noarch.Not(ren_un) || ren_unbuf[0] != int32('\n')))
@@ -6516,13 +6516,13 @@ func trap_exec(reg int32) {
 	}
 }
 
-// detect_traps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:196
+// detect_traps - transpiled function from  ren.c:196
 func detect_traps(beg int32, end int32) int32 {
 	var pos int32 = trap_pos(beg)
 	return noarch.BoolToInt(pos >= 0 && (cdiv != nil || pos < (nreg(int32('p')))[0]) && pos <= end)
 }
 
-// ren_traps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:203
+// ren_traps - transpiled function from  ren.c:203
 func ren_traps(beg int32, end int32, dosp int32) int32 {
 	// return 1 if executed a trap
 	var pos int32 = trap_pos(beg)
@@ -6536,12 +6536,12 @@ func ren_traps(beg int32, end int32, dosp int32) int32 {
 	return 0
 }
 
-// detect_pagelimit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:215
+// detect_pagelimit - transpiled function from  ren.c:215
 func detect_pagelimit(ne int32) int32 {
 	return noarch.BoolToInt(cdiv == nil && (nreg(map_([]byte("nl\x00"))))[0]+ne >= (nreg(int32('p')))[0])
 }
 
-// ren_pagelimit - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:221
+// ren_pagelimit - transpiled function from  ren.c:221
 func ren_pagelimit(ne int32) int32 {
 	if detect_pagelimit(ne) != 0 {
 		// start a new page if needed
@@ -6551,7 +6551,7 @@ func ren_pagelimit(ne int32) int32 {
 	return 0
 }
 
-// down - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:231
+// down - transpiled function from  ren.c:231
 func down(n int32) int32 {
 	if ren_traps((nreg(int32('d')))[0], (nreg(int32('d')))[0]+func() int32 {
 		if n != 0 {
@@ -6571,7 +6571,7 @@ func down(n int32) int32 {
 	return ren_pagelimit(0)
 }
 
-// ren_ljust - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:240
+// ren_ljust - transpiled function from  ren.c:240
 func ren_ljust(spre []sbuf, w int32, ad int32, li int32, lI int32, ll int32) int32 {
 	// line adjustment
 	var ljust int32 = li
@@ -6597,7 +6597,7 @@ func ren_ljust(spre []sbuf, w int32, ad int32, li int32, lI int32, ll int32) int
 	return ljust
 }
 
-// ren_out - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:257
+// ren_out - transpiled function from  ren.c:257
 func ren_out(beg []byte, mid []byte, end []byte) {
 	if cdiv != nil {
 		// append the line to the current diversion or send it to out.c
@@ -6614,7 +6614,7 @@ func ren_out(beg []byte, mid []byte, end []byte) {
 	}
 }
 
-// ren_dir - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:273
+// ren_dir - transpiled function from  ren.c:273
 func ren_dir(sbuf_c4go_postfix []sbuf) {
 	var fixed sbuf
 	sbuf_init(c4goUnsafeConvert_sbuf(&fixed))
@@ -6625,7 +6625,7 @@ func ren_dir(sbuf_c4go_postfix []sbuf) {
 	sbuf_done(c4goUnsafeConvert_sbuf(&fixed))
 }
 
-// zwid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:284
+// zwid - transpiled function from  ren.c:284
 func zwid() int32 {
 	var g []glyph = dev_glyph([]byte("0\x00"), (nreg(int32('f')))[0])
 	if g != nil {
@@ -6634,7 +6634,7 @@ func zwid() int32 {
 	return 0
 }
 
-// ren_lnum - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:291
+// ren_lnum - transpiled function from  ren.c:291
 func ren_lnum(spre []sbuf) {
 	// append the line number to the output line
 	var num []byte = []byte("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
@@ -6668,7 +6668,7 @@ func ren_lnum(spre []sbuf) {
 	}
 }
 
-// ren_mc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:317
+// ren_mc - transpiled function from  ren.c:317
 func ren_mc(sbuf_c4go_postfix []sbuf, w int32, ljust int32) {
 	// append margin character
 	var wb_c4go_postfix wb
@@ -6681,7 +6681,7 @@ func ren_mc(sbuf_c4go_postfix []sbuf, w int32, ljust int32) {
 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 }
 
-// ren_line - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:329
+// ren_line - transpiled function from  ren.c:329
 func ren_line(line []byte, w int32, ad int32, body int32, li int32, lI int32, ll int32, els_neg int32, els_pos int32) int32 {
 	// process a line and print it with ren_out()
 	var sbeg sbuf
@@ -6740,7 +6740,7 @@ func ren_line(line []byte, w int32, ad int32, body int32, li int32, lI int32, ll
 	return 0
 }
 
-// ren_passline - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:372
+// ren_passline - transpiled function from  ren.c:372
 func ren_passline(fmt__c4go_postfix []fmt_) int32 {
 	// read a line from fmt and send it to ren_line()
 	var buf []byte
@@ -6774,7 +6774,7 @@ func ren_passline(fmt__c4go_postfix []fmt_) int32 {
 	return ret
 }
 
-// ren_fmtpop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:393
+// ren_fmtpop - transpiled function from  ren.c:393
 func ren_fmtpop(fmt__c4go_postfix []fmt_) int32 {
 	// output formatted lines in fmt
 	var ret int32
@@ -6784,7 +6784,7 @@ func ren_fmtpop(fmt__c4go_postfix []fmt_) int32 {
 	return ret
 }
 
-// ren_fmtpopall - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:402
+// ren_fmtpopall - transpiled function from  ren.c:402
 func ren_fmtpopall(fmt__c4go_postfix []fmt_) {
 	for fmt_fill(fmt__c4go_postfix, 0) != 0 {
 		// format and output all lines in fmt
@@ -6793,7 +6793,7 @@ func ren_fmtpopall(fmt__c4go_postfix []fmt_) {
 	ren_fmtpop(fmt__c4go_postfix)
 }
 
-// ren_fmtword - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:410
+// ren_fmtword - transpiled function from  ren.c:410
 func ren_fmtword(wb_c4go_postfix []wb) {
 	for fmt_word(env_fmt(), wb_c4go_postfix) != 0 {
 		// pass the given word buffer to the current line buffer (cfmt)
@@ -6802,7 +6802,7 @@ func ren_fmtword(wb_c4go_postfix []wb) {
 	wb_reset(wb_c4go_postfix)
 }
 
-// ren_br - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:418
+// ren_br - transpiled function from  ren.c:418
 func ren_br() int32 {
 	// output current line; returns 1 if triggered a trap
 	ren_first()
@@ -6813,7 +6813,7 @@ func ren_br() int32 {
 	return ren_fmtpop(env_fmt())
 }
 
-// tr_br - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:427
+// tr_br - transpiled function from  ren.c:427
 func tr_br(args [][]byte) {
 	if int32(args[0][0]) == c_cc {
 		ren_br()
@@ -6823,7 +6823,7 @@ func tr_br(args [][]byte) {
 	}
 }
 
-// tr_sp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:435
+// tr_sp - transpiled function from  ren.c:435
 func tr_sp(args [][]byte) {
 	var traps int32
 	var n int32
@@ -6840,7 +6840,7 @@ func tr_sp(args [][]byte) {
 	}
 }
 
-// tr_sv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:446
+// tr_sv - transpiled function from  ren.c:446
 func tr_sv(args [][]byte) {
 	var n int32 = eval(args[1], int32('v'))
 	(nreg(map_([]byte(".sv\x00"))))[0] = 0
@@ -6851,17 +6851,17 @@ func tr_sv(args [][]byte) {
 	}
 }
 
-// tr_ns - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:456
+// tr_ns - transpiled function from  ren.c:456
 func tr_ns(args [][]byte) {
 	(nreg(map_([]byte(".ns\x00"))))[0] = 1
 }
 
-// tr_rs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:461
+// tr_rs - transpiled function from  ren.c:461
 func tr_rs(args [][]byte) {
 	(nreg(map_([]byte(".ns\x00"))))[0] = 0
 }
 
-// tr_os - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:466
+// tr_os - transpiled function from  ren.c:466
 func tr_os(args [][]byte) {
 	if (nreg(map_([]byte(".sv\x00"))))[0] != 0 {
 		down((nreg(map_([]byte(".sv\x00"))))[0])
@@ -6869,7 +6869,7 @@ func tr_os(args [][]byte) {
 	(nreg(map_([]byte(".sv\x00"))))[0] = 0
 }
 
-// tr_mk - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:473
+// tr_mk - transpiled function from  ren.c:473
 func tr_mk(args [][]byte) {
 	if args[1] != nil {
 		num_set(map_(args[1]), (nreg(int32('d')))[0])
@@ -6878,7 +6878,7 @@ func tr_mk(args [][]byte) {
 	}
 }
 
-// tr_rt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:481
+// tr_rt - transpiled function from  ren.c:481
 func tr_rt(args [][]byte) {
 	var n int32 = func() int32 {
 		if args[1] != nil {
@@ -6891,7 +6891,7 @@ func tr_rt(args [][]byte) {
 	}
 }
 
-// tr_ne - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:488
+// tr_ne - transpiled function from  ren.c:488
 func tr_ne(args [][]byte) {
 	var n int32 = func() int32 {
 		if args[1] != nil {
@@ -6907,7 +6907,7 @@ func tr_ne(args [][]byte) {
 	}
 }
 
-// ren_ejectpage - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:497
+// ren_ejectpage - transpiled function from  ren.c:497
 func ren_ejectpage(br int32) {
 	ren_first()
 	bp_ejected = (nreg(int32('%')))[0]
@@ -6924,7 +6924,7 @@ func ren_ejectpage(br int32) {
 	}
 }
 
-// tr_bp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:513
+// tr_bp - transpiled function from  ren.c:513
 func tr_bp(args [][]byte) {
 	if cdiv == nil && (args[1] != nil || noarch.Not((nreg(map_([]byte(".ns\x00"))))[0])) {
 		if args[1] != nil {
@@ -6934,14 +6934,14 @@ func tr_bp(args [][]byte) {
 	}
 }
 
-// tr_pn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:522
+// tr_pn - transpiled function from  ren.c:522
 func tr_pn(args [][]byte) {
 	if args[1] != nil {
 		bp_next = eval_re(args[1], (nreg(map_([]byte("%\x00"))))[0], 0)
 	}
 }
 
-// ren_ps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:528
+// ren_ps - transpiled function from  ren.c:528
 func ren_ps(s []byte) {
 	var ps int32 = func() int32 {
 		if s == nil || noarch.Not(s[0]) || noarch.Not(noarch.Strcmp([]byte("0\x00"), s)) {
@@ -6957,12 +6957,12 @@ func ren_ps(s []byte) {
 	}
 }
 
-// tr_ps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:536
+// tr_ps - transpiled function from  ren.c:536
 func tr_ps(args [][]byte) {
 	ren_ps(args[1])
 }
 
-// tr_ll - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:541
+// tr_ll - transpiled function from  ren.c:541
 func tr_ll(args [][]byte) {
 	var ll int32 = func() int32 {
 		if args[1] != nil {
@@ -6978,7 +6978,7 @@ func tr_ll(args [][]byte) {
 	}
 }
 
-// tr_in - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:548
+// tr_in - transpiled function from  ren.c:548
 func tr_in(args [][]byte) {
 	var in int32 = func() int32 {
 		if args[1] != nil {
@@ -6998,7 +6998,7 @@ func tr_in(args [][]byte) {
 	(nreg(map_([]byte(".ti\x00"))))[0] = -1
 }
 
-// tr_ti - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:558
+// tr_ti - transpiled function from  ren.c:558
 func tr_ti(args [][]byte) {
 	if int32(args[0][0]) == c_cc {
 		ren_br()
@@ -7008,7 +7008,7 @@ func tr_ti(args [][]byte) {
 	}
 }
 
-// tr_l2r - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:566
+// tr_l2r - transpiled function from  ren.c:566
 func tr_l2r(args [][]byte) {
 	dir_do = 1
 	if int32(args[0][0]) == c_cc {
@@ -7018,7 +7018,7 @@ func tr_l2r(args [][]byte) {
 	(nreg(map_([]byte(".cd\x00"))))[0] = 0
 }
 
-// tr_r2l - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:575
+// tr_r2l - transpiled function from  ren.c:575
 func tr_r2l(args [][]byte) {
 	dir_do = 1
 	if int32(args[0][0]) == c_cc {
@@ -7028,7 +7028,7 @@ func tr_r2l(args [][]byte) {
 	(nreg(map_([]byte(".cd\x00"))))[0] = 1
 }
 
-// tr_in2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:584
+// tr_in2 - transpiled function from  ren.c:584
 func tr_in2(args [][]byte) {
 	var I int32 = func() int32 {
 		if args[1] != nil {
@@ -7048,7 +7048,7 @@ func tr_in2(args [][]byte) {
 	(nreg(map_([]byte(".tI\x00"))))[0] = -1
 }
 
-// tr_ti2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:594
+// tr_ti2 - transpiled function from  ren.c:594
 func tr_ti2(args [][]byte) {
 	if int32(args[0][0]) == c_cc {
 		ren_br()
@@ -7058,7 +7058,7 @@ func tr_ti2(args [][]byte) {
 	}
 }
 
-// ren_ft - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:602
+// ren_ft - transpiled function from  ren.c:602
 func ren_ft(s []byte) {
 	var fn int32 = func() int32 {
 		if s == nil || noarch.Not(s[0]) || noarch.Not(noarch.Strcmp([]byte("P\x00"), s)) {
@@ -7074,12 +7074,12 @@ func ren_ft(s []byte) {
 	}
 }
 
-// tr_ft - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:613
+// tr_ft - transpiled function from  ren.c:613
 func tr_ft(args [][]byte) {
 	ren_ft(args[1])
 }
 
-// tr_fp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:618
+// tr_fp - transpiled function from  ren.c:618
 func tr_fp(args [][]byte) {
 	var pos int32
 	if args[2] == nil {
@@ -7100,7 +7100,7 @@ func tr_fp(args [][]byte) {
 	}
 }
 
-// tr_nf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:628
+// tr_nf - transpiled function from  ren.c:628
 func tr_nf(args [][]byte) {
 	if int32(args[0][0]) == c_cc {
 		ren_br()
@@ -7108,7 +7108,7 @@ func tr_nf(args [][]byte) {
 	(nreg(int32('u')))[0] = 0
 }
 
-// tr_fi - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:635
+// tr_fi - transpiled function from  ren.c:635
 func tr_fi(args [][]byte) {
 	if int32(args[0][0]) == c_cc {
 		ren_br()
@@ -7116,7 +7116,7 @@ func tr_fi(args [][]byte) {
 	(nreg(int32('u')))[0] = 1
 }
 
-// tr_ce - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:642
+// tr_ce - transpiled function from  ren.c:642
 func tr_ce(args [][]byte) {
 	if int32(args[0][0]) == c_cc {
 		ren_br()
@@ -7128,7 +7128,7 @@ func tr_ce(args [][]byte) {
 	}
 }
 
-// tr_fc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:649
+// tr_fc - transpiled function from  ren.c:649
 func tr_fc(args [][]byte) {
 	var fa []byte = args[1]
 	var fb []byte = args[2]
@@ -7142,7 +7142,7 @@ func tr_fc(args [][]byte) {
 	}
 }
 
-// ren_cl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:662
+// ren_cl - transpiled function from  ren.c:662
 func ren_cl(s []byte) {
 	var m int32 = func() int32 {
 		if s == nil || noarch.Not(s[0]) {
@@ -7154,18 +7154,18 @@ func ren_cl(s []byte) {
 	(nreg(int32('m')))[0] = m
 }
 
-// tr_cl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:669
+// tr_cl - transpiled function from  ren.c:669
 func tr_cl(args [][]byte) {
 	ren_cl(args[1])
 }
 
-// tr_ab - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:674
+// tr_ab - transpiled function from  ren.c:674
 func tr_ab(args [][]byte) {
 	noarch.Fprintf(noarch.Stderr, []byte("%s\n\x00"), args[1])
 	ren_aborted = 1
 }
 
-// ren_cmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:680
+// ren_cmd - transpiled function from  ren.c:680
 func ren_cmd(wb_c4go_postfix []wb, c int32, arg []byte) {
 	switch c {
 	case ' ':
@@ -7246,7 +7246,7 @@ func ren_cmd(wb_c4go_postfix []wb, c int32, arg []byte) {
 	}
 }
 
-// ren_put - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:778
+// ren_put - transpiled function from  ren.c:778
 func ren_put(wb_c4go_postfix []wb, c []byte, next func() int32, back func(int32)) {
 	// insert a character, escape sequence, field or etc into wb
 	var w int32
@@ -7306,7 +7306,7 @@ func ren_put(wb_c4go_postfix []wb, c []byte, next func() int32, back func(int32)
 	}
 }
 
-// ren_char - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:829
+// ren_char - transpiled function from  ren.c:829
 func ren_char(wb_c4go_postfix []wb, next func() int32, back func(int32)) int32 {
 	// read one character and place it inside wb buffer
 	var c []byte = make([]byte, 128)
@@ -7317,7 +7317,7 @@ func ren_char(wb_c4go_postfix []wb, next func() int32, back func(int32)) int32 {
 	return 0
 }
 
-// ren_chardel - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:839
+// ren_chardel - transpiled function from  ren.c:839
 func ren_chardel(wb_c4go_postfix []wb, next func() int32, back func(int32), d1 []byte, d2 []byte) int32 {
 	// like ren_char(); return 1 if d1 was read and 2 if d2 was read
 	var c []byte = make([]byte, 128)
@@ -7334,7 +7334,7 @@ func ren_chardel(wb_c4go_postfix []wb, next func() int32, back func(int32), d1 [
 	return 0
 }
 
-// ren_wid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:854
+// ren_wid - transpiled function from  ren.c:854
 func ren_wid(next func() int32, back func(int32)) int32 {
 	// read the argument of \w and push its width
 	var delim []byte = make([]byte, 32)
@@ -7359,7 +7359,7 @@ func ren_wid(next func() int32, back func(int32)) int32 {
 	return n
 }
 
-// ren_until - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:877
+// ren_until - transpiled function from  ren.c:877
 func ren_until(wb_c4go_postfix []wb, next func() int32, back func(int32), d1 []byte, d2 []byte) int32 {
 	// return 1 if d1 was read and 2 if d2 was read
 	var c int32
@@ -7379,7 +7379,7 @@ func ren_until(wb_c4go_postfix []wb, next func() int32, back func(int32), d1 []b
 	return 0
 }
 
-// ren_untilmap - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:895
+// ren_untilmap - transpiled function from  ren.c:895
 func ren_untilmap(wb_c4go_postfix []wb, next func() int32, back func(int32), end []byte, src []byte, dst []byte) int32 {
 	// like ren_until(); map src to dst
 	var ret int32
@@ -7394,13 +7394,13 @@ func ren_untilmap(wb_c4go_postfix []wb, next func() int32, back func(int32), end
 	return 0
 }
 
-// wb_cpy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:907
+// wb_cpy - transpiled function from  ren.c:907
 func wb_cpy(dst []wb, src []wb, left int32) {
 	wb_hmov(dst, left-wb_wid(dst))
 	wb_cat(dst, src)
 }
 
-// ren_tl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:913
+// ren_tl - transpiled function from  ren.c:913
 func ren_tl(next func() int32, back func(int32)) {
 	var wb_c4go_postfix wb
 	var wb2 wb
@@ -7429,7 +7429,7 @@ func ren_tl(next func() int32, back func(int32)) {
 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 }
 
-// ren_field - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:941
+// ren_field - transpiled function from  ren.c:941
 func ren_field(wb_c4go_postfix []wb, next func() int32, back func(int32)) {
 	var wbs []wb = make([]wb, 32)
 	var i int32
@@ -7488,7 +7488,7 @@ func ren_field(wb_c4go_postfix []wb, next func() int32, back func(int32)) {
 	}
 }
 
-// ren_tab - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:971
+// ren_tab - transpiled function from  ren.c:971
 func ren_tab(wb_c4go_postfix []wb, tc []byte, next func() int32, back func(int32)) {
 	var t wb
 	var pos int32 = func() int32 {
@@ -7530,7 +7530,7 @@ func ren_tab(wb_c4go_postfix []wb, tc []byte, next func() int32, back func(int32
 	wb_done(c4goUnsafeConvert_wb(&t))
 }
 
-// ren_parse - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1001
+// ren_parse - transpiled function from  ren.c:1001
 func ren_parse(wb_c4go_postfix []wb, s []byte) int32 {
 	// parse characters and troff requests of s and append them to wb
 	var c int32
@@ -7549,7 +7549,7 @@ func ren_parse(wb_c4go_postfix []wb, s []byte) int32 {
 	return 0
 }
 
-// tr_popren - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1019
+// tr_popren - transpiled function from  ren.c:1019
 func tr_popren(args [][]byte) {
 	// cause nested render_rec() to exit
 	if args[1] != nil {
@@ -7559,7 +7559,7 @@ func tr_popren(args [][]byte) {
 	}
 }
 
-// render_rec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1027
+// render_rec - transpiled function from  ren.c:1027
 func render_rec(level int32) int32 {
 	// read characters from tr.c and pass the rendered lines to out.c
 	var c int32
@@ -7644,7 +7644,7 @@ func render_rec(level int32) int32 {
 	return 0
 }
 
-// render - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1086
+// render - transpiled function from  ren.c:1086
 func render() int32 {
 	// render input words
 	(nreg(map_([]byte("nl\x00"))))[0] = -1
@@ -7661,19 +7661,19 @@ func render() int32 {
 	return 0
 }
 
-// tpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1104
+// tpos - transpiled function from  ren.c:1104
 // trap handling
 // trap positions
 var tpos []int32 = make([]int32, 1024)
 
-// treg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1105
+// treg - transpiled function from  ren.c:1105
 // trap registers
 var treg []int32 = make([]int32, 1024)
 
-// ntraps - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1106
+// ntraps - transpiled function from  ren.c:1106
 var ntraps int32
 
-// trap_first - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1108
+// trap_first - transpiled function from  ren.c:1108
 func trap_first(pos int32) int32 {
 	var best int32 = -1
 	var i int32
@@ -7702,7 +7702,7 @@ func trap_first(pos int32) int32 {
 	return best
 }
 
-// trap_byreg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1119
+// trap_byreg - transpiled function from  ren.c:1119
 func trap_byreg(reg int32) int32 {
 	var i int32
 	for i = 0; i < ntraps; i++ {
@@ -7713,7 +7713,7 @@ func trap_byreg(reg int32) int32 {
 	return -1
 }
 
-// trap_bypos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1128
+// trap_bypos - transpiled function from  ren.c:1128
 func trap_bypos(reg int32, pos int32) int32 {
 	var i int32
 	for i = 0; i < ntraps; i++ {
@@ -7731,7 +7731,7 @@ func trap_bypos(reg int32, pos int32) int32 {
 	return -1
 }
 
-// tr_wh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1138
+// tr_wh - transpiled function from  ren.c:1138
 func tr_wh(args [][]byte) {
 	var reg int32
 	var pos int32
@@ -7764,7 +7764,7 @@ func tr_wh(args [][]byte) {
 	treg[id] = reg
 }
 
-// tr_ch - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1159
+// tr_ch - transpiled function from  ren.c:1159
 func tr_ch(args [][]byte) {
 	var reg int32
 	var id int32
@@ -7782,7 +7782,7 @@ func tr_ch(args [][]byte) {
 	}
 }
 
-// tr_dt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1175
+// tr_dt - transpiled function from  ren.c:1175
 func tr_dt(args [][]byte) {
 	if cdiv == nil {
 		return
@@ -7795,7 +7795,7 @@ func tr_dt(args [][]byte) {
 	}
 }
 
-// tr_em - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1187
+// tr_em - transpiled function from  ren.c:1187
 func tr_em(args [][]byte) {
 	if args[1] != nil {
 		trap_em = map_(args[1])
@@ -7804,7 +7804,7 @@ func tr_em(args [][]byte) {
 	}
 }
 
-// trap_pos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1192
+// trap_pos - transpiled function from  ren.c:1192
 func trap_pos(pos int32) int32 {
 	var ret int32 = trap_first(pos)
 	if bp_final >= 3 {
@@ -7825,7 +7825,7 @@ func trap_pos(pos int32) int32 {
 	return -1
 }
 
-// trap_reg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1202
+// trap_reg - transpiled function from  ren.c:1202
 func trap_reg(pos int32) int32 {
 	var ret int32 = trap_first(pos)
 	if cdiv != nil {
@@ -7840,7 +7840,7 @@ func trap_reg(pos int32) int32 {
 	return -1
 }
 
-// f_nexttrap - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/ren.c:1210
+// f_nexttrap - transpiled function from  ren.c:1210
 func f_nexttrap() int32 {
 	var pos int32 = trap_pos((nreg(int32('d')))[0])
 	if cdiv != nil {
@@ -7857,7 +7857,7 @@ func f_nexttrap() int32 {
 	}() - (nreg(int32('d')))[0]
 }
 
-// errmsg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:24
+// errmsg - transpiled function from  roff.c:24
 func errmsg(fmt_ []byte, c4goArgs ...interface{}) {
 	//
 	// * NEATROFF TYPESETTING SYSTEM
@@ -7882,13 +7882,13 @@ func errmsg(fmt_ []byte, c4goArgs ...interface{}) {
 	va_end(ap)
 }
 
-// errdie - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:32
+// errdie - transpiled function from  roff.c:32
 func errdie(msg []byte) {
 	noarch.Fprintf(noarch.Stderr, []byte("%s\x00"), msg)
 	noarch.Exit(1)
 }
 
-// mextend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:38
+// mextend - transpiled function from  roff.c:38
 func mextend(old interface{}, oldsz int32, newsz int32, memsz int32) interface{} {
 	var new_ interface{} = xmalloc(newsz * memsz)
 	memcpy(new_, old, uint32(oldsz*memsz))
@@ -7897,7 +7897,7 @@ func mextend(old interface{}, oldsz int32, newsz int32, memsz int32) interface{}
 	return new_
 }
 
-// xmalloc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:47
+// xmalloc - transpiled function from  roff.c:47
 func xmalloc(len_ int32) interface{} {
 	var m interface{} = make([]byte, uint32(len_))
 	if m == nil {
@@ -7906,7 +7906,7 @@ func xmalloc(len_ int32) interface{} {
 	return m
 }
 
-// xopens - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:55
+// xopens - transpiled function from  roff.c:55
 func xopens(path []byte) int32 {
 	var filp *noarch.File = noarch.Fopen(path, []byte("r\x00"))
 	if filp != nil {
@@ -7915,7 +7915,7 @@ func xopens(path []byte) int32 {
 	return noarch.BoolToInt(filp != nil)
 }
 
-// cmddef - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:64
+// cmddef - transpiled function from  roff.c:64
 func cmddef(arg []byte, reg []int32, def [][]byte) {
 	// parse the argument of -r and -d options
 	var regname []byte = []byte("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
@@ -7937,7 +7937,7 @@ func cmddef(arg []byte, reg []int32, def [][]byte) {
 	}
 }
 
-// cmdmac - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:74
+// cmdmac - transpiled function from  roff.c:74
 func cmdmac(dir []byte, arg []byte) int32 {
 	// find the macro specified with -m option
 	var path []byte = make([]byte, 1024)
@@ -7955,10 +7955,10 @@ func cmdmac(dir []byte, arg []byte) int32 {
 	return 0
 }
 
-// usage - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:88
+// usage - transpiled function from  roff.c:88
 var usage []byte = []byte("Usage: neatroff [options] input\n\nOptions:\n  -mx   \tinclude macro x\n  -rx=y \tset number register x to y\n  -dx=y \tdefine string register x as y\n  -C    \tenable compatibility mode\n  -Tdev \tset output device\n  -Fdir \tset font directory (./)\n  -Mdir \tset macro directory (./)\n\x00")
 
-// main - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/roff.c:99
+// main - transpiled function from  roff.c:99
 func main() {
 	argc := int32(len(os.Args))
 	argv := [][]byte{}
@@ -8075,20 +8075,20 @@ func main() {
 	noarch.Exit(int32(ret))
 }
 
-// sbuf_extend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:11
+// sbuf_extend - transpiled function from  sbuf.c:11
 func sbuf_extend(sbuf_c4go_postfix []sbuf, amount int32) {
 	// variable length string buffer
 	sbuf_c4go_postfix[0].sz = (amount + 512 - 1) & ^(512 - 1)
 	sbuf_c4go_postfix[0].s = mextend(sbuf_c4go_postfix[0].s, sbuf_c4go_postfix[0].n, sbuf_c4go_postfix[0].sz, int32(1)).([]byte)
 }
 
-// sbuf_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:17
+// sbuf_init - transpiled function from  sbuf.c:17
 func sbuf_init(sbuf_c4go_postfix []sbuf) {
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	sbuf_extend(sbuf_c4go_postfix, 512)
 }
 
-// sbuf_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:23
+// sbuf_add - transpiled function from  sbuf.c:23
 func sbuf_add(sbuf_c4go_postfix []sbuf, c int32) {
 	if sbuf_c4go_postfix[0].n+2 >= sbuf_c4go_postfix[0].sz {
 		sbuf_extend(sbuf_c4go_postfix, sbuf_c4go_postfix[0].sz*2)
@@ -8102,7 +8102,7 @@ func sbuf_add(sbuf_c4go_postfix []sbuf, c int32) {
 	}()] = byte(c)
 }
 
-// sbuf_append - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:30
+// sbuf_append - transpiled function from  sbuf.c:30
 func sbuf_append(sbuf_c4go_postfix []sbuf, s []byte) {
 	var len_ int32 = noarch.Strlen(s)
 	if sbuf_c4go_postfix[0].n+len_+1 >= sbuf_c4go_postfix[0].sz {
@@ -8112,7 +8112,7 @@ func sbuf_append(sbuf_c4go_postfix []sbuf, s []byte) {
 	sbuf_c4go_postfix[0].n += len_
 }
 
-// sbuf_printf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:39
+// sbuf_printf - transpiled function from  sbuf.c:39
 func sbuf_printf(sbuf_c4go_postfix []sbuf, s []byte, c4goArgs ...interface{}) {
 	var buf []byte = make([]byte, 1024)
 	var ap *va_list
@@ -8122,23 +8122,23 @@ func sbuf_printf(sbuf_c4go_postfix []sbuf, s []byte, c4goArgs ...interface{}) {
 	sbuf_append(sbuf_c4go_postfix, buf)
 }
 
-// sbuf_empty - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:49
+// sbuf_empty - transpiled function from  sbuf.c:49
 func sbuf_empty(sbuf_c4go_postfix []sbuf) int32 {
 	return noarch.BoolToInt(noarch.Not(sbuf_c4go_postfix[0].n))
 }
 
-// sbuf_buf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:54
+// sbuf_buf - transpiled function from  sbuf.c:54
 func sbuf_buf(sbuf_c4go_postfix []sbuf) []byte {
 	sbuf_c4go_postfix[0].s[sbuf_c4go_postfix[0].n] = '\x00'
 	return sbuf_c4go_postfix[0].s
 }
 
-// sbuf_len - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:60
+// sbuf_len - transpiled function from  sbuf.c:60
 func sbuf_len(sbuf_c4go_postfix []sbuf) int32 {
 	return sbuf_c4go_postfix[0].n
 }
 
-// sbuf_cut - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:66
+// sbuf_cut - transpiled function from  sbuf.c:66
 func sbuf_cut(sbuf_c4go_postfix []sbuf, n int32) {
 	if sbuf_c4go_postfix[0].n > n {
 		// shorten the sbuf
@@ -8146,48 +8146,48 @@ func sbuf_cut(sbuf_c4go_postfix []sbuf, n int32) {
 	}
 }
 
-// sbuf_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:72
+// sbuf_done - transpiled function from  sbuf.c:72
 func sbuf_done(sbuf_c4go_postfix []sbuf) {
 	_ = sbuf_c4go_postfix[0].s
 }
 
-// sbuf_out - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/sbuf.c:77
+// sbuf_out - transpiled function from  sbuf.c:77
 func sbuf_out(sbuf_c4go_postfix []sbuf) []byte {
 	var s []byte = sbuf_c4go_postfix[0].s
 	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	return s
 }
 
-// tr_nl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:8
+// tr_nl - transpiled function from  tr.c:8
 // built-in troff requests
 // just read a newline
 var tr_nl int32 = 1
 
-// tr_bm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:9
+// tr_bm - transpiled function from  tr.c:9
 // blank line macro
 var tr_bm int32 = -1
 
-// tr_sm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:10
+// tr_sm - transpiled function from  tr.c:10
 // leading space macro
 var tr_sm int32 = -1
 
-// c_pc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:11
+// c_pc - transpiled function from  tr.c:11
 // page number character
 var c_pc []byte = []byte("%\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
 
-// c_ec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:12
+// c_ec - transpiled function from  tr.c:12
 // escape character
 var c_ec int32 = int32('\\')
 
-// c_cc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:13
+// c_cc - transpiled function from  tr.c:13
 // control character
 var c_cc int32 = int32('.')
 
-// c_c2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:14
+// c_c2 - transpiled function from  tr.c:14
 // no-break control character
 var c_c2 int32 = int32('\'')
 
-// jmp_eol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:17
+// jmp_eol - transpiled function from  tr.c:17
 func jmp_eol() {
 	// skip everything until the end of line
 	var c int32
@@ -8199,7 +8199,7 @@ func jmp_eol() {
 	}
 }
 
-// tr_vs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:25
+// tr_vs - transpiled function from  tr.c:25
 func tr_vs(args [][]byte) {
 	var vs int32 = func() int32 {
 		if args[1] != nil {
@@ -8215,7 +8215,7 @@ func tr_vs(args [][]byte) {
 	}
 }
 
-// tr_ls - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:32
+// tr_ls - transpiled function from  tr.c:32
 func tr_ls(args [][]byte) {
 	var ls int32 = func() int32 {
 		if args[1] != nil {
@@ -8231,7 +8231,7 @@ func tr_ls(args [][]byte) {
 	}
 }
 
-// tr_pl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:39
+// tr_pl - transpiled function from  tr.c:39
 func tr_pl(args [][]byte) {
 	var n int32 = eval_re(func() []byte {
 		if args[1] != nil {
@@ -8246,7 +8246,7 @@ func tr_pl(args [][]byte) {
 	}
 }
 
-// tr_nr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:45
+// tr_nr - transpiled function from  tr.c:45
 func tr_nr(args [][]byte) {
 	var id int32
 	if args[2] == nil {
@@ -8259,7 +8259,7 @@ func tr_nr(args [][]byte) {
 	}
 }
 
-// tr_rr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:56
+// tr_rr - transpiled function from  tr.c:56
 func tr_rr(args [][]byte) {
 	var i int32
 	for i = 1; i < 32; i++ {
@@ -8269,14 +8269,14 @@ func tr_rr(args [][]byte) {
 	}
 }
 
-// tr_af - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:64
+// tr_af - transpiled function from  tr.c:64
 func tr_af(args [][]byte) {
 	if args[2] != nil {
 		num_setfmt(map_(args[1]), args[2])
 	}
 }
 
-// tr_ds - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:70
+// tr_ds - transpiled function from  tr.c:70
 func tr_ds(args [][]byte) {
 	str_set(map_(args[1]), func() []byte {
 		if args[2] != nil {
@@ -8286,7 +8286,7 @@ func tr_ds(args [][]byte) {
 	}())
 }
 
-// tr_as - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:75
+// tr_as - transpiled function from  tr.c:75
 func tr_as(args [][]byte) {
 	var reg int32
 	var s1 []byte
@@ -8310,7 +8310,7 @@ func tr_as(args [][]byte) {
 	_ = s
 }
 
-// tr_rm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:89
+// tr_rm - transpiled function from  tr.c:89
 func tr_rm(args [][]byte) {
 	var i int32
 	for i = 1; i < 32; i++ {
@@ -8320,7 +8320,7 @@ func tr_rm(args [][]byte) {
 	}
 }
 
-// tr_rn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:97
+// tr_rn - transpiled function from  tr.c:97
 func tr_rn(args [][]byte) {
 	if args[2] == nil {
 		return
@@ -8328,7 +8328,7 @@ func tr_rn(args [][]byte) {
 	str_rn(map_(args[1]), map_(args[2]))
 }
 
-// tr_po - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:104
+// tr_po - transpiled function from  tr.c:104
 func tr_po(args [][]byte) {
 	var po int32 = func() int32 {
 		if args[1] != nil {
@@ -8344,7 +8344,7 @@ func tr_po(args [][]byte) {
 	}
 }
 
-// read_string - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:112
+// read_string - transpiled function from  tr.c:112
 func read_string() []byte {
 	// read a string argument of a macro
 	var sbuf_c4go_postfix sbuf
@@ -8378,7 +8378,7 @@ func read_string() []byte {
 	return sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
-// read_name - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:140
+// read_name - transpiled function from  tr.c:140
 func read_name(two int32) []byte {
 	// read a space separated macro argument; if two, read at most two characters
 	var sbuf_c4go_postfix sbuf
@@ -8401,7 +8401,7 @@ func read_name(two int32) []byte {
 	return sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
-// macrobody - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:160
+// macrobody - transpiled function from  tr.c:160
 func macrobody(sbuf_c4go_postfix []sbuf, end []byte) {
 	var first int32 = 1
 	var c int32
@@ -8442,7 +8442,7 @@ func macrobody(sbuf_c4go_postfix []sbuf, end []byte) {
 	cp_copymode(0)
 }
 
-// tr_de - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:194
+// tr_de - transpiled function from  tr.c:194
 func tr_de(args [][]byte) {
 	var sbuf_c4go_postfix sbuf
 	var id int32
@@ -8468,7 +8468,7 @@ func tr_de(args [][]byte) {
 	}
 }
 
-// tr_ig - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:211
+// tr_ig - transpiled function from  tr.c:211
 func tr_ig(args [][]byte) {
 	macrobody(nil, func() []byte {
 		if args[1] != nil {
@@ -8478,7 +8478,7 @@ func tr_ig(args [][]byte) {
 	}())
 }
 
-// read_until - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:217
+// read_until - transpiled function from  tr.c:217
 func read_until(sbuf_c4go_postfix []sbuf, stop []byte, next func() int32, back func(int32)) int32 {
 	// read into sbuf until stop; if stop is NULL, stop at whitespace
 	var cs []byte = make([]byte, 32)
@@ -8508,7 +8508,7 @@ func read_until(sbuf_c4go_postfix []sbuf, stop []byte, next func() int32, back f
 	return 1
 }
 
-// if_strcmp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:240
+// if_strcmp - transpiled function from  tr.c:240
 func if_strcmp(next func() int32, back func(int32)) int32 {
 	// evaluate .if strcmp (i.e. 'str'str')
 	var delim []byte = make([]byte, 32)
@@ -8527,7 +8527,7 @@ func if_strcmp(next func() int32, back func(int32)) int32 {
 	return ret
 }
 
-// if_cond - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:258
+// if_cond - transpiled function from  tr.c:258
 func if_cond(next func() int32, back func(int32)) int32 {
 	switch cp_next() {
 	case 'o':
@@ -8543,7 +8543,7 @@ func if_cond(next func() int32, back func(int32)) int32 {
 	return 0
 }
 
-// if_eval - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:274
+// if_eval - transpiled function from  tr.c:274
 func if_eval(next func() int32, back func(int32)) int32 {
 	// evaluate .if condition
 	var sbuf_c4go_postfix sbuf
@@ -8555,7 +8555,7 @@ func if_eval(next func() int32, back func(int32)) int32 {
 	return ret
 }
 
-// eval_if - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:285
+// eval_if - transpiled function from  tr.c:285
 func eval_if(next func() int32, back func(int32)) int32 {
 	var neg int32
 	var ret int32
@@ -8583,14 +8583,14 @@ func eval_if(next func() int32, back func(int32)) int32 {
 	return noarch.BoolToInt(ret != neg)
 }
 
-// ie_cond - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:310
+// ie_cond - transpiled function from  tr.c:310
 // .ie condition stack
 var ie_cond []int32 = make([]int32, 128)
 
-// ie_depth - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:311
+// ie_depth - transpiled function from  tr.c:311
 var ie_depth int32
 
-// tr_if - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:313
+// tr_if - transpiled function from  tr.c:313
 func tr_if(args [][]byte) {
 	var c int32 = eval_if(cp_next, in_back)
 	if int32(args[0][1]) == int32('i') && int32(args[0][2]) == int32('e') {
@@ -8607,7 +8607,7 @@ func tr_if(args [][]byte) {
 	cp_blk(noarch.BoolToInt(noarch.Not(c)))
 }
 
-// tr_el - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:322
+// tr_el - transpiled function from  tr.c:322
 func tr_el(args [][]byte) {
 	cp_blk(func() int32 {
 		if ie_depth > 0 {
@@ -8620,12 +8620,12 @@ func tr_el(args [][]byte) {
 	}())
 }
 
-// tr_na - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:327
+// tr_na - transpiled function from  tr.c:327
 func tr_na(args [][]byte) {
 	(nreg(map_([]byte(".na\x00"))))[0] = 1
 }
 
-// adjmode - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:332
+// adjmode - transpiled function from  tr.c:332
 func adjmode(c int32, def int32) int32 {
 	switch c {
 	case 'l':
@@ -8644,7 +8644,7 @@ func adjmode(c int32, def int32) int32 {
 	return def
 }
 
-// tr_ad - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:350
+// tr_ad - transpiled function from  tr.c:350
 func tr_ad(args [][]byte) {
 	var s []byte = args[1]
 	(nreg(map_([]byte(".na\x00"))))[0] = 0
@@ -8662,7 +8662,7 @@ func tr_ad(args [][]byte) {
 	}
 }
 
-// tr_tm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:362
+// tr_tm - transpiled function from  tr.c:362
 func tr_tm(args [][]byte) {
 	noarch.Fprintf(noarch.Stderr, []byte("%s\n\x00"), func() []byte {
 		if args[1] != nil {
@@ -8672,19 +8672,19 @@ func tr_tm(args [][]byte) {
 	}())
 }
 
-// tr_so - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:367
+// tr_so - transpiled function from  tr.c:367
 func tr_so(args [][]byte) {
 	if args[1] != nil {
 		in_so(args[1])
 	}
 }
 
-// tr_nx - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:373
+// tr_nx - transpiled function from  tr.c:373
 func tr_nx(args [][]byte) {
 	in_nx(args[1])
 }
 
-// tr_shift - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:378
+// tr_shift - transpiled function from  tr.c:378
 func tr_shift(args [][]byte) {
 	var n int32 = func() int32 {
 		if args[1] != nil {
@@ -8702,17 +8702,17 @@ func tr_shift(args [][]byte) {
 	}
 }
 
-// tr_ex - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:385
+// tr_ex - transpiled function from  tr.c:385
 func tr_ex(args [][]byte) {
 	in_ex()
 }
 
-// tr_sy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:390
+// tr_sy - transpiled function from  tr.c:390
 func tr_sy(args [][]byte) {
 	noarch.System(args[1])
 }
 
-// tr_lt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:395
+// tr_lt - transpiled function from  tr.c:395
 func tr_lt(args [][]byte) {
 	var lt int32 = func() int32 {
 		if args[1] != nil {
@@ -8728,7 +8728,7 @@ func tr_lt(args [][]byte) {
 	}
 }
 
-// tr_pc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:402
+// tr_pc - transpiled function from  tr.c:402
 func tr_pc(args [][]byte) {
 	var s []byte = args[1]
 	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], c_pc) < 0 {
@@ -8736,7 +8736,7 @@ func tr_pc(args [][]byte) {
 	}
 }
 
-// tr_tl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:409
+// tr_tl - transpiled function from  tr.c:409
 func tr_tl(args [][]byte) {
 	var c int32
 	for {
@@ -8755,7 +8755,7 @@ func tr_tl(args [][]byte) {
 	}
 }
 
-// tr_ec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:422
+// tr_ec - transpiled function from  tr.c:422
 func tr_ec(args [][]byte) {
 	if args[1] != nil {
 		c_ec = int32(args[1][0])
@@ -8764,7 +8764,7 @@ func tr_ec(args [][]byte) {
 	}
 }
 
-// tr_cc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:427
+// tr_cc - transpiled function from  tr.c:427
 func tr_cc(args [][]byte) {
 	if args[1] != nil {
 		c_cc = int32(args[1][0])
@@ -8773,7 +8773,7 @@ func tr_cc(args [][]byte) {
 	}
 }
 
-// tr_c2 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:432
+// tr_c2 - transpiled function from  tr.c:432
 func tr_c2(args [][]byte) {
 	if args[1] != nil {
 		c_c2 = int32(args[1][0])
@@ -8782,12 +8782,12 @@ func tr_c2(args [][]byte) {
 	}
 }
 
-// tr_eo - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:437
+// tr_eo - transpiled function from  tr.c:437
 func tr_eo(args [][]byte) {
 	c_ec = -1
 }
 
-// tr_hc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:442
+// tr_hc - transpiled function from  tr.c:442
 func tr_hc(args [][]byte) {
 	var s []byte = args[1]
 	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_hc()) < 0 {
@@ -8795,20 +8795,20 @@ func tr_hc(args [][]byte) {
 	}
 }
 
-// eos_sent - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:450
+// eos_sent - transpiled function from  tr.c:450
 // sentence ending and their transparent characters
 var eos_sent [][]byte = [][]byte{[]byte(".\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("?\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("!\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
 
-// eos_sentcnt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:451
+// eos_sentcnt - transpiled function from  tr.c:451
 var eos_sentcnt int32 = 3
 
-// eos_tran - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:452
+// eos_tran - transpiled function from  tr.c:452
 var eos_tran [][]byte = [][]byte{[]byte("'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte(")\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("]\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("*\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
 
-// eos_trancnt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:453
+// eos_trancnt - transpiled function from  tr.c:453
 var eos_trancnt int32 = 5
 
-// tr_eos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:455
+// tr_eos - transpiled function from  tr.c:455
 func tr_eos(args [][]byte) {
 	eos_sentcnt = 0
 	eos_trancnt = 0
@@ -8830,7 +8830,7 @@ func tr_eos(args [][]byte) {
 	}
 }
 
-// c_eossent - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:473
+// c_eossent - transpiled function from  tr.c:473
 func c_eossent(s []byte) int32 {
 	var i int32
 	for i = 0; i < eos_sentcnt; i++ {
@@ -8841,7 +8841,7 @@ func c_eossent(s []byte) int32 {
 	return 0
 }
 
-// c_eostran - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:482
+// c_eostran - transpiled function from  tr.c:482
 func c_eostran(s []byte) int32 {
 	var i int32
 	for i = 0; i < eos_trancnt; i++ {
@@ -8852,25 +8852,25 @@ func c_eostran(s []byte) int32 {
 	return 0
 }
 
-// hy_dash - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:492
+// hy_dash - transpiled function from  tr.c:492
 // hyphenation dashes and hyphenation inhibiting character
 var hy_dash [][]byte = [][]byte{[]byte("\\:\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("-\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("em\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("en\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("\\-\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("--\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), []byte("hy\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
 
-// hy_dashcnt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:493
+// hy_dashcnt - transpiled function from  tr.c:493
 var hy_dashcnt int32 = 7
 
-// hy_stop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:494
+// hy_stop - transpiled function from  tr.c:494
 var hy_stop [][]byte = [][]byte{[]byte("\\%\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"), {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}
 
-// hy_stopcnt - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:495
+// hy_stopcnt - transpiled function from  tr.c:495
 var hy_stopcnt int32 = 1
 
-// tr_nh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:497
+// tr_nh - transpiled function from  tr.c:497
 func tr_nh(args [][]byte) {
 	(nreg(map_([]byte(".hy\x00"))))[0] = 0
 }
 
-// tr_hy - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:502
+// tr_hy - transpiled function from  tr.c:502
 func tr_hy(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".hy\x00"))))[0] = eval_re(args[1], (nreg(map_([]byte(".hy\x00"))))[0], int32('\x00'))
@@ -8879,7 +8879,7 @@ func tr_hy(args [][]byte) {
 	}
 }
 
-// tr_hlm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:507
+// tr_hlm - transpiled function from  tr.c:507
 func tr_hlm(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".hlm\x00"))))[0] = eval_re(args[1], (nreg(map_([]byte(".hlm\x00"))))[0], int32('\x00'))
@@ -8888,7 +8888,7 @@ func tr_hlm(args [][]byte) {
 	}
 }
 
-// tr_hycost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:512
+// tr_hycost - transpiled function from  tr.c:512
 func tr_hycost(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".hycost\x00"))))[0] = eval_re(args[1], (nreg(map_([]byte(".hycost\x00"))))[0], int32('\x00'))
@@ -8907,7 +8907,7 @@ func tr_hycost(args [][]byte) {
 	}
 }
 
-// tr_hydash - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:519
+// tr_hydash - transpiled function from  tr.c:519
 func tr_hydash(args [][]byte) {
 	hy_dashcnt = 0
 	if args[1] != nil {
@@ -8920,7 +8920,7 @@ func tr_hydash(args [][]byte) {
 	}
 }
 
-// tr_hystop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:530
+// tr_hystop - transpiled function from  tr.c:530
 func tr_hystop(args [][]byte) {
 	hy_stopcnt = 0
 	if args[1] != nil {
@@ -8933,7 +8933,7 @@ func tr_hystop(args [][]byte) {
 	}
 }
 
-// c_hydash - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:541
+// c_hydash - transpiled function from  tr.c:541
 func c_hydash(s []byte) int32 {
 	var i int32
 	for i = 0; i < hy_dashcnt; i++ {
@@ -8944,7 +8944,7 @@ func c_hydash(s []byte) int32 {
 	return 0
 }
 
-// c_hystop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:550
+// c_hystop - transpiled function from  tr.c:550
 func c_hystop(s []byte) int32 {
 	var i int32
 	for i = 0; i < hy_stopcnt; i++ {
@@ -8955,12 +8955,12 @@ func c_hystop(s []byte) int32 {
 	return 0
 }
 
-// c_hymark - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:559
+// c_hymark - transpiled function from  tr.c:559
 func c_hymark(s []byte) int32 {
 	return noarch.BoolToInt(noarch.Not(noarch.Strcmp([]byte("\\:\x00"), s)) || noarch.Not(noarch.Strcmp(env_hc(), s)))
 }
 
-// tr_pmll - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:564
+// tr_pmll - transpiled function from  tr.c:564
 func tr_pmll(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".pmll\x00"))))[0] = eval_re(args[1], (nreg(map_([]byte(".pmll\x00"))))[0], int32('\x00'))
@@ -8974,28 +8974,28 @@ func tr_pmll(args [][]byte) {
 	}
 }
 
-// tr_lg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:570
+// tr_lg - transpiled function from  tr.c:570
 func tr_lg(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".lg\x00"))))[0] = eval(args[1], int32('\x00'))
 	}
 }
 
-// tr_kn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:576
+// tr_kn - transpiled function from  tr.c:576
 func tr_kn(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".kn\x00"))))[0] = eval(args[1], int32('\x00'))
 	}
 }
 
-// tr_cp - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:582
+// tr_cp - transpiled function from  tr.c:582
 func tr_cp(args [][]byte) {
 	if args[1] != nil {
 		(nreg(int32('C')))[0] = noarch.Atoi(args[1])
 	}
 }
 
-// tr_ss - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:588
+// tr_ss - transpiled function from  tr.c:588
 func tr_ss(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".ss\x00"))))[0] = eval_re(args[1], (nreg(map_([]byte(".ss\x00"))))[0], 0)
@@ -9007,7 +9007,7 @@ func tr_ss(args [][]byte) {
 	}
 }
 
-// tr_ssh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:596
+// tr_ssh - transpiled function from  tr.c:596
 func tr_ssh(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".ssh\x00"))))[0] = eval_re(args[1], (nreg(map_([]byte(".ssh\x00"))))[0], 0)
@@ -9016,7 +9016,7 @@ func tr_ssh(args [][]byte) {
 	}
 }
 
-// tr_cs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:601
+// tr_cs - transpiled function from  tr.c:601
 func tr_cs(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9039,7 +9039,7 @@ func tr_cs(args [][]byte) {
 	}
 }
 
-// tr_fzoom - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:609
+// tr_fzoom - transpiled function from  tr.c:609
 func tr_fzoom(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9057,7 +9057,7 @@ func tr_fzoom(args [][]byte) {
 	}
 }
 
-// tr_tkf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:616
+// tr_tkf - transpiled function from  tr.c:616
 func tr_tkf(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9070,7 +9070,7 @@ func tr_tkf(args [][]byte) {
 	}
 }
 
-// tr_ff - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:624
+// tr_ff - transpiled function from  tr.c:624
 func tr_ff(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9086,7 +9086,7 @@ func tr_ff(args [][]byte) {
 	}
 }
 
-// tr_ffsc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:633
+// tr_ffsc - transpiled function from  tr.c:633
 func tr_ffsc(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9102,7 +9102,7 @@ func tr_ffsc(args [][]byte) {
 	}
 }
 
-// tr_nm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:642
+// tr_nm - transpiled function from  tr.c:642
 func tr_nm(args [][]byte) {
 	if args[1] == nil {
 		(nreg(map_([]byte(".nm\x00"))))[0] = 0
@@ -9138,7 +9138,7 @@ func tr_nm(args [][]byte) {
 	}
 }
 
-// tr_nn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:659
+// tr_nn - transpiled function from  tr.c:659
 func tr_nn(args [][]byte) {
 	if args[1] != nil {
 		(nreg(map_([]byte(".nn\x00"))))[0] = eval(args[1], 0)
@@ -9147,7 +9147,7 @@ func tr_nn(args [][]byte) {
 	}
 }
 
-// tr_bd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:664
+// tr_bd - transpiled function from  tr.c:664
 func tr_bd(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9168,7 +9168,7 @@ func tr_bd(args [][]byte) {
 	}
 }
 
-// tr_it - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:673
+// tr_it - transpiled function from  tr.c:673
 func tr_it(args [][]byte) {
 	if args[2] != nil {
 		(nreg(map_([]byte(".it\x00"))))[0] = map_(args[2])
@@ -9178,7 +9178,7 @@ func tr_it(args [][]byte) {
 	}
 }
 
-// tr_mc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:683
+// tr_mc - transpiled function from  tr.c:683
 func tr_mc(args [][]byte) {
 	var s []byte = args[1]
 	if s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_mc()) >= 0 {
@@ -9193,7 +9193,7 @@ func tr_mc(args [][]byte) {
 	}
 }
 
-// tr_tc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:694
+// tr_tc - transpiled function from  tr.c:694
 func tr_tc(args [][]byte) {
 	var s []byte = args[1]
 	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_tc()) < 0 {
@@ -9201,7 +9201,7 @@ func tr_tc(args [][]byte) {
 	}
 }
 
-// tr_lc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:701
+// tr_lc - transpiled function from  tr.c:701
 func tr_lc(args [][]byte) {
 	var s []byte = args[1]
 	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_lc()) < 0 {
@@ -9209,14 +9209,14 @@ func tr_lc(args [][]byte) {
 	}
 }
 
-// tr_lf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:708
+// tr_lf - transpiled function from  tr.c:708
 func tr_lf(args [][]byte) {
 	if args[1] != nil {
 		in_lf(args[2], eval(args[1], 0))
 	}
 }
 
-// tr_chop - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:714
+// tr_chop - transpiled function from  tr.c:714
 func tr_chop(args [][]byte) {
 	var sbuf_c4go_postfix sbuf
 	var id int32
@@ -9232,24 +9232,24 @@ func tr_chop(args [][]byte) {
 	}
 }
 
-// cmap - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:731
+// cmap - transpiled function from  tr.c:731
 // character translation (.tr)
 // character mapping
 var cmap []dict
 
-// cmap_src - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:732
+// cmap_src - transpiled function from  tr.c:732
 // source character
 var cmap_src [][]byte = make([][]byte, 512)
 
-// cmap_dst - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:733
+// cmap_dst - transpiled function from  tr.c:733
 // character mapping
 var cmap_dst [][]byte = make([][]byte, 512)
 
-// cmap_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:734
+// cmap_n - transpiled function from  tr.c:734
 // number of translated character
 var cmap_n int32
 
-// cmap_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:736
+// cmap_add - transpiled function from  tr.c:736
 func cmap_add(c1 []byte, c2 []byte) {
 	var i int32 = dict_get(cmap, c1)
 	if i >= 0 {
@@ -9262,7 +9262,7 @@ func cmap_add(c1 []byte, c2 []byte) {
 	}
 }
 
-// cmap_map - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:749
+// cmap_map - transpiled function from  tr.c:749
 func cmap_map(c []byte) []byte {
 	var i int32 = dict_get(cmap, c)
 	if i >= 0 {
@@ -9271,7 +9271,7 @@ func cmap_map(c []byte) []byte {
 	return c
 }
 
-// tr_tr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:755
+// tr_tr - transpiled function from  tr.c:755
 func tr_tr(args [][]byte) {
 	var s []byte = args[1]
 	var c1 []byte = make([]byte, 32)
@@ -9284,28 +9284,28 @@ func tr_tr(args [][]byte) {
 	}
 }
 
-// cdef_src - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:767
+// cdef_src - transpiled function from  tr.c:767
 // character definition (.char)
 // source character
 var cdef_src [][]byte = make([][]byte, 128)
 
-// cdef_dst - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:768
+// cdef_dst - transpiled function from  tr.c:768
 // character definition
 var cdef_dst [][]byte = make([][]byte, 128)
 
-// cdef_fn - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:769
+// cdef_fn - transpiled function from  tr.c:769
 // owning font
 var cdef_fn []int32 = make([]int32, 128)
 
-// cdef_n - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:770
+// cdef_n - transpiled function from  tr.c:770
 // number of defined characters
 var cdef_n int32
 
-// cdef_expanding - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:771
+// cdef_expanding - transpiled function from  tr.c:771
 // inside cdef_expand() call
 var cdef_expanding int32
 
-// cdef_find - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:773
+// cdef_find - transpiled function from  tr.c:773
 func cdef_find(c []byte, fn int32) int32 {
 	var i int32
 	for i = 0; i < cdef_n; i++ {
@@ -9316,7 +9316,7 @@ func cdef_find(c []byte, fn int32) int32 {
 	return -1
 }
 
-// cdef_map - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:783
+// cdef_map - transpiled function from  tr.c:783
 func cdef_map(c []byte, fn int32) []byte {
 	// return the definition of the given character
 	var i int32 = cdef_find(c, fn)
@@ -9326,7 +9326,7 @@ func cdef_map(c []byte, fn int32) []byte {
 	return nil
 }
 
-// cdef_expand - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:789
+// cdef_expand - transpiled function from  tr.c:789
 func cdef_expand(wb_c4go_postfix []wb, s []byte, fn int32) int32 {
 	var d []byte = cdef_map(s, fn)
 	if d == nil {
@@ -9338,7 +9338,7 @@ func cdef_expand(wb_c4go_postfix []wb, s []byte, fn int32) int32 {
 	return 0
 }
 
-// cdef_remove - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:800
+// cdef_remove - transpiled function from  tr.c:800
 func cdef_remove(fn []byte, cs []byte) {
 	var c []byte = make([]byte, 32)
 	var i int32
@@ -9362,7 +9362,7 @@ func cdef_remove(fn []byte, cs []byte) {
 	}
 }
 
-// cdef_add - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:818
+// cdef_add - transpiled function from  tr.c:818
 func cdef_add(fn []byte, cs []byte, def []byte) {
 	var c []byte = make([]byte, 32)
 	var i int32
@@ -9397,7 +9397,7 @@ func cdef_add(fn []byte, cs []byte, def []byte) {
 	}
 }
 
-// tr_rchar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:840
+// tr_rchar - transpiled function from  tr.c:840
 func tr_rchar(args [][]byte) {
 	var i int32
 	for i = 1; i < 32; i++ {
@@ -9407,7 +9407,7 @@ func tr_rchar(args [][]byte) {
 	}
 }
 
-// tr_char - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:848
+// tr_char - transpiled function from  tr.c:848
 func tr_char(args [][]byte) {
 	if args[2] != nil {
 		cdef_add(nil, args[1], args[2])
@@ -9416,7 +9416,7 @@ func tr_char(args [][]byte) {
 	}
 }
 
-// tr_ochar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:856
+// tr_ochar - transpiled function from  tr.c:856
 func tr_ochar(args [][]byte) {
 	if args[3] != nil {
 		cdef_add(args[1], args[2], args[3])
@@ -9425,7 +9425,7 @@ func tr_ochar(args [][]byte) {
 	}
 }
 
-// tr_fmap - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:864
+// tr_fmap - transpiled function from  tr.c:864
 func tr_fmap(args [][]byte) {
 	var fn []font = func() []font {
 		if args[1] != nil {
@@ -9438,7 +9438,7 @@ func tr_fmap(args [][]byte) {
 	}
 }
 
-// tr_blm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:871
+// tr_blm - transpiled function from  tr.c:871
 func tr_blm(args [][]byte) {
 	if args[1] != nil {
 		tr_bm = map_(args[1])
@@ -9447,7 +9447,7 @@ func tr_blm(args [][]byte) {
 	}
 }
 
-// tr_lsm - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:876
+// tr_lsm - transpiled function from  tr.c:876
 func tr_lsm(args [][]byte) {
 	if args[1] != nil {
 		tr_sm = map_(args[1])
@@ -9456,7 +9456,7 @@ func tr_lsm(args [][]byte) {
 	}
 }
 
-// tr_co - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:881
+// tr_co - transpiled function from  tr.c:881
 func tr_co(args [][]byte) {
 	var src []byte = args[1]
 	var dst []byte = args[2]
@@ -9465,7 +9465,7 @@ func tr_co(args [][]byte) {
 	}
 }
 
-// tr_coa - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:889
+// tr_coa - transpiled function from  tr.c:889
 func tr_coa(args [][]byte) {
 	var src []byte = args[1]
 	var dst []byte = args[2]
@@ -9481,7 +9481,7 @@ func tr_coa(args [][]byte) {
 	}
 }
 
-// tr_coo - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:904
+// tr_coo - transpiled function from  tr.c:904
 func tr_coo(args [][]byte) {
 	var reg []byte = args[1]
 	var path []byte = args[2]
@@ -9500,7 +9500,7 @@ func tr_coo(args [][]byte) {
 	}
 }
 
-// tr_coi - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:918
+// tr_coi - transpiled function from  tr.c:918
 func tr_coi(args [][]byte) {
 	var reg []byte = args[1]
 	var path []byte = args[2]
@@ -9524,14 +9524,14 @@ func tr_coi(args [][]byte) {
 	}
 }
 
-// tr_dv - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:937
+// tr_dv - transpiled function from  tr.c:937
 func tr_dv(args [][]byte) {
 	if args[1] != nil {
 		out_x(args[1])
 	}
 }
 
-// macroarg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:944
+// macroarg - transpiled function from  tr.c:944
 func macroarg(sbuf_c4go_postfix []sbuf, brk int32, next func() int32, back func(int32)) int32 {
 	// read a single macro argument
 	var quoted int32
@@ -9574,7 +9574,7 @@ func macroarg(sbuf_c4go_postfix []sbuf, brk int32, next func() int32, back func(
 	return 0
 }
 
-// chopargs - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:981
+// chopargs - transpiled function from  tr.c:981
 func chopargs(sbuf_c4go_postfix []sbuf, args [][]byte) {
 	// split the arguments in sbuf, after calling one of mkargs_*()
 	var s []byte = sbuf_buf(sbuf_c4go_postfix)
@@ -9596,7 +9596,7 @@ func chopargs(sbuf_c4go_postfix []sbuf, args [][]byte) {
 	}
 }
 
-// tr_args - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:994
+// tr_args - transpiled function from  tr.c:994
 func tr_args(args [][]byte, brk int32, next func() int32, back func(int32)) []byte {
 	// read macro arguments; free the returned pointer when done
 	var sbuf_c4go_postfix sbuf
@@ -9607,7 +9607,7 @@ func tr_args(args [][]byte, brk int32, next func() int32, back func(int32)) []by
 	return sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
-// mkargs_macro - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1005
+// mkargs_macro - transpiled function from  tr.c:1005
 func mkargs_macro(sbuf_c4go_postfix []sbuf) {
 	// read regular macro arguments
 	cp_copymode(1)
@@ -9617,7 +9617,7 @@ func mkargs_macro(sbuf_c4go_postfix []sbuf) {
 	cp_copymode(0)
 }
 
-// mkargs_req - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1015
+// mkargs_req - transpiled function from  tr.c:1015
 func mkargs_req(sbuf_c4go_postfix []sbuf) {
 	// read request arguments; trims tabs too
 	var n int32
@@ -9649,7 +9649,7 @@ func mkargs_req(sbuf_c4go_postfix []sbuf) {
 	jmp_eol()
 }
 
-// mkargs_ds - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1043
+// mkargs_ds - transpiled function from  tr.c:1043
 func mkargs_ds(sbuf_c4go_postfix []sbuf) {
 	// read arguments for .ds and .char
 	var s []byte = read_name((nreg(int32('C')))[0])
@@ -9665,7 +9665,7 @@ func mkargs_ds(sbuf_c4go_postfix []sbuf) {
 	jmp_eol()
 }
 
-// mkargs_ochar - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1059
+// mkargs_ochar - transpiled function from  tr.c:1059
 func mkargs_ochar(sbuf_c4go_postfix []sbuf) {
 	// read arguments for .ochar
 	var s []byte
@@ -9675,7 +9675,7 @@ func mkargs_ochar(sbuf_c4go_postfix []sbuf) {
 	mkargs_ds(sbuf_c4go_postfix)
 }
 
-// mkargs_reg1 - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1069
+// mkargs_reg1 - transpiled function from  tr.c:1069
 func mkargs_reg1(sbuf_c4go_postfix []sbuf) {
 	// read arguments for .nr
 	var s []byte = read_name((nreg(int32('C')))[0])
@@ -9685,14 +9685,14 @@ func mkargs_reg1(sbuf_c4go_postfix []sbuf) {
 	mkargs_req(sbuf_c4go_postfix)
 }
 
-// mkargs_null - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1079
+// mkargs_null - transpiled function from  tr.c:1079
 func mkargs_null(sbuf_c4go_postfix []sbuf) {
 	// do not read any arguments; for .if, .ie and .el
 	{
 	}
 }
 
-// mkargs_eol - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1084
+// mkargs_eol - transpiled function from  tr.c:1084
 func mkargs_eol(sbuf_c4go_postfix []sbuf) {
 	// read the whole line for .tm
 	var c int32
@@ -9710,17 +9710,17 @@ func mkargs_eol(sbuf_c4go_postfix []sbuf) {
 	cp_copymode(0)
 }
 
-// cmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1099
+// cmd - transpiled function from  tr.c:1099
 type cmd struct {
 	id   []byte
 	f    func([][]byte)
 	args func([]sbuf)
 }
 
-// cmds - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1099
+// cmds - transpiled function from  tr.c:1099
 var cmds []cmd = []cmd{{[]byte("\a<\x00"), tr_divbeg, nil}, {[]byte("\a>\x00"), tr_divend, nil}, {[]byte("\aV\x00"), tr_divvs, nil}, {[]byte("\aP\x00"), tr_popren, nil}, {[]byte(">>\x00"), tr_l2r, nil}, {[]byte("<<\x00"), tr_r2l, nil}, {[]byte("ab\x00"), tr_ab, mkargs_eol}, {[]byte("ad\x00"), tr_ad, nil}, {[]byte("af\x00"), tr_af, nil}, {[]byte("am\x00"), tr_de, mkargs_reg1}, {[]byte("as\x00"), tr_as, mkargs_ds}, {[]byte("bd\x00"), tr_bd, nil}, {[]byte("blm\x00"), tr_blm, nil}, {[]byte("bp\x00"), tr_bp, nil}, {[]byte("br\x00"), tr_br, nil}, {[]byte("c2\x00"), tr_c2, nil}, {[]byte("cc\x00"), tr_cc, nil}, {[]byte("ce\x00"), tr_ce, nil}, {[]byte("ch\x00"), tr_ch, nil}, {[]byte("char\x00"), tr_char, mkargs_ds}, {[]byte("chop\x00"), tr_chop, mkargs_reg1}, {[]byte("cl\x00"), tr_cl, nil}, {[]byte("co\x00"), tr_co, nil}, {[]byte("co+\x00"), tr_coa, nil}, {[]byte("co<\x00"), tr_coi, mkargs_ds}, {[]byte("co>\x00"), tr_coo, mkargs_ds}, {[]byte("cp\x00"), tr_cp, nil}, {[]byte("cs\x00"), tr_cs, nil}, {[]byte("da\x00"), tr_di, nil}, {[]byte("de\x00"), tr_de, mkargs_reg1}, {[]byte("di\x00"), tr_di, nil}, {[]byte("ds\x00"), tr_ds, mkargs_ds}, {[]byte("dt\x00"), tr_dt, nil}, {[]byte("dv\x00"), tr_dv, mkargs_eol}, {[]byte("ec\x00"), tr_ec, nil}, {[]byte("el\x00"), tr_el, mkargs_null}, {[]byte("em\x00"), tr_em, nil}, {[]byte("eo\x00"), tr_eo, nil}, {[]byte("eos\x00"), tr_eos, nil}, {[]byte("ev\x00"), tr_ev, nil}, {[]byte("ex\x00"), tr_ex, nil}, {[]byte("fc\x00"), tr_fc, nil}, {[]byte("ff\x00"), tr_ff, nil}, {[]byte("fi\x00"), tr_fi, nil}, {[]byte("fl\x00"), tr_br, nil}, {[]byte("fmap\x00"), tr_fmap, nil}, {[]byte("fp\x00"), tr_fp, nil}, {[]byte("ffsc\x00"), tr_ffsc, nil}, {[]byte("fspecial\x00"), tr_fspecial, nil}, {[]byte("ft\x00"), tr_ft, nil}, {[]byte("fzoom\x00"), tr_fzoom, nil}, {[]byte("hc\x00"), tr_hc, nil}, {[]byte("hcode\x00"), tr_hcode, nil}, {[]byte("hlm\x00"), tr_hlm, nil}, {[]byte("hpf\x00"), tr_hpf, nil}, {[]byte("hpfa\x00"), tr_hpfa, nil}, {[]byte("hy\x00"), tr_hy, nil}, {[]byte("hycost\x00"), tr_hycost, nil}, {[]byte("hydash\x00"), tr_hydash, nil}, {[]byte("hystop\x00"), tr_hystop, nil}, {[]byte("hw\x00"), tr_hw, nil}, {[]byte("ie\x00"), tr_if, mkargs_null}, {[]byte("if\x00"), tr_if, mkargs_null}, {[]byte("ig\x00"), tr_ig, nil}, {[]byte("in\x00"), tr_in, nil}, {[]byte("in2\x00"), tr_in2, nil}, {[]byte("it\x00"), tr_it, nil}, {[]byte("kn\x00"), tr_kn, nil}, {[]byte("lc\x00"), tr_lc, nil}, {[]byte("lf\x00"), tr_lf, nil}, {[]byte("lg\x00"), tr_lg, nil}, {[]byte("ll\x00"), tr_ll, nil}, {[]byte("ls\x00"), tr_ls, nil}, {[]byte("lsm\x00"), tr_lsm, nil}, {[]byte("lt\x00"), tr_lt, nil}, {[]byte("mc\x00"), tr_mc, nil}, {[]byte("mk\x00"), tr_mk, nil}, {[]byte("na\x00"), tr_na, nil}, {[]byte("ne\x00"), tr_ne, nil}, {[]byte("nf\x00"), tr_nf, nil}, {[]byte("nh\x00"), tr_nh, nil}, {[]byte("nm\x00"), tr_nm, nil}, {[]byte("nn\x00"), tr_nn, nil}, {[]byte("nr\x00"), tr_nr, mkargs_reg1}, {[]byte("ns\x00"), tr_ns, nil}, {[]byte("nx\x00"), tr_nx, nil}, {[]byte("ochar\x00"), tr_ochar, mkargs_ochar}, {[]byte("os\x00"), tr_os, nil}, {[]byte("pc\x00"), tr_pc, nil}, {[]byte("pl\x00"), tr_pl, nil}, {[]byte("pmll\x00"), tr_pmll, nil}, {[]byte("pn\x00"), tr_pn, nil}, {[]byte("po\x00"), tr_po, nil}, {[]byte("ps\x00"), tr_ps, nil}, {[]byte("rchar\x00"), tr_rchar, nil}, {[]byte("rm\x00"), tr_rm, nil}, {[]byte("rn\x00"), tr_rn, nil}, {[]byte("rr\x00"), tr_rr, nil}, {[]byte("rs\x00"), tr_rs, nil}, {[]byte("rt\x00"), tr_rt, nil}, {[]byte("shift\x00"), tr_shift, nil}, {[]byte("so\x00"), tr_so, nil}, {[]byte("sp\x00"), tr_sp, nil}, {[]byte("ss\x00"), tr_ss, nil}, {[]byte("ssh\x00"), tr_ssh, nil}, {[]byte("sv\x00"), tr_sv, nil}, {[]byte("sy\x00"), tr_sy, mkargs_eol}, {[]byte("ta\x00"), tr_ta, nil}, {[]byte("tc\x00"), tr_tc, nil}, {[]byte("ti\x00"), tr_ti, nil}, {[]byte("ti2\x00"), tr_ti2, nil}, {[]byte("tkf\x00"), tr_tkf, nil}, {[]byte("tl\x00"), tr_tl, mkargs_null}, {[]byte("tm\x00"), tr_tm, mkargs_eol}, {[]byte("tr\x00"), tr_tr, mkargs_eol}, {[]byte("vs\x00"), tr_vs, nil}, {[]byte("wh\x00"), tr_wh, nil}}
 
-// dotted - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1223
+// dotted - transpiled function from  tr.c:1223
 func dotted(name []byte, dot int32) []byte {
 	var out []byte = xmalloc(noarch.Strlen(name) + int32(2)).([]byte)
 	out[0] = byte(dot)
@@ -9728,7 +9728,7 @@ func dotted(name []byte, dot int32) []byte {
 	return out
 }
 
-// tr_req - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1232
+// tr_req - transpiled function from  tr.c:1232
 func tr_req(reg int32, args [][]byte) {
 	// execute a built-in request
 	var req []cmd = str_dget(reg).([]cmd)
@@ -9737,7 +9737,7 @@ func tr_req(reg int32, args [][]byte) {
 	}
 }
 
-// tr_nextreq_exec - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1240
+// tr_nextreq_exec - transpiled function from  tr.c:1240
 func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 	// interpolate a macro for tr_nextreq()
 	var args [][]byte = [][]byte{arg0, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
@@ -9766,7 +9766,7 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
-// tr_nextreq - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1264
+// tr_nextreq - transpiled function from  tr.c:1264
 func tr_nextreq() int32 {
 	// read the next troff request; return zero if a request was executed.
 	var mac []byte
@@ -9827,7 +9827,7 @@ func tr_nextreq() int32 {
 	return 0
 }
 
-// tr_next - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1322
+// tr_next - transpiled function from  tr.c:1322
 func tr_next() int32 {
 	var c int32
 	for noarch.Not(tr_nextreq()) {
@@ -9837,7 +9837,7 @@ func tr_next() int32 {
 	return c
 }
 
-// tr_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1332
+// tr_init - transpiled function from  tr.c:1332
 func tr_init() {
 	var i int32
 	for i = 0; uint32(i) < 4680/40; i++ {
@@ -9846,7 +9846,7 @@ func tr_init() {
 	cmap = dict_make(-1, 0, 2)
 }
 
-// tr_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/tr.c:1340
+// tr_done - transpiled function from  tr.c:1340
 func tr_done() {
 	var i int32
 	for i = 0; i < cdef_n; i++ {
@@ -9855,7 +9855,7 @@ func tr_done() {
 	dict_free(cmap)
 }
 
-// wb_init - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:22
+// wb_init - transpiled function from  wb.c:22
 func wb_init(wb_c4go_postfix []wb) {
 	// word buffer
 	// the current font, size and color
@@ -9878,12 +9878,12 @@ func wb_init(wb_c4go_postfix []wb) {
 	wb_c4go_postfix[0].ury = -(1 << uint64(29))
 }
 
-// wb_done - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:41
+// wb_done - transpiled function from  wb.c:41
 func wb_done(wb_c4go_postfix []wb) {
 	sbuf_done((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 }
 
-// wb_stsb - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:47
+// wb_stsb - transpiled function from  wb.c:47
 func wb_stsb(wb_c4go_postfix []wb) {
 	// update wb->st and wb->sb
 	if wb_c4go_postfix[0].st < wb_c4go_postfix[0].v-wb_c4go_postfix[0].s*dev_res/72 {
@@ -9898,7 +9898,7 @@ func wb_stsb(wb_c4go_postfix []wb) {
 	}
 }
 
-// wb_bbox - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:54
+// wb_bbox - transpiled function from  wb.c:54
 func wb_bbox(wb_c4go_postfix []wb, llx int32, lly int32, urx int32, ury int32) {
 	// update bounding box
 	if wb_c4go_postfix[0].llx < wb_c4go_postfix[0].h+llx {
@@ -9923,7 +9923,7 @@ func wb_bbox(wb_c4go_postfix []wb, llx int32, lly int32, urx int32, ury int32) {
 	}
 }
 
-// wb_pendingfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:63
+// wb_pendingfont - transpiled function from  wb.c:63
 func wb_pendingfont(wb_c4go_postfix []wb) int32 {
 	// pending font, size or color changes
 	return noarch.BoolToInt(wb_c4go_postfix[0].f != func() int32 {
@@ -9944,7 +9944,7 @@ func wb_pendingfont(wb_c4go_postfix []wb) int32 {
 	}())
 }
 
-// wb_pendingdir - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:70
+// wb_pendingdir - transpiled function from  wb.c:70
 func wb_pendingdir(wb_c4go_postfix []wb) int32 {
 	// pending direction change
 	return noarch.BoolToInt(wb_c4go_postfix[0].cd != func() int32 {
@@ -9955,7 +9955,7 @@ func wb_pendingdir(wb_c4go_postfix []wb) int32 {
 	}())
 }
 
-// wb_flushfont - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:76
+// wb_flushfont - transpiled function from  wb.c:76
 func wb_flushfont(wb_c4go_postfix []wb) {
 	if wb_c4go_postfix[0].f != func() int32 {
 		if (wb_c4go_postfix)[0].r_f >= 0 {
@@ -10029,7 +10029,7 @@ func wb_flushfont(wb_c4go_postfix []wb) {
 	wb_stsb(wb_c4go_postfix)
 }
 
-// wb_flushdir - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:97
+// wb_flushdir - transpiled function from  wb.c:97
 func wb_flushdir(wb_c4go_postfix []wb) {
 	if wb_c4go_postfix[0].cd != func() int32 {
 		if (wb_c4go_postfix)[0].r_cd >= 0 {
@@ -10060,7 +10060,7 @@ func wb_flushdir(wb_c4go_postfix []wb) {
 	}
 }
 
-// wb_flush - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:108
+// wb_flush - transpiled function from  wb.c:108
 func wb_flush(wb_c4go_postfix []wb) {
 	// apply font and size changes and flush the collected subword
 	wb_flushsub(wb_c4go_postfix)
@@ -10068,21 +10068,21 @@ func wb_flush(wb_c4go_postfix []wb) {
 	wb_flushfont(wb_c4go_postfix)
 }
 
-// wb_hmov - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:115
+// wb_hmov - transpiled function from  wb.c:115
 func wb_hmov(wb_c4go_postfix []wb, n int32) {
 	wb_flushsub(wb_c4go_postfix)
 	wb_c4go_postfix[0].h += n
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%ch'%du'\x00"), c_ec, n)
 }
 
-// wb_vmov - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:122
+// wb_vmov - transpiled function from  wb.c:122
 func wb_vmov(wb_c4go_postfix []wb, n int32) {
 	wb_flushsub(wb_c4go_postfix)
 	wb_c4go_postfix[0].v += n
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cv'%du'\x00"), c_ec, n)
 }
 
-// wb_els - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:129
+// wb_els - transpiled function from  wb.c:129
 func wb_els(wb_c4go_postfix []wb, els int32) {
 	wb_flushsub(wb_c4go_postfix)
 	if els > wb_c4go_postfix[0].els_pos {
@@ -10094,13 +10094,13 @@ func wb_els(wb_c4go_postfix []wb, els int32) {
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cx'%du'\x00"), c_ec, els)
 }
 
-// wb_etc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:139
+// wb_etc - transpiled function from  wb.c:139
 func wb_etc(wb_c4go_postfix []wb, x []byte) {
 	wb_flush(wb_c4go_postfix)
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cX\x02%s\x02\x00"), c_ec, x)
 }
 
-// wb_putbuf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:145
+// wb_putbuf - transpiled function from  wb.c:145
 func wb_putbuf(wb_c4go_postfix []wb, c []byte) {
 	var g []glyph
 	var zerowidth int32
@@ -10185,7 +10185,7 @@ func wb_putbuf(wb_c4go_postfix []wb, c []byte) {
 	}
 }
 
-// wb_hyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:197
+// wb_hyph - transpiled function from  wb.c:197
 func wb_hyph(src [][]byte, src_n int32, src_hyph []byte, flg int32) int32 {
 	// return nonzero if it cannot be hyphenated
 	// word to pass to hyphenate()
@@ -10218,14 +10218,14 @@ func wb_hyph(src [][]byte, src_n int32, src_hyph []byte, flg int32) int32 {
 	return 0
 }
 
-// wb_collect - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:222
+// wb_collect - transpiled function from  wb.c:222
 func wb_collect(wb_c4go_postfix []wb, val int32) int32 {
 	var old int32 = wb_c4go_postfix[0].sub_collect
 	wb_c4go_postfix[0].sub_collect = val
 	return old
 }
 
-// wb_flushsub - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:230
+// wb_flushsub - transpiled function from  wb.c:230
 func wb_flushsub(wb_c4go_postfix []wb) {
 	// output the collected characters; only for those present in wb->f font
 	var fn []font
@@ -10288,7 +10288,7 @@ func wb_flushsub(wb_c4go_postfix []wb) {
 	wb_c4go_postfix[0].sub_collect = 1
 }
 
-// wb_put - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:279
+// wb_put - transpiled function from  wb.c:279
 func wb_put(wb_c4go_postfix []wb, c []byte) {
 	if int32(c[0]) == int32('\n') {
 		wb_c4go_postfix[0].part = 0
@@ -10348,7 +10348,7 @@ func wb_put(wb_c4go_postfix []wb, c []byte) {
 	}
 }
 
-// wb_putraw - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:311
+// wb_putraw - transpiled function from  wb.c:311
 func wb_putraw(wb_c4go_postfix []wb, c []byte) {
 	// just like wb_put() but disable subword collection
 	var collect int32
@@ -10358,7 +10358,7 @@ func wb_putraw(wb_c4go_postfix []wb, c []byte) {
 	wb_collect(wb_c4go_postfix, collect)
 }
 
-// wb_putexpand - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:321
+// wb_putexpand - transpiled function from  wb.c:321
 func wb_putexpand(wb_c4go_postfix []wb, c []byte) {
 	if cdef_expand(wb_c4go_postfix, c, func() int32 {
 		if (wb_c4go_postfix)[0].r_f >= 0 {
@@ -10371,27 +10371,27 @@ func wb_putexpand(wb_c4go_postfix []wb, c []byte) {
 	}
 }
 
-// wb_part - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:327
+// wb_part - transpiled function from  wb.c:327
 func wb_part(wb_c4go_postfix []wb) int32 {
 	return wb_c4go_postfix[0].part
 }
 
-// wb_setpart - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:332
+// wb_setpart - transpiled function from  wb.c:332
 func wb_setpart(wb_c4go_postfix []wb) {
 	wb_c4go_postfix[0].part = 1
 }
 
-// wb_cost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:337
+// wb_cost - transpiled function from  wb.c:337
 func wb_cost(wb_c4go_postfix []wb) int32 {
 	return wb_c4go_postfix[0].cost
 }
 
-// wb_setcost - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:342
+// wb_setcost - transpiled function from  wb.c:342
 func wb_setcost(wb_c4go_postfix []wb, cost int32) {
 	wb_c4go_postfix[0].cost = cost
 }
 
-// wb_drawl - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:347
+// wb_drawl - transpiled function from  wb.c:347
 func wb_drawl(wb_c4go_postfix []wb, c int32, h int32, v int32) {
 	wb_flush(wb_c4go_postfix)
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du'\x00"), c_ec, c, h, v)
@@ -10400,21 +10400,21 @@ func wb_drawl(wb_c4go_postfix []wb, c int32, h int32, v int32) {
 	wb_stsb(wb_c4go_postfix)
 }
 
-// wb_drawc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:356
+// wb_drawc - transpiled function from  wb.c:356
 func wb_drawc(wb_c4go_postfix []wb, c int32, r int32) {
 	wb_flush(wb_c4go_postfix)
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du'\x00"), c_ec, c, r)
 	wb_c4go_postfix[0].h += r
 }
 
-// wb_drawe - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:363
+// wb_drawe - transpiled function from  wb.c:363
 func wb_drawe(wb_c4go_postfix []wb, c int32, h int32, v int32) {
 	wb_flush(wb_c4go_postfix)
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du'\x00"), c_ec, c, h, v)
 	wb_c4go_postfix[0].h += h
 }
 
-// wb_drawa - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:370
+// wb_drawa - transpiled function from  wb.c:370
 func wb_drawa(wb_c4go_postfix []wb, c int32, h1 int32, v1 int32, h2 int32, v2 int32) {
 	wb_flush(wb_c4go_postfix)
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du %du %du'\x00"), c_ec, c, h1, v1, h2, v2)
@@ -10423,13 +10423,13 @@ func wb_drawa(wb_c4go_postfix []wb, c int32, h1 int32, v1 int32, h2 int32, v2 in
 	wb_stsb(wb_c4go_postfix)
 }
 
-// wb_drawxbeg - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:380
+// wb_drawxbeg - transpiled function from  wb.c:380
 func wb_drawxbeg(wb_c4go_postfix []wb, c int32) {
 	wb_flush(wb_c4go_postfix)
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c\x00"), c_ec, c)
 }
 
-// wb_drawxdot - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:386
+// wb_drawxdot - transpiled function from  wb.c:386
 func wb_drawxdot(wb_c4go_postfix []wb, h int32, v int32) {
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte(" %du %du\x00"), h, v)
 	wb_c4go_postfix[0].h += h
@@ -10437,29 +10437,29 @@ func wb_drawxdot(wb_c4go_postfix []wb, h int32, v int32) {
 	wb_stsb(wb_c4go_postfix)
 }
 
-// wb_drawxcmd - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:394
+// wb_drawxcmd - transpiled function from  wb.c:394
 func wb_drawxcmd(wb_c4go_postfix []wb, cmd []byte) {
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte(" %s\x00"), cmd)
 }
 
-// wb_drawxend - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:399
+// wb_drawxend - transpiled function from  wb.c:399
 func wb_drawxend(wb_c4go_postfix []wb) {
 	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("'\x00"))
 }
 
-// wb_reset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:404
+// wb_reset - transpiled function from  wb.c:404
 func wb_reset(wb_c4go_postfix []wb) {
 	wb_done(wb_c4go_postfix)
 	wb_init(wb_c4go_postfix)
 }
 
-// wb_buf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:410
+// wb_buf - transpiled function from  wb.c:410
 func wb_buf(wb_c4go_postfix []wb) []byte {
 	wb_flushsub(wb_c4go_postfix)
 	return sbuf_buf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 }
 
-// wb_putc - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:416
+// wb_putc - transpiled function from  wb.c:416
 func wb_putc(wb_c4go_postfix []wb, t int32, s []byte) {
 	if t != 0 && t != int32('C') {
 		wb_flushsub(wb_c4go_postfix)
@@ -10494,7 +10494,7 @@ func wb_putc(wb_c4go_postfix []wb, t int32, s []byte) {
 	}
 }
 
-// wb_cat - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:457
+// wb_cat - transpiled function from  wb.c:457
 func wb_cat(wb_c4go_postfix []wb, src []wb) {
 	var s []byte
 	var d []byte
@@ -10521,30 +10521,30 @@ func wb_cat(wb_c4go_postfix []wb, src []wb) {
 	wb_collect(wb_c4go_postfix, collect)
 }
 
-// wb_wid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:478
+// wb_wid - transpiled function from  wb.c:478
 func wb_wid(wb_c4go_postfix []wb) int32 {
 	wb_flushsub(wb_c4go_postfix)
 	return wb_c4go_postfix[0].h
 }
 
-// wb_hpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:484
+// wb_hpos - transpiled function from  wb.c:484
 func wb_hpos(wb_c4go_postfix []wb) int32 {
 	wb_flushsub(wb_c4go_postfix)
 	return wb_c4go_postfix[0].h
 }
 
-// wb_vpos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:490
+// wb_vpos - transpiled function from  wb.c:490
 func wb_vpos(wb_c4go_postfix []wb) int32 {
 	wb_flushsub(wb_c4go_postfix)
 	return wb_c4go_postfix[0].v
 }
 
-// wb_empty - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:496
+// wb_empty - transpiled function from  wb.c:496
 func wb_empty(wb_c4go_postfix []wb) int32 {
 	return noarch.BoolToInt(noarch.Not(wb_c4go_postfix[0].sub_n) && sbuf_empty((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:]) != 0)
 }
 
-// wb_eos - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:502
+// wb_eos - transpiled function from  wb.c:502
 func wb_eos(wb_c4go_postfix []wb) int32 {
 	// return 1 if wb ends a sentence (.?!)
 	var i int32 = wb_c4go_postfix[0].sub_n - 1
@@ -10554,7 +10554,7 @@ func wb_eos(wb_c4go_postfix []wb) int32 {
 	return noarch.BoolToInt(i >= 0 && c_eossent(wb_c4go_postfix[0].sub_c[:][i]) != 0)
 }
 
-// wb_wconf - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:510
+// wb_wconf - transpiled function from  wb.c:510
 func wb_wconf(wb_c4go_postfix []wb, ct []int32, st []int32, sb []int32, llx []int32, lly []int32, urx []int32, ury []int32) {
 	wb_flushsub(wb_c4go_postfix)
 	ct[0] = wb_c4go_postfix[0].ct
@@ -10582,7 +10582,7 @@ func wb_wconf(wb_c4go_postfix []wb, ct []int32, st []int32, sb []int32, llx []in
 	}
 }
 
-// wb_prevglyph - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:523
+// wb_prevglyph - transpiled function from  wb.c:523
 func wb_prevglyph(wb_c4go_postfix []wb) []glyph {
 	if wb_c4go_postfix[0].sub_n != 0 {
 		return dev_glyph(wb_c4go_postfix[0].sub_c[:][wb_c4go_postfix[0].sub_n-1], wb_c4go_postfix[0].f)
@@ -10590,7 +10590,7 @@ func wb_prevglyph(wb_c4go_postfix []wb) []glyph {
 	return nil
 }
 
-// wb_italiccorrection - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:528
+// wb_italiccorrection - transpiled function from  wb.c:528
 func wb_italiccorrection(wb_c4go_postfix []wb) {
 	var g []glyph = wb_prevglyph(wb_c4go_postfix)
 	if g != nil && func() int32 {
@@ -10608,13 +10608,13 @@ func wb_italiccorrection(wb_c4go_postfix []wb) {
 	}
 }
 
-// wb_italiccorrectionleft - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:535
+// wb_italiccorrectionleft - transpiled function from  wb.c:535
 func wb_italiccorrectionleft(wb_c4go_postfix []wb) {
 	wb_flushsub(wb_c4go_postfix)
 	wb_c4go_postfix[0].icleft = 1
 }
 
-// wb_fnszget - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:541
+// wb_fnszget - transpiled function from  wb.c:541
 func wb_fnszget(wb_c4go_postfix []wb, fn []int32, sz []int32, m []int32, cd []int32) {
 	wb_flushsub(wb_c4go_postfix)
 	fn[0] = wb_c4go_postfix[0].r_f
@@ -10623,7 +10623,7 @@ func wb_fnszget(wb_c4go_postfix []wb, fn []int32, sz []int32, m []int32, cd []in
 	cd[0] = wb_c4go_postfix[0].r_cd
 }
 
-// wb_fnszset - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:550
+// wb_fnszset - transpiled function from  wb.c:550
 func wb_fnszset(wb_c4go_postfix []wb, fn int32, sz int32, m int32, cd int32) {
 	wb_c4go_postfix[0].r_f = fn
 	wb_c4go_postfix[0].r_s = sz
@@ -10631,7 +10631,7 @@ func wb_fnszset(wb_c4go_postfix []wb, fn int32, sz int32, m int32, cd int32) {
 	wb_c4go_postfix[0].r_cd = cd
 }
 
-// wb_catstr - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:558
+// wb_catstr - transpiled function from  wb.c:558
 func wb_catstr(wb_c4go_postfix []wb, s []byte, end []byte) {
 	var collect int32
 	var c int32
@@ -10647,7 +10647,7 @@ func wb_catstr(wb_c4go_postfix []wb, s []byte, end []byte) {
 	wb_collect(wb_c4go_postfix, collect)
 }
 
-// wb_hywid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:570
+// wb_hywid - transpiled function from  wb.c:570
 func wb_hywid(wb_c4go_postfix []wb) int32 {
 	// return the size of \(hy if appended to wb
 	var g []glyph = dev_glyph([]byte("hy\x00"), wb_c4go_postfix[0].f)
@@ -10667,7 +10667,7 @@ func wb_hywid(wb_c4go_postfix []wb) int32 {
 	return 0
 }
 
-// wb_swid - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:577
+// wb_swid - transpiled function from  wb.c:577
 func wb_swid(wb_c4go_postfix []wb) int32 {
 	// return the size of space if appended to wb
 	return font_swid(dev_font(func() int32 {
@@ -10683,10 +10683,10 @@ func wb_swid(wb_c4go_postfix []wb) int32 {
 	}(), (nreg(map_([]byte(".ss\x00"))))[0])
 }
 
-// keshideh_chars - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:582
+// keshideh_chars - transpiled function from  wb.c:582
 var keshideh_chars [][]byte = [][]byte{[]byte("ﺒ\x00"), []byte("ﺑ\x00"), []byte("ﭙ\x00"), []byte("ﭘ\x00"), []byte("ﺘ\x00"), []byte("ﺗ\x00"), []byte("ﺜ\x00"), []byte("ﺛ\x00"), []byte("ﺴ\x00"), []byte("ﺳ\x00"), []byte("ﺸ\x00"), []byte("ﺷ\x00"), []byte("ﻔ\x00"), []byte("ﻓ\x00"), []byte("ﻘ\x00"), []byte("ﻗ\x00"), []byte("ﮑ\x00"), []byte("ﮐ\x00"), []byte("ﮕ\x00"), []byte("ﮔ\x00"), []byte("ﻤ\x00"), []byte("ﻣ\x00"), []byte("ﻨ\x00"), []byte("ﻧ\x00"), []byte("ﻬ\x00"), []byte("ﻫ\x00"), []byte("ﯿ\x00"), []byte("ﯾ\x00")}
 
-// keshideh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:588
+// keshideh - transpiled function from  wb.c:588
 func keshideh(c []byte) int32 {
 	var i int32
 	for i = 0; uint32(i) < 224/8; i++ {
@@ -10697,7 +10697,7 @@ func keshideh(c []byte) int32 {
 	return 0
 }
 
-// wb_keshideh - transpiled function from  GOPATH/src/github.com/Konstantin8105/uroff/tmp/wb.c:598
+// wb_keshideh - transpiled function from  wb.c:598
 func wb_keshideh(word []byte, dst []wb, wid int32) int32 {
 	// insert keshideh
 	var p []byte = []byte("\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00")
