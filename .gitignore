@@ -13,3 +13,18 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Object files
+**/*.o
+# Application
+neatroff_make/devutf/
+neatroff_make/neateqn/eqn
+neatroff_make/neatmkfn/mkfn
+neatroff_make/neatpost/pdf
+neatroff_make/neatpost/post
+neatroff_make/neatrefer/refer
+neatroff_make/neatroff/roff
+neatroff_make/shape/shape
+neatroff_make/soin/soin
+neatroff_make/troff/pic/pic
+neatroff_make/troff/tbl/tbl
