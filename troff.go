@@ -5009,9 +5009,9 @@ func in_pop() {
 	if old[0].args != nil {
 		args_free(old[0].args)
 	}
-	if old[0].fin != nil && (int64(uintptr(unsafe.Pointer(old[0].fin[0])))/int64(8)-int64(uintptr(unsafe.Pointer(noarch.Stdin)))/int64(8)) != 0 {
-		noarch.Fclose(old[0].fin)
-	}
+// 	if old[0].fin != nil && (int64(uintptr(unsafe.Pointer(old[0].fin[0])))/int64(8)-int64(uintptr(unsafe.Pointer(noarch.Stdin)))/int64(8)) != 0 {
+// 		noarch.Fclose(old[0].fin)
+// 	}
 	_ = old[0].buf
 	_ = old
 }

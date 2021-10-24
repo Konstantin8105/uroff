@@ -105,6 +105,18 @@ c4go transpile -o tbl.go\
 	./tmp/*.h
 rm -rf tmp
 
+# PIC
+rm -rf tmp
+mkdir tmp
+cp ./neatroff_make/troff/pic/* tmp/
+sed -i.bak '485s/void /int /g' ./tmp/input.c
+c4go transpile -o pic.go\
+ 	-clang-flag="-DTROFFFDIR=\"./\neatroff_make\/fonts\""\
+ 	-clang-flag="-DTROFFMDIR=\".\/neatroff_make\/tmac\""\
+	./tmp/*.c\
+	./tmp/*.h
+rm -rf tmp
+
 # CLEAN folder names
 sed -i.bak 's/GOPATH\/src\/github.com\/Konstantin8105\/uroff\/tmp\///g' *.go
 sed -i.bak 's/1000000/10000/g' *.go
