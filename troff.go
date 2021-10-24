@@ -1046,7 +1046,13 @@ var dev_ver int32
 // fn_name - transpiled function from  dev.c:16
 // mounted fonts
 // font names
-var fn_name [][]byte = make([][]byte, 32)
+var fn_name [][]byte// = make([][]byte, 32)
+func init() {
+	fn_name = make([][]byte, 1024)
+	for i := range fn_name{
+		fn_name[i] = make([]byte, 1024)
+	}
+}
 
 // fn_font - transpiled function from  dev.c:17
 // font structs
@@ -1375,7 +1381,7 @@ func dict_make(notfound int32, dupkeys int32, hashlen int32) []dict {
 	// * dupkeys: if nonzero, store a copy of keys inserted via dict_put().
 	// * hashlen: the number of characters used for hashing
 	//
-	var d []dict = xmalloc(int32(72)).([]dict)
+	var d []dict = make([]dict, 1) // xmalloc(int32(72)).([]dict)
 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&d[0]))) / int64(1))))[:], byte(0), 72)
 	d[0].n = 1
 	if hashlen != 0 {
