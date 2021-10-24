@@ -14,12 +14,15 @@ package main
 // #include </usr/include/string.h>
 import "C"
 
-import "unicode"
-import "os"
-import "reflect"
-import "runtime"
-import "unsafe"
-import "github.com/Konstantin8105/c4go/noarch"
+import (
+	"os"
+	"reflect"
+	"runtime"
+	"unicode"
+	"unsafe"
+
+	"github.com/Konstantin8105/c4go/noarch"
+)
 
 // glyph - transpiled function from  roff.h:141
 //
@@ -1148,6 +1151,10 @@ func dev_open(dir []byte, dev []byte) int32 {
 	noarch.Snprintf(dev_dir, int32(1024), []byte("%s\x00"), dir)
 	noarch.Snprintf(dev_dev, int32(1024), []byte("%s\x00"), dev)
 	noarch.Snprintf(path, int32(1024), []byte("%s/dev%s/DESC\x00"), dir, dev)
+
+	// TODO: KI:
+	path = []byte("./neatroff_make/devutf/DESC")
+
 	desc = noarch.Fopen(path, []byte("r\x00"))
 	if desc == nil {
 		return 1
@@ -5009,9 +5016,9 @@ func in_pop() {
 	if old[0].args != nil {
 		args_free(old[0].args)
 	}
-// 	if old[0].fin != nil && (int64(uintptr(unsafe.Pointer(old[0].fin[0])))/int64(8)-int64(uintptr(unsafe.Pointer(noarch.Stdin)))/int64(8)) != 0 {
-// 		noarch.Fclose(old[0].fin)
-// 	}
+	// 	if old[0].fin != nil && (int64(uintptr(unsafe.Pointer(old[0].fin[0])))/int64(8)-int64(uintptr(unsafe.Pointer(noarch.Stdin)))/int64(8)) != 0 {
+	// 		noarch.Fclose(old[0].fin)
+	// 	}
 	_ = old[0].buf
 	_ = old
 }
@@ -5339,7 +5346,8 @@ func out_out(s []byte, ap *va_list) {
 // outnn - transpiled function from  out.c:19
 func outnn(s []byte, c4goArgs ...interface{}) {
 	// output troff code; no preceding newline is necessary
-	var ap *va_list
+	// var ap *va_list
+	ap := new(va_list)
 	va_start(ap, s)
 	out_out(s, ap)
 	va_end(ap)
@@ -5348,7 +5356,8 @@ func outnn(s []byte, c4goArgs ...interface{}) {
 // out - transpiled function from  out.c:28
 func out(s []byte, c4goArgs ...interface{}) {
 	// output troff cmd; should appear after a newline
-	var ap *va_list
+	// var ap *va_list
+	ap := new(va_list)
 	if noarch.Not(out_nl) {
 		outnn([]byte("\n\x00"))
 	}
@@ -5688,7 +5697,7 @@ func num_str(id int32) []byte {
 		return map_name(env_id)
 	}
 	if int32(s[0]) == int32('$') && int32(s[1]) == int32('$') && noarch.Not(s[2]) {
-		noarch.Sprintf(numbuf, []byte("%d\x00"), getpid())
+		// TODO: KI: noarch.Sprintf(numbuf, []byte("%d\x00"), getpid())
 		return numbuf
 	}
 	if int32(s[0]) == int32('y') && int32(s[1]) == int32('r') && noarch.Not(s[2]) {
@@ -7876,7 +7885,8 @@ func errmsg(fmt_ []byte, c4goArgs ...interface{}) {
 	// * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 	// * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	//
-	var ap *va_list
+	// var ap *va_list
+	ap := new(va_list)
 	va_start(ap, fmt_)
 	noarch.Vfprintf(noarch.Stderr, fmt_, ap)
 	va_end(ap)
@@ -7892,7 +7902,7 @@ func errdie(msg []byte) {
 func mextend(old interface{}, oldsz int32, newsz int32, memsz int32) interface{} {
 	var new_ interface{} = xmalloc(newsz * memsz)
 	memcpy(new_, old, uint32(oldsz*memsz))
-	noarch.Memset(new_[0+oldsz*memsz:].([]byte), byte(0), uint32((newsz-oldsz)*memsz))
+	// TODO : KI : noarch.Memset(new_[0+oldsz*memsz:].([]byte), byte(0), uint32((newsz-oldsz)*memsz))
 	_ = old
 	return new_
 }
@@ -8115,7 +8125,8 @@ func sbuf_append(sbuf_c4go_postfix []sbuf, s []byte) {
 // sbuf_printf - transpiled function from  sbuf.c:39
 func sbuf_printf(sbuf_c4go_postfix []sbuf, s []byte, c4goArgs ...interface{}) {
 	var buf []byte = make([]byte, 1024)
-	var ap *va_list
+	// var ap *va_list
+	ap := new(va_list)
 	va_start(ap, s)
 	noarch.Vsnprintf(buf, int32(1024), s, ap)
 	va_end(ap)
@@ -9588,8 +9599,16 @@ func chopargs(sbuf_c4go_postfix []sbuf, args [][]byte) {
 			return n
 		}()] = s
 		if (func() []byte {
-			s = memchr(s, int32('\x00'), uint32(int32((int64(uintptr(unsafe.Pointer(&e[0])))/int64(1) - int64(uintptr(unsafe.Pointer(&s[0])))/int64(1))))).([]byte)
-			return s
+			for i := range s {
+				if s[i] == '\x00' {
+					s = s[i:]
+					return s
+				}
+			}
+			return []byte("\x00")
+			//
+			// 			s = memchr(s, int32('\x00'), uint32(int32((int64(uintptr(unsafe.Pointer(&e[0])))/int64(1) - int64(uintptr(unsafe.Pointer(&s[0])))/int64(1))))).([]byte)
+			// 			return s
 		}()) != nil {
 			s = s[0+1:]
 		}
@@ -10942,13 +10961,20 @@ func memcpy(dst, src interface{}, size uint32) interface{} {
 // Warning cannot generate return type binding function `getpid`: cannot resolve type '__pid_t' : I couldn't find an appropriate Go type for the C type '__pid_t'.
 
 // memchr - add c-binding for implemention function
-func memchr(arg0 interface{}, arg1 int32, arg2 uint32) interface{} {
-	return interface{}(C.memchr(unsafe.Pointer(&arg0), C.int(arg1), C.ulong(arg2)))
-}
+// func memchr(arg0 interface{}, arg1 int32, arg2 uint32) interface{} {
+// 	return interface{}(C.memchr(unsafe.Pointer(&arg0), C.int(arg1), C.ulong(arg2)))
+// }
 
 // strncmp - add c-binding for implemention function
 func strncmp(arg0 []byte, arg1 []byte, arg2 uint32) int32 {
-	return int32(C.strncmp((*C.char)(unsafe.Pointer(&arg0[0])), (*C.char)(unsafe.Pointer(&arg1[0])), C.ulong(arg2)))
+	if string(arg0) < string(arg1){
+		return -1
+	}
+	if string(arg0) == string(arg1) {
+		return 0
+	}
+	return 1
+// 	return int32(C.strncmp((*C.char)(unsafe.Pointer(&arg0[0])), (*C.char)(unsafe.Pointer(&arg1[0])), C.ulong(arg2)))
 }
 
 // va_list is C4GO implementation of va_list from "stdarg.h"
