@@ -63,12 +63,12 @@ type box struct {
 // box_alloc - transpiled function from  box.c:8
 func box_alloc(szreg int32, pre int32, style int32) []box {
 	// equation boxes
-	var box_c4go_postfix []box = (*[1000000]box)(unsafe.Pointer(uintptr(func() int64 {
+	var box_c4go_postfix []box = (*[10000]box)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, 1)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&box_c4go_postfix[0]))) / int64(1))))[:], byte(0), 64)
-	sbuf_init((*[1000000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&box_c4go_postfix[0]))) / int64(1))))[:], byte(0), 64)
+	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
 	box_c4go_postfix[0].szreg = szreg
 	box_c4go_postfix[0].atoms = 0
 	box_c4go_postfix[0].style = style
@@ -86,13 +86,13 @@ func box_free(box_c4go_postfix []box) {
 	if box_c4go_postfix[0].szown != 0 {
 		nregrm(box_c4go_postfix[0].szreg)
 	}
-	sbuf_done((*[1000000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
+	sbuf_done((*[10000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
 	_ = box_c4go_postfix
 }
 
 // box_put - transpiled function from  box.c:31
 func box_put(box_c4go_postfix []box, s []byte) {
-	sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:], s)
+	sbuf_append((*[10000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:], s)
 	if box_c4go_postfix[0].reg != 0 {
 		noarch.Printf([]byte(".as %s \"%s\n\x00"), sregname(box_c4go_postfix[0].reg), s)
 	}
@@ -110,7 +110,7 @@ func box_putf(box_c4go_postfix []box, s []byte, c4goArgs ...interface{}) {
 
 // box_buf - transpiled function from  box.c:48
 func box_buf(box_c4go_postfix []box) []byte {
-	return sbuf_buf((*[1000000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
+	return sbuf_buf((*[10000]sbuf)(unsafe.Pointer(&box_c4go_postfix[0].raw))[:])
 }
 
 // box_size - transpiled function from  box.c:54
@@ -684,7 +684,7 @@ func box_bracket(box_c4go_postfix []box, brac []byte, ht int32, dp int32) {
 	roff_max(len_, ht, dp)
 	def_sizes(brac, sizes)
 	noarch.Printf([]byte(".ds %s \"\n\x00"), sregname(dst))
-	def_pieces(brac, (*[1000000][]byte)(unsafe.Pointer(&top))[:], (*[1000000][]byte)(unsafe.Pointer(&mid))[:], (*[1000000][]byte)(unsafe.Pointer(&bot))[:], (*[1000000][]byte)(unsafe.Pointer(&cen))[:])
+	def_pieces(brac, (*[10000][]byte)(unsafe.Pointer(&top))[:], (*[10000][]byte)(unsafe.Pointer(&mid))[:], (*[10000][]byte)(unsafe.Pointer(&bot))[:], (*[10000][]byte)(unsafe.Pointer(&cen))[:])
 	box_bracketsel(dst, ht, dp, sizes, noarch.BoolToInt(mid == nil), 1)
 	if mid != nil {
 		noarch.Printf([]byte(".if '%s'' \\{\\\n\x00"), sreg(dst))
@@ -769,7 +769,7 @@ func sqrt_rad(dst int32, len_ int32, wd int32) {
 	noarch.Printf([]byte(".nr %s 0%s/2*11/10\n\x00"), nregname(len2), nreg(len_))
 	noarch.Printf([]byte(".ds %s \"\n\x00"), sregname(rad))
 	// selecting a radical of the appropriate size
-	def_pieces([]byte("\\(sr\x00"), (*[1000000][]byte)(unsafe.Pointer(&top))[:], (*[1000000][]byte)(unsafe.Pointer(&mid))[:], (*[1000000][]byte)(unsafe.Pointer(&bot))[:], (*[1000000][]byte)(unsafe.Pointer(&cen))[:])
+	def_pieces([]byte("\\(sr\x00"), (*[10000][]byte)(unsafe.Pointer(&top))[:], (*[10000][]byte)(unsafe.Pointer(&mid))[:], (*[10000][]byte)(unsafe.Pointer(&bot))[:], (*[10000][]byte)(unsafe.Pointer(&cen))[:])
 	def_sizes([]byte("\\(sr\x00"), sizes)
 	box_bracketsel(rad, len2, len2, sizes, 0, 0)
 	if mid != nil {
@@ -2406,7 +2406,7 @@ func sbuf_extend(sbuf_c4go_postfix []sbuf, amount int32) {
 
 // sbuf_init - transpiled function from  sbuf.c:19
 func sbuf_init(sbuf_c4go_postfix []sbuf) {
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	sbuf_extend(sbuf_c4go_postfix, 512)
 }
 
@@ -2522,11 +2522,11 @@ func src_push(buf []byte, args [][]byte) {
 	if esrc_depth > 512 {
 		errdie([]byte("neateqn: macro recursion limit reached\n\x00"))
 	}
-	next = (*[1000000]esrc)(unsafe.Pointer(uintptr(func() int64 {
+	next = (*[10000]esrc)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, 1)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&next[0]))) / int64(1))))[:], byte(0), 4136)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&next[0]))) / int64(1))))[:], byte(0), 4136)
 	next[0].prev = esrc_c4go_postfix
 	next[0].buf = src_strdup(buf)
 	next[0].call = noarch.BoolToInt(len(args) != 0)
@@ -3482,17 +3482,17 @@ func tok_inline() int32 {
 
 // c4goUnsafeConvert_esrc : created by c4go
 func c4goUnsafeConvert_esrc(c4go_name *esrc) []esrc {
-	return (*[1000000]esrc)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]esrc)(unsafe.Pointer(c4go_name))[:]
 }
 
 // c4goUnsafeConvert_int32 : created by c4go
 func c4goUnsafeConvert_int32(c4go_name *int32) []int32 {
-	return (*[1000000]int32)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]int32)(unsafe.Pointer(c4go_name))[:]
 }
 
 // c4goUnsafeConvert_sbuf : created by c4go
 func c4goUnsafeConvert_sbuf(c4go_name *sbuf) []sbuf {
-	return (*[1000000]sbuf)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]sbuf)(unsafe.Pointer(c4go_name))[:]
 }
 
 // the contents
@@ -3504,32 +3504,6 @@ func c4goUnsafeConvert_sbuf(c4go_name *sbuf) []sbuf {
 // register for saving box width
 // managing registers
 // eqn global variables
-
-// memcpy is function from string.h.
-// c function : void * memcpy( void * , const void * , size_t )
-// dep pkg    : reflect
-// dep func   :
-func memcpy(dst, src interface{}, size uint32) interface{} {
-	switch reflect.TypeOf(src).Kind() {
-	case reflect.Slice:
-		s := reflect.ValueOf(src)
-		d := reflect.ValueOf(dst)
-		if s.Len() == 0 {
-			return dst
-		}
-		if s.Len() > 0 {
-			size /= uint32(int(s.Index(0).Type().Size()))
-		}
-		var val reflect.Value
-		for i := 0; i < int(size); i++ {
-			if i < s.Len() {
-				val = s.Index(i)
-			}
-			d.Index(i).Set(val)
-		}
-	}
-	return dst
-}
 
 // __ctype_b_loc from ctype.h
 // c function : const unsigned short int** __ctype_b_loc()
@@ -3606,6 +3580,32 @@ func __ctype_b_loc() [][]uint16 {
 		characterTable = append(characterTable, c)
 	}
 	return [][]uint16{characterTable}
+}
+
+// memcpy is function from string.h.
+// c function : void * memcpy( void * , const void * , size_t )
+// dep pkg    : reflect
+// dep func   :
+func memcpy(dst, src interface{}, size uint32) interface{} {
+	switch reflect.TypeOf(src).Kind() {
+	case reflect.Slice:
+		s := reflect.ValueOf(src)
+		d := reflect.ValueOf(dst)
+		if s.Len() == 0 {
+			return dst
+		}
+		if s.Len() > 0 {
+			size /= uint32(int(s.Index(0).Type().Size()))
+		}
+		var val reflect.Value
+		for i := 0; i < int(size); i++ {
+			if i < s.Len() {
+				val = s.Index(i)
+			}
+			d.Index(i).Set(val)
+		}
+	}
+	return dst
 }
 
 // strncmp - add c-binding for implemention function

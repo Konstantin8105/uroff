@@ -108,7 +108,7 @@ func main() {
 
 // c4goUnsafeConvert_int32 : created by c4go
 func c4goUnsafeConvert_int32(c4go_name *int32) []int32 {
-	return (*[1000000]int32)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]int32)(unsafe.Pointer(c4go_name))[:]
 }
 
 // __ctype_b_loc from ctype.h

@@ -1486,7 +1486,7 @@ func coverage(cov interface{}, ncov []int32) []int32 {
 	var end int32
 	var i int32
 	var j int32
-	var out []int32 = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	var out []int32 = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(glyph_n)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -1580,7 +1580,7 @@ func intcmp(v1 interface{}, v2 interface{}) int32 {
 
 // ggrp_class - transpiled function from  otf.c:304
 func ggrp_class(src []int32, cls []int32, nsrc int32, id int32) int32 {
-	var g []int32 = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	var g []int32 = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(nsrc)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -1598,7 +1598,7 @@ func ggrp_class(src []int32, cls []int32, nsrc int32, id int32) int32 {
 		}
 	}
 	sort.SliceStable(g[:int32(uint32(n))], func(a, b int) bool {
-		return intcmp((*[1000000]int32)(unsafe.Pointer(&g[a]))[:], (*[1000000]int32)(unsafe.Pointer(&g[b]))[:]) <= 0
+		return intcmp((*[10000]int32)(unsafe.Pointer(&g[a]))[:], (*[10000]int32)(unsafe.Pointer(&g[b]))[:]) <= 0
 	})
 	grp = ggrp_make(g, n)
 	_ = g
@@ -1608,7 +1608,7 @@ func ggrp_class(src []int32, cls []int32, nsrc int32, id int32) int32 {
 // ggrp_coverage - transpiled function from  otf.c:319
 func ggrp_coverage(g []int32, n int32) int32 {
 	sort.SliceStable(g[:int32(uint32(n))], func(a, b int) bool {
-		return intcmp((*[1000000]int32)(unsafe.Pointer(&g[a]))[:], (*[1000000]int32)(unsafe.Pointer(&g[b]))[:]) <= 0
+		return intcmp((*[10000]int32)(unsafe.Pointer(&g[a]))[:], (*[10000]int32)(unsafe.Pointer(&g[b]))[:]) <= 0
 	})
 	return ggrp_make(g, n)
 }
@@ -1852,11 +1852,11 @@ func otf_gpostype3(otf_c4go_postfix []otf, sub interface{}, feat []byte) {
 	// Warning (*ast.CallExpr):  otf.c:471 :cannot casting {u16 -> uint16_t}. err = cannot casting {unsigned short -> uint16_t}. err = cannot resolve type 'uint16_t' : I couldn't find an appropriate Go type for the C type 'uint16_t'.
 	// Warning (*ast.BinaryOperator):  otf.c:471 :cannot transpile BinaryOperator with type 'int' : result type = {unknown53}. Error: operator is `=`. cannot atomic for right part. cannot transpileToExpr. err = cannot transpileImplicitCastExpr. err = cannot casting {uint16_t -> int}. err = cannot resolve type 'uint16_t' : I couldn't find an appropriate Go type for the C type 'uint16_t'.
 	// Warning (*ast.BinaryOperator):  otf.c:471 :cannot transpileToStmt : cannot transpileToExpr. err = cannot transpile BinaryOperator with type 'int' : result type = {unknown53}. Error: operator is `=`. cannot atomic for right part. cannot transpileToExpr. err = cannot transpileImplicitCastExpr. err = cannot casting {uint16_t -> int}. err = cannot resolve type 'uint16_t' : I couldn't find an appropriate Go type for the C type 'uint16_t'.
-	icov = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	icov = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(n)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	ocov = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	ocov = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(n)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -1982,7 +1982,7 @@ func otf_gpostype4(otf_c4go_postfix []otf, sub interface{}, feat []byte) {
 	{
 		// define a group for each mark class
 		for i = 0; i < ccnt; i++ {
-			var grp []int32 = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+			var grp []int32 = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 				c4go_temp_name := make([]uint32, uint32(mcnt)*uint32(1))
 				return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 			}())))[:]
@@ -2106,7 +2106,7 @@ func otf_gpostype5(otf_c4go_postfix []otf, sub interface{}, feat []byte) {
 	{
 		// define a group for each mark class
 		for i = 0; i < ccnt; i++ {
-			var grp []int32 = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+			var grp []int32 = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 				c4go_temp_name := make([]uint32, uint32(mcnt)*uint32(1))
 				return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 			}())))[:]
@@ -2713,7 +2713,7 @@ func otf_gtab(otf_c4go_postfix []otf, gpos interface{}, lookups []otflookup) int
 		}
 	}
 	sort.SliceStable(lookups[:int32(uint32(n))], func(a, b int) bool {
-		return lookupcmp((*[1000000]otflookup)(unsafe.Pointer(&lookups[a]))[:], (*[1000000]otflookup)(unsafe.Pointer(&lookups[b]))[:]) <= 0
+		return lookupcmp((*[10000]otflookup)(unsafe.Pointer(&lookups[a]))[:], (*[10000]otflookup)(unsafe.Pointer(&lookups[b]))[:]) <= 0
 	})
 	return n
 }
@@ -2980,7 +2980,7 @@ func cffdict_get(dict interface{}, len_ int32, key int32, args []int32) int32 {
 		// operators: keys (one or two bytes); operands: values
 		val = op
 		if args != nil {
-			noarch.Memmove((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&args[0+1]))) / int64(1))))[:], (*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&args[0+0]))) / int64(1))))[:], 3*4)
+			noarch.Memmove((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&args[0+1]))) / int64(1))))[:], (*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&args[0+0]))) / int64(1))))[:], 3*4)
 			args[0] = val
 		}
 		off += cff_op(dict, off, c4goUnsafeConvert_int32(&op))
@@ -3234,7 +3234,7 @@ func ggrp_make(src []int32, n int32) int32 {
 		}()
 		return ggrp_n
 	}()
-	ggrp_g[id] = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	ggrp_g[id] = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(n)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -3280,11 +3280,11 @@ func sbuf_extend(sbuf_c4go_postfix []sbuf, newsz int32) {
 
 // sbuf_make - transpiled function from  sbuf.c:30
 func sbuf_make() []sbuf {
-	var sb []sbuf = (*[1000000]sbuf)(unsafe.Pointer(uintptr(func() int64 {
+	var sb []sbuf = (*[10000]sbuf)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, 1)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sb[0]))) / int64(1))))[:], byte(0), 24)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sb[0]))) / int64(1))))[:], byte(0), 24)
 	return sb
 }
 
@@ -3382,21 +3382,21 @@ type tab struct {
 
 // tab_alloc - transpiled function from  tab.c:14
 func tab_alloc(sz int32) []tab {
-	var tab_c4go_postfix []tab = (*[1000000]tab)(unsafe.Pointer(uintptr(func() int64 {
+	var tab_c4go_postfix []tab = (*[10000]tab)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, 1)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
 	var i int32
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&tab_c4go_postfix[0]))) / int64(1))))[:], byte(0), 1080)
-	tab_c4go_postfix[0].keys = (*[1000000][]byte)(unsafe.Pointer(uintptr(func() int64 {
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&tab_c4go_postfix[0]))) / int64(1))))[:], byte(0), 1080)
+	tab_c4go_postfix[0].keys = (*[10000][]byte)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(sz)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	tab_c4go_postfix[0].vals = (*[1000000]interface{})(unsafe.Pointer(uintptr(func() int64 {
+	tab_c4go_postfix[0].vals = (*[10000]interface{})(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(sz)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	tab_c4go_postfix[0].next = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	tab_c4go_postfix[0].next = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(sz)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -3660,7 +3660,7 @@ func agl_map(d []byte, s []byte) int32 {
 		for int32(u[0]) == int32(' ') {
 			u = u[0+1:]
 		}
-		utf8put((*[1000000][]byte)(unsafe.Pointer(&d))[:], hexval(u, 6))
+		utf8put((*[10000][]byte)(unsafe.Pointer(&d))[:], hexval(u, 6))
 		u = noarch.Strchr(u, int32(' '))
 	}
 	d[0] = '\x00'
@@ -3761,13 +3761,13 @@ func ashape(str []byte, ext []byte) {
 	var bjoin int32 = noarch.BoolToInt(noarch.Not(noarch.Strcmp([]byte(".medi\x00"), ext)) || noarch.Not(noarch.Strcmp([]byte(".fina\x00"), ext)))
 	var ejoin int32 = noarch.BoolToInt(noarch.Not(noarch.Strcmp([]byte(".medi\x00"), ext)) || noarch.Not(noarch.Strcmp([]byte(".init\x00"), ext)))
 	for l = 0; l < 8 && int32(src[0]) != 0; l++ {
-		s[l] = utf8get((*[1000000][]byte)(unsafe.Pointer(&src))[:])
+		s[l] = utf8get((*[10000][]byte)(unsafe.Pointer(&src))[:])
 	}
 	for i = 0; i < l; i++ {
 		s[i] = achar_shape(s[i], noarch.BoolToInt(i > 0 || bjoin != 0), noarch.BoolToInt(i < l-1 || ejoin != 0))
 	}
 	for i = 0; i < l; i++ {
-		utf8put((*[1000000][]byte)(unsafe.Pointer(&str))[:], s[i])
+		utf8put((*[10000][]byte)(unsafe.Pointer(&str))[:], s[i])
 	}
 }
 
@@ -3779,7 +3779,7 @@ func trfn_name(dst []byte, src []byte, codepoint int32) int32 {
 	var s []byte
 	var i int32
 	if codepoint != 0 {
-		utf8put((*[1000000][]byte)(unsafe.Pointer(&dst))[:], codepoint)
+		utf8put((*[10000][]byte)(unsafe.Pointer(&dst))[:], codepoint)
 		return 0
 	}
 	if src == nil || int32(src[0]) == int32('.') {
@@ -3808,12 +3808,12 @@ func trfn_name(dst []byte, src []byte, codepoint int32) int32 {
 			d = noarch.Strchr(d, int32('\x00'))
 		} else if int32(ch[0]) == int32('u') && int32(ch[1]) == int32('n') && int32(ch[2]) == int32('i') && hexval(ch[0+3:], 4) > 0 {
 			for i = 0; noarch.Strlen(ch[0+3+4*i:]) >= int32(4); i++ {
-				utf8put((*[1000000][]byte)(unsafe.Pointer(&d))[:], hexval(ch[0+3+4*i:], 4))
+				utf8put((*[10000][]byte)(unsafe.Pointer(&d))[:], hexval(ch[0+3+4*i:], 4))
 			}
 		} else if int32(ch[0]) == int32('u') && hexval(ch[0+1:], 4) > 0 {
-			utf8put((*[1000000][]byte)(unsafe.Pointer(&d))[:], hexval(ch[0+1:], 6))
+			utf8put((*[10000][]byte)(unsafe.Pointer(&d))[:], hexval(ch[0+1:], 6))
 		} else if achar_map(ch) != 0 {
-			utf8put((*[1000000][]byte)(unsafe.Pointer(&d))[:], achar_map(ch))
+			utf8put((*[10000][]byte)(unsafe.Pointer(&d))[:], achar_map(ch))
 		} else {
 			return 1
 		}
@@ -3998,17 +3998,43 @@ func trfn_done() {
 
 // c4goUnsafeConvert_gctx : created by c4go
 func c4goUnsafeConvert_gctx(c4go_name *gctx) []gctx {
-	return (*[1000000]gctx)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]gctx)(unsafe.Pointer(c4go_name))[:]
 }
 
 // c4goUnsafeConvert_int32 : created by c4go
 func c4goUnsafeConvert_int32(c4go_name *int32) []int32 {
-	return (*[1000000]int32)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]int32)(unsafe.Pointer(c4go_name))[:]
 }
 
 // c4goUnsafeConvert_otf : created by c4go
 func c4goUnsafeConvert_otf(c4go_name *otf) []otf {
-	return (*[1000000]otf)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]otf)(unsafe.Pointer(c4go_name))[:]
+}
+
+// memcpy is function from string.h.
+// c function : void * memcpy( void * , const void * , size_t )
+// dep pkg    : reflect
+// dep func   :
+func memcpy(dst, src interface{}, size uint32) interface{} {
+	switch reflect.TypeOf(src).Kind() {
+	case reflect.Slice:
+		s := reflect.ValueOf(src)
+		d := reflect.ValueOf(dst)
+		if s.Len() == 0 {
+			return dst
+		}
+		if s.Len() > 0 {
+			size /= uint32(int(s.Index(0).Type().Size()))
+		}
+		var val reflect.Value
+		for i := 0; i < int(size); i++ {
+			if i < s.Len() {
+				val = s.Index(i)
+			}
+			d.Index(i).Set(val)
+		}
+	}
+	return dst
 }
 
 // __ctype_b_loc from ctype.h
@@ -4086,32 +4112,6 @@ func __ctype_b_loc() [][]uint16 {
 		characterTable = append(characterTable, c)
 	}
 	return [][]uint16{characterTable}
-}
-
-// memcpy is function from string.h.
-// c function : void * memcpy( void * , const void * , size_t )
-// dep pkg    : reflect
-// dep func   :
-func memcpy(dst, src interface{}, size uint32) interface{} {
-	switch reflect.TypeOf(src).Kind() {
-	case reflect.Slice:
-		s := reflect.ValueOf(src)
-		d := reflect.ValueOf(dst)
-		if s.Len() == 0 {
-			return dst
-		}
-		if s.Len() > 0 {
-			size /= uint32(int(s.Index(0).Type().Size()))
-		}
-		var val reflect.Value
-		for i := 0; i < int(size); i++ {
-			if i < s.Len() {
-				val = s.Index(i)
-			}
-			d.Index(i).Set(val)
-		}
-	}
-	return dst
 }
 
 // Warning cannot generate argument binding function `htonl`: cannot resolve type 'uint32_t' : I couldn't find an appropriate Go type for the C type 'uint32_t'.

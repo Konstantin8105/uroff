@@ -398,7 +398,7 @@ func utf8_dec(dst []int32, src []byte) {
 					d = d[0+1:]
 				}()
 				return d
-			}())[0] = readutf8((*[1000000][]byte)(unsafe.Pointer(&s))[:])
+			}())[0] = readutf8((*[10000][]byte)(unsafe.Pointer(&s))[:])
 		} else {
 			(func() []int32 {
 				defer func() {
@@ -467,7 +467,7 @@ func utf8_enc(dst []byte, src []int32) {
 	var d []byte = dst
 	for s[0] != 0 {
 		if s[0] & ^127 != 0 {
-			writeutf8((*[1000000][]byte)(unsafe.Pointer(&d))[:], (func() []int32 {
+			writeutf8((*[10000][]byte)(unsafe.Pointer(&d))[:], (func() []int32 {
 				defer func() {
 					s = s[0+1:]
 				}()

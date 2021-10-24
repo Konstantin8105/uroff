@@ -1024,66 +1024,66 @@ func findcol() int32 {
 
 // garray - transpiled function from  t4.c:345
 func garray(qcol int32) {
-	style = (*[1000000][]int32)(unsafe.Pointer(uintptr(func() int64 {
+	style = (*[10000][]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*qcol, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	evenup = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	evenup = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
 	//+1 for sample55 loop - others may need it too
-	lefline = (*[1000000][]int32)(unsafe.Pointer(uintptr(func() int64 {
+	lefline = (*[10000][]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*(qcol+1), int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	font = (*[1000000][][]byte)(unsafe.Pointer(uintptr(func() int64 {
+	font = (*[10000][][]byte)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*qcol, 2)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	csize = (*[1000000][][]byte)(unsafe.Pointer(uintptr(func() int64 {
+	csize = (*[10000][][]byte)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*qcol, 4)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	vsize = (*[1000000][][]byte)(unsafe.Pointer(uintptr(func() int64 {
+	vsize = (*[10000][][]byte)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*qcol, 4)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	flags = (*[1000000][]int32)(unsafe.Pointer(uintptr(func() int64 {
+	flags = (*[10000][]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(44*qcol, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	cll = (*[1000000][]byte)(unsafe.Pointer(uintptr(func() int64 {
+	cll = (*[10000][]byte)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol, 10)
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	sep = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	sep = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
 	// sep[-1] must be legal
 	sep = sep[0+1:]
-	used = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	used = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	lused = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	lused = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	rused = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	rused = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	doubled = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	doubled = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	acase = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	acase = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	topat = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	topat = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := getcore(qcol+1, int32(4))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -1170,7 +1170,7 @@ func gettbl() {
 				}()) != 0 {
 					fullbot[nlin] = ch
 				}
-				table[nlin] = (*[1000000]colstr)(unsafe.Pointer(uintptr(func() int64 {
+				table[nlin] = (*[10000]colstr)(unsafe.Pointer(uintptr(func() int64 {
 					c4go_temp_name := alocv(int32(uint32(ncol+2) * 32))
 					return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 				}())))[:]
@@ -1183,7 +1183,7 @@ func gettbl() {
 				fullbot[nlin] = 0
 				instead[nlin] = nil
 			}
-			table[nlin] = (*[1000000]colstr)(unsafe.Pointer(uintptr(func() int64 {
+			table[nlin] = (*[10000]colstr)(unsafe.Pointer(uintptr(func() int64 {
 				c4go_temp_name := alocv(int32(uint32(ncol+2) * 32))
 				return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 			}())))[:]
@@ -2518,9 +2518,9 @@ func alocv(n int32) []int32 {
 			error_([]byte("no space for vectors\x00"))
 		}
 	}
-	tp = (*[1000000]int32)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&thisvec[0]))) / int64(1))))[:]
+	tp = (*[10000]int32)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&thisvec[0]))) / int64(1))))[:]
 	thisvec = thisvec[0+n:]
-	for q = tp; (int64(uintptr(unsafe.Pointer(&q[0])))/int64(4) - int64(uintptr(unsafe.Pointer(&(*[1000000]int32)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&thisvec[0]))) / int64(1))))[0])))/int64(4)) < 0; func() []int32 {
+	for q = tp; (int64(uintptr(unsafe.Pointer(&q[0])))/int64(4) - int64(uintptr(unsafe.Pointer(&(*[10000]int32)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&thisvec[0]))) / int64(1))))[0])))/int64(4)) < 0; func() []int32 {
 		tempVarUnary := q
 		defer func() {
 			q = q[0+1:]
@@ -3934,7 +3934,7 @@ func barent(s []byte) int32 {
 
 // c4goUnsafeConvert_int32 : created by c4go
 func c4goUnsafeConvert_int32(c4go_name *int32) []int32 {
-	return (*[1000000]int32)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]int32)(unsafe.Pointer(c4go_name))[:]
 }
 
 // this refers to the relative position of lines
@@ -4037,27 +4037,6 @@ func __ctype_b_loc() [][]uint16 {
 	return [][]uint16{characterTable}
 }
 
-// c4goPointerArithByteSlice - function of pointer arithmetic. generated by c4go
-func c4goPointerArithByteSlice(slice []byte, position int) []byte {
-	if position < 0 {
-		// invert sign
-		position = -position
-
-		// Example from: go101.org/article/unsafe.html
-		// repair size of slice
-		var hdr reflect.SliceHeader
-		sliceLen := len(slice)
-		hdr.Data = uintptr(unsafe.Pointer(&slice[0])) - (uintptr(position))*unsafe.Sizeof(slice[0])
-		runtime.KeepAlive(&slice[0]) // needed!
-		hdr.Len = sliceLen + int(position)
-		hdr.Cap = hdr.Len
-		slice = *((*[]byte)(unsafe.Pointer(&hdr)))
-		return slice
-	}
-	// position >= 0:
-	return slice[position:]
-}
-
 // c4goPointerArithInt32Slice - function of pointer arithmetic. generated by c4go
 func c4goPointerArithInt32Slice(slice []int32, position int) []int32 {
 	if position < 0 {
@@ -4073,6 +4052,27 @@ func c4goPointerArithInt32Slice(slice []int32, position int) []int32 {
 		hdr.Len = sliceLen + int(position)
 		hdr.Cap = hdr.Len
 		slice = *((*[]int32)(unsafe.Pointer(&hdr)))
+		return slice
+	}
+	// position >= 0:
+	return slice[position:]
+}
+
+// c4goPointerArithByteSlice - function of pointer arithmetic. generated by c4go
+func c4goPointerArithByteSlice(slice []byte, position int) []byte {
+	if position < 0 {
+		// invert sign
+		position = -position
+
+		// Example from: go101.org/article/unsafe.html
+		// repair size of slice
+		var hdr reflect.SliceHeader
+		sliceLen := len(slice)
+		hdr.Data = uintptr(unsafe.Pointer(&slice[0])) - (uintptr(position))*unsafe.Sizeof(slice[0])
+		runtime.KeepAlive(&slice[0]) // needed!
+		hdr.Len = sliceLen + int(position)
+		hdr.Cap = hdr.Len
+		slice = *((*[]byte)(unsafe.Pointer(&hdr)))
 		return slice
 	}
 	// position >= 0:

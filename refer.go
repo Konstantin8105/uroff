@@ -400,7 +400,7 @@ func ref_all() {
 	var i int32
 	var j int32
 	var sorted [][]ref
-	sorted = (*[1000000][]ref)(unsafe.Pointer(uintptr(func() int64 {
+	sorted = (*[10000][]ref)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(cites_n)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
@@ -537,7 +537,7 @@ func refer_cite(id []int32, s []byte, auth int32) int32 {
 		// numbered citations
 		// sort references for cleaner reference intervals
 		sort.SliceStable(id[:int32(uint32(nid))], func(a, b int) bool {
-			return intcmp((*[1000000]int32)(unsafe.Pointer(&id[a]))[:], (*[1000000]int32)(unsafe.Pointer(&id[b]))[:]) <= 0
+			return intcmp((*[10000]int32)(unsafe.Pointer(&id[a]))[:], (*[10000]int32)(unsafe.Pointer(&id[b]))[:]) <= 0
 		})
 		for i < nid {
 			var beg int32 = func() int32 {

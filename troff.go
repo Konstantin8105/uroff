@@ -858,24 +858,24 @@ func cp_cond() {
 	var n int32
 	var arg []byte = quotednext(cp_noninext, in_back)
 	s = arg
-	n = eval_up((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('\x00'))
-	if charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], delim) < 0 {
+	n = eval_up((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('\x00'))
+	if charread((*[10000][]byte)(unsafe.Pointer(&s))[:], delim) < 0 {
 		_ = arg
 		return
 	}
-	if noarch.Not(noarch.Strcmp(delim, []byte("\\&\x00"))) && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], delim) < 0 {
+	if noarch.Not(noarch.Strcmp(delim, []byte("\\&\x00"))) && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], delim) < 0 {
 		_ = arg
 		return
 	}
 	s1 = s
 	r = s
-	for charread_delim((*[1000000][]byte)(unsafe.Pointer(&s))[:], cs, delim) >= 0 {
+	for charread_delim((*[10000][]byte)(unsafe.Pointer(&s))[:], cs, delim) >= 0 {
 		r = s
 	}
 	r[0] = '\x00'
 	s2 = s
 	r = s
-	for charread_delim((*[1000000][]byte)(unsafe.Pointer(&s))[:], cs, delim) >= 0 {
+	for charread_delim((*[10000][]byte)(unsafe.Pointer(&s))[:], cs, delim) >= 0 {
 		r = s
 	}
 	r[0] = '\x00'
@@ -1369,7 +1369,7 @@ func dict_make(notfound int32, dupkeys int32, hashlen int32) []dict {
 	// * hashlen: the number of characters used for hashing
 	//
 	var d []dict = xmalloc(int32(72)).([]dict)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&d[0]))) / int64(1))))[:], byte(0), 72)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&d[0]))) / int64(1))))[:], byte(0), 72)
 	d[0].n = 1
 	if hashlen != 0 {
 		d[0].hashlen = hashlen
@@ -1572,7 +1572,7 @@ func dir_flush() {
 		}
 		return rbuf_sz - rbuf_n
 	}()))
-	dir_copy((*[1000000][]byte)(unsafe.Pointer(&dbuf))[:], c4goUnsafeConvert_int32(&dbuf_n), c4goUnsafeConvert_int32(&dbuf_sz), s, rbuf_n, (nreg(map_([]byte(".td\x00"))))[0])
+	dir_copy((*[10000][]byte)(unsafe.Pointer(&dbuf))[:], c4goUnsafeConvert_int32(&dbuf_n), c4goUnsafeConvert_int32(&dbuf_sz), s, rbuf_n, (nreg(map_([]byte(".td\x00"))))[0])
 	rbuf_n = 0
 }
 
@@ -1584,9 +1584,9 @@ func dir_append(s []byte) {
 		dir_flush()
 	}
 	if dir == (nreg(map_([]byte(".td\x00"))))[0] {
-		dir_copy((*[1000000][]byte)(unsafe.Pointer(&dbuf))[:], c4goUnsafeConvert_int32(&dbuf_n), c4goUnsafeConvert_int32(&dbuf_sz), s, noarch.Strlen(s), dir)
+		dir_copy((*[10000][]byte)(unsafe.Pointer(&dbuf))[:], c4goUnsafeConvert_int32(&dbuf_n), c4goUnsafeConvert_int32(&dbuf_sz), s, noarch.Strlen(s), dir)
 	} else {
-		dir_copy((*[1000000][]byte)(unsafe.Pointer(&rbuf))[:], c4goUnsafeConvert_int32(&rbuf_n), c4goUnsafeConvert_int32(&rbuf_sz), s, noarch.Strlen(s), dir)
+		dir_copy((*[10000][]byte)(unsafe.Pointer(&rbuf))[:], c4goUnsafeConvert_int32(&rbuf_n), c4goUnsafeConvert_int32(&rbuf_sz), s, noarch.Strlen(s), dir)
 	}
 }
 
@@ -1635,7 +1635,7 @@ func dir_fix(sbuf_c4go_postfix []sbuf, src []byte) {
 	var n int32
 	dir_cd = (nreg(map_([]byte(".td\x00"))))[0]
 	for (func() int32 {
-		t = escread((*[1000000][]byte)(unsafe.Pointer(&src))[:], (*[1000000][]byte)(unsafe.Pointer(&c))[:])
+		t = escread((*[10000][]byte)(unsafe.Pointer(&src))[:], (*[10000][]byte)(unsafe.Pointer(&c))[:])
 		return t
 	}()) >= 0 {
 		cmd[0] = '\x00'
@@ -1856,12 +1856,12 @@ func ren_vline(wb_c4go_postfix []wb, l int32, c []byte) {
 // ren_hlcmd - transpiled function from  draw.c:111
 func ren_hlcmd(wb_c4go_postfix []wb, arg []byte) {
 	var lc []byte = make([]byte, 32)
-	var l int32 = eval_up((*[1000000][]byte)(unsafe.Pointer(&arg))[:], int32('m'))
+	var l int32 = eval_up((*[10000][]byte)(unsafe.Pointer(&arg))[:], int32('m'))
 	if int32(arg[0]) == c_ec && int32(arg[1]) == int32('&') {
 		// \& can be used as a separator
 		arg = arg[0+2:]
 	}
-	if noarch.Not(arg[0]) || charread((*[1000000][]byte)(unsafe.Pointer(&arg))[:], lc) < 0 {
+	if noarch.Not(arg[0]) || charread((*[10000][]byte)(unsafe.Pointer(&arg))[:], lc) < 0 {
 		noarch.Strcpy(lc, []byte("ru\x00"))
 	}
 	if l != 0 {
@@ -1872,12 +1872,12 @@ func ren_hlcmd(wb_c4go_postfix []wb, arg []byte) {
 // ren_vlcmd - transpiled function from  draw.c:123
 func ren_vlcmd(wb_c4go_postfix []wb, arg []byte) {
 	var lc []byte = make([]byte, 32)
-	var l int32 = eval_up((*[1000000][]byte)(unsafe.Pointer(&arg))[:], int32('v'))
+	var l int32 = eval_up((*[10000][]byte)(unsafe.Pointer(&arg))[:], int32('v'))
 	if int32(arg[0]) == c_ec && int32(arg[1]) == int32('&') {
 		// \& can be used as a separator
 		arg = arg[0+2:]
 	}
-	if noarch.Not(arg[0]) || charread((*[1000000][]byte)(unsafe.Pointer(&arg))[:], lc) < 0 {
+	if noarch.Not(arg[0]) || charread((*[10000][]byte)(unsafe.Pointer(&arg))[:], lc) < 0 {
 		noarch.Strcpy(lc, []byte("br\x00"))
 	}
 	if l != 0 {
@@ -1921,28 +1921,28 @@ func ren_dcmd(wb_c4go_postfix []wb, s []byte) {
 	}())[0])
 	switch tolower(c) {
 	case 'l':
-		h1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
-		v1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
+		h1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
+		v1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
 		wb_drawl(wb_c4go_postfix, c, h1, v1)
 	case 'c':
-		h1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
+		h1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
 		wb_drawc(wb_c4go_postfix, c, h1)
 	case 'e':
-		h1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
-		v1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
+		h1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
+		v1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
 		wb_drawe(wb_c4go_postfix, c, h1, v1)
 	case 'a':
-		h1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
-		v1 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
-		h2 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
-		v2 = tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
+		h1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
+		v1 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
+		h2 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'))
+		v2 = tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v'))
 		wb_drawa(wb_c4go_postfix, c, h1, v1, h2, v2)
 	case '~':
 		fallthrough
 	case 'p':
 		wb_drawxbeg(wb_c4go_postfix, c)
 		for s[0] != 0 {
-			if tok_numpt((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'), c4goUnsafeConvert_int32(&h1)) != 0 || tok_numpt((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v'), c4goUnsafeConvert_int32(&v1)) != 0 {
+			if tok_numpt((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'), c4goUnsafeConvert_int32(&h1)) != 0 || tok_numpt((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v'), c4goUnsafeConvert_int32(&v1)) != 0 {
 				var tok []byte = make([]byte, 64)
 				var i int32
 				for uint32(i) < 64-1 && int32(s[0]) != 0 && int32(s[0]) != int32(' ') {
@@ -2240,7 +2240,7 @@ func eval_re(s []byte, orig int32, unit int32) int32 {
 		}
 		s = s[0+1:]
 	}
-	n = eval_up((*[1000000][]byte)(unsafe.Pointer(&s))[:], unit)
+	n = eval_up((*[10000][]byte)(unsafe.Pointer(&s))[:], unit)
 	if rel != 0 {
 		if rel > 0 {
 			return orig + n
@@ -2253,7 +2253,7 @@ func eval_re(s []byte, orig int32, unit int32) int32 {
 // eval - transpiled function from  eval.c:158
 func eval(s []byte, unit int32) int32 {
 	// evaluate s
-	return eval_up((*[1000000][]byte)(unsafe.Pointer(&s))[:], unit)
+	return eval_up((*[10000][]byte)(unsafe.Pointer(&s))[:], unit)
 }
 
 // word - transpiled function from  fmt.c:25
@@ -2370,7 +2370,7 @@ func fmt_confchanged(f []fmt_) int32 {
 // fmt_movewords - transpiled function from  fmt.c:80
 func fmt_movewords(a []fmt_, dst int32, src int32, len_ int32) {
 	// move words inside an fmt struct
-	noarch.Memmove((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&a[0].words[0+dst]))) / int64(1))))[:], (*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&a[0].words[0+src]))) / int64(1))))[:], uint32(len_)*48)
+	noarch.Memmove((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&a[0].words[0+dst]))) / int64(1))))[:], (*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&a[0].words[0+src]))) / int64(1))))[:], uint32(len_)*48)
 }
 
 // fmt_wordscopy - transpiled function from  fmt.c:86
@@ -2469,7 +2469,7 @@ func fmt_nextline(f []fmt_, w []int32, li []int32, lI []int32, ll []int32, els_n
 	w[0] = l[0].wid
 	els_neg[0] = l[0].elsn
 	els_pos[0] = l[0].elsp
-	return sbuf_out((*[1000000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
+	return sbuf_out((*[10000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
 }
 
 // fmt_mkline - transpiled function from  fmt.c:165
@@ -2493,7 +2493,7 @@ func fmt_mkline(f []fmt_) []line {
 	l[0].li = f[0].li
 	l[0].lI = f[0].lI
 	l[0].ll = f[0].ll
-	sbuf_init((*[1000000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
+	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
 	return l
 }
 
@@ -2542,7 +2542,7 @@ func fmt_extractline(f []fmt_, beg int32, end int32, str int32) int32 {
 			}
 		}
 	}
-	l[0].wid = fmt_wordscopy(f, beg, end, (*[1000000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:], (*[1000000]int32)(unsafe.Pointer(&l[0].elsn))[:], (*[1000000]int32)(unsafe.Pointer(&l[0].elsp))[:])
+	l[0].wid = fmt_wordscopy(f, beg, end, (*[10000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:], (*[10000]int32)(unsafe.Pointer(&l[0].elsn))[:], (*[10000]int32)(unsafe.Pointer(&l[0].elsp))[:])
 	return 0
 }
 
@@ -2644,7 +2644,7 @@ func fmt_hyphmarks(word []byte, hyidx []int32, hyins []int32, hygap []int32) int
 	var n int32
 	var lastchar int32
 	for (func() int32 {
-		c = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&d))[:])
+		c = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&d))[:])
 		return c
 	}()) > 0 {
 	}
@@ -2652,7 +2652,7 @@ func fmt_hyphmarks(word []byte, hyidx []int32, hyins []int32, hygap []int32) int
 		return -1
 	}
 	for (func() int32 {
-		c = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&d))[:])
+		c = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&d))[:])
 		return c
 	}()) >= 0 && n < 32 {
 		if noarch.Not(c) {
@@ -2768,7 +2768,7 @@ func fmt_insertword(f []fmt_, wb_c4go_postfix []wb, gap int32) {
 			if i == n {
 				icost = wb_cost(c4goUnsafeConvert_wb(&wbc))
 			} else {
-				icost = hygap[i] * 10000000
+				icost = hygap[i] * 100000
 			}
 			if i == 0 {
 				igap = gap
@@ -2921,7 +2921,7 @@ func fmt_hydepth(f []fmt_, pos int32) int32 {
 // hycost - transpiled function from  fmt.c:471
 func hycost(depth int32) int32 {
 	if (nreg(map_([]byte(".hlm\x00"))))[0] > 0 && depth > (nreg(map_([]byte(".hlm\x00"))))[0] {
-		return 10000000
+		return 100000
 	}
 	if depth >= 3 {
 		return (nreg(map_([]byte(".hycost\x00"))))[0] + (nreg(map_([]byte(".hycost2\x00"))))[0] + (nreg(map_([]byte(".hycost3\x00"))))[0]
@@ -3198,20 +3198,20 @@ func fmt_fillwords(f []fmt_, br int32) int32 {
 		return 1
 	}
 	// resetting positions
-	f[0].best = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	f[0].best = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(f[0].words_n+1)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	f[0].best_pos = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	f[0].best_pos = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(f[0].words_n+1)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	f[0].best_dep = (*[1000000]int32)(unsafe.Pointer(uintptr(func() int64 {
+	f[0].best_dep = (*[10000]int32)(unsafe.Pointer(uintptr(func() int64 {
 		c4go_temp_name := make([]uint32, uint32(f[0].words_n+1)*uint32(1))
 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
 	}())))[:]
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&f[0].best[0]))) / int64(1))))[:], byte(0), uint32(f[0].words_n+1)*8)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&f[0].best_dep[0]))) / int64(1))))[:], byte(0), uint32(f[0].words_n+1)*4)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&f[0].best[0]))) / int64(1))))[:], byte(0), uint32(f[0].words_n+1)*8)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&f[0].best_dep[0]))) / int64(1))))[:], byte(0), uint32(f[0].words_n+1)*4)
 	for i = 0; i < f[0].words_n+1; i++ {
 		f[0].best_pos[i] = -1
 	}
@@ -3255,7 +3255,7 @@ func fmt_fillwords(f []fmt_, br int32) int32 {
 // fmt_alloc - transpiled function from  fmt.c:697
 func fmt_alloc() []fmt_ {
 	var fmt__c4go_postfix []fmt_ = xmalloc(int32(136)).([]fmt_)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fmt__c4go_postfix[0]))) / int64(1))))[:], byte(0), 136)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fmt__c4go_postfix[0]))) / int64(1))))[:], byte(0), 136)
 	return fmt__c4go_postfix
 }
 
@@ -3649,7 +3649,7 @@ func font_gsubapply(fn []font, rule []grule, src []int32, slen int32, smap []int
 	var dmap []int32 = make([]int32, 256)
 	var i int32
 	var j int32
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&dmap[0]))) / int64(1))))[:], byte(0), uint32(slen)*4)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&dmap[0]))) / int64(1))))[:], byte(0), uint32(slen)*4)
 	for i = 0; i < slen; i++ {
 		dmap[dlen] = smap[i]
 		if font_rulematch(fn, rule, src[0+i:], slen-i, dst[0+dlen:], dlen) != 0 {
@@ -3716,10 +3716,10 @@ func font_layout(fn []font, gsrc [][]glyph, nsrc int32, sz int32, gdst [][]glyph
 	for i = 0; i < ndst; i++ {
 		dmap[i] = i
 	}
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&x[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&y[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&xadv[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&yadv[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&x[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&y[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&xadv[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&yadv[0]))) / int64(1))))[:], byte(0), uint32(ndst)*4)
 	if lg != 0 {
 		// substitution rules
 		featlg = font_featlg(fn, 3)
@@ -3761,7 +3761,7 @@ func font_readchar(fn []font, fin *noarch.File, n []int32, gid []int32) int32 {
 		}
 		gid[0] = font_glyphput(fn, id, name, type_)
 		g = fn[0].gl[gid[0]:]
-		noarch.Sscanf(tok, []byte("%hd,%hd,%hd,%hd,%hd\x00"), (*[1000000]int16)(unsafe.Pointer(&g[0].wid))[:], (*[1000000]int16)(unsafe.Pointer(&g[0].llx))[:], (*[1000000]int16)(unsafe.Pointer(&g[0].lly))[:], (*[1000000]int16)(unsafe.Pointer(&g[0].urx))[:], (*[1000000]int16)(unsafe.Pointer(&g[0].ury))[:])
+		noarch.Sscanf(tok, []byte("%hd,%hd,%hd,%hd,%hd\x00"), (*[10000]int16)(unsafe.Pointer(&g[0].wid))[:], (*[10000]int16)(unsafe.Pointer(&g[0].llx))[:], (*[10000]int16)(unsafe.Pointer(&g[0].lly))[:], (*[10000]int16)(unsafe.Pointer(&g[0].urx))[:], (*[10000]int16)(unsafe.Pointer(&g[0].ury))[:])
 		dict_put(fn[0].ch_dict, name, gid[0])
 		n[0]++
 	} else {
@@ -3818,7 +3818,7 @@ func font_findlang(fn []font, lang []byte) int32 {
 // font_gpat - transpiled function from  font.c:390
 func font_gpat(fn []font, len_ int32) []gpat {
 	var pats []gpat = xmalloc(int32(uint32(len_) * 16)).([]gpat)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&pats[0]))) / int64(1))))[:], byte(0), uint32(len_)*16)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&pats[0]))) / int64(1))))[:], byte(0), uint32(len_)*16)
 	return pats
 }
 
@@ -3971,7 +3971,7 @@ func font_readgpos(fn []font, fin *noarch.File) int32 {
 			return 0
 		}
 		if col != nil {
-			noarch.Sscanf(col[0+1:], []byte("%hd%hd%hd%hd\x00"), (*[1000000]int16)(unsafe.Pointer(&rule[0].pats[i].x))[:], (*[1000000]int16)(unsafe.Pointer(&rule[0].pats[i].y))[:], (*[1000000]int16)(unsafe.Pointer(&rule[0].pats[i].xadv))[:], (*[1000000]int16)(unsafe.Pointer(&rule[0].pats[i].yadv))[:])
+			noarch.Sscanf(col[0+1:], []byte("%hd%hd%hd%hd\x00"), (*[10000]int16)(unsafe.Pointer(&rule[0].pats[i].x))[:], (*[10000]int16)(unsafe.Pointer(&rule[0].pats[i].y))[:], (*[10000]int16)(unsafe.Pointer(&rule[0].pats[i].xadv))[:], (*[10000]int16)(unsafe.Pointer(&rule[0].pats[i].yadv))[:])
 		}
 	}
 	return 0
@@ -4025,7 +4025,7 @@ func font_lig(fn []font, lig []byte) {
 	var s []byte = lig
 	var j int32
 	var n int32
-	for utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], c) > 0 {
+	for utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], c) > 0 {
 		g[func() int32 {
 			defer func() {
 				n++
@@ -4094,7 +4094,7 @@ func font_open(path []byte) []font {
 		noarch.Fclose(fin)
 		return nil
 	}
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fn[0]))) / int64(1))))[:], byte(0), 2888)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fn[0]))) / int64(1))))[:], byte(0), 2888)
 	fn[0].gl_dict = dict_make(-1, 1, 0)
 	fn[0].ch_dict = dict_make(-1, 1, 0)
 	fn[0].ch_map = dict_make(-1, 1, 0)
@@ -4124,7 +4124,7 @@ func font_open(path []byte) []font {
 		} else if noarch.Not(noarch.Strcmp([]byte("ggrp\x00"), tok)) {
 			font_readggrp(fn, fin)
 		} else if noarch.Not(noarch.Strcmp([]byte("spacewidth\x00"), tok)) {
-			noarch.Fscanf(fin, []byte("%d\x00"), (*[1000000]int32)(unsafe.Pointer(&fn[0].spacewid))[:])
+			noarch.Fscanf(fin, []byte("%d\x00"), (*[10000]int32)(unsafe.Pointer(&fn[0].spacewid))[:])
 		} else if noarch.Not(noarch.Strcmp([]byte("special\x00"), tok)) {
 			fn[0].special = 1
 		} else if noarch.Not(noarch.Strcmp([]byte("name\x00"), tok)) {
@@ -4358,7 +4358,7 @@ func hy_cget(d []byte, s []byte) int32 {
 	// read a single character from s into d; return the number of characters read
 	var i int32
 	if int32(s[0]) != int32('\\') {
-		return utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], d)
+		return utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], d)
 	}
 	if int32(s[1]) == int32('[') {
 		s = s[0+2:]
@@ -4383,8 +4383,8 @@ func hy_cget(d []byte, s []byte) int32 {
 	}
 	if int32(s[1]) == int32('(') {
 		s = s[0+2:]
-		i += utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], d[0+i:])
-		i += utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], d[0+i:])
+		i += utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], d[0+i:])
+		i += utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], d[0+i:])
 		return 2 + i
 	}
 	if int32(s[1]) == int32('C') {
@@ -4420,7 +4420,7 @@ func hy_cget(d []byte, s []byte) int32 {
 		}()
 		return s
 	}())[0]
-	return 1 + utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], d)
+	return 1 + utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], d)
 }
 
 // hy_cput - transpiled function from  hyph.c:54
@@ -4510,7 +4510,7 @@ func tr_hw(args [][]byte) {
 	for i = 1; i < 32 && args[i] != nil; i++ {
 		var s []byte = args[i]
 		var d []byte = word
-		for int32((int64(uintptr(unsafe.Pointer(&d[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&word[0])))/int64(1))) < 256-32 && noarch.Not(escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&c))[:])) {
+		for int32((int64(uintptr(unsafe.Pointer(&d[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&word[0])))/int64(1))) < 256-32 && noarch.Not(escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&c))[:])) {
 			if noarch.Strcmp([]byte("-\x00"), c) != 0 {
 				hcode_mapchar(c)
 			}
@@ -4727,7 +4727,7 @@ func tr_hcode(args [][]byte) {
 	var c1 []byte = make([]byte, 32)
 	var c2 []byte = make([]byte, 32)
 	var s []byte = args[1]
-	for s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], c1) >= 0 && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], c2) >= 0 {
+	for s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], c1) >= 0 && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], c2) >= 0 {
 		hcode_add(c1, c2)
 	}
 }
@@ -4845,7 +4845,7 @@ func tr_hpfa(args [][]byte) {
 		for noarch.Fscanf(filp, []byte("%128s\x00"), tok) == 1 {
 			// reading hcode mappings
 			var s []byte = tok
-			if utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], c1) != 0 && utf8read((*[1000000][]byte)(unsafe.Pointer(&s))[:], c2) != 0 && noarch.Not(s[0]) {
+			if utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], c1) != 0 && utf8read((*[10000][]byte)(unsafe.Pointer(&s))[:], c2) != 0 && noarch.Not(s[0]) {
 				// inverting
 				hcode_add(c2, c1)
 			}
@@ -4934,7 +4934,7 @@ var cfile int32
 // in_new - transpiled function from  in.c:28
 func in_new() {
 	var next []inbuf = xmalloc(int32(1248)).([]inbuf)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&next[0]))) / int64(1))))[:], byte(0), 1248)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&next[0]))) / int64(1))))[:], byte(0), 1248)
 	next[0].prev = buf
 	buf = next
 }
@@ -5141,7 +5141,7 @@ func in_shift() {
 	}
 	if len(cur) == 0 && len(cur[0].args) == 0 {
 		_ = cur[0].args[1]
-		noarch.Memmove((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cur[0].args[0+1]))) / int64(1))))[:], (*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cur[0].args[0+2]))) / int64(1))))[:], uint32(32-2)*8)
+		noarch.Memmove((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cur[0].args[0+1]))) / int64(1))))[:], (*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cur[0].args[0+2]))) / int64(1))))[:], uint32(32-2)*8)
 		cur[0].args[32-1] = nil
 	}
 }
@@ -5216,7 +5216,7 @@ func iset_extend(iset_c4go_postfix []iset, cnt int32) {
 // iset_make - transpiled function from  iset.c:25
 func iset_make() []iset {
 	var iset_c4go_postfix []iset = xmalloc(int32(56)).([]iset)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&iset_c4go_postfix[0]))) / int64(1))))[:], byte(0), 56)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&iset_c4go_postfix[0]))) / int64(1))))[:], byte(0), 56)
 	iset_extend(iset_c4go_postfix, 1<<uint64(10))
 	return iset_c4go_postfix
 }
@@ -5401,27 +5401,27 @@ func out_draw(s []byte) {
 	out([]byte("D%c\x00"), c)
 	switch tolower(c) {
 	case 'l':
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
 		// dpost requires this
 		outnn([]byte(" .\x00"))
 	case 'c':
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
 	case 'e':
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
 	case 'a':
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
-		outnn([]byte(" %d\x00"), tok_num((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m')))
+		outnn([]byte(" %d\x00"), tok_num((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v')))
 	case '~':
 		fallthrough
 	case 'p':
 		for s[0] != 0 {
 			var h int32
 			var v int32
-			if tok_numpt((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('m'), c4goUnsafeConvert_int32(&h)) != 0 || tok_numpt((*[1000000][]byte)(unsafe.Pointer(&s))[:], int32('v'), c4goUnsafeConvert_int32(&v)) != 0 {
+			if tok_numpt((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('m'), c4goUnsafeConvert_int32(&h)) != 0 || tok_numpt((*[10000][]byte)(unsafe.Pointer(&s))[:], int32('v'), c4goUnsafeConvert_int32(&v)) != 0 {
 				outnn([]byte(" \x00"))
 				for int32(s[0]) != 0 && int32(s[0]) != int32(' ') {
 					outnn([]byte("%c\x00"), int32((func() []byte {
@@ -5505,7 +5505,7 @@ func out_line(s []byte) {
 	var c []byte
 	var t int32
 	for (func() int32 {
-		t = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&c))[:])
+		t = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&c))[:])
 		return t
 	}()) >= 0 {
 		if noarch.Not(t) {
@@ -5784,8 +5784,8 @@ func str_rn(src int32, dst int32) {
 // env_alloc - transpiled function from  reg.c:208
 func env_alloc() []env {
 	var env_c4go_postfix []env = xmalloc(int32(8936)).([]env)
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&env_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8936)
-	wb_init((*[1000000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:])
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&env_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8936)
+	wb_init((*[10000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:])
 	env_c4go_postfix[0].fmt_ = fmt_alloc()
 	return env_c4go_postfix
 }
@@ -5793,7 +5793,7 @@ func env_alloc() []env {
 // env_free - transpiled function from  reg.c:217
 func env_free(env_c4go_postfix []env) {
 	fmt_free(env_c4go_postfix[0].fmt_)
-	wb_done((*[1000000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:])
+	wb_done((*[10000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:])
 	_ = env_c4go_postfix
 }
 
@@ -5835,7 +5835,7 @@ func env_set(id int32) {
 // init_time - transpiled function from  reg.c:259
 func init_time() {
 	var t noarch.TimeT = noarch.Time(nil)
-	var tm_c4go_postfix []noarch.Tm = noarch.LocalTime((*[1000000]noarch.TimeT)(unsafe.Pointer(&t))[:])
+	var tm_c4go_postfix []noarch.Tm = noarch.LocalTime((*[10000]noarch.TimeT)(unsafe.Pointer(&t))[:])
 	num_set(map_([]byte("dw\x00")), tm_c4go_postfix[0].TmWday+1)
 	num_set(map_([]byte("dy\x00")), tm_c4go_postfix[0].TmMday)
 	num_set(map_([]byte("mo\x00")), tm_c4go_postfix[0].TmMon+1)
@@ -5920,7 +5920,7 @@ func env_fmt() []fmt_ {
 
 // env_wb - transpiled function from  reg.c:322
 func env_wb() []wb {
-	return (*[1000000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:]
+	return (*[10000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:]
 }
 
 // env_hc - transpiled function from  reg.c:327
@@ -6347,15 +6347,15 @@ func tr_di(args [][]byte) {
 		} else {
 			cdiv = divs
 		}
-		noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cdiv[0]))) / int64(1))))[:], byte(0), 56)
-		sbuf_init((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
+		noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cdiv[0]))) / int64(1))))[:], byte(0), 56)
+		sbuf_init((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
 		cdiv[0].reg = map_(args[1])
 		cdiv[0].treg = -1
 		if int32(args[0][2]) == int32('a') && str_get(cdiv[0].reg) != nil {
 			// .da
-			sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], str_get(cdiv[0].reg))
+			sbuf_append((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], str_get(cdiv[0].reg))
 		}
-		sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s\n\x00"), c_cc, []byte("\a<\x00"))
+		sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s\n\x00"), c_cc, []byte("\a<\x00"))
 		cdiv[0].prev_d = (nreg(int32('d')))[0]
 		cdiv[0].prev_h = (nreg(int32('h')))[0]
 		cdiv[0].prev_mk = (nreg(map_([]byte(".mk\x00"))))[0]
@@ -6365,9 +6365,9 @@ func tr_di(args [][]byte) {
 		(nreg(map_([]byte(".mk\x00"))))[0] = 0
 		(nreg(map_([]byte(".ns\x00"))))[0] = 0
 	} else if cdiv != nil {
-		sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s\n\x00"), c_cc, []byte("\a>\x00"))
-		str_set(cdiv[0].reg, sbuf_buf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:]))
-		sbuf_done((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
+		sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s\n\x00"), c_cc, []byte("\a>\x00"))
+		str_set(cdiv[0].reg, sbuf_buf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:]))
+		sbuf_done((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
 		(nreg(map_([]byte("dl\x00"))))[0] = cdiv[0].dl
 		(nreg(map_([]byte("dn\x00"))))[0] = (nreg(int32('d')))[0]
 		(nreg(int32('d')))[0] = cdiv[0].prev_d
@@ -6418,7 +6418,7 @@ func tr_divvs(args [][]byte) {
 // tr_transparent - transpiled function from  ren.c:117
 func tr_transparent(args [][]byte) {
 	if cdiv != nil {
-		sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%s\n\x00"), args[1])
+		sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%s\n\x00"), args[1])
 	} else {
 		out([]byte("%s\n\x00"), args[1])
 	}
@@ -6479,9 +6479,9 @@ func ren_sp(n int32, nodiv int32) {
 	}
 	if cdiv != nil && noarch.Not(nodiv) {
 		if linevs != 0 {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s %du\n\x00"), c_cc, []byte("\aV\x00"), (nreg(int32('v')))[0])
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s %du\n\x00"), c_cc, []byte("\aV\x00"), (nreg(int32('v')))[0])
 		} else {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%csp %du\n\x00"), c_cc, func() int32 {
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%csp %du\n\x00"), c_cc, func() int32 {
 				if n != 0 {
 					return n
 				}
@@ -6601,10 +6601,10 @@ func ren_ljust(spre []sbuf, w int32, ad int32, li int32, lI int32, ll int32) int
 func ren_out(beg []byte, mid []byte, end []byte) {
 	if cdiv != nil {
 		// append the line to the current diversion or send it to out.c
-		sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], beg)
-		sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], mid)
-		sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], end)
-		sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("\n\x00"))
+		sbuf_append((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], beg)
+		sbuf_append((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], mid)
+		sbuf_append((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], end)
+		sbuf_append((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("\n\x00"))
 	} else {
 		out([]byte("H%d\n\x00"), (nreg(int32('o')))[0])
 		out([]byte("V%d\n\x00"), (nreg(int32('d')))[0])
@@ -7132,8 +7132,8 @@ func tr_ce(args [][]byte) {
 func tr_fc(args [][]byte) {
 	var fa []byte = args[1]
 	var fb []byte = args[2]
-	if fa != nil && charread((*[1000000][]byte)(unsafe.Pointer(&fa))[:], c_fa) >= 0 {
-		if fb == nil || charread((*[1000000][]byte)(unsafe.Pointer(&fb))[:], c_fb) < 0 {
+	if fa != nil && charread((*[10000][]byte)(unsafe.Pointer(&fa))[:], c_fa) >= 0 {
+		if fb == nil || charread((*[10000][]byte)(unsafe.Pointer(&fb))[:], c_fb) < 0 {
 			noarch.Strcpy(c_fb, []byte(" \x00"))
 		}
 	} else {
@@ -7354,7 +7354,7 @@ func ren_wid(next func() int32, back func(int32)) int32 {
 	}
 	odiv_end()
 	n = wb_wid(c4goUnsafeConvert_wb(&wb_c4go_postfix))
-	wb_wconf(c4goUnsafeConvert_wb(&wb_c4go_postfix), (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("ct\x00"))))[0])))[:], (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("st\x00"))))[0])))[:], (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("sb\x00"))))[0])))[:], (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bbllx\x00"))))[0])))[:], (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bblly\x00"))))[0])))[:], (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bburx\x00"))))[0])))[:], (*[1000000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bbury\x00"))))[0])))[:])
+	wb_wconf(c4goUnsafeConvert_wb(&wb_c4go_postfix), (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("ct\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("st\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("sb\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bbllx\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bblly\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bburx\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bbury\x00"))))[0])))[:])
 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 	return n
 }
@@ -7956,7 +7956,7 @@ func cmdmac(dir []byte, arg []byte) int32 {
 }
 
 // usage - transpiled function from  roff.c:88
-var usage []byte = []byte("Usage: neatroff [options] input\n\nOptions:\n  -mx   \tinclude macro x\n  -rx=y \tset number register x to y\n  -dx=y \tdefine string register x as y\n  -C    \tenable compatibility mode\n  -Tdev \tset output device\n  -Fdir \tset font directory (./)\n  -Mdir \tset macro directory (./)\n\x00")
+var usage []byte = []byte("Usage: neatroff [options] input\n\nOptions:\n  -mx   \tinclude macro x\n  -rx=y \tset number register x to y\n  -dx=y \tdefine string register x as y\n  -C    \tenable compatibility mode\n  -Tdev \tset output device\n  -Fdir \tset font directory (./\neatroff_make/fonts)\n  -Mdir \tset macro directory (./neatroff_make/tmac)\n\x00")
 
 // main - transpiled function from  roff.c:99
 func main() {
@@ -7966,8 +7966,8 @@ func main() {
 		argv = append(argv, []byte(argvSingle))
 	}
 	defer noarch.AtexitRun()
-	var fontdir []byte = []byte("./\x00")
-	var macrodir []byte = []byte("./\x00")
+	var fontdir []byte = []byte("./\neatroff_make/fonts\x00")
+	var macrodir []byte = []byte("./neatroff_make/tmac\x00")
 	var mac []byte
 	var def []byte
 	var dev []byte = []byte("utf\x00")
@@ -7995,7 +7995,7 @@ func main() {
 					i++
 					return i
 				}()]
-			}(), c4goUnsafeConvert_int32(&reg), (*[1000000][]byte)(unsafe.Pointer(&def))[:])
+			}(), c4goUnsafeConvert_int32(&reg), (*[10000][]byte)(unsafe.Pointer(&def))[:])
 			num_set(reg, eval_re(def, (nreg(reg))[0], int32('u')))
 		case 'd':
 			cmddef(func() []byte {
@@ -8006,7 +8006,7 @@ func main() {
 					i++
 					return i
 				}()]
-			}(), c4goUnsafeConvert_int32(&reg), (*[1000000][]byte)(unsafe.Pointer(&def))[:])
+			}(), c4goUnsafeConvert_int32(&reg), (*[10000][]byte)(unsafe.Pointer(&def))[:])
 			str_set(reg, def)
 		case 'F':
 			fontdir = func() []byte {
@@ -8084,7 +8084,7 @@ func sbuf_extend(sbuf_c4go_postfix []sbuf, amount int32) {
 
 // sbuf_init - transpiled function from  sbuf.c:17
 func sbuf_init(sbuf_c4go_postfix []sbuf) {
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	sbuf_extend(sbuf_c4go_postfix, 512)
 }
 
@@ -8154,7 +8154,7 @@ func sbuf_done(sbuf_c4go_postfix []sbuf) {
 // sbuf_out - transpiled function from  sbuf.c:77
 func sbuf_out(sbuf_c4go_postfix []sbuf) []byte {
 	var s []byte = sbuf_c4go_postfix[0].s
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	return s
 }
 
@@ -8731,7 +8731,7 @@ func tr_lt(args [][]byte) {
 // tr_pc - transpiled function from  tr.c:402
 func tr_pc(args [][]byte) {
 	var s []byte = args[1]
-	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], c_pc) < 0 {
+	if s == nil || charread((*[10000][]byte)(unsafe.Pointer(&s))[:], c_pc) < 0 {
 		noarch.Strcpy(c_pc, []byte("\x00"))
 	}
 }
@@ -8790,7 +8790,7 @@ func tr_eo(args [][]byte) {
 // tr_hc - transpiled function from  tr.c:442
 func tr_hc(args [][]byte) {
 	var s []byte = args[1]
-	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_hc()) < 0 {
+	if s == nil || charread((*[10000][]byte)(unsafe.Pointer(&s))[:], env_hc()) < 0 {
 		noarch.Strcpy(env_hc(), []byte("\\%\x00"))
 	}
 }
@@ -8814,7 +8814,7 @@ func tr_eos(args [][]byte) {
 	eos_trancnt = 0
 	if args[1] != nil {
 		var s []byte = args[1]
-		for s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], eos_sent[eos_sentcnt]) >= 0 {
+		for s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], eos_sent[eos_sentcnt]) >= 0 {
 			if eos_sentcnt < 32-1 {
 				eos_sentcnt++
 			}
@@ -8822,7 +8822,7 @@ func tr_eos(args [][]byte) {
 	}
 	if args[2] != nil {
 		var s []byte = args[2]
-		for s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], eos_tran[eos_trancnt]) >= 0 {
+		for s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], eos_tran[eos_trancnt]) >= 0 {
 			if eos_trancnt < 32-1 {
 				eos_trancnt++
 			}
@@ -8912,7 +8912,7 @@ func tr_hydash(args [][]byte) {
 	hy_dashcnt = 0
 	if args[1] != nil {
 		var s []byte = args[1]
-		for s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], hy_dash[hy_dashcnt]) >= 0 {
+		for s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], hy_dash[hy_dashcnt]) >= 0 {
 			if hy_dashcnt < 32-1 {
 				hy_dashcnt++
 			}
@@ -8925,7 +8925,7 @@ func tr_hystop(args [][]byte) {
 	hy_stopcnt = 0
 	if args[1] != nil {
 		var s []byte = args[1]
-		for s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], hy_stop[hy_stopcnt]) >= 0 {
+		for s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], hy_stop[hy_stopcnt]) >= 0 {
 			if hy_stopcnt < 32-1 {
 				hy_stopcnt++
 			}
@@ -9181,7 +9181,7 @@ func tr_it(args [][]byte) {
 // tr_mc - transpiled function from  tr.c:683
 func tr_mc(args [][]byte) {
 	var s []byte = args[1]
-	if s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_mc()) >= 0 {
+	if s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], env_mc()) >= 0 {
 		(nreg(map_([]byte(".mc\x00"))))[0] = 1
 		if args[2] != nil {
 			(nreg(map_([]byte(".mcn\x00"))))[0] = eval(args[2], int32('m'))
@@ -9196,7 +9196,7 @@ func tr_mc(args [][]byte) {
 // tr_tc - transpiled function from  tr.c:694
 func tr_tc(args [][]byte) {
 	var s []byte = args[1]
-	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_tc()) < 0 {
+	if s == nil || charread((*[10000][]byte)(unsafe.Pointer(&s))[:], env_tc()) < 0 {
 		noarch.Strcpy(env_tc(), []byte("\x00"))
 	}
 }
@@ -9204,7 +9204,7 @@ func tr_tc(args [][]byte) {
 // tr_lc - transpiled function from  tr.c:701
 func tr_lc(args [][]byte) {
 	var s []byte = args[1]
-	if s == nil || charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], env_lc()) < 0 {
+	if s == nil || charread((*[10000][]byte)(unsafe.Pointer(&s))[:], env_lc()) < 0 {
 		noarch.Strcpy(env_lc(), []byte("\x00"))
 	}
 }
@@ -9276,8 +9276,8 @@ func tr_tr(args [][]byte) {
 	var s []byte = args[1]
 	var c1 []byte = make([]byte, 32)
 	var c2 []byte = make([]byte, 32)
-	for s != nil && charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], c1) >= 0 {
-		if charread((*[1000000][]byte)(unsafe.Pointer(&s))[:], c2) < 0 {
+	for s != nil && charread((*[10000][]byte)(unsafe.Pointer(&s))[:], c1) >= 0 {
+		if charread((*[10000][]byte)(unsafe.Pointer(&s))[:], c2) < 0 {
 			noarch.Strcpy(c2, []byte(" \x00"))
 		}
 		cmap_add(c1, c2)
@@ -9348,7 +9348,7 @@ func cdef_remove(fn []byte, cs []byte) {
 		}
 		return -1
 	}()
-	if cs == nil || charread((*[1000000][]byte)(unsafe.Pointer(&cs))[:], c) < 0 {
+	if cs == nil || charread((*[10000][]byte)(unsafe.Pointer(&cs))[:], c) < 0 {
 		return
 	}
 	for i = 0; i < cdef_n; i++ {
@@ -9366,7 +9366,7 @@ func cdef_remove(fn []byte, cs []byte) {
 func cdef_add(fn []byte, cs []byte, def []byte) {
 	var c []byte = make([]byte, 32)
 	var i int32
-	if def == nil || charread((*[1000000][]byte)(unsafe.Pointer(&cs))[:], c) < 0 {
+	if def == nil || charread((*[10000][]byte)(unsafe.Pointer(&cs))[:], c) < 0 {
 		return
 	}
 	i = cdef_find(c, func() int32 {
@@ -9861,8 +9861,8 @@ func wb_init(wb_c4go_postfix []wb) {
 	// the current font, size and color
 	// italic correction
 	// the maximum and minimum values of bounding box coordinates
-	noarch.Memset((*[1000000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&wb_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8320)
-	sbuf_init((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
+	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&wb_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8320)
+	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 	wb_c4go_postfix[0].sub_collect = 1
 	wb_c4go_postfix[0].f = -1
 	wb_c4go_postfix[0].s = -1
@@ -9880,7 +9880,7 @@ func wb_init(wb_c4go_postfix []wb) {
 
 // wb_done - transpiled function from  wb.c:41
 func wb_done(wb_c4go_postfix []wb) {
-	sbuf_done((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
+	sbuf_done((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 }
 
 // wb_stsb - transpiled function from  wb.c:47
@@ -9964,7 +9964,7 @@ func wb_flushfont(wb_c4go_postfix []wb) {
 		return (nreg(int32('f')))[0]
 	}() {
 		// append font and size to the buffer if needed
-		sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cf(%02d\x00"), c_ec, func() int32 {
+		sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cf(%02d\x00"), c_ec, func() int32 {
 			if (wb_c4go_postfix)[0].r_f >= 0 {
 				return (wb_c4go_postfix)[0].r_f
 			}
@@ -9988,14 +9988,14 @@ func wb_flushfont(wb_c4go_postfix []wb) {
 			}
 			return (nreg(int32('s')))[0]
 		}() < 100 {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cs(%02d\x00"), c_ec, func() int32 {
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cs(%02d\x00"), c_ec, func() int32 {
 				if (wb_c4go_postfix)[0].r_s >= 0 {
 					return (wb_c4go_postfix)[0].r_s
 				}
 				return (nreg(int32('s')))[0]
 			}())
 		} else {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cs[%d]\x00"), c_ec, func() int32 {
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cs[%d]\x00"), c_ec, func() int32 {
 				if (wb_c4go_postfix)[0].r_s >= 0 {
 					return (wb_c4go_postfix)[0].r_s
 				}
@@ -10014,7 +10014,7 @@ func wb_flushfont(wb_c4go_postfix []wb) {
 		}
 		return (nreg(int32('m')))[0]
 	}() {
-		sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cm[%s]\x00"), c_ec, clr_str(func() int32 {
+		sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cm[%s]\x00"), c_ec, clr_str(func() int32 {
 			if (wb_c4go_postfix)[0].r_m >= 0 {
 				return (wb_c4go_postfix)[0].r_m
 			}
@@ -10040,7 +10040,7 @@ func wb_flushdir(wb_c4go_postfix []wb) {
 		// append current text direction to the buffer if needed
 		wb_flushsub(wb_c4go_postfix)
 		if dir_do != 0 {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%c%c\x00"), c_ec, func() int32 {
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%c%c\x00"), c_ec, func() int32 {
 				if func() int32 {
 					if (wb_c4go_postfix)[0].r_cd >= 0 {
 						return (wb_c4go_postfix)[0].r_cd
@@ -10072,14 +10072,14 @@ func wb_flush(wb_c4go_postfix []wb) {
 func wb_hmov(wb_c4go_postfix []wb, n int32) {
 	wb_flushsub(wb_c4go_postfix)
 	wb_c4go_postfix[0].h += n
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%ch'%du'\x00"), c_ec, n)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%ch'%du'\x00"), c_ec, n)
 }
 
 // wb_vmov - transpiled function from  wb.c:122
 func wb_vmov(wb_c4go_postfix []wb, n int32) {
 	wb_flushsub(wb_c4go_postfix)
 	wb_c4go_postfix[0].v += n
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cv'%du'\x00"), c_ec, n)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cv'%du'\x00"), c_ec, n)
 }
 
 // wb_els - transpiled function from  wb.c:129
@@ -10091,13 +10091,13 @@ func wb_els(wb_c4go_postfix []wb, els int32) {
 	if els < wb_c4go_postfix[0].els_neg {
 		wb_c4go_postfix[0].els_neg = els
 	}
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cx'%du'\x00"), c_ec, els)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cx'%du'\x00"), c_ec, els)
 }
 
 // wb_etc - transpiled function from  wb.c:139
 func wb_etc(wb_c4go_postfix []wb, x []byte) {
 	wb_flush(wb_c4go_postfix)
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cX\x02%s\x02\x00"), c_ec, x)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cX\x02%s\x02\x00"), c_ec, x)
 }
 
 // wb_putbuf - transpiled function from  wb.c:145
@@ -10105,7 +10105,7 @@ func wb_putbuf(wb_c4go_postfix []wb, c []byte) {
 	var g []glyph
 	var zerowidth int32
 	if int32(c[0]) == int32('\t') || int32(c[0]) == int32('\x01') || int32(c[0]) == 4 && (int32(c[1]) == int32('\t') || int32(c[1]) == int32('\x01')) {
-		sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], c)
+		sbuf_append((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], c)
 		return
 	}
 	g = dev_glyph(c, wb_c4go_postfix[0].f)
@@ -10131,15 +10131,15 @@ func wb_putbuf(wb_c4go_postfix []wb, c []byte) {
 	wb_c4go_postfix[0].icleft = 0
 	if noarch.Not(c[1]) || int32(c[0]) == c_ec || int32(c[0]) == 4 || utf8one(c) != 0 {
 		if int32(c[0]) == 4 && int32(c[1]) == c_ec {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%c%c\x00"), c_ec, c_ec)
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%c%c\x00"), c_ec, c_ec)
 		} else {
-			sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], c)
+			sbuf_append((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], c)
 		}
 	} else {
 		if int32(c[1]) != 0 && noarch.Not(c[2]) {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%c(%s\x00"), c_ec, c)
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%c(%s\x00"), c_ec, c)
 		} else {
-			sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cC'%s'\x00"), c_ec, c)
+			sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cC'%s'\x00"), c_ec, c)
 		}
 	}
 	if noarch.Not(zerowidth) {
@@ -10314,7 +10314,7 @@ func wb_put(wb_c4go_postfix []wb, c []byte) {
 	}
 	if noarch.Not(noarch.Strcmp([]byte("\\~\x00"), c)) {
 		wb_flushsub(wb_c4go_postfix)
-		sbuf_append((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], c)
+		sbuf_append((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], c)
 		wb_c4go_postfix[0].h += font_swid(dev_font(func() int32 {
 			if (wb_c4go_postfix)[0].r_f >= 0 {
 				return (wb_c4go_postfix)[0].r_f
@@ -10394,7 +10394,7 @@ func wb_setcost(wb_c4go_postfix []wb, cost int32) {
 // wb_drawl - transpiled function from  wb.c:347
 func wb_drawl(wb_c4go_postfix []wb, c int32, h int32, v int32) {
 	wb_flush(wb_c4go_postfix)
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du'\x00"), c_ec, c, h, v)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du'\x00"), c_ec, c, h, v)
 	wb_c4go_postfix[0].h += h
 	wb_c4go_postfix[0].v += v
 	wb_stsb(wb_c4go_postfix)
@@ -10403,21 +10403,21 @@ func wb_drawl(wb_c4go_postfix []wb, c int32, h int32, v int32) {
 // wb_drawc - transpiled function from  wb.c:356
 func wb_drawc(wb_c4go_postfix []wb, c int32, r int32) {
 	wb_flush(wb_c4go_postfix)
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du'\x00"), c_ec, c, r)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du'\x00"), c_ec, c, r)
 	wb_c4go_postfix[0].h += r
 }
 
 // wb_drawe - transpiled function from  wb.c:363
 func wb_drawe(wb_c4go_postfix []wb, c int32, h int32, v int32) {
 	wb_flush(wb_c4go_postfix)
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du'\x00"), c_ec, c, h, v)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du'\x00"), c_ec, c, h, v)
 	wb_c4go_postfix[0].h += h
 }
 
 // wb_drawa - transpiled function from  wb.c:370
 func wb_drawa(wb_c4go_postfix []wb, c int32, h1 int32, v1 int32, h2 int32, v2 int32) {
 	wb_flush(wb_c4go_postfix)
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du %du %du'\x00"), c_ec, c, h1, v1, h2, v2)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c %du %du %du %du'\x00"), c_ec, c, h1, v1, h2, v2)
 	wb_c4go_postfix[0].h += h1 + h2
 	wb_c4go_postfix[0].v += v1 + v2
 	wb_stsb(wb_c4go_postfix)
@@ -10426,12 +10426,12 @@ func wb_drawa(wb_c4go_postfix []wb, c int32, h1 int32, v1 int32, h2 int32, v2 in
 // wb_drawxbeg - transpiled function from  wb.c:380
 func wb_drawxbeg(wb_c4go_postfix []wb, c int32) {
 	wb_flush(wb_c4go_postfix)
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c\x00"), c_ec, c)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("%cD'%c\x00"), c_ec, c)
 }
 
 // wb_drawxdot - transpiled function from  wb.c:386
 func wb_drawxdot(wb_c4go_postfix []wb, h int32, v int32) {
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte(" %du %du\x00"), h, v)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte(" %du %du\x00"), h, v)
 	wb_c4go_postfix[0].h += h
 	wb_c4go_postfix[0].v += v
 	wb_stsb(wb_c4go_postfix)
@@ -10439,12 +10439,12 @@ func wb_drawxdot(wb_c4go_postfix []wb, h int32, v int32) {
 
 // wb_drawxcmd - transpiled function from  wb.c:394
 func wb_drawxcmd(wb_c4go_postfix []wb, cmd []byte) {
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte(" %s\x00"), cmd)
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte(" %s\x00"), cmd)
 }
 
 // wb_drawxend - transpiled function from  wb.c:399
 func wb_drawxend(wb_c4go_postfix []wb) {
-	sbuf_printf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("'\x00"))
+	sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:], []byte("'\x00"))
 }
 
 // wb_reset - transpiled function from  wb.c:404
@@ -10456,7 +10456,7 @@ func wb_reset(wb_c4go_postfix []wb) {
 // wb_buf - transpiled function from  wb.c:410
 func wb_buf(wb_c4go_postfix []wb) []byte {
 	wb_flushsub(wb_c4go_postfix)
-	return sbuf_buf((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
+	return sbuf_buf((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 }
 
 // wb_putc - transpiled function from  wb.c:416
@@ -10504,9 +10504,9 @@ func wb_cat(wb_c4go_postfix []wb, src []wb) {
 	wb_flushsub(src)
 	wb_flushsub(wb_c4go_postfix)
 	collect = wb_collect(wb_c4go_postfix, 0)
-	s = sbuf_buf((*[1000000]sbuf)(unsafe.Pointer(&src[0].sbuf))[:])
+	s = sbuf_buf((*[10000]sbuf)(unsafe.Pointer(&src[0].sbuf))[:])
 	for (func() int32 {
-		c = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&d))[:])
+		c = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&d))[:])
 		return c
 	}()) >= 0 {
 		wb_putc(wb_c4go_postfix, c, d)
@@ -10541,7 +10541,7 @@ func wb_vpos(wb_c4go_postfix []wb) int32 {
 
 // wb_empty - transpiled function from  wb.c:496
 func wb_empty(wb_c4go_postfix []wb) int32 {
-	return noarch.BoolToInt(noarch.Not(wb_c4go_postfix[0].sub_n) && sbuf_empty((*[1000000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:]) != 0)
+	return noarch.BoolToInt(noarch.Not(wb_c4go_postfix[0].sub_n) && sbuf_empty((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:]) != 0)
 }
 
 // wb_eos - transpiled function from  wb.c:502
@@ -10639,7 +10639,7 @@ func wb_catstr(wb_c4go_postfix []wb, s []byte, end []byte) {
 	wb_flushsub(wb_c4go_postfix)
 	collect = wb_collect(wb_c4go_postfix, 0)
 	for (int64(uintptr(unsafe.Pointer(&s[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&end[0])))/int64(1)) < 0 && (func() int32 {
-		c = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&d))[:])
+		c = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&d))[:])
 		return c
 	}()) >= 0 {
 		wb_putc(wb_c4go_postfix, c, d)
@@ -10710,7 +10710,7 @@ func wb_keshideh(word []byte, dst []wb, wid int32) int32 {
 	// find the last keshideh position
 	s = word
 	for (func() int32 {
-		c = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&d))[:])
+		c = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&d))[:])
 		return c
 	}()) >= 0 {
 		wb_putc(dst, c, d)
@@ -10754,7 +10754,7 @@ func wb_keshideh(word []byte, dst []wb, wid int32) int32 {
 	s = word
 	wb_reset(dst)
 	for (func() int32 {
-		c = escread((*[1000000][]byte)(unsafe.Pointer(&s))[:], (*[1000000][]byte)(unsafe.Pointer(&d))[:])
+		c = escread((*[10000][]byte)(unsafe.Pointer(&s))[:], (*[10000][]byte)(unsafe.Pointer(&d))[:])
 		return c
 	}()) >= 0 {
 		wb_putc(dst, c, d)
@@ -10767,17 +10767,17 @@ func wb_keshideh(word []byte, dst []wb, wid int32) int32 {
 
 // c4goUnsafeConvert_int32 : created by c4go
 func c4goUnsafeConvert_int32(c4go_name *int32) []int32 {
-	return (*[1000000]int32)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]int32)(unsafe.Pointer(c4go_name))[:]
 }
 
 // c4goUnsafeConvert_sbuf : created by c4go
 func c4goUnsafeConvert_sbuf(c4go_name *sbuf) []sbuf {
-	return (*[1000000]sbuf)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]sbuf)(unsafe.Pointer(c4go_name))[:]
 }
 
 // c4goUnsafeConvert_wb : created by c4go
 func c4goUnsafeConvert_wb(c4go_name *wb) []wb {
-	return (*[1000000]wb)(unsafe.Pointer(c4go_name))[:]
+	return (*[10000]wb)(unsafe.Pointer(c4go_name))[:]
 }
 
 // the last output font and size
@@ -10905,6 +10905,14 @@ func __ctype_b_loc() [][]uint16 {
 	return [][]uint16{characterTable}
 }
 
+// tolower from ctype.h
+// c function : int tolower(int)
+// dep pkg    : unicode
+// dep func   :
+func tolower(_c int32) int32 {
+	return int32(unicode.ToLower(rune(_c)))
+}
+
 // memcpy is function from string.h.
 // c function : void * memcpy( void * , const void * , size_t )
 // dep pkg    : reflect
@@ -10929,14 +10937,6 @@ func memcpy(dst, src interface{}, size uint32) interface{} {
 		}
 	}
 	return dst
-}
-
-// tolower from ctype.h
-// c function : int tolower(int)
-// dep pkg    : unicode
-// dep func   :
-func tolower(_c int32) int32 {
-	return int32(unicode.ToLower(rune(_c)))
 }
 
 // Warning cannot generate return type binding function `getpid`: cannot resolve type '__pid_t' : I couldn't find an appropriate Go type for the C type '__pid_t'.
@@ -10985,6 +10985,27 @@ func va_arg(v *va_list) interface{} {
 	}
 }
 
+// c4goPointerArithByteSlice - function of pointer arithmetic. generated by c4go
+func c4goPointerArithByteSlice(slice []byte, position int) []byte {
+	if position < 0 {
+		// invert sign
+		position = -position
+
+		// Example from: go101.org/article/unsafe.html
+		// repair size of slice
+		var hdr reflect.SliceHeader
+		sliceLen := len(slice)
+		hdr.Data = uintptr(unsafe.Pointer(&slice[0])) - (uintptr(position))*unsafe.Sizeof(slice[0])
+		runtime.KeepAlive(&slice[0]) // needed!
+		hdr.Len = sliceLen + int(position)
+		hdr.Cap = hdr.Len
+		slice = *((*[]byte)(unsafe.Pointer(&hdr)))
+		return slice
+	}
+	// position >= 0:
+	return slice[position:]
+}
+
 // c4goPointerArithInt32Slice - function of pointer arithmetic. generated by c4go
 func c4goPointerArithInt32Slice(slice []int32, position int) []int32 {
 	if position < 0 {
@@ -11021,27 +11042,6 @@ func c4goPointerArithDivSlice(slice []div, position int) []div {
 		hdr.Len = sliceLen + int(position)
 		hdr.Cap = hdr.Len
 		slice = *((*[]div)(unsafe.Pointer(&hdr)))
-		return slice
-	}
-	// position >= 0:
-	return slice[position:]
-}
-
-// c4goPointerArithByteSlice - function of pointer arithmetic. generated by c4go
-func c4goPointerArithByteSlice(slice []byte, position int) []byte {
-	if position < 0 {
-		// invert sign
-		position = -position
-
-		// Example from: go101.org/article/unsafe.html
-		// repair size of slice
-		var hdr reflect.SliceHeader
-		sliceLen := len(slice)
-		hdr.Data = uintptr(unsafe.Pointer(&slice[0])) - (uintptr(position))*unsafe.Sizeof(slice[0])
-		runtime.KeepAlive(&slice[0]) // needed!
-		hdr.Len = sliceLen + int(position)
-		hdr.Cap = hdr.Len
-		slice = *((*[]byte)(unsafe.Pointer(&hdr)))
 		return slice
 	}
 	// position >= 0:
