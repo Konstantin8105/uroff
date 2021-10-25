@@ -211,7 +211,7 @@ func quotednext(next func() int32, back func(int32)) []byte {
 	var sb sbuf
 	var d []byte = make([]byte, 32)
 	charnext(delim, next, back)
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sb))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sb))
 	for charnext_delim(cs, next, back, delim) >= 0 {
 		charnext_str(d, cs)
 		sbuf_append(c4goUnsafeConvert_sbuf(&sb), d)
@@ -224,7 +224,7 @@ func unquotednext(cmd int32, next func() int32, back func(int32)) []byte {
 	// read unquoted arguments of escape sequences (ESC_P)
 	var c int32 = next()
 	var sb sbuf
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sb))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sb))
 	if cmd == int32('s') && (c == int32('-') || c == int32('+')) {
 		cmd = c
 		sbuf_add(c4goUnsafeConvert_sbuf(&sb), c)
@@ -752,7 +752,7 @@ func cp_args(quote int32, escape int32) {
 	var sb sbuf
 	var s []byte
 	var i int32
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sb))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sb))
 	for i = 1; i < in_nargs(); i++ {
 		sbuf_append(c4goUnsafeConvert_sbuf(&sb), func() []byte {
 			if i > 1 {
@@ -789,7 +789,7 @@ func cp_args(quote int32, escape int32) {
 		}())
 	}
 	in_push(sbuf_buf(c4goUnsafeConvert_sbuf(&sb)), nil)
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&sb))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&sb))
 }
 
 // cp_arg - transpiled function from  cp.c:110
@@ -1740,7 +1740,7 @@ func cwid(c []byte) int32 {
 	wb_init(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 	wb_putexpand(c4goUnsafeConvert_wb(&wb_c4go_postfix), c)
 	w = wb_wid(c4goUnsafeConvert_wb(&wb_c4go_postfix))
-// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 	return w
 }
 
@@ -2011,7 +2011,7 @@ func ren_bcmd(wb_c4go_postfix []wb, arg []byte) {
 	center = -(n*((nreg(int32('s')))[0]*dev_res/72) + (nreg(int32('s')))[0]*dev_res/72) / 2
 	wb_vmov(wb_c4go_postfix, center+(nreg(int32('s')))[0]*dev_res/72)
 	wb_cat(wb_c4go_postfix, c4goUnsafeConvert_wb(&wb2))
-// 	wb_done(c4goUnsafeConvert_wb(&wb2))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb2))
 	wb_vmov(wb_c4go_postfix, center)
 	wb_hmov(wb_c4go_postfix, w)
 }
@@ -2044,8 +2044,8 @@ func ren_ocmd(wb_c4go_postfix []wb, arg []byte) {
 	wb_hmov(wb_c4go_postfix, w/2)
 	wb_cat(wb_c4go_postfix, c4goUnsafeConvert_wb(&wb2))
 	wb_hmov(wb_c4go_postfix, w/2)
-// 	wb_done(c4goUnsafeConvert_wb(&wb3))
-// 	wb_done(c4goUnsafeConvert_wb(&wb2))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb3))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb2))
 }
 
 // ren_zcmd - transpiled function from  draw.c:253
@@ -2509,7 +2509,7 @@ func fmt_mkline(f []fmt_) []line {
 	l[0].li = f[0].li
 	l[0].lI = f[0].lI
 	l[0].ll = f[0].ll
-// 	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
+	// 	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&l[0].sbuf))[:])
 	return l
 }
 
@@ -2797,7 +2797,7 @@ func fmt_insertword(f []fmt_, wb_c4go_postfix []wb, gap int32) {
 			wb_fnszset(c4goUnsafeConvert_wb(&wbc), cf, cs, cm, ccd)
 		}
 	}
-// 	wb_done(c4goUnsafeConvert_wb(&wbc))
+	// 	wb_done(c4goUnsafeConvert_wb(&wbc))
 }
 
 // fmt_wordgap - transpiled function from  fmt.c:379
@@ -2875,7 +2875,7 @@ func fmt_keshideh(f []fmt_, beg int32, end int32, wid int32) {
 					wid -= kw
 					cnt++
 				}
-// 				wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
+				// 				wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 			}
 		}
 		if noarch.Not(cnt) {
@@ -6375,7 +6375,7 @@ func tr_di(args [][]byte) {
 			cdiv = divs
 		}
 		noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&cdiv[0]))) / int64(1))))[:], byte(0), 56)
-// 		sbuf_init((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
+		// 		sbuf_init((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
 		cdiv[0].reg = map_(args[1])
 		cdiv[0].treg = -1
 		if int32(args[0][2]) == int32('a') && str_get(cdiv[0].reg) != nil {
@@ -6394,7 +6394,7 @@ func tr_di(args [][]byte) {
 	} else if cdiv != nil {
 		sbuf_printf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:], []byte("%c%s\n\x00"), c_cc, []byte("\a>\x00"))
 		str_set(cdiv[0].reg, sbuf_buf((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:]))
-// 		sbuf_done((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
+		// 		sbuf_done((*[10000]sbuf)(unsafe.Pointer(&cdiv[0].sbuf))[:])
 		(nreg(map_([]byte("dl\x00"))))[0] = cdiv[0].dl
 		(nreg(map_([]byte("dn\x00"))))[0] = (nreg(int32('d')))[0]
 		(nreg(int32('d')))[0] = cdiv[0].prev_d
@@ -6644,12 +6644,12 @@ func ren_out(beg []byte, mid []byte, end []byte) {
 // ren_dir - transpiled function from  ren.c:273
 func ren_dir(sbuf_c4go_postfix []sbuf) {
 	var fixed sbuf
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&fixed))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&fixed))
 	dir_fix(c4goUnsafeConvert_sbuf(&fixed), sbuf_buf(sbuf_c4go_postfix))
-// 	sbuf_done(sbuf_c4go_postfix)
-// 	sbuf_init(sbuf_c4go_postfix)
+	// 	sbuf_done(sbuf_c4go_postfix)
+	// 	sbuf_init(sbuf_c4go_postfix)
 	sbuf_append(sbuf_c4go_postfix, sbuf_buf(c4goUnsafeConvert_sbuf(&fixed)))
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&fixed))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&fixed))
 }
 
 // zwid - transpiled function from  ren.c:284
@@ -6687,7 +6687,7 @@ func ren_lnum(spre []sbuf) {
 	}
 	wb_hmov(c4goUnsafeConvert_wb(&wb_c4go_postfix), (nreg(map_([]byte(".nS\x00"))))[0]*zwid())
 	sbuf_append(spre, wb_buf(c4goUnsafeConvert_wb(&wb_c4go_postfix)))
-// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 	if (nreg(map_([]byte(".nn\x00"))))[0] > 0 {
 		(nreg(map_([]byte(".nn\x00"))))[0]--
 	} else {
@@ -6705,7 +6705,7 @@ func ren_mc(sbuf_c4go_postfix []sbuf, w int32, ljust int32) {
 	}
 	wb_putexpand(c4goUnsafeConvert_wb(&wb_c4go_postfix), env_mc())
 	sbuf_append(sbuf_c4go_postfix, wb_buf(c4goUnsafeConvert_wb(&wb_c4go_postfix)))
-// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 }
 
 // ren_line - transpiled function from  ren.c:329
@@ -6718,9 +6718,9 @@ func ren_line(line []byte, w int32, ad int32, body int32, li int32, lI int32, ll
 	var lspc int32
 	var ljust int32
 	ren_first()
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbeg))
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&send))
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbeg))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&send))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	sbuf_append(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), line)
 	// line space, ignoreing \x
 	lspc = func() int32 {
@@ -6751,9 +6751,9 @@ func ren_line(line []byte, w int32, ad int32, body int32, li int32, lI int32, ll
 			ren_sp(els_pos, 1)
 		}
 	}
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbeg))
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&send))
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbeg))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&send))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	(nreg(int32('a')))[0] = els_pos
 	if detect_traps(prev_d, (nreg(int32('d')))[0]) != 0 || detect_pagelimit(lspc-(nreg(int32('v')))[0]) != 0 {
 		if noarch.Not(ren_pagelimit(lspc - (nreg(int32('v')))[0])) {
@@ -7382,7 +7382,7 @@ func ren_wid(next func() int32, back func(int32)) int32 {
 	odiv_end()
 	n = wb_wid(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 	wb_wconf(c4goUnsafeConvert_wb(&wb_c4go_postfix), (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("ct\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("st\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("sb\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bbllx\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bblly\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bburx\x00"))))[0])))[:], (*[10000]int32)(unsafe.Pointer(&((nreg(map_([]byte("bbury\x00"))))[0])))[:])
-// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 	return n
 }
 
@@ -7452,8 +7452,8 @@ func ren_tl(next func() int32, back func(int32)) {
 	wb_cpy(c4goUnsafeConvert_wb(&wb_c4go_postfix), c4goUnsafeConvert_wb(&wb2), (nreg(map_([]byte(".lt\x00"))))[0]-wb_wid(c4goUnsafeConvert_wb(&wb2)))
 	// flushing the line
 	ren_line(wb_buf(c4goUnsafeConvert_wb(&wb_c4go_postfix)), wb_wid(c4goUnsafeConvert_wb(&wb_c4go_postfix)), 1, 0, 0, 0, (nreg(map_([]byte(".lt\x00"))))[0], wb_c4go_postfix.els_neg, wb_c4go_postfix.els_pos)
-// 	wb_done(c4goUnsafeConvert_wb(&wb2))
-// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb2))
+	// 	wb_done(c4goUnsafeConvert_wb(&wb_c4go_postfix))
 }
 
 // ren_field - transpiled function from  ren.c:941
@@ -7511,7 +7511,7 @@ func ren_field(wb_c4go_postfix []wb, next func() int32, back func(int32)) {
 			cur_left = wb_wid(wb_c4go_postfix) + pad + noarch.BoolToInt(i+rem >= n)
 		}
 		wb_cpy(wb_c4go_postfix, wbs[i:], cur_left)
-// 		wb_done(wbs[i:])
+		// 		wb_done(wbs[i:])
 	}
 }
 
@@ -7554,7 +7554,7 @@ func ren_tab(wb_c4go_postfix []wb, tc []byte, next func() int32, back func(int32
 		ren_hline(wb_c4go_postfix, ins-pos, tc)
 	}
 	wb_cat(wb_c4go_postfix, c4goUnsafeConvert_wb(&t))
-// 	wb_done(c4goUnsafeConvert_wb(&t))
+	// 	wb_done(c4goUnsafeConvert_wb(&t))
 }
 
 // ren_parse - transpiled function from  ren.c:1001
@@ -7983,9 +7983,6 @@ func cmdmac(dir []byte, arg []byte) int32 {
 	return 0
 }
 
-// usage - transpiled function from  roff.c:88
-var usage []byte = []byte("Usage: neatroff [options] input\n\nOptions:\n  -mx   \tinclude macro x\n  -rx=y \tset number register x to y\n  -dx=y \tdefine string register x as y\n  -C    \tenable compatibility mode\n  -Tdev \tset output device\n  -Fdir \tset font directory (./\neatroff_make/fonts)\n  -Mdir \tset macro directory (./neatroff_make/tmac)\n\x00")
-
 // main - transpiled function from  roff.c:99
 func main() {
 	argc := int32(len(os.Args))
@@ -8067,6 +8064,8 @@ func main() {
 				}()]
 			}()
 		default:
+			// usage - transpiled function from  roff.c:88
+			var usage []byte = []byte("Usage: neatroff [options] input\n\nOptions:\n  -mx   \tinclude macro x\n  -rx=y \tset number register x to y\n  -dx=y \tdefine string register x as y\n  -C    \tenable compatibility mode\n  -Tdev \tset output device\n  -Fdir \tset font directory (./\neatroff_make/fonts)\n  -Mdir \tset macro directory (./neatroff_make/tmac)\n\x00")
 			noarch.Printf([]byte("%s\x00"), usage)
 			return
 		}
@@ -8162,23 +8161,23 @@ func sbuf_empty(sbuf_c4go_postfix *sbuf) int32 {
 // sbuf_buf - transpiled function from  sbuf.c:54
 func sbuf_buf(sbuf_c4go_postfix []sbuf) []byte {
 	return sbuf_c4go_postfix[0].body
-// 	sbuf_c4go_postfix[0].s[sbuf_c4go_postfix[0].n] = '\x00'
-// 	return sbuf_c4go_postfix[0].s
+	// 	sbuf_c4go_postfix[0].s[sbuf_c4go_postfix[0].n] = '\x00'
+	// 	return sbuf_c4go_postfix[0].s
 }
 
 // sbuf_len - transpiled function from  sbuf.c:60
 func sbuf_len(sbuf_c4go_postfix []sbuf) int32 {
 	return int32(len(sbuf_c4go_postfix[0].body))
-// 	return sbuf_c4go_postfix[0].n
+	// 	return sbuf_c4go_postfix[0].n
 }
 
 // sbuf_cut - transpiled function from  sbuf.c:66
 func sbuf_cut(sbuf_c4go_postfix []sbuf, n int32) {
-	sbuf_c4go_postfix[0].body= sbuf_c4go_postfix[0].body[:n]
-// 	if sbuf_c4go_postfix[0].n > n {
-// 		// shorten the sbuf
-// 		sbuf_c4go_postfix[0].n = n
-// 	}
+	sbuf_c4go_postfix[0].body = sbuf_c4go_postfix[0].body[:n]
+	// 	if sbuf_c4go_postfix[0].n > n {
+	// 		// shorten the sbuf
+	// 		sbuf_c4go_postfix[0].n = n
+	// 	}
 }
 
 // sbuf_done - transpiled function from  sbuf.c:72
@@ -8551,14 +8550,14 @@ func if_strcmp(next func() int32, back func(int32)) int32 {
 	var s2 sbuf
 	var ret int32
 	charnext(delim, next, back)
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&s1))
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&s2))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&s1))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&s2))
 	read_until(c4goUnsafeConvert_sbuf(&s1), delim, next, back)
 	read_until(c4goUnsafeConvert_sbuf(&s2), delim, next, back)
 	cp_reqbeg()
 	ret = noarch.BoolToInt(noarch.Not(noarch.Strcmp(sbuf_buf(c4goUnsafeConvert_sbuf(&s1)), sbuf_buf(c4goUnsafeConvert_sbuf(&s2)))))
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&s1))
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&s2))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&s1))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&s2))
 	return ret
 }
 
@@ -8583,10 +8582,10 @@ func if_eval(next func() int32, back func(int32)) int32 {
 	// evaluate .if condition
 	var sbuf_c4go_postfix sbuf
 	var ret int32
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	read_until(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), nil, next, back)
 	ret = noarch.BoolToInt(eval(sbuf_buf(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)), int32('\x00')) > 0)
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	return ret
 }
 
@@ -9257,13 +9256,13 @@ func tr_chop(args [][]byte) {
 	var id int32
 	id = map_(args[1])
 	if str_get(id) != nil {
-// 		sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+		// 		sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 		sbuf_append(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), str_get(id))
 		if noarch.Not(sbuf_empty(&sbuf_c4go_postfix)) {
 			sbuf_cut(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), sbuf_len(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))-1)
 			str_set(id, sbuf_buf(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)))
 		}
-// 		sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+		// 		sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	}
 }
 
@@ -9506,13 +9505,13 @@ func tr_coa(args [][]byte) {
 	var dst []byte = args[2]
 	if len(src) == 0 && len(dst) == 0 && str_get(map_(src)) != nil {
 		var sb sbuf
-// 		sbuf_init(c4goUnsafeConvert_sbuf(&sb))
+		// 		sbuf_init(c4goUnsafeConvert_sbuf(&sb))
 		if str_get(map_(dst)) != nil {
 			sbuf_append(c4goUnsafeConvert_sbuf(&sb), str_get(map_(dst)))
 		}
 		sbuf_append(c4goUnsafeConvert_sbuf(&sb), str_get(map_(src)))
 		str_set(map_(dst), sbuf_buf(c4goUnsafeConvert_sbuf(&sb)))
-// 		sbuf_done(c4goUnsafeConvert_sbuf(&sb))
+		// 		sbuf_done(c4goUnsafeConvert_sbuf(&sb))
 	}
 }
 
@@ -9549,12 +9548,12 @@ func tr_coi(args [][]byte) {
 		return fp
 	}()) != nil {
 		var sb sbuf
-// 		sbuf_init(c4goUnsafeConvert_sbuf(&sb))
+		// 		sbuf_init(c4goUnsafeConvert_sbuf(&sb))
 		for noarch.Fgets(buf, int32(1024), fp) != nil {
 			sbuf_append(c4goUnsafeConvert_sbuf(&sb), buf)
 		}
 		str_set(map_(reg), sbuf_buf(c4goUnsafeConvert_sbuf(&sb)))
-// 		sbuf_done(c4goUnsafeConvert_sbuf(&sb))
+		// 		sbuf_done(c4goUnsafeConvert_sbuf(&sb))
 		noarch.Fclose(fp)
 	}
 }
@@ -9643,7 +9642,7 @@ func chopargs(sbuf_c4go_postfix []sbuf, args [][]byte) {
 func tr_args(args [][]byte, brk int32, next func() int32, back func(int32)) []byte {
 	// read macro arguments; free the returned pointer when done
 	var sbuf_c4go_postfix sbuf
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	for noarch.Not(macroarg(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), brk, next, back)) {
 	}
 	chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), args)
@@ -9787,7 +9786,7 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 	var req []cmd = str_dget(map_(mac)).([]cmd)
 	var str []byte = str_get(map_(mac))
 	var sbuf_c4go_postfix sbuf
-// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	if readargs != 0 {
 		if len(req) == 0 && req[0].args == nil {
 			req[0].args(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
@@ -9806,7 +9805,7 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 	if str == nil && req != nil {
 		req[0].f(args)
 	}
-// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	// 	sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
 // tr_nextreq - transpiled function from  tr.c:1264
@@ -9825,13 +9824,13 @@ func tr_nextreq() int32 {
 		if c2 == int32('!') {
 			var args [][]byte = [][]byte{[]byte("\\!\x00"), nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
 			var sbuf_c4go_postfix sbuf
-// 			sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+			// 			sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 			cp_copymode(1)
 			mkargs_eol(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 			cp_copymode(0)
 			chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), args[0+1:])
 			tr_transparent(args)
-// 			sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+			// 			sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 			return 0
 		}
 		in_back(c2)
@@ -9905,7 +9904,7 @@ func wb_init(wb_c4go_postfix []wb) {
 	// italic correction
 	// the maximum and minimum values of bounding box coordinates
 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&wb_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8320)
-// 	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
+	// 	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 	wb_c4go_postfix[0].sub_collect = 1
 	wb_c4go_postfix[0].f = -1
 	wb_c4go_postfix[0].s = -1
@@ -10492,7 +10491,7 @@ func wb_drawxend(wb_c4go_postfix []wb) {
 
 // wb_reset - transpiled function from  wb.c:404
 func wb_reset(wb_c4go_postfix []wb) {
-// 	wb_done(wb_c4go_postfix)
+	// 	wb_done(wb_c4go_postfix)
 	wb_init(wb_c4go_postfix)
 }
 
