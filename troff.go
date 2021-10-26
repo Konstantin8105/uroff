@@ -15,6 +15,7 @@ package main
 import "C"
 
 import (
+	"fmt"
 	_ "fmt"
 	"os"
 	"reflect"
@@ -1120,10 +1121,16 @@ func dev_position(id []byte) int32 {
 }
 
 // dev_mnt - transpiled function from  dev.c:53
-func dev_mnt(pos int32, id []byte, name []byte) int32 {
+func dev_mnt(pos int32, id []byte, name []byte) (res int32) {
+	fmt.Println("> dev_mnt :", string(id), string(name))
+	// 	defer func() {
+	// 		fmt.Println("> dev_mnt: result = ", res)
+	// 	}()
+
 	var path []byte = make([]byte, 1024)
 	var fn []font
 	if pos >= 32 {
+		fmt.Println("> dev_mnt: pos is too height")
 		return -1
 	}
 	if noarch.Strchr(name, int32('/')) != nil {
@@ -1133,18 +1140,20 @@ func dev_mnt(pos int32, id []byte, name []byte) int32 {
 	}
 	fn = font_open(path)
 	if fn == nil {
+		fmt.Println("> dev_mnt: cannot font_open")
 		return -1
 	}
 	if pos < 0 {
 		pos = dev_position(id)
 	}
 	// 	if fn_font[pos] != nil {
-	// 		font_close(fn_font[pos])
+	// 		 		font_close(fn_font[pos])
 	// 	}
 	if (int64(uintptr(unsafe.Pointer(&fn_name[pos])))/int64(1) - int64(uintptr(unsafe.Pointer(&name[0])))/int64(1)) != 0 {
 		// ignore if fn_name[pos] is passed
 		noarch.Snprintf(fn_name[pos], int32(32), []byte("%s\x00"), id)
 	}
+	fmt.Println("> dev_mnt : find font")
 	fn_font[pos] = fn
 	out([]byte("x font %d %s\n\x00"), pos, name)
 	return pos
@@ -1316,18 +1325,25 @@ func dev_pos(id []byte) int32 {
 }
 
 // dev_fontpos - transpiled function from  dev.c:206
-func dev_fontpos(fn []font) int32 {
+func dev_fontpos(fn []font) (pos int32) {
+	// 	defer func() {
+	// 		fmt.Printf("> dev_fontpos %3d %v\n", pos, fn)
+	// 	}()
 	// return the mounted position of a font struct
 	var i int32
-	// Warning (*ast.IfStmt):  dev.c:210 :cannot transpileToStmt : cannot transpileIfStmt. cannot transpile for condition. cannot transpileToExpr. err = cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
 	for i = 0; i < 32; i++ {
-		// Warning (*ast.BinaryOperator):  dev.c:210 :cannot transpile BinaryOperator with type 'int' : result type = {PointerOperation_unknown05}. Error: operator is `==`. {'struct font *' == 'struct font *'}. for base type: `struct font`. PntCmpPnt:SubTwoPnts:GetPointerAddress:sizeof:0. not valid sizeof `struct font *`: 0
+		if fmt.Sprintf("%v", fn_font[i]) == fmt.Sprintf("%v", fn) { // TODO KI strange
+			return i
+		}
 	}
 	return 0
 }
 
 // dev_font - transpiled function from  dev.c:216
-func dev_font(pos int32) []font {
+func dev_font(pos int32) (f []font) {
+	// 	defer func() {
+	// 		fmt.Println("> dev_font ", pos, f)
+	// 	}()
 	// return the font struct at pos
 	if pos >= 0 && pos < 32 {
 		return fn_font[pos]
@@ -1369,9 +1385,9 @@ func dict_extend(d []dict, size int32) {
 	// the value returned for missing keys
 	// the number of characters used for hashing
 	// duplicate keys if set
-	d[0].key = make([][]byte, size)
+	d[0].key = append(d[0].key, make([][]byte, size-d[0].size)...)
 	// mextend(d[0].key, d[0].size, size, int32(8)).([][]byte)
-	d[0].val = make([]int32, size)
+	d[0].val = append(d[0].val, make([]int32, size-d[0].size)...)
 	// mextend(d[0].val, d[0].size, size, int32(4)).([]int32)
 	d[0].size = size
 }
@@ -1386,7 +1402,7 @@ func dict_make(notfound int32, dupkeys int32, hashlen int32) []dict {
 	// * hashlen: the number of characters used for hashing
 	//
 	var d []dict = make([]dict, 1) // xmalloc(int32(72)).([]dict)
-	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&d[0]))) / int64(1))))[:], byte(0), 72)
+	// 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&d[0]))) / int64(1))))[:], byte(0), 72)
 	d[0].n = 1
 	if hashlen != 0 {
 		d[0].hashlen = hashlen
@@ -2506,7 +2522,8 @@ func fmt_mkline(f []fmt_) []line {
 	}
 	if f[0].lines_head == f[0].lines_sz {
 		f[0].lines_sz += 256
-		f[0].lines = mextend(f[0].lines, f[0].lines_head, f[0].lines_sz, int32(48)).([]line)
+		// f[0].lines = mextend(f[0].lines, f[0].lines_head, f[0].lines_sz, int32(48)).([]line)
+		f[0].lines = append(f[0].lines, make([]line, f[0].lines_sz-f[0].lines_head)...)
 	}
 	l = f[0].lines[func() int32 {
 		tempVar1 := &f[0].lines_head
@@ -2722,7 +2739,8 @@ func fmt_hyphmarks(word []byte, hyidx []int32, hyins []int32, hygap []int32) int
 func fmt_mkword(f []fmt_) []word {
 	if f[0].words_n == f[0].words_sz {
 		f[0].words_sz += 256
-		f[0].words = mextend(f[0].words, f[0].words_n, f[0].words_sz, int32(48)).([]word)
+		// f[0].words = mextend(f[0].words, f[0].words_n, f[0].words_sz, int32(48)).([]word)
+		f[0].words = append(f[0].words, make([]word, f[0].words_sz-f[0].words_n)...)
 	}
 	return f[0].words[func() int32 {
 		tempVar1 := &f[0].words_n
@@ -3366,7 +3384,7 @@ type font struct {
 	gl_dict   []dict
 	ch_dict   []dict
 	ch_map    []dict
-	feat_name [128][]byte
+	feat_name [128][8]byte
 	feat_set  [128]int32
 	scrp_name [64][]byte
 	scrp      int32
@@ -3434,7 +3452,8 @@ func font_glyphput(fn []font, id []byte, name []byte, type_ int32) int32 {
 	var g []glyph
 	if fn[0].gl_n == fn[0].gl_sz {
 		fn[0].gl_sz = fn[0].gl_sz + 1024
-		fn[0].gl = mextend(fn[0].gl, fn[0].gl_n, fn[0].gl_sz, int32(120)).([]glyph)
+		// fn[0].gl = mextend(fn[0].gl, fn[0].gl_n, fn[0].gl_sz, int32(120)).([]glyph)
+		fn[0].gl = append(fn[0].gl, make([]glyph, fn[0].gl_sz-fn[0].gl_n)...)
 	}
 	g = fn[0].gl[fn[0].gl_n:]
 	noarch.Snprintf(g[0].id[:], int32(32), []byte("%s\x00"), id)
@@ -3797,14 +3816,15 @@ func font_readchar(fn []font, fin *noarch.File, n []int32, gid []int32) int32 {
 
 // font_findfeat - transpiled function from  font.c:353
 func font_findfeat(fn []font, feat []byte) int32 {
+	// fmt.Println(	"> font_findfeat ")//,fn[0].feat_name, string(feat))
 	var i int32
-	for i = 0; uint32(i) < 1024/8 && int32(fn[0].feat_name[:][i][0]) != 0; i++ {
-		if noarch.Not(noarch.Strcmp(feat, fn[0].feat_name[:][i])) {
+	for i = 0; uint32(i) < 1024/8 && int32(fn[0].feat_name[i][0]) != 0; i++ {
+		if noarch.Not(noarch.Strcmp(feat, fn[0].feat_name[i][:])) {
 			return i
 		}
 	}
 	if uint32(i) < 1024/8 {
-		noarch.Snprintf(fn[0].feat_name[:][i], int32(8), []byte("%s\x00"), feat)
+		noarch.Snprintf(fn[0].feat_name[i][:], int32(8), []byte("%s\x00"), feat)
 		return i
 	}
 	return -1
@@ -3842,8 +3862,8 @@ func font_findlang(fn []font, lang []byte) int32 {
 
 // font_gpat - transpiled function from  font.c:390
 func font_gpat(fn []font, len_ int32) []gpat {
-	var pats []gpat = xmalloc(int32(uint32(len_) * 16)).([]gpat)
-	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&pats[0]))) / int64(1))))[:], byte(0), uint32(len_)*16)
+	var pats []gpat = make([]gpat, len_) // []xmalloc(int32(uint32(len_) * 16)).([]gpat)
+	// noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&pats[0]))) / int64(1))))[:], byte(0), uint32(len_)*16)
 	return pats
 }
 
@@ -3853,7 +3873,8 @@ func font_gsub(fn []font, len_ int32, feat int32, scrp int32, lang int32) []grul
 	var pats []gpat = font_gpat(fn, len_)
 	if fn[0].gsub_n == fn[0].gsub_sz {
 		fn[0].gsub_sz = fn[0].gsub_sz + 1024
-		fn[0].gsub = mextend(fn[0].gsub, fn[0].gsub_n, fn[0].gsub_sz, int32(40)).([]grule)
+		// fn[0].gsub = mextend(fn[0].gsub, fn[0].gsub_n, fn[0].gsub_sz, int32(40)).([]grule)
+		fn[0].gsub = append(fn[0].gsub, make([]grule, fn[0].gsub_sz-fn[0].gsub_n)...)
 	}
 	rule = fn[0].gsub[func() int32 {
 		tempVar1 := &fn[0].gsub_n
@@ -3876,7 +3897,8 @@ func font_gpos(fn []font, len_ int32, feat int32, scrp int32, lang int32) []grul
 	var pats []gpat = font_gpat(fn, len_)
 	if fn[0].gpos_n == fn[0].gpos_sz {
 		fn[0].gpos_sz = fn[0].gpos_sz + 1024
-		fn[0].gpos = mextend(fn[0].gpos, fn[0].gpos_n, fn[0].gpos_sz, int32(40)).([]grule)
+		// fn[0].gpos = mextend(fn[0].gpos, fn[0].gpos_n, fn[0].gpos_sz, int32(40)).([]grule)
+		fn[0].gpos = append(fn[0].gpos, make([]grule, fn[0].gpos_sz-fn[0].gpos_n)...)
 	}
 	rule = fn[0].gpos[func() int32 {
 		tempVar1 := &fn[0].gpos_n
@@ -4098,7 +4120,11 @@ func font_isetinsert(fn []font, iset_c4go_postfix []iset, rule int32, p []gpat) 
 }
 
 // font_open - transpiled function from  font.c:603
-func font_open(path []byte) []font {
+func font_open(path []byte) (res []font) {
+	fmt.Println("> font_open on ", string(path))
+	// 	defer func() {
+	// 		fmt.Println("> font_open res = ", res)
+	// 	}()
 	var fn []font
 	// last glyph in the charset
 	var ch_g int32 = -1
@@ -4114,12 +4140,13 @@ func font_open(path []byte) []font {
 	if fin == nil {
 		return nil
 	}
-	fn = xmalloc(int32(2888)).([]font)
+	fn = make([]font, 1)
+	// fn = xmalloc(int32(2888)).([]font)
 	if fn == nil {
 		noarch.Fclose(fin)
 		return nil
 	}
-	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fn[0]))) / int64(1))))[:], byte(0), 2888)
+	// noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fn[0]))) / int64(1))))[:], byte(0), 2888)
 	fn[0].gl_dict = dict_make(-1, 1, 0)
 	fn[0].ch_dict = dict_make(-1, 1, 0)
 	fn[0].ch_map = dict_make(-1, 1, 0)
@@ -5231,6 +5258,17 @@ type iset struct {
 	// 	cnt  int32
 }
 
+func (s iset) String() string {
+	var str string
+	for i := range s.set {
+		if len(s.set[i]) == 0 {
+			continue
+		}
+		str += fmt.Sprintf("%d : %v\n", i, s.set[i])
+	}
+	return str
+}
+
 // iset_extend - transpiled function from  iset.c:17
 func iset_extend(iset_c4go_postfix []iset, cnt int32) {
 
@@ -5642,6 +5680,7 @@ var eregs [][]byte = [][]byte{[]byte("ln\x00"), []byte(".f\x00"), []byte(".i\x00
 
 // nreg - transpiled function from  reg.c:48
 func nreg(id int32) []int32 {
+	fmt.Println("> nreg ", eregs_idx[id] != 0)
 	if eregs_idx[id] != 0 {
 		// return the address of a number register
 		return env_c4go_postfix[0].eregs[:][eregs_idx[id]:]
@@ -6719,6 +6758,11 @@ func ren_mc(sbuf_c4go_postfix []sbuf, w int32, ljust int32) {
 
 // ren_line - transpiled function from  ren.c:329
 func ren_line(line []byte, w int32, ad int32, body int32, li int32, lI int32, ll int32, els_neg int32, els_pos int32) int32 {
+	// KI TODO
+	if len(line) == 0 {
+		return -1
+	}
+
 	// process a line and print it with ren_out()
 	var sbeg sbuf
 	var send sbuf
@@ -7684,6 +7728,7 @@ func render_rec(level int32) int32 {
 func render() int32 {
 	// render input words
 	(nreg(map_([]byte("nl\x00"))))[0] = -1
+	// fmt.Println("> KI ", mapdict[0].map_[0].String())
 	for noarch.Not(tr_nextreq()) {
 	}
 	// transition to the first page
@@ -7926,13 +7971,13 @@ func errdie(msg []byte) {
 }
 
 // mextend - transpiled function from  roff.c:38
-func mextend(old interface{}, oldsz int32, newsz int32, memsz int32) interface{} {
-	var new_ interface{} = xmalloc(newsz * memsz)
-	memcpy(new_, old, uint32(oldsz*memsz))
-	// TODO : KI : noarch.Memset(new_[0+oldsz*memsz:].([]byte), byte(0), uint32((newsz-oldsz)*memsz))
-	_ = old
-	return new_
-}
+// func mextend(old interface{}, oldsz int32, newsz int32, memsz int32) interface{} {
+// 	var new_ interface{} = xmalloc(newsz * memsz)
+// 	memcpy(new_, old, uint32(oldsz*memsz))
+// 	// TODO : KI : noarch.Memset(new_[0+oldsz*memsz:].([]byte), byte(0), uint32((newsz-oldsz)*memsz))
+// 	_ = old
+// 	return new_
+// }
 
 // xmalloc - transpiled function from  roff.c:47
 func xmalloc(len_ int32) interface{} {
@@ -7994,13 +8039,14 @@ func cmdmac(dir []byte, arg []byte) int32 {
 
 // main - transpiled function from  roff.c:99
 func main() {
+	fmt.Println(">> KI: main function")
 	argc := int32(len(os.Args))
 	argv := [][]byte{}
 	for _, argvSingle := range os.Args {
 		argv = append(argv, []byte(argvSingle))
 	}
 	defer noarch.AtexitRun()
-	var fontdir []byte = []byte("./\neatroff_make/fonts\x00")
+	var fontdir []byte = []byte("./neatroff_make/fonts\x00")
 	var macrodir []byte = []byte("./neatroff_make/tmac\x00")
 	var mac []byte
 	var def []byte
@@ -8100,6 +8146,7 @@ func main() {
 	}
 	out([]byte("s%d\n\x00"), (nreg(int32('s')))[0])
 	out([]byte("f%d\n\x00"), (nreg(int32('f')))[0])
+	fmt.Println("> render function")
 	ret = render()
 	out([]byte("V%d\n\x00"), (nreg(int32('p')))[0])
 	// hyph_done()
@@ -8197,7 +8244,7 @@ func sbuf_cut(sbuf_c4go_postfix []sbuf, n int32) {
 // sbuf_out - transpiled function from  sbuf.c:77
 func sbuf_out(sbuf_c4go_postfix []sbuf) []byte {
 	var s []byte = sbuf_c4go_postfix[0].body // s
-	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
+	// 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&sbuf_c4go_postfix[0]))) / int64(1))))[:], byte(0), 24)
 	return s
 }
 
@@ -9792,6 +9839,12 @@ func tr_req(reg int32, args [][]byte) {
 func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 	// interpolate a macro for tr_nextreq()
 	var args [][]byte = [][]byte{arg0, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
+
+	// TODO KI
+	if len(mac) == 0 {
+		return
+	}
+
 	var req []cmd = str_dget(map_(mac)).([]cmd)
 	var str []byte = str_get(map_(mac))
 	var sbuf_c4go_postfix sbuf
@@ -9818,7 +9871,10 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 }
 
 // tr_nextreq - transpiled function from  tr.c:1264
-func tr_nextreq() int32 {
+func tr_nextreq() (rez int32) {
+	// 	defer func() {
+	// 		fmt.Println("> tr_nextreq: ", rez, string(rez))
+	// 	}()
 	// read the next troff request; return zero if a request was executed.
 	var mac []byte
 	var arg0 []byte
@@ -9912,7 +9968,7 @@ func wb_init(wb_c4go_postfix []wb) {
 	// the current font, size and color
 	// italic correction
 	// the maximum and minimum values of bounding box coordinates
-	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&wb_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8320)
+	// 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&wb_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8320)
 	// 	sbuf_init((*[10000]sbuf)(unsafe.Pointer(&wb_c4go_postfix[0].sbuf))[:])
 	wb_c4go_postfix[0].sub_collect = 1
 	wb_c4go_postfix[0].f = -1
