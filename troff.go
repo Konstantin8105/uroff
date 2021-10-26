@@ -15,6 +15,7 @@ package main
 import "C"
 
 import (
+	_ "fmt"
 	"os"
 	"reflect"
 	"runtime"
@@ -1464,20 +1465,28 @@ func dict_put(d []dict, key []byte, val int32) {
 func dict_idx(d []dict, key []byte) int32 {
 	// return the index of key in d
 	var h int32 = dict_hash(d, key)
-	var b []int32 = iset_get(d[0].map_, h)
-	var r []int32 = b[0+iset_len(d[0].map_, h):]
-	for b != nil && (func() int64 {
-		c4go_temp_name := func() []int32 {
-			r = c4goPointerArithInt32Slice(r, int(-1))
+	b := iset_get(d[0].map_, h)
+	for i := len(b) - 1; 0 <= i; i-- {
+		r := b[i]
+		if noarch.Not(noarch.Strcmp(d[0].key[r], key)) {
 			return r
-		}()
-		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
-	}()-int64(uintptr(unsafe.Pointer(&b[0])))/int64(4)) >= 0 {
-		if noarch.Not(noarch.Strcmp(d[0].key[r[0]], key)) {
-			return r[0]
 		}
 	}
 	return -1
+	// 	var b []int32 = iset_get(d[0].map_, h)
+	// 	var r []int32 = b[0+iset_len(d[0].map_, h):]
+	// 	for b != nil && (func() int64 {
+	// 		c4go_temp_name := func() []int32 {
+	// 			r = c4goPointerArithInt32Slice(r, int(-1))
+	// 			return r
+	// 		}()
+	// 		return int64(uintptr(unsafe.Pointer(*(**byte)(unsafe.Pointer(&c4go_temp_name)))))
+	// 	}()-int64(uintptr(unsafe.Pointer(&b[0])))/int64(4)) >= 0 {
+	// 		if noarch.Not(noarch.Strcmp(d[0].key[r[0]], key)) {
+	// 			return r[0]
+	// 		}
+	// 	}
+	// 	return -1
 }
 
 // dict_key - transpiled function from  dict.c:96
@@ -3270,7 +3279,7 @@ func fmt_fillwords(f []fmt_, br int32) int32 {
 
 // fmt_alloc - transpiled function from  fmt.c:697
 func fmt_alloc() []fmt_ {
-	var fmt__c4go_postfix []fmt_ = xmalloc(int32(136)).([]fmt_)
+	var fmt__c4go_postfix []fmt_ = make([]fmt_, 1) // = xmalloc(int32(136)).([]fmt_)
 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&fmt__c4go_postfix[0]))) / int64(1))))[:], byte(0), 136)
 	return fmt__c4go_postfix
 }
@@ -4949,7 +4958,7 @@ var cfile int32
 
 // in_new - transpiled function from  in.c:28
 func in_new() {
-	var next []inbuf = xmalloc(int32(1248)).([]inbuf)
+	var next []inbuf = make([]inbuf, 1) // xmalloc(int32(1248)).([]inbuf)
 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&next[0]))) / int64(1))))[:], byte(0), 1248)
 	next[0].prev = buf
 	buf = next
@@ -5810,7 +5819,7 @@ func str_rn(src int32, dst int32) {
 
 // env_alloc - transpiled function from  reg.c:208
 func env_alloc() []env {
-	var env_c4go_postfix []env = xmalloc(int32(8936)).([]env)
+	var env_c4go_postfix []env = make([]env, 1) // = xmalloc(int32(8936)).([]env)
 	noarch.Memset((*[10000]byte)(unsafe.Pointer(uintptr(int64(uintptr(unsafe.Pointer(&env_c4go_postfix[0]))) / int64(1))))[:], byte(0), 8936)
 	wb_init((*[10000]wb)(unsafe.Pointer(&env_c4go_postfix[0].wb))[:])
 	env_c4go_postfix[0].fmt_ = fmt_alloc()
