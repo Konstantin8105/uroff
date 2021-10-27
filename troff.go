@@ -948,7 +948,11 @@ func cp_raw() int32 {
 }
 
 // cp_next - transpiled function from  cp.c:234
-func cp_next() int32 {
+func cp_next() (res int32) {
+	fmt.Println("> cp_next")
+	defer func() {
+		fmt.Println("> cp_next: ", res, string(res))
+	}()
 	var c int32
 	if in_top() >= 0 {
 		return in_next()
@@ -5105,7 +5109,11 @@ func in_nextfile() int32 {
 }
 
 // in_next - transpiled function from  in.c:110
-func in_next() int32 {
+func in_next() (res int32) {
+	fmt.Println("> in_next")
+	defer func() {
+		fmt.Println("> in_next :", res, string(res))
+	}()
 	var c int32
 	for buf != nil || noarch.Not(in_nextfile()) {
 		if buf[0].un != 0 {
@@ -5684,7 +5692,7 @@ var eregs [][]byte = [][]byte{[]byte("ln\x00"), []byte(".f\x00"), []byte(".i\x00
 
 // nreg - transpiled function from  reg.c:48
 func nreg(id int32) []int32 {
-	fmt.Println("> nreg ", eregs_idx[id] != 0)
+	fmt.Println("> nreg ", eregs_idx[id] != 0, " with id=", id, string(id))
 	if eregs_idx[id] != 0 {
 		// return the address of a number register
 		return env_c4go_postfix[0].eregs[:][eregs_idx[id]:]
@@ -8255,7 +8263,7 @@ func sbuf_out(sbuf_c4go_postfix []sbuf) []byte {
 // tr_nl - transpiled function from  tr.c:8
 // built-in troff requests
 // just read a newline
-var tr_nl int32 = 1
+var tr_nl bool = true // int32 = 1
 
 // tr_bm - transpiled function from  tr.c:9
 // blank line macro
@@ -8473,9 +8481,14 @@ func read_string() []byte {
 }
 
 // read_name - transpiled function from  tr.c:140
-func read_name(two int32) []byte {
+func read_name(two int32) (res []byte) {
+	fmt.Println("> read_name two = ", two)
+	defer func() {
+		fmt.Println("> read_name res = ", res, " len=", len(res), string(res))
+	}()
 	// read a space separated macro argument; if two, read at most two characters
-	var sbuf_c4go_postfix sbuf
+	//var sbuf_c4go_postfix sbuf
+	var buf []byte
 	var c int32 = cp_next()
 	var i int32
 	// sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
@@ -8484,7 +8497,8 @@ func read_name(two int32) []byte {
 	}
 	for c > 0 && c != int32(' ') && c != int32('\t') && c != int32('\n') && (noarch.Not(two) || i < 2) {
 		if c != 4 {
-			sbuf_add(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), c)
+			buf = append(buf, byte(c))
+			// sbuf_add(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), c)
 			i++
 		}
 		c = cp_next()
@@ -8492,7 +8506,7 @@ func read_name(two int32) []byte {
 	if c >= 0 {
 		in_back(c)
 	}
-	return sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	return buf // sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
 // macrobody - transpiled function from  tr.c:160
@@ -9826,11 +9840,14 @@ type cmd struct {
 var cmds []cmd = []cmd{{[]byte("\a<\x00"), tr_divbeg, nil}, {[]byte("\a>\x00"), tr_divend, nil}, {[]byte("\aV\x00"), tr_divvs, nil}, {[]byte("\aP\x00"), tr_popren, nil}, {[]byte(">>\x00"), tr_l2r, nil}, {[]byte("<<\x00"), tr_r2l, nil}, {[]byte("ab\x00"), tr_ab, mkargs_eol}, {[]byte("ad\x00"), tr_ad, nil}, {[]byte("af\x00"), tr_af, nil}, {[]byte("am\x00"), tr_de, mkargs_reg1}, {[]byte("as\x00"), tr_as, mkargs_ds}, {[]byte("bd\x00"), tr_bd, nil}, {[]byte("blm\x00"), tr_blm, nil}, {[]byte("bp\x00"), tr_bp, nil}, {[]byte("br\x00"), tr_br, nil}, {[]byte("c2\x00"), tr_c2, nil}, {[]byte("cc\x00"), tr_cc, nil}, {[]byte("ce\x00"), tr_ce, nil}, {[]byte("ch\x00"), tr_ch, nil}, {[]byte("char\x00"), tr_char, mkargs_ds}, {[]byte("chop\x00"), tr_chop, mkargs_reg1}, {[]byte("cl\x00"), tr_cl, nil}, {[]byte("co\x00"), tr_co, nil}, {[]byte("co+\x00"), tr_coa, nil}, {[]byte("co<\x00"), tr_coi, mkargs_ds}, {[]byte("co>\x00"), tr_coo, mkargs_ds}, {[]byte("cp\x00"), tr_cp, nil}, {[]byte("cs\x00"), tr_cs, nil}, {[]byte("da\x00"), tr_di, nil}, {[]byte("de\x00"), tr_de, mkargs_reg1}, {[]byte("di\x00"), tr_di, nil}, {[]byte("ds\x00"), tr_ds, mkargs_ds}, {[]byte("dt\x00"), tr_dt, nil}, {[]byte("dv\x00"), tr_dv, mkargs_eol}, {[]byte("ec\x00"), tr_ec, nil}, {[]byte("el\x00"), tr_el, mkargs_null}, {[]byte("em\x00"), tr_em, nil}, {[]byte("eo\x00"), tr_eo, nil}, {[]byte("eos\x00"), tr_eos, nil}, {[]byte("ev\x00"), tr_ev, nil}, {[]byte("ex\x00"), tr_ex, nil}, {[]byte("fc\x00"), tr_fc, nil}, {[]byte("ff\x00"), tr_ff, nil}, {[]byte("fi\x00"), tr_fi, nil}, {[]byte("fl\x00"), tr_br, nil}, {[]byte("fmap\x00"), tr_fmap, nil}, {[]byte("fp\x00"), tr_fp, nil}, {[]byte("ffsc\x00"), tr_ffsc, nil}, {[]byte("fspecial\x00"), tr_fspecial, nil}, {[]byte("ft\x00"), tr_ft, nil}, {[]byte("fzoom\x00"), tr_fzoom, nil}, {[]byte("hc\x00"), tr_hc, nil}, {[]byte("hcode\x00"), tr_hcode, nil}, {[]byte("hlm\x00"), tr_hlm, nil}, {[]byte("hpf\x00"), tr_hpf, nil}, {[]byte("hpfa\x00"), tr_hpfa, nil}, {[]byte("hy\x00"), tr_hy, nil}, {[]byte("hycost\x00"), tr_hycost, nil}, {[]byte("hydash\x00"), tr_hydash, nil}, {[]byte("hystop\x00"), tr_hystop, nil}, {[]byte("hw\x00"), tr_hw, nil}, {[]byte("ie\x00"), tr_if, mkargs_null}, {[]byte("if\x00"), tr_if, mkargs_null}, {[]byte("ig\x00"), tr_ig, nil}, {[]byte("in\x00"), tr_in, nil}, {[]byte("in2\x00"), tr_in2, nil}, {[]byte("it\x00"), tr_it, nil}, {[]byte("kn\x00"), tr_kn, nil}, {[]byte("lc\x00"), tr_lc, nil}, {[]byte("lf\x00"), tr_lf, nil}, {[]byte("lg\x00"), tr_lg, nil}, {[]byte("ll\x00"), tr_ll, nil}, {[]byte("ls\x00"), tr_ls, nil}, {[]byte("lsm\x00"), tr_lsm, nil}, {[]byte("lt\x00"), tr_lt, nil}, {[]byte("mc\x00"), tr_mc, nil}, {[]byte("mk\x00"), tr_mk, nil}, {[]byte("na\x00"), tr_na, nil}, {[]byte("ne\x00"), tr_ne, nil}, {[]byte("nf\x00"), tr_nf, nil}, {[]byte("nh\x00"), tr_nh, nil}, {[]byte("nm\x00"), tr_nm, nil}, {[]byte("nn\x00"), tr_nn, nil}, {[]byte("nr\x00"), tr_nr, mkargs_reg1}, {[]byte("ns\x00"), tr_ns, nil}, {[]byte("nx\x00"), tr_nx, nil}, {[]byte("ochar\x00"), tr_ochar, mkargs_ochar}, {[]byte("os\x00"), tr_os, nil}, {[]byte("pc\x00"), tr_pc, nil}, {[]byte("pl\x00"), tr_pl, nil}, {[]byte("pmll\x00"), tr_pmll, nil}, {[]byte("pn\x00"), tr_pn, nil}, {[]byte("po\x00"), tr_po, nil}, {[]byte("ps\x00"), tr_ps, nil}, {[]byte("rchar\x00"), tr_rchar, nil}, {[]byte("rm\x00"), tr_rm, nil}, {[]byte("rn\x00"), tr_rn, nil}, {[]byte("rr\x00"), tr_rr, nil}, {[]byte("rs\x00"), tr_rs, nil}, {[]byte("rt\x00"), tr_rt, nil}, {[]byte("shift\x00"), tr_shift, nil}, {[]byte("so\x00"), tr_so, nil}, {[]byte("sp\x00"), tr_sp, nil}, {[]byte("ss\x00"), tr_ss, nil}, {[]byte("ssh\x00"), tr_ssh, nil}, {[]byte("sv\x00"), tr_sv, nil}, {[]byte("sy\x00"), tr_sy, mkargs_eol}, {[]byte("ta\x00"), tr_ta, nil}, {[]byte("tc\x00"), tr_tc, nil}, {[]byte("ti\x00"), tr_ti, nil}, {[]byte("ti2\x00"), tr_ti2, nil}, {[]byte("tkf\x00"), tr_tkf, nil}, {[]byte("tl\x00"), tr_tl, mkargs_null}, {[]byte("tm\x00"), tr_tm, mkargs_eol}, {[]byte("tr\x00"), tr_tr, mkargs_eol}, {[]byte("vs\x00"), tr_vs, nil}, {[]byte("wh\x00"), tr_wh, nil}}
 
 // dotted - transpiled function from  tr.c:1223
-func dotted(name []byte, dot int32) []byte {
-	var out []byte = xmalloc(noarch.Strlen(name) + int32(2)).([]byte)
-	out[0] = byte(dot)
-	noarch.Strcpy(out[0+1:], name)
-	return out
+func dotted(name []byte, dot int32) (res []byte) {
+	res = append(res, byte(dot))
+	res = append(res, name...)
+	return
+	// 	var out []byte = xmalloc(noarch.Strlen(name) + int32(2)).([]byte)
+	// 	out[0] = byte(dot)
+	// 	noarch.Strcpy(out[0+1:], name)
+	// 	return out
 }
 
 // tr_req - transpiled function from  tr.c:1232
@@ -9886,7 +9903,7 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 }
 
 // tr_nextreq - transpiled function from  tr.c:1264
-func tr_nextreq() (rez int32) {
+func tr_nextreq() (rez bool) { // int32) {
 	// 	defer func() {
 	// 		fmt.Println("> tr_nextreq: ", rez, string(rez))
 	// 	}()
@@ -9894,15 +9911,19 @@ func tr_nextreq() (rez int32) {
 	var mac []byte
 	var arg0 []byte
 	var c int32
-	if noarch.Not(tr_nl) {
-		return 1
+
+	fmt.Println("> tr_nextreq tr_nl = ", tr_nl, "(1 is true, 0 is false)")
+	if !tr_nl { //KI: noarch.Not(tr_nl) {
+		return true // 1
 	}
 	c = cp_next()
 	if c == c_ec {
 		// transparent line indicator
 		var c2 int32 = cp_next()
 		if c2 == int32('!') {
-			var args [][]byte = [][]byte{[]byte("\\!\x00"), nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
+			var args [][]byte = make([][]byte, 35) // KI
+			args[0] = []byte("\\!\x00")            // KI
+			// [][]byte{[]byte("\\!\x00"), nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
 			var sbuf_c4go_postfix sbuf
 			// 			sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 			cp_copymode(1)
@@ -9911,14 +9932,14 @@ func tr_nextreq() (rez int32) {
 			args = append(chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)), args[0])
 			tr_transparent(args)
 			// 			sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
-			return 0
+			return false // 0
 		}
 		in_back(c2)
 	}
 	if c < 0 || c != c_cc && c != c_c2 && (c != int32('\n') || tr_bm < 0) && (c != int32(' ') || tr_sm < 0) {
 		// not a request, a blank line, or a line with leading spaces
 		in_back(c)
-		return 1
+		return true // 1
 	}
 	cp_reqbeg()
 	if c == int32('\n') {
@@ -9941,21 +9962,24 @@ func tr_nextreq() (rez int32) {
 		tr_nextreq_exec(mac, arg0, 0)
 	} else {
 		mac = read_name((nreg(int32('C')))[0])
+		fmt.Println(">>>> tr_nextreq mac=", mac)
+		fmt.Println(">>>> tr_nextreq c  =", c, string(c))
 		arg0 = dotted(mac, c)
+		fmt.Println(">>>> tr_nextreq arg0 =", arg0)
 		tr_nextreq_exec(mac, arg0, 1)
 	}
 	_ = arg0
 	_ = mac
-	return 0
+	return false // 0
 }
 
 // tr_next - transpiled function from  tr.c:1322
 func tr_next() int32 {
 	var c int32
-	for noarch.Not(tr_nextreq()) {
+	for !tr_nextreq() {
 	}
 	c = cp_next()
-	tr_nl = noarch.BoolToInt(c == int32('\n') || c < 0)
+	tr_nl = c == int32('\n') || c < 0
 	return c
 }
 
