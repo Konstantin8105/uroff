@@ -15,6 +15,7 @@ package main
 import "C"
 
 import (
+	"bytes"
 	"fmt"
 	_ "fmt"
 	"os"
@@ -1081,12 +1082,15 @@ var fspecial_n int32
 // skipline - transpiled function from  dev.c:25
 func skipline(filp *noarch.File) {
 	var c int32
+	var buf []byte
 	for {
 		c = noarch.Fgetc(filp)
+		buf = append(buf, byte(c))
 		if !(c != int32('\n') && c != -1) {
 			break
 		}
 	}
+	fmt.Println("> skipline ", string(buf))
 }
 
 // dev_prologue - transpiled function from  dev.c:33
@@ -5007,6 +5011,7 @@ func in_push(s []byte, args [][]byte) {
 
 // in_so - transpiled function from  in.c:46
 func in_so(path []byte) {
+	fmt.Println("> in_so : ", string(path))
 	var fin *noarch.File = func() *noarch.File {
 		if path != nil && int32(path[0]) != 0 {
 			return noarch.Fopen(path, []byte("r\x00"))
@@ -5113,10 +5118,9 @@ func in_next() int32 {
 		if buf[0].buf != nil && buf[0].pos < buf[0].len_ {
 			break
 		}
-		if buf[0].buf == nil && (func() int32 {
-			c = noarch.Fgetc(buf[0].fin)
-			return c
-		}()) >= 0 {
+		c = noarch.Fgetc(buf[0].fin)
+		fmt.Println("> in_next : ", c, string(c))
+		if buf[0].buf == nil && c >= 0 {
 			if c == int32('\n') {
 				buf[0].lnum++
 			}
@@ -9665,33 +9669,36 @@ func macroarg(sbuf_c4go_postfix []sbuf, brk int32, next func() int32, back func(
 }
 
 // chopargs - transpiled function from  tr.c:981
-func chopargs(sbuf_c4go_postfix []sbuf, args [][]byte) {
-	// split the arguments in sbuf, after calling one of mkargs_*()
-	var s []byte = sbuf_buf(sbuf_c4go_postfix)
-	var e []byte = s[0+sbuf_len(sbuf_c4go_postfix):]
-	var n int32
-	for n < 32 && s != nil && (int64(uintptr(unsafe.Pointer(&s[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&e[0])))/int64(1)) < 0 {
-		args[func() int32 {
-			defer func() {
-				n++
-			}()
-			return n
-		}()] = s
-		if (func() []byte {
-			for i := range s {
-				if s[i] == '\x00' {
-					s = s[i:]
-					return s
-				}
-			}
-			return []byte("\x00")
-			//
-			// 			s = memchr(s, int32('\x00'), uint32(int32((int64(uintptr(unsafe.Pointer(&e[0])))/int64(1) - int64(uintptr(unsafe.Pointer(&s[0])))/int64(1))))).([]byte)
-			// 			return s
-		}()) != nil {
-			s = s[0+1:]
-		}
-	}
+func chopargs(sbuf_c4go_postfix []sbuf) (args [][]byte) {
+	fmt.Println(">>>> chopargs: ", string(sbuf_c4go_postfix[0].body))
+	zero := []byte{'\x00'}
+	return bytes.Split(sbuf_c4go_postfix[0].body, zero)
+
+	// 	fmt.Println(">>>> chopargs: ", string(sbuf_c4go_postfix[0].body))
+	// 	// split the arguments in sbuf, after calling one of mkargs_*()
+	// 	var s []byte = sbuf_buf(sbuf_c4go_postfix)
+	// 	// var e []byte = s[0+sbuf_len(sbuf_c4go_postfix):]
+	// 	var n int32
+	// 	for iter := 0; n < 32 && iter < len(s); iter++ {
+	// 		// s != nil && (int64(uintptr(unsafe.Pointer(&s[0])))/int64(1)-int64(uintptr(unsafe.Pointer(&e[0])))/int64(1)) < 0 {
+	// 		args[n] = s
+	// 		n++
+	// 		if (func() []byte {
+	// 			for i := range s {
+	// 				if s[i] == '\x00' {
+	// 					s = s[i:]
+	// 					return s
+	// 				}
+	// 			}
+	// 			return []byte("\x00")
+	// 			//
+	// 			// 			s = memchr(s, int32('\x00'), uint32(int32((int64(uintptr(unsafe.Pointer(&e[0])))/int64(1) - int64(uintptr(unsafe.Pointer(&s[0])))/int64(1))))).([]byte)
+	// 			// 			return s
+	// 		}()) != nil {
+	// 			s = s[0+1:]
+	// 		}
+	// 	}
+	// 	fmt.Println(">>>> chopargs: ", args)
 }
 
 // tr_args - transpiled function from  tr.c:994
@@ -9701,7 +9708,7 @@ func tr_args(args [][]byte, brk int32, next func() int32, back func(int32)) []by
 	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	for noarch.Not(macroarg(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), brk, next, back)) {
 	}
-	chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), args)
+	args = chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)) // , args)
 	return sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
@@ -9837,13 +9844,16 @@ func tr_req(reg int32, args [][]byte) {
 
 // tr_nextreq_exec - transpiled function from  tr.c:1240
 func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
+	fmt.Println(">tr_nextreq_exec: ", "|"+string(mac)+"|", "|"+string(arg0)+"|", readargs)
 	// interpolate a macro for tr_nextreq()
-	var args [][]byte = [][]byte{arg0, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
+	var args [][]byte = make([][]byte, 35) //KI
+	args[0] = arg0                         // KI
+	// 	[][]byte{arg0, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
 
 	// TODO KI
-	if len(mac) == 0 {
-		return
-	}
+	// 	if len(mac) == 0 {
+	// 		return
+	// 	}
 
 	var req []cmd = str_dget(map_(mac)).([]cmd)
 	var str []byte = str_get(map_(mac))
@@ -9859,7 +9869,12 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 		if req == nil {
 			mkargs_macro(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 		}
-		chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), args[0+1:])
+		fmt.Println(">tr_nextreq_exec: >> ", string(sbuf_c4go_postfix.body))
+		a := chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)) // , args[1:])
+		args = append(a, args[0])
+		for i, s := range args {
+			fmt.Println(">tr_nextreq_exec: ", i, s, string(s))
+		}
 	}
 	if str != nil {
 		in_push(str, args)
@@ -9893,7 +9908,7 @@ func tr_nextreq() (rez int32) {
 			cp_copymode(1)
 			mkargs_eol(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 			cp_copymode(0)
-			chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), args[0+1:])
+			args = append(chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)), args[0])
 			tr_transparent(args)
 			// 			sbuf_done(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 			return 0
