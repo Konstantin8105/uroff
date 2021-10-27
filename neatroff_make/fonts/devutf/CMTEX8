@@ -1,0 +1,255 @@
+name CMTEX8
+fontname CMTEX8
+fontpath /home/konstantin/go/src/github.com/Konstantin8105/uroff/neatroff_make/fonts/CMTEX8.pfb
+spacewidth 53
+ligatures 0
+char ⋅	53,20,24,33,37	3	dotmath	0
+char c.	"
+char ↓	53,6,0,47,61	3	arrowdown	1
+char da	"
+char α	53,7,-1,51,44	3	alpha	2
+char *a	"
+char β	53,-3,-22,52,62	3	beta	3
+char *b	"
+char ∧	53,4,-1,49,54	3	logicaland	4
+char l&	"
+char ¬	53,4,3,49,36	3	logicalnot	5
+char -,	"
+char no	"
+char ∈	53,7,5,46,56	3	element	6
+char mo	"
+char π	53,4,-1,53,43	3	pi	7
+char *p	"
+char λ	53,5,-1,50,61	3	lambda	8
+char *l	"
+char γ	53,6,-23,52,44	3	gamma	9
+char *g	"
+char δ	53,9,-1,48,65	3	delta	10
+char *d	"
+char ↑	53,6,0,47,61	3	arrowup	11
+char ua	"
+char ±	53,4,14,49,59	3	plusminus	12
+char +-	"
+char ⊕	53,4,8,49,53	3	circleplus	13
+char O+	"
+char ∞	53,3,-1,50,44	3	infinity	14
+char if	"
+char ∂	53,8,-1,54,62	3	partialdiff	15
+char pd	"
+char ⊂	53,6,5,47,56	3	propersubset	16
+char sb	"
+char ⊃	53,6,5,47,56	3	propersuperset	17
+char sp	"
+char ∩	53,4,-1,49,54	3	intersection	18
+char ca	"
+char ∪	53,4,-1,49,54	3	union	19
+char cu	"
+char ∀	53,0,-1,53,61	3	universal	20
+char fa	"
+char ∃	53,5,0,48,61	3	existential	21
+char te	"
+char ⊗	53,4,8,49,53	3	circlemultiply	22
+char Ox	"
+char ↔	53,3,-6,50,67	3	arrowboth	23
+char ab	"
+char <>	"
+char ←	53,3,13,50,49	3	arrowleft	24
+char <-	"
+char →	53,3,13,50,49	3	arrowright	25
+char ->	"
+char ≠	53,4,-4,49,66	3	notequal	26
+char !=	"
+char ◊	53,2,6,52,56	3	lozenge	27
+char lz	"
+char ≤	53,6,-3,47,63	3	lessequal	28
+char <=	"
+char ≥	53,6,-3,47,63	3	greaterequal	29
+char >=	"
+char ≡	53,4,12,49,50	3	equivalence	30
+char ==	"
+char ∨	53,4,-1,49,54	3	logicalor	31
+char l|	"
+char ---	53	0	space	32
+char !	53,21,0,32,62	2	exclam	33
+char "	53,13,33,40,62	2	quotedbl	34
+char dq	"
+char #	53,4,0,50,61	2	numbersign	35
+char $	53,6,-8,47,69	2	dollar	36
+char %	53,4,-8,50,69	2	percent	37
+char &	53,3,-1,50,62	2	ampersand	38
+char ’	53,18,29,35,61	3	quoteright	39
+char '	"
+char cq	"
+char (	53,17,-8,44,69	3	parenleft	40
+char )	53,9,-8,36,69	3	parenright	41
+char *	53,7,9,46,52	2	asterisk	42
+char +	53,4,8,49,53	0	plus	43
+char pl	"
+char ,	53,18,-14,35,14	1	comma	44
+char −	53,6,27,47,34	3	minus	45
+char mi	"
+char .	53,20,0,33,14	0	period	46
+char /	53,6,-8,47,69	2	slash	47
+char sl	"
+char 0	53,5,-1,48,62	2	zero	48
+char 1	53,10,0,45,62	2	one	49
+char 2	53,5,0,48,62	2	two	50
+char 3	53,4,-1,49,62	2	three	51
+char 4	53,3,0,50,63	2	four	52
+char 5	53,5,-1,48,61	2	five	53
+char 6	53,5,-1,48,62	2	six	54
+char 7	53,4,-1,49,63	2	seven	55
+char 8	53,4,-1,49,62	2	eight	56
+char 9	53,5,-1,48,62	2	nine	57
+char :	53,20,0,33,43	0	colon	58
+char ;	53,18,-14,34,43	1	semicolon	59
+char <	53,6,5,47,56	0	less	60
+char =	53,4,19,49,42	0	equal	61
+char eq	"
+char >	53,6,5,47,56	0	greater	62
+char ?	53,6,0,47,62	2	question	63
+char @	53,4,-1,49,62	3	at	64
+char A	53,3,0,50,63	2	A	65
+char B	53,2,0,49,61	2	B	66
+char C	53,4,-1,49,62	2	C	67
+char D	53,2,0,49,61	2	D	68
+char E	53,3,0,51,61	2	E	69
+char F	53,3,0,50,61	2	F	70
+char G	53,4,-1,50,62	2	G	71
+char H	53,2,0,51,61	2	H	72
+char I	53,8,0,45,61	2	I	73
+char J	53,7,-1,48,61	3	J	74
+char K	53,3,0,50,61	2	K	75
+char L	53,3,0,49,61	2	L	76
+char M	53,2,0,51,61	2	M	77
+char N	53,3,0,50,61	2	N	78
+char O	53,6,-1,47,62	2	O	79
+char P	53,3,0,49,61	2	P	80
+char Q	53,6,-14,47,62	3	Q	81
+char R	53,2,-1,53,61	2	R	82
+char S	53,5,-1,48,62	2	S	83
+char T	53,3,0,50,61	2	T	84
+char U	53,0,-1,53,61	2	U	85
+char V	53,2,-1,51,61	2	V	86
+char W	53,1,-1,52,61	2	W	87
+char X	53,3,0,50,61	2	X	88
+char Y	53,2,0,51,61	2	Y	89
+char Z	53,5,0,49,61	2	Z	90
+char [	53,22,-8,49,69	3	bracketleft	91
+char \	53,6,-8,47,69	2	backslash	92
+char bs	"
+char rs	"
+char ]	53,4,-8,31,69	3	bracketright	93
+char ha	53,10,47,43,61	3	asciicircum	94
+char _	53,6,-10,47,-2	1	underscore	95
+char ru	"
+char ul	"
+char ‘	53,18,36,35,68	3	quoteleft	96
+char `	"
+char oq	"
+char a	53,5,-1,53,44	0	a	97
+char b	53,1,-1,50,61	2	b	98
+char c	53,7,-1,47,44	0	c	99
+char d	53,3,-1,52,61	2	d	100
+char e	53,5,-1,47,44	0	e	101
+char f	53,4,0,44,62	2	f	102
+char g	53,3,-23,52,44	1	g	103
+char h	53,1,0,52,61	2	h	104
+char i	53,8,0,46,61	2	i	105
+char j	53,5,-23,38,61	3	j	106
+char k	53,2,0,51,61	2	k	107
+char l	53,6,0,47,61	2	l	108
+char m	53,-1,0,52,44	0	m	109
+char n	53,1,0,52,44	0	n	110
+char o	53,6,-1,48,44	0	o	111
+char p	53,1,-22,50,44	1	p	112
+char q	53,4,-22,55,44	1	q	113
+char r	53,3,0,49,44	0	r	114
+char s	53,7,-1,46,44	0	s	115
+char t	53,3,-1,45,55	2	t	116
+char u	53,1,-1,52,43	0	u	117
+char v	53,3,-1,51,43	0	v	118
+char w	53,2,-1,51,43	0	w	119
+char x	53,3,0,50,43	0	x	120
+char y	53,3,-23,51,43	1	y	121
+char z	53,3,0,48,43	0	z	122
+char {	53,6,-8,47,69	2	braceleft	123
+char |	53,23,-8,30,69	2	bar	124
+char or	"
+char }	53,6,-8,47,69	2	braceright	125
+char ti	53,9,49,44,61	2	asciitilde	126
+char ∫	53,6,-23,47,62	3	integral	127
+char is	"
+char ---	53	0	space	128
+char ---	53	0	space	160
+char ⋅	53,20,24,33,37	0	dotmath	161
+char c.	"
+char ↓	53,6,0,47,61	2	arrowdown	162
+char da	"
+char α	53,7,-1,51,44	0	alpha	163
+char *a	"
+char β	53,-3,-22,52,62	3	beta	164
+char *b	"
+char ∧	53,4,-1,49,54	0	logicaland	165
+char l&	"
+char ¬	53,4,3,49,36	0	logicalnot	166
+char -,	"
+char no	"
+char ∈	53,7,5,46,56	2	element	167
+char mo	"
+char π	53,4,-1,53,43	0	pi	168
+char *p	"
+char λ	53,5,-1,50,61	2	lambda	169
+char *l	"
+char γ	53,6,-23,52,44	1	gamma	170
+char *g	"
+char ­	53,6,27,47,34	0	sfthyphen	171
+char  	53	0	nbspace	172
+char δ	53,9,-1,48,65	2	delta	173
+char *d	"
+char ↑	53,6,0,47,61	2	arrowup	174
+char ua	"
+char ±	53,4,14,49,59	2	plusminus	175
+char +-	"
+char ⊕	53,4,8,49,53	0	circleplus	176
+char O+	"
+char ∞	53,3,-1,50,44	0	infinity	177
+char if	"
+char ∂	53,8,-1,54,62	2	partialdiff	178
+char pd	"
+char ⊂	53,6,5,47,56	2	propersubset	179
+char sb	"
+char ⊃	53,6,5,47,56	2	propersuperset	180
+char sp	"
+char ∩	53,4,-1,49,54	0	intersection	181
+char ca	"
+char ∪	53,4,-1,49,54	0	union	182
+char cu	"
+char ∀	53,0,-1,53,61	2	universal	183
+char fa	"
+char ∃	53,5,0,48,61	2	existential	184
+char te	"
+char ⊗	53,4,8,49,53	0	circlemultiply	185
+char Ox	"
+char ↔	53,3,-6,50,67	2	arrowboth	186
+char ab	"
+char <>	"
+char ←	53,3,13,50,49	0	arrowleft	187
+char <-	"
+char →	53,3,13,50,49	0	arrowright	188
+char ->	"
+char ≠	53,4,-4,49,66	2	notequal	189
+char !=	"
+char ◊	53,2,6,52,56	2	lozenge	190
+char lz	"
+char ≤	53,6,-3,47,63	2	lessequal	191
+char <=	"
+char ≥	53,6,-3,47,63	2	greaterequal	192
+char >=	"
+char ≡	53,4,12,49,50	0	equivalence	193
+char ==	"
+char ∨	53,4,-1,49,54	0	logicalor	194
+char l|	"
+char ---	53	0	space	195
+char ∫	53,6,-23,47,62	3	integral	196
+char is	"

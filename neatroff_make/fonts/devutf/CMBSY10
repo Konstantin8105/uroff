@@ -1,0 +1,271 @@
+name CMBSY10
+fontname CMBSY10
+fontpath /home/konstantin/go/src/github.com/Konstantin8105/uroff/neatroff_make/fonts/CMBSY10.pfb
+spacewidth 33
+ligatures 0
+char −	89,10,22,80,28	3	minus	0
+char mi	"
+char ·	32,8,17,24,33	3	periodcentered	1
+char .^	"
+char ×	89,17,-3,73,53	3	multiply	2
+char xx	"
+char mu	"
+char ∗	58,7,3,50,47	3	asteriskmath	3
+char **	"
+char ÷	89,6,-9,83,59	3	divide	4
+char di	"
+char -:	"
+char ---	58,2,-2,56,52	3	diamondmath	5
+char ±	89,6,-4,83,73	3	plusminus	6
+char +-	"
+char ∓	89,6,-23,83,54	3	minusplus	7
+char -+	"
+char ⊕	89,6,-13,83,63	3	circleplus	8
+char O+	"
+char ---	89,6,-13,83,63	3	circleminus	9
+char ⊗	89,6,-13,83,63	3	circlemultiply	10
+char Ox	"
+char ---	89,6,-13,83,63	3	circledivide	11
+char ---	89,6,-13,83,63	3	circledot	12
+char ---	115,6,-21,109,71	3	circlecopyrt	13
+char ◦	58,6,3,51,47	3	openbullet	14
+char •	58,6,3,51,47	3	bullet	15
+char bu	"
+char ---	89,6,-3,83,53	3	equivasymptotic	16
+char ≡	89,6,0,83,50	3	equivalence	17
+char ==	"
+char ⊆	89,10,-20,80,70	3	reflexsubset	18
+char ib	"
+char ⊇	89,10,-20,80,70	3	reflexsuperset	19
+char ip	"
+char ≤	89,10,-20,80,70	3	lessequal	20
+char <=	"
+char ≥	89,10,-20,80,70	3	greaterequal	21
+char >=	"
+char ---	89,10,-20,80,70	3	precedesequal	22
+char ---	89,10,-20,80,70	3	followsequal	23
+char ∼	89,6,11,83,39	3	similar	24
+char ap	"
+char ≈	89,6,3,83,52	3	approxequal	25
+char ~~	"
+char ⊂	89,10,-9,80,59	3	propersubset	26
+char sb	"
+char ⊃	89,10,-9,80,59	3	propersuperset	27
+char sp	"
+char ---	115,6,-12,109,62	3	lessmuch	28
+char ---	115,6,-12,109,62	3	greatermuch	29
+char ≺	89,10,-9,80,59	3	precedes	30
+char ---	89,10,-9,80,59	3	follows	31
+char ←	115,6,-2,109,52	3	arrowleft	32
+char <-	"
+char →	115,6,-2,109,52	3	arrowright	33
+char ->	"
+char ↑	58,1,-19,56,69	3	arrowup	34
+char ua	"
+char ↓	58,1,-19,56,69	3	arrowdown	35
+char da	"
+char ↔	115,6,-2,109,52	3	arrowboth	36
+char ab	"
+char <>	"
+char ---	115,6,-19,109,72	3	arrownortheast	37
+char ---	115,6,-22,109,69	3	arrowsoutheast	38
+char ---	89,6,0,83,50	3	similarequal	39
+char ⇐	115,6,-5,109,55	3	arrowdblleft	40
+char ⇒	115,6,-5,109,55	3	arrowdblright	41
+char ⇑	70,3,-19,67,69	3	arrowdblup	42
+char ⇓	70,3,-19,67,69	3	arrowdbldown	43
+char ⇔	115,5,-5,110,55	3	arrowdblboth	44
+char ---	115,6,-19,109,72	3	arrownorthwest	45
+char ---	115,6,-22,109,69	3	arrowsouthwest	46
+char ∝	89,6,-1,83,45	3	proportional	47
+char pt	"
+char ---	34,3,4,33,56	3	prime	48
+char ∞	115,6,-1,109,45	3	infinity	49
+char if	"
+char ∈	77,10,-9,67,59	3	element	50
+char mo	"
+char ---	77,10,-9,67,59	3	owner	51
+char ---	102,7,0,95,71	3	triangle	52
+char ---	102,7,-21,95,50	3	triangleinv	53
+char ---	0,16,-21,73,71	3	negationslash	54
+char ---	0,6,5,16,45	3	mapsto	55
+char ∀	64,0,-2,64,69	3	universal	56
+char fa	"
+char ∃	64,6,0,57,69	3	existential	57
+char te	"
+char ¬	77,6,6,70,37	3	logicalnot	58
+char -,	"
+char no	"
+char ∅	58,5,-7,53,77	3	emptyset	59
+char es	"
+char ---	83,5,-2,82,71	3	Rfractur	60
+char ---	83,6,-1,80,70	3	Ifractur	61
+char ---	89,6,0,83,69	3	latticetop	62
+char ⊥	89,6,0,83,69	3	perpendicular	63
+char pp	"
+char ℵ	70,6,0,64,69	3	aleph	64
+char af	"
+char A	92,4,-5,97,75	2	A	65
+char B	75,4,-2,74,71	2	B	66
+char C	61,2,-2,60,70	2	C	67
+char D	89,2,0,89,69	2	D	68
+char E	61,4,-2,63,70	2	E	69
+char F	81,2,-3,93,69	2	F	70
+char G	68,5,-11,67,70	2	G	71
+char H	99,2,-5,94,69	2	H	72
+char I	64,-2,0,74,69	2	I	73
+char J	78,5,-11,94,69	3	J	74
+char K	87,4,-2,83,70	2	K	75
+char L	79,4,-2,75,70	2	L	76
+char M	138,4,-5,133,70	2	M	77
+char N	94,-3,-5,110,83	2	N	78
+char O	91,6,-2,88,70	2	O	79
+char P	81,2,-6,85,69	2	P	80
+char Q	94,12,-14,91,70	3	Q	81
+char R	99,2,-2,98,69	2	R	82
+char S	70,3,-2,72,70	2	S	83
+char T	64,4,-7,95,72	2	T	84
+char U	71,-1,-2,77,69	2	U	85
+char V	74,3,-7,78,69	2	V	86
+char W	117,3,-7,121,69	2	W	87
+char X	82,6,0,91,69	2	X	88
+char Y	76,4,-16,80,69	2	Y	89
+char Z	82,4,0,85,69	2	Z	90
+char ∪	77,6,-2,70,60	3	union	91
+char cu	"
+char ∩	77,6,-2,70,60	3	intersection	92
+char ca	"
+char ---	77,6,-2,70,60	3	unionmulti	93
+char ∧	77,6,-2,70,60	3	logicaland	94
+char l&	"
+char ∨	77,6,-2,70,60	3	logicalor	95
+char l|	"
+char ---	70,6,0,64,69	3	turnstileleft	96
+char ---	70,6,0,64,69	3	turnstileright	97
+char ---	51,19,-25,49,75	3	floorleft	98
+char ---	51,2,-25,32,75	3	floorright	99
+char ---	51,19,-25,49,75	3	ceilingleft	100
+char ---	51,2,-25,32,75	3	ceilingright	101
+char {	58,8,-25,50,75	3	braceleft	102
+char }	58,8,-25,50,75	3	braceright	103
+char ---	45,13,-25,38,75	3	angbracketleft	104
+char ---	45,6,-25,32,75	3	angbracketright	105
+char |	32,13,-25,19,75	3	bar	106
+char or	"
+char ---	58,15,-25,43,75	3	bardbl	107
+char ---	58,1,-27,56,77	3	arrowbothv	108
+char ---	70,3,-27,67,77	3	arrowdblbothv	109
+char \	58,6,-25,51,75	2	backslash	110
+char bs	"
+char rs	"
+char ---	32,6,-8,25,58	3	wreathproduct	111
+char √	96,8,-94,99,6	3	radical	112
+char sr	"
+char ---	90,4,0,86,69	3	coproduct	113
+char ∇	96,6,-3,90,69	3	nabla	114
+char gr	"
+char ∫	57,6,-21,63,71	3	integral	115
+char is	"
+char ---	77,7,0,70,60	3	unionsq	116
+char ---	77,7,0,70,60	3	intersectionsq	117
+char ---	89,10,-20,83,70	3	subsetsqequal	118
+char ---	89,7,-20,80,70	3	supersetsqequal	119
+char §	53,8,-20,45,70	3	section	120
+char so	"
+char sc	"
+char †	51,6,-21,45,70	3	dagger	121
+char dg	"
+char ‡	51,6,-20,45,70	3	daggerdbl	122
+char dd	"
+char ¶	70,6,-19,67,69	3	paragraph	123
+char P!	"
+char pg	"
+char ♣	89,3,-13,86,72	3	club	124
+char ♦	89,6,-16,83,72	3	diamond	125
+char ♥	89,6,-3,83,71	3	heart	126
+char ♠	89,6,-13,83,72	3	spade	127
+char ←	115,6,-2,109,52	3	arrowleft	128
+char <-	"
+char ---	33	0	space	160
+char −	89,10,22,80,28	3	minus	161
+char mi	"
+char ·	32,8,17,24,33	3	periodcentered	162
+char .^	"
+char ×	89,17,-3,73,53	3	multiply	163
+char xx	"
+char mu	"
+char ∗	58,7,3,50,47	3	asteriskmath	164
+char **	"
+char ÷	89,6,-9,83,59	3	divide	165
+char di	"
+char -:	"
+char ---	58,2,-2,56,52	3	diamondmath	166
+char ±	89,6,-4,83,73	3	plusminus	167
+char +-	"
+char ∓	89,6,-23,83,54	3	minusplus	168
+char -+	"
+char ⊕	89,6,-13,83,63	3	circleplus	169
+char O+	"
+char ---	89,6,-13,83,63	3	circleminus	170
+char ⊗	89,6,-13,83,63	3	circlemultiply	173
+char Ox	"
+char ---	89,6,-13,83,63	3	circledivide	174
+char ---	89,6,-13,83,63	3	circledot	175
+char ---	115,6,-21,109,71	3	circlecopyrt	176
+char ◦	58,6,3,51,47	3	openbullet	177
+char •	58,6,3,51,47	3	bullet	178
+char bu	"
+char ---	89,6,-3,83,53	3	equivasymptotic	179
+char ≡	89,6,0,83,50	3	equivalence	180
+char ==	"
+char ⊆	89,10,-20,80,70	3	reflexsubset	181
+char ib	"
+char ⊇	89,10,-20,80,70	3	reflexsuperset	182
+char ip	"
+char ≤	89,10,-20,80,70	3	lessequal	183
+char <=	"
+char ≥	89,10,-20,80,70	3	greaterequal	184
+char >=	"
+char ---	89,10,-20,80,70	3	precedesequal	185
+char ---	89,10,-20,80,70	3	followsequal	186
+char ∼	89,6,11,83,39	3	similar	187
+char ap	"
+char ≈	89,6,3,83,52	3	approxequal	188
+char ~~	"
+char ⊂	89,10,-9,80,59	3	propersubset	189
+char sb	"
+char ⊃	89,10,-9,80,59	3	propersuperset	190
+char sp	"
+char ---	115,6,-12,109,62	3	lessmuch	191
+char ---	115,6,-12,109,62	3	greatermuch	192
+char ≺	89,10,-9,80,59	3	precedes	193
+char ---	89,10,-9,80,59	3	follows	194
+char ←	115,6,-2,109,52	3	arrowleft	195
+char <-	"
+char ♠	89,6,-13,83,72	3	spade	196
+kern A	prime	22
+kern B	prime	16
+kern C	prime	16
+kern D	prime	10
+kern E	prime	13
+kern F	prime	13
+kern G	prime	13
+kern H	prime	13
+kern I	prime	3
+kern J	prime	19
+kern K	prime	6
+kern L	prime	16
+kern M	prime	16
+kern N	prime	10
+kern O	prime	13
+kern P	prime	10
+kern Q	prime	13
+kern R	prime	10
+kern S	prime	16
+kern T	prime	3
+kern U	prime	10
+kern V	prime	3
+kern W	prime	10
+kern X	prime	16
+kern Y	prime	10
+kern Z	prime	16

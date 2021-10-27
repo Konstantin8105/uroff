@@ -1,0 +1,259 @@
+name CMTT10
+fontname CMTT10
+fontpath /home/konstantin/go/src/github.com/Konstantin8105/uroff/neatroff_make/fonts/CMTT10.pfb
+spacewidth 53
+ligatures 0
+char Γ	53,3,0,49,61	3	Gamma	0
+char *G	"
+char ∆	53,3,0,49,62	3	Delta	1
+char *D	"
+char Δ	"
+char Θ	53,6,-1,47,62	3	Theta	2
+char *H	"
+char Λ	53,3,0,50,62	3	Lambda	3
+char *L	"
+char Ξ	53,3,0,49,61	3	Xi	4
+char *C	"
+char Π	53,2,0,50,61	3	Pi	5
+char *P	"
+char Σ	53,4,0,48,61	3	Sigma	6
+char *S	"
+char Υ	53,4,0,49,62	3	Upsilon	7
+char *U	"
+char Φ	53,4,0,48,61	3	Phi	8
+char *F	"
+char Ψ	53,4,0,49,61	3	Psi	9
+char *Q	"
+char Ω	53,3,0,49,62	3	Omega	10
+char Ω	"
+char *W	"
+char ↑	53,6,0,47,61	3	arrowup	11
+char ua	"
+char ↓	53,6,0,47,61	3	arrowdown	12
+char da	"
+char aq	53,22,33,31,62	3	quotesingle	13
+char ¡	53,21,-23,31,39	3	exclamdown	14
+char !!	"
+char r!	"
+char ¿	53,6,-23,46,39	3	questiondown	15
+char ??	"
+char r?	"
+char ı	53,8,0,46,43	3	dotlessi	16
+char 	53,5,-23,37,43	3	dotlessj	17
+char ga	53,12,48,33,61	3	grave	18
+char \`	"
+char ´	53,20,48,41,61	3	acute	19
+char aa	"
+char \'	"
+char ˇ	53,10,45,42,57	3	caron	20
+char va	"
+char ˘	53,9,50,44,61	3	breve	21
+char Ua	"
+char ¯	53,7,51,45,58	3	macron	22
+char -a	"
+char ˚	53,18,50,34,62	3	ring	23
+char oa	"
+char ¸	53,16,-21,43,5	3	cedilla	24
+char ,,	"
+char ,a	"
+char ß	53,2,-1,50,62	3	germandbls	25
+char ss	"
+char æ	53,3,-1,50,44	3	ae	26
+char ae	"
+char œ	53,2,-1,51,44	3	oe	27
+char oe	"
+char ø	53,4,-14,48,57	3	oslash	28
+char o/	"
+char Æ	53,2,0,50,61	3	AE	29
+char AE	"
+char Œ	53,3,-1,50,62	3	OE	30
+char OE	"
+char Ø	53,6,-9,47,70	3	Oslash	31
+char O/	"
+char ---	53,4,-13,48,24	3	visiblespace	32
+char !	53,21,0,31,62	2	exclam	33
+char "	53,13,33,40,62	2	quotedbl	34
+char dq	"
+char #	53,4,0,49,61	2	numbersign	35
+char $	53,6,-8,47,69	2	dollar	36
+char %	53,4,-8,49,69	2	percent	37
+char &	53,3,-1,49,62	2	ampersand	38
+char ’	53,18,30,34,61	3	quoteright	39
+char '	"
+char cq	"
+char (	53,17,-8,44,69	3	parenleft	40
+char )	53,9,-8,35,69	3	parenright	41
+char *	53,7,9,46,52	2	asterisk	42
+char +	53,4,8,49,53	0	plus	43
+char pl	"
+char ,	53,18,-14,35,13	1	comma	44
+char -	53,6,27,47,34	0	hyphen	45
+char hy	"
+char .	53,20,0,33,13	0	period	46
+char /	53,6,-8,47,69	2	slash	47
+char sl	"
+char 0	53,5,-1,47,62	2	zero	48
+char 1	53,11,0,44,62	2	one	49
+char 2	53,5,0,47,62	2	two	50
+char 3	53,4,-1,48,62	2	three	51
+char 4	53,3,0,50,62	2	four	52
+char 5	53,5,-1,47,61	2	five	53
+char 6	53,5,-1,47,62	2	six	54
+char 7	53,4,-1,48,63	2	seven	55
+char 8	53,4,-1,48,62	2	eight	56
+char 9	53,5,-1,47,62	2	nine	57
+char :	53,20,0,33,43	0	colon	58
+char ;	53,18,-14,33,43	1	semicolon	59
+char <	53,6,6,47,56	0	less	60
+char =	53,4,20,49,42	0	equal	61
+char eq	"
+char >	53,6,6,47,56	0	greater	62
+char ?	53,6,0,46,62	2	question	63
+char @	53,4,-1,48,62	3	at	64
+char A	53,3,0,50,62	2	A	65
+char B	53,2,0,48,61	2	B	66
+char C	53,4,-1,48,62	2	C	67
+char D	53,2,0,49,61	2	D	68
+char E	53,3,0,50,61	2	E	69
+char F	53,3,0,49,61	2	F	70
+char G	53,4,-1,50,62	2	G	71
+char H	53,2,0,50,61	2	H	72
+char I	53,8,0,45,61	2	I	73
+char J	53,7,-1,48,61	3	J	74
+char K	53,3,0,50,61	2	K	75
+char L	53,3,0,49,61	2	L	76
+char M	53,2,0,51,61	2	M	77
+char N	53,3,0,50,61	2	N	78
+char O	53,6,-1,47,62	2	O	79
+char P	53,3,0,48,61	2	P	80
+char Q	53,6,-14,47,62	3	Q	81
+char R	53,2,-1,52,61	2	R	82
+char S	53,5,-1,47,62	2	S	83
+char T	53,3,0,50,61	2	T	84
+char U	53,0,-1,52,61	2	U	85
+char V	53,2,-1,51,61	2	V	86
+char W	53,1,-1,51,61	2	W	87
+char X	53,3,0,50,61	2	X	88
+char Y	53,2,0,51,61	2	Y	89
+char Z	53,5,0,48,61	2	Z	90
+char [	53,22,-8,48,69	3	bracketleft	91
+char \	53,6,-8,47,69	2	backslash	92
+char bs	"
+char rs	"
+char ]	53,4,-8,30,69	3	bracketright	93
+char ha	53,10,47,42,61	3	asciicircum	94
+char _	53,6,-10,47,-3	1	underscore	95
+char ru	"
+char ul	"
+char ‘	53,18,37,34,68	3	quoteleft	96
+char `	"
+char oq	"
+char a	53,6,-1,52,44	0	a	97
+char b	53,1,-1,49,61	2	b	98
+char c	53,7,-1,47,44	0	c	99
+char d	53,4,-1,51,61	2	d	100
+char e	53,6,-1,46,44	0	e	101
+char f	53,4,0,44,62	2	f	102
+char g	53,3,-23,51,44	1	g	103
+char h	53,1,0,51,61	2	h	104
+char i	53,8,0,46,61	2	i	105
+char j	53,5,-23,37,61	3	j	106
+char k	53,2,0,51,61	2	k	107
+char l	53,6,0,47,61	2	l	108
+char m	53,0,0,52,44	0	m	109
+char n	53,1,0,51,44	0	n	110
+char o	53,6,-1,47,44	0	o	111
+char p	53,1,-22,49,44	1	p	112
+char q	53,4,-22,54,44	1	q	113
+char r	53,3,0,49,44	0	r	114
+char s	53,7,-1,46,44	0	s	115
+char t	53,3,-1,45,55	2	t	116
+char u	53,1,-1,51,43	0	u	117
+char v	53,2,0,50,43	0	v	118
+char w	53,2,0,51,43	0	w	119
+char x	53,3,0,50,43	0	x	120
+char y	53,3,-23,50,43	1	y	121
+char z	53,3,0,48,43	0	z	122
+char {	53,6,-8,47,69	2	braceleft	123
+char |	53,23,-8,30,69	2	bar	124
+char or	"
+char }	53,6,-8,47,69	2	braceright	125
+char ti	53,9,49,44,61	2	asciitilde	126
+char ¨	53,11,51,41,61	2	dieresis	127
+char ""	"
+char :a	"
+char ---	53,4,-13,48,24	0	visiblespace	128
+char ---	53	0	space	160
+char Γ	53,3,0,49,61	2	Gamma	161
+char *G	"
+char ∆	53,3,0,49,62	2	Delta	162
+char *D	"
+char Δ	"
+char Θ	53,6,-1,47,62	2	Theta	163
+char *H	"
+char Λ	53,3,0,50,62	2	Lambda	164
+char *L	"
+char Ξ	53,3,0,49,61	2	Xi	165
+char *C	"
+char Π	53,2,0,50,61	2	Pi	166
+char *P	"
+char Σ	53,4,0,48,61	2	Sigma	167
+char *S	"
+char Υ	53,4,0,49,62	2	Upsilon	168
+char *U	"
+char Φ	53,4,0,48,61	2	Phi	169
+char *F	"
+char Ψ	53,4,0,49,61	2	Psi	170
+char *Q	"
+char ­	53,6,27,47,34	0	sfthyphen	171
+char  	53	0	nbspace	172
+char Ω	53,3,0,49,62	2	Omega	173
+char Ω	"
+char *W	"
+char ↑	53,6,0,47,61	2	arrowup	174
+char ua	"
+char ↓	53,6,0,47,61	2	arrowdown	175
+char da	"
+char aq	53,22,33,31,62	2	quotesingle	176
+char ¡	53,21,-23,31,39	1	exclamdown	177
+char !!	"
+char r!	"
+char ¿	53,6,-23,46,39	1	questiondown	178
+char ??	"
+char r?	"
+char ı	53,8,0,46,43	0	dotlessi	179
+char 	53,5,-23,37,43	1	dotlessj	180
+char ga	53,12,48,33,61	2	grave	181
+char \`	"
+char ´	53,20,48,41,61	2	acute	182
+char aa	"
+char \'	"
+char ˇ	53,10,45,42,57	2	caron	183
+char va	"
+char ˘	53,9,50,44,61	2	breve	184
+char Ua	"
+char ¯	53,7,51,45,58	2	macron	185
+char -a	"
+char ˚	53,18,50,34,62	2	ring	186
+char oa	"
+char ¸	53,16,-21,43,5	0	cedilla	187
+char ,,	"
+char ,a	"
+char ß	53,2,-1,50,62	2	germandbls	188
+char ss	"
+char æ	53,3,-1,50,44	0	ae	189
+char ae	"
+char œ	53,2,-1,51,44	0	oe	190
+char oe	"
+char ø	53,4,-14,48,57	2	oslash	191
+char o/	"
+char Æ	53,2,0,50,61	2	AE	192
+char AE	"
+char Œ	53,3,-1,50,62	2	OE	193
+char OE	"
+char Ø	53,6,-9,47,70	2	Oslash	194
+char O/	"
+char ---	53,4,-13,48,24	0	visiblespace	195
+char ¨	53,11,51,41,61	2	dieresis	196
+char ""	"
+char :a	"

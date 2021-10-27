@@ -1,0 +1,453 @@
+name CMR7
+fontname CMR7
+fontpath /home/konstantin/go/src/github.com/Konstantin8105/uroff/neatroff_make/fonts/CMR7.pfb
+spacewidth 38
+ligatures ffi ffl ffi ffl ff fi fl ff fi fl 0
+char Γ	71,6,0,65,68	3	Gamma	0
+char *G	"
+char ∆	94,6,0,88,71	3	Delta	1
+char *D	"
+char Δ	"
+char Θ	88,7,-2,81,70	3	Theta	2
+char *H	"
+char Λ	78,5,0,74,71	3	Lambda	3
+char *L	"
+char Ξ	75,5,0,70,68	3	Xi	4
+char *C	"
+char Π	84,6,0,79,68	3	Pi	5
+char *P	"
+char Σ	82,7,0,74,68	3	Sigma	6
+char *S	"
+char Υ	88,7,0,81,70	3	Upsilon	7
+char *U	"
+char Φ	82,7,0,74,68	3	Phi	8
+char *F	"
+char Ψ	88,7,0,81,68	3	Psi	9
+char *Q	"
+char Ω	82,6,0,76,70	3	Omega	10
+char Ω	"
+char *W	"
+char ﬀ	68,4,0,72,70	3	ff	11
+char ff	"
+char ﬁ	65,4,0,60,70	3	fi	12
+char fi	"
+char ﬂ	65,4,0,60,70	3	fl	13
+char fl	"
+char ﬃ	97,4,0,92,70	3	ffi	14
+char ffi	"
+char Fi	"
+char ﬄ	97,4,0,92,70	3	ffl	15
+char ffl	"
+char Fl	"
+char ı	32,6,0,27,44	3	dotlessi	16
+char 	35,-3,-20,24,44	3	dotlessj	17
+char ga	57,13,51,33,70	3	grave	18
+char \`	"
+char ´	57,24,51,44,70	3	acute	19
+char aa	"
+char \'	"
+char ˇ	57,14,52,43,64	3	caron	20
+char va	"
+char ˘	57,12,52,45,69	3	breve	21
+char Ua	"
+char ¯	57,9,56,48,59	3	macron	22
+char -a	"
+char ˚	84,31,54,53,71	3	ring	23
+char oa	"
+char ¸	51,15,-20,42,-2	3	cedilla	24
+char ,,	"
+char ,a	"
+char ß	57,5,-1,53,70	3	germandbls	25
+char ss	"
+char æ	82,6,-1,78,45	3	ae	26
+char ae	"
+char œ	88,4,-1,84,45	3	oe	27
+char oe	"
+char ø	57,5,-10,52,54	3	oslash	28
+char o/	"
+char Æ	101,5,0,97,68	3	AE	29
+char AE	"
+char Œ	114,8,-2,110,70	3	OE	30
+char OE	"
+char Ø	88,7,-6,81,74	3	Oslash	31
+char O/	"
+char ---	32,4,28,30,39	3	suppress	32
+char !	32,10,0,22,71	2	exclam	33
+char ”	57,5,39,39,69	3	quotedblright	34
+char ''	"
+char rq	"
+char #	94,7,-19,87,69	2	numbersign	35
+char $	57,7,-6,50,75	2	dollar	36
+char %	94,7,-6,87,75	2	percent	37
+char &	88,5,-2,81,71	2	ampersand	38
+char ’	32,10,39,23,69	3	quoteright	39
+char '	"
+char cq	"
+char (	45,12,-25,38,75	3	parenleft	40
+char )	45,7,-25,33,75	3	parenright	41
+char *	57,8,32,49,75	2	asterisk	42
+char +	88,7,-12,81,62	0	plus	43
+char pl	"
+char ,	32,10,-19,23,12	1	comma	44
+char -	38,2,18,31,25	0	hyphen	45
+char hy	"
+char .	32,10,0,22,12	0	period	46
+char /	57,7,-25,50,75	2	slash	47
+char sl	"
+char 0	57,5,-2,52,66	2	zero	48
+char 1	57,11,0,47,66	2	one	49
+char 2	57,6,0,51,66	2	two	50
+char 3	57,5,-2,51,66	2	three	51
+char 4	57,4,0,53,67	2	four	52
+char 5	57,6,-2,51,66	2	five	53
+char 6	57,5,-2,51,66	2	six	54
+char 7	57,7,-2,55,68	2	seven	55
+char 8	57,5,-2,51,66	2	eight	56
+char 9	57,5,-2,51,66	2	nine	57
+char :	32,10,0,22,43	0	colon	58
+char ;	32,10,-19,22,43	1	semicolon	59
+char ¡	32,10,-21,22,50	3	exclamdown	60
+char !!	"
+char r!	"
+char =	88,7,12,81,39	0	equal	61
+char eq	"
+char ¿	54,7,-20,47,50	3	questiondown	62
+char ??	"
+char r?	"
+char ?	54,7,0,47,70	2	question	63
+char @	88,7,-1,81,70	3	at	64
+char A	84,5,0,80,71	2	A	65
+char B	80,6,0,73,68	2	B	66
+char C	82,7,-2,74,70	2	C	67
+char D	86,6,0,79,68	2	D	68
+char E	77,6,0,73,68	2	E	69
+char F	74,6,0,68,68	2	F	70
+char G	88,7,-2,82,70	2	G	71
+char H	84,6,0,79,68	2	H	72
+char I	41,5,0,36,68	2	I	73
+char J	58,7,-2,51,68	3	J	74
+char K	87,6,0,82,68	2	K	75
+char L	71,6,0,65,68	2	L	76
+char M	103,6,0,97,68	2	M	77
+char N	84,6,0,79,68	2	N	78
+char O	88,7,-2,81,70	2	O	79
+char P	77,6,0,70,68	2	P	80
+char Q	88,7,-19,81,70	3	Q	81
+char R	83,6,-2,82,68	2	R	82
+char S	63,7,-2,56,70	2	S	83
+char T	82,5,0,77,68	2	T	84
+char U	84,6,-2,79,68	2	U	85
+char V	84,3,-2,81,68	2	V	86
+char W	115,3,-2,112,68	2	W	87
+char X	84,4,0,81,68	2	X	88
+char Y	84,2,0,82,68	2	Y	89
+char Z	69,7,0,63,68	2	Z	90
+char [	32,14,-25,29,75	3	bracketleft	91
+char “	57,18,39,52,69	3	quotedblleft	92
+char ``	"
+char lq	"
+char ]	32,3,-25,19,75	3	bracketright	93
+char ˆ	57,14,54,43,69	3	circumflex	94
+char ^	"
+char ^a	"
+char ˙	32,10,56,22,67	3	dotaccent	95
+char .a	"
+char ‘	32,9,39,22,69	3	quoteleft	96
+char `	"
+char oq	"
+char a	57,6,-1,55,45	0	a	97
+char b	63,5,-1,58,69	2	b	98
+char c	51,5,-1,47,45	0	c	99
+char d	63,5,-1,58,69	2	d	100
+char e	51,4,-1,47,45	0	e	101
+char f	35,5,0,40,70	2	f	102
+char g	57,4,-21,55,45	1	g	103
+char h	63,5,0,59,69	2	h	104
+char i	32,6,0,27,67	2	i	105
+char j	35,-3,-20,24,67	3	j	106
+char k	60,5,0,57,69	2	k	107
+char l	32,6,0,28,69	2	l	108
+char m	94,5,0,90,44	0	m	109
+char n	63,5,0,59,44	0	n	110
+char o	57,4,-1,53,45	0	o	111
+char p	63,5,-19,58,44	1	p	112
+char q	60,5,-19,58,44	1	q	113
+char r	45,5,0,41,44	0	r	114
+char s	45,5,-1,41,45	0	s	115
+char t	45,3,-1,38,62	2	t	116
+char u	63,5,-1,59,44	0	u	117
+char v	60,3,-1,57,43	0	v	118
+char w	82,3,-1,78,43	0	w	119
+char x	60,3,0,57,43	0	x	120
+char y	60,3,-20,57,43	1	y	121
+char z	51,4,0,45,43	0	z	122
+char –	57,1,25,56,28	0	endash	123
+char en	"
+char \-	"
+char —	114,2,25,112,28	0	emdash	124
+char em	"
+char --	"
+char ˝	57,15,51,47,70	2	hungarumlaut	125
+char "a	"
+char ˜	57,10,57,47,67	2	tilde	126
+char ~	"
+char ¨	57,12,57,45,67	2	dieresis	127
+char ""	"
+char :a	"
+char ---	32,4,28,30,39	0	suppress	128
+char ---	38	0	space	160
+char Γ	71,6,0,65,68	2	Gamma	161
+char *G	"
+char ∆	94,6,0,88,71	2	Delta	162
+char *D	"
+char Δ	"
+char Θ	88,7,-2,81,70	2	Theta	163
+char *H	"
+char Λ	78,5,0,74,71	2	Lambda	164
+char *L	"
+char Ξ	75,5,0,70,68	2	Xi	165
+char *C	"
+char Π	84,6,0,79,68	2	Pi	166
+char *P	"
+char Σ	82,7,0,74,68	2	Sigma	167
+char *S	"
+char Υ	88,7,0,81,70	2	Upsilon	168
+char *U	"
+char Φ	82,7,0,74,68	2	Phi	169
+char *F	"
+char Ψ	88,7,0,81,68	2	Psi	170
+char *Q	"
+char ­	19,2,18,31,25	0	sfthyphen	171
+char  	38	0	nbspace	172
+char Ω	82,6,0,76,70	2	Omega	173
+char Ω	"
+char *W	"
+char ﬀ	68,4,0,72,70	2	ff	174
+char ff	"
+char ﬁ	65,4,0,60,70	2	fi	175
+char fi	"
+char ﬂ	65,4,0,60,70	2	fl	176
+char fl	"
+char ﬃ	97,4,0,92,70	2	ffi	177
+char ffi	"
+char Fi	"
+char ﬄ	97,4,0,92,70	2	ffl	178
+char ffl	"
+char Fl	"
+char ı	32,6,0,27,44	0	dotlessi	179
+char 	35,-3,-20,24,44	1	dotlessj	180
+char ga	57,13,51,33,70	2	grave	181
+char \`	"
+char ´	57,24,51,44,70	2	acute	182
+char aa	"
+char \'	"
+char ˇ	57,14,52,43,64	2	caron	183
+char va	"
+char ˘	57,12,52,45,69	2	breve	184
+char Ua	"
+char ¯	57,9,56,48,59	0	macron	185
+char -a	"
+char ˚	84,31,54,53,71	2	ring	186
+char oa	"
+char ¸	51,15,-20,42,-2	1	cedilla	187
+char ,,	"
+char ,a	"
+char ß	57,5,-1,53,70	2	germandbls	188
+char ss	"
+char æ	82,6,-1,78,45	0	ae	189
+char ae	"
+char œ	88,4,-1,84,45	0	oe	190
+char oe	"
+char ø	57,5,-10,52,54	0	oslash	191
+char o/	"
+char Æ	101,5,0,97,68	2	AE	192
+char AE	"
+char Œ	114,8,-2,110,70	2	OE	193
+char OE	"
+char Ø	88,7,-6,81,74	2	Oslash	194
+char O/	"
+char ---	32,4,28,30,39	0	suppress	195
+char ¨	57,12,57,45,67	2	dieresis	196
+char ""	"
+char :a	"
+kern ff	bracketright	8
+kern ff	parenright	8
+kern ff	exclam	8
+kern ff	question	8
+kern ff	quoteright	8
+kern suppress	L	-37
+kern suppress	l	-32
+kern quoteright	exclam	12
+kern quoteright	question	12
+kern A	W	-12
+kern A	V	-12
+kern A	Y	-9
+kern A	T	-9
+kern A	Q	-3
+kern A	U	-3
+kern A	G	-3
+kern A	O	-3
+kern A	C	-3
+kern A	t	-3
+kern D	Y	-3
+kern D	V	-3
+kern D	A	-3
+kern D	W	-3
+kern D	X	-3
+kern F	Q	-3
+kern F	G	-3
+kern F	C	-3
+kern F	O	-3
+kern F	A	-12
+kern F	a	-9
+kern F	r	-9
+kern F	u	-9
+kern F	e	-9
+kern F	o	-9
+kern I	I	3
+kern K	Q	-3
+kern K	G	-3
+kern K	C	-3
+kern K	O	-3
+kern L	W	-12
+kern L	V	-12
+kern L	Y	-9
+kern L	T	-9
+kern O	Y	-3
+kern O	V	-3
+kern O	A	-3
+kern O	W	-3
+kern O	X	-3
+kern P	comma	-9
+kern P	period	-9
+kern P	a	-3
+kern P	e	-3
+kern P	o	-3
+kern P	A	-9
+kern R	W	-12
+kern R	V	-12
+kern R	Y	-9
+kern R	T	-9
+kern R	Q	-3
+kern R	U	-3
+kern R	G	-3
+kern R	O	-3
+kern R	C	-3
+kern R	t	-3
+kern T	u	-9
+kern T	A	-9
+kern T	a	-9
+kern T	r	-9
+kern T	o	-9
+kern T	e	-9
+kern T	y	-3
+kern V	Q	-3
+kern V	G	-3
+kern V	C	-3
+kern V	O	-3
+kern V	A	-12
+kern V	a	-9
+kern V	r	-9
+kern V	u	-9
+kern V	e	-9
+kern V	o	-9
+kern W	Q	-3
+kern W	G	-3
+kern W	C	-3
+kern W	O	-3
+kern W	A	-12
+kern W	a	-9
+kern W	r	-9
+kern W	u	-9
+kern W	e	-9
+kern W	o	-9
+kern X	Q	-3
+kern X	G	-3
+kern X	C	-3
+kern X	O	-3
+kern Y	u	-9
+kern Y	A	-9
+kern Y	a	-9
+kern Y	r	-9
+kern Y	o	-9
+kern Y	e	-9
+kern a	w	-3
+kern a	y	-3
+kern a	j	6
+kern a	v	-3
+kern b	w	-3
+kern b	y	-3
+kern b	j	6
+kern b	v	-3
+kern b	q	3
+kern b	c	3
+kern b	d	3
+kern b	x	-3
+kern b	o	3
+kern b	e	3
+kern c	k	-3
+kern c	h	-3
+kern f	bracketright	8
+kern f	parenright	8
+kern f	exclam	8
+kern f	question	8
+kern f	quoteright	8
+kern g	j	3
+kern h	w	-3
+kern h	v	-3
+kern h	y	-3
+kern h	b	-3
+kern h	u	-3
+kern h	t	-3
+kern k	c	-3
+kern k	o	-3
+kern k	e	-3
+kern k	a	-3
+kern m	w	-3
+kern m	v	-3
+kern m	y	-3
+kern m	b	-3
+kern m	u	-3
+kern m	t	-3
+kern n	w	-3
+kern n	v	-3
+kern n	y	-3
+kern n	b	-3
+kern n	u	-3
+kern n	t	-3
+kern o	w	-3
+kern o	y	-3
+kern o	j	6
+kern o	v	-3
+kern o	q	3
+kern o	c	3
+kern o	d	3
+kern o	x	-3
+kern o	o	3
+kern o	e	3
+kern p	w	-3
+kern p	y	-3
+kern p	j	6
+kern p	v	-3
+kern p	q	3
+kern p	c	3
+kern p	d	3
+kern p	x	-3
+kern p	o	3
+kern p	e	3
+kern t	w	-3
+kern t	y	-3
+kern u	w	-3
+kern v	c	-3
+kern v	o	-3
+kern v	e	-3
+kern v	a	-3
+kern w	c	-3
+kern w	o	-3
+kern w	a	-3
+kern w	e	-3
+kern y	comma	-9
+kern y	period	-9
+kern y	a	-3
+kern y	e	-3
+kern y	o	-3
