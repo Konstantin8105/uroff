@@ -5017,7 +5017,7 @@ func in_push(s []byte, args [][]byte) {
 func in_so(path []byte) {
 	fmt.Println("> in_so : ", string(path))
 	var fin *noarch.File = func() *noarch.File {
-		if path != nil && int32(path[0]) != 0 {
+		if 0 < len(path) && int32(path[0]) != 0 {
 			return noarch.Fopen(path, []byte("r\x00"))
 		}
 		return noarch.Stdin
@@ -8380,12 +8380,15 @@ func tr_af(args [][]byte) {
 
 // tr_ds - transpiled function from  tr.c:70
 func tr_ds(args [][]byte) {
-	str_set(map_(args[1]), func() []byte {
-		if args[2] != nil {
-			return args[2]
-		}
-		return []byte("\x00")
-	}())
+	 	fmt.Println(	">>>>>", args)
+	 	for i, s := range args{
+	 		fmt.Println(	">>>> tr_ds :",i, string(s))
+	 	}
+	if 2 < len(args) && args[2] != nil {
+		str_set(map_(args[1]), args[2])
+		return
+	}
+	str_set(map_(args[1]), []byte{'\x00'})
 }
 
 // tr_as - transpiled function from  tr.c:75
@@ -8495,7 +8498,11 @@ func read_name(two int32) (res []byte) {
 	for c == int32(' ') || c == int32('\t') || c == 4 {
 		c = cp_next()
 	}
-	for c > 0 && c != int32(' ') && c != int32('\t') && c != int32('\n') && (noarch.Not(two) || i < 2) {
+	for c > 0 &&
+		c != int32(' ') &&
+		c != int32('\t') &&
+		c != int32('\n') &&
+		(two == 0 || i < 2) {
 		if c != 4 {
 			buf = append(buf, byte(c))
 			// sbuf_add(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix), c)
@@ -8506,7 +8513,8 @@ func read_name(two int32) (res []byte) {
 	if c >= 0 {
 		in_back(c)
 	}
-	return buf // sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
+	return buf
+	// sbuf_out(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 }
 
 // macrobody - transpiled function from  tr.c:160
@@ -9868,25 +9876,28 @@ func tr_nextreq_exec(mac []byte, arg0 []byte, readargs int32) {
 	// 	[][]byte{arg0, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
 
 	// TODO KI
-	// 	if len(mac) == 0 {
-	// 		return
-	// 	}
+	if len(mac) == 0 {
+		return
+	}
 
 	var req []cmd = str_dget(map_(mac)).([]cmd)
 	var str []byte = str_get(map_(mac))
 	var sbuf_c4go_postfix sbuf
 	// 	sbuf_init(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 	if readargs != 0 {
+		fmt.Println(">tr_nextreq_exec: >> st1 ", string(sbuf_c4go_postfix.body))
 		if len(req) == 0 && req[0].args == nil {
 			req[0].args(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 		}
+		fmt.Println(">tr_nextreq_exec: >> st2 ", string(sbuf_c4go_postfix.body))
 		if req != nil && req[0].args == nil {
 			mkargs_req(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 		}
+		fmt.Println(">tr_nextreq_exec: >> st3 ", string(sbuf_c4go_postfix.body))
 		if req == nil {
 			mkargs_macro(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix))
 		}
-		fmt.Println(">tr_nextreq_exec: >> ", string(sbuf_c4go_postfix.body))
+		fmt.Println(">tr_nextreq_exec: >> st4 ", string(sbuf_c4go_postfix.body))
 		a := chopargs(c4goUnsafeConvert_sbuf(&sbuf_c4go_postfix)) // , args[1:])
 		args = append(a, args[0])
 		for i, s := range args {
